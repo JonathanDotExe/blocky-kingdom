@@ -55,9 +55,9 @@ public class Ghost extends CustomEntity<ArmorStand> implements Attacker{
 		ArmorStand stand = (ArmorStand) place.getWorld().spawnEntity(place, EntityType.ARMOR_STAND);
 		stand.setVisible(false);
 		stand.setCanPickupItems(false);
-		stand.setHelmet(new ItemStack(Material.CHAINMAIL_HELMET));
-		stand.setChestplate(new ItemStack(Material.CHAINMAIL_CHESTPLATE));
-		stand.setLeggings(new ItemStack(Material.CHAINMAIL_LEGGINGS));
+		stand.getEquipment().setHelmet(new ItemStack(Material.CHAINMAIL_HELMET));
+		stand.getEquipment().setChestplate(new ItemStack(Material.CHAINMAIL_CHESTPLATE));
+		stand.getEquipment().setLeggings(new ItemStack(Material.CHAINMAIL_LEGGINGS));
 		stand.setCanPickupItems(false);
 		return stand;
 	}

@@ -156,7 +156,7 @@ public class Slimerer extends CustomEntity<ArmorStand> implements Attacker, Targ
 		ItemMeta meta = helmet.getItemMeta();
 		meta.setCustomModelData(1);
 		helmet.setItemMeta(meta);
-		stand.setHelmet(helmet);
+		stand.getEquipment().setHelmet(helmet);
 		return stand;
 	}
 

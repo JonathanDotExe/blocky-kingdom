@@ -50,7 +50,7 @@ public class FigureShopGUI extends InventoryGUI {
 		{
 			ItemStack item = new ItemStack(Material.IRON_INGOT);
 			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("Price: " + figure.getPrice(figureEntity.getHelmet()));
+			meta.setDisplayName("Price: " + figure.getPrice(figureEntity.getEquipment().getHelmet()));
 			item.setItemMeta(meta);
 			addButton(item, PRICE_SLOT);
 		}
@@ -58,7 +58,7 @@ public class FigureShopGUI extends InventoryGUI {
 		{
 			ItemStack item = new ItemStack(Material.GOLD_INGOT);
 			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName("Money: " + figure.getMoney(figureEntity.getHelmet()));
+			meta.setDisplayName("Money: " + figure.getMoney(figureEntity.getEquipment().getHelmet()));
 			item.setItemMeta(meta);
 			addButton(item, MONEY_SLOT);
 		}
@@ -68,8 +68,8 @@ public class FigureShopGUI extends InventoryGUI {
 	@Override
 	protected void onButtonPress(ItemStack button, ClickType click) {
 		int slot = getInventory().first(button);
-		int price = figure.getPrice(figureEntity.getHelmet());
-		int money = figure.getMoney(figureEntity.getHelmet());
+		int price = figure.getPrice(figureEntity.getEquipment().getHelmet());
+		int money = figure.getMoney(figureEntity.getEquipment().getHelmet());
 
 		if (slot == SELL_SLOT && chest.getBlockInventory().getItem(0) != null && chest.getBlockInventory().getItem(0).getAmount() > 0 && price >= 0&& stats.getMoney() >= price) {
 			ItemStack buy = chest.getBlockInventory().getItem(0).clone();
@@ -78,17 +78,17 @@ public class FigureShopGUI extends InventoryGUI {
 			
 			getOwner().getInventory().addItem(buy);
 			stats.setMoney(stats.getMoney() - price);
-			figureEntity.setHelmet(figure.setMoney(figureEntity.getHelmet(), money + price));
+			figureEntity.getEquipment().setHelmet(figure.setMoney(figureEntity.getEquipment().getHelmet(), money + price));
 			getOwner().sendMessage(ChatColor.GREEN + "[Economic Figure] KAT-SCHING! You bought " + buy.getItemMeta().getDisplayName() + "!");
 			initGUI();
-		} else if (getOwner().getUniqueId().equals(figure.getOwner(figureEntity.getHelmet()))) {
+		} else if (getOwner().getUniqueId().equals(figure.getOwner(figureEntity.getEquipment().getHelmet()))) {
 			if (slot == PRICE_SLOT) {
 				getOwner().sendMessage("[Economic Figure] Please enter the new price to the chat!");
 				inputHandler.requestPlayerInput(getOwner(), new ChatInputHandler.InputProcessor() {
 					@Override
 					public void process(Player player, String input) {
 						try {
-							figureEntity.setHelmet(figure.setPrice(figureEntity.getHelmet(), Integer.parseInt(input)));
+							figureEntity.getEquipment().setHelmet(figure.setPrice(figureEntity.getEquipment().getHelmet(), Integer.parseInt(input)));
 							player.sendMessage(ChatColor.GREEN + "[Economic Figure] You set the price to " + input + "!");
 						}
 						catch (NumberFormatException e) {
@@ -102,7 +102,7 @@ public class FigureShopGUI extends InventoryGUI {
 				stats.setMoney(stats.getMoney() + money);
 				getOwner().sendMessage(ChatColor.GREEN + "[Economic Figure] KAT-SCHING! You recieved " + money + " $!");
 				getOwner().sendMessage(ChatColor.GREEN + "[Economic Figure] I recommend you to invest it into some new economic stuff for or shop!");
-				figureEntity.setHelmet(figure.setMoney(figureEntity.getHelmet(), 0));
+				figureEntity.getEquipment().setHelmet(figure.setMoney(figureEntity.getEquipment().getHelmet(), 0));
 				initGUI();
 			}
 		}

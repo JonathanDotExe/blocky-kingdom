@@ -137,8 +137,8 @@ public class EconomicFigure extends PlaceableItem{
 				if (loc.getBlockX() == entityLoc.getBlockX() && loc.getBlockY() == entityLoc.getBlockY() && loc.getBlockZ() == entityLoc.getBlockZ()) {
 					if (isItemEntity(entities[i])) {
 						found = true;
-						ItemUtil.printTagCompount(((ArmorStand) entities[i]).getHelmet());
-						if (!event.getPlayer().getUniqueId().equals(getOwner(((ArmorStand) entities[i]).getHelmet()))) {
+						ItemUtil.printTagCompount(((ArmorStand) entities[i]).getEquipment().getHelmet());
+						if (!event.getPlayer().getUniqueId().equals(getOwner(((ArmorStand) entities[i]).getEquipment().getHelmet()))) {
 							event.setCancelled(true);
 						}
 					}
@@ -154,7 +154,7 @@ public class EconomicFigure extends PlaceableItem{
 			if (chestLoc.getBlock().getState() instanceof Chest) {
 				FigureShopGUI gui = new FigureShopGUI(event.getPlayer(), StatHandler.getInstance().getStats(event.getPlayer()).getCharacterStats(), this, ((ArmorStand) event.getRightClicked()), (Chest) chestLoc.getBlock().getState(), plugin.getInputHandler());
 				gui.show();
-				event.getPlayer().sendMessage(event.getPlayer().getUniqueId() + "/" + getOwner(((ArmorStand) event.getRightClicked()).getHelmet()));
+				event.getPlayer().sendMessage(event.getPlayer().getUniqueId() + "/" + getOwner(((ArmorStand) event.getRightClicked()).getEquipment().getHelmet()));
 				plugin.getGuiHandler().addGUI(gui);
 			}
 		}
@@ -166,7 +166,7 @@ public class EconomicFigure extends PlaceableItem{
 		if (event instanceof EntityDamageByEntityEvent) {
 			if (((EntityDamageByEntityEvent) event).getDamager() instanceof Player) {
 				Player player = (Player) ((EntityDamageByEntityEvent) event).getDamager();
-				ItemStack item = ((ArmorStand) event.getEntity()).getHelmet();
+				ItemStack item = ((ArmorStand) event.getEntity()).getEquipment().getHelmet();
 				
 				if (getOwner(item).equals(player.getUniqueId())) {
 					canRemove = true;
@@ -196,7 +196,7 @@ public class EconomicFigure extends PlaceableItem{
 	@Override
 	protected void onPlaceItem(Player player, ArmorStand entity) {
 		super.onPlaceItem(player, entity);
-		entity.setHelmet(setOwner(entity.getHelmet(), player.getUniqueId()));
+		entity.getEquipment().setHelmet(setOwner(entity.getEquipment().getHelmet(), player.getUniqueId()));
 	}
 
 }

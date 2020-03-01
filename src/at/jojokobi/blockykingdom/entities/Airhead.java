@@ -91,7 +91,7 @@ public class Airhead extends CustomEntity<Skeleton> implements Attacker, Targete
 		Skeleton skeleton = place.getWorld().spawn(place, Skeleton.class);
 		skeleton.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(400);
 		skeleton.setHealth(400);
-		skeleton.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 100000000, 1, true, false), true);
+		skeleton.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 100000000, 1, true, false));
 		skeleton.setLootTable(null);
 		skeleton.setSilent(true);
 		skeleton.setRemoveWhenFarAway(false);
