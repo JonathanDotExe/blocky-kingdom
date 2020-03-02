@@ -1,0 +1,7 @@
+name: BlockyKingdom
+main: at.jojokobi.blockykingdom.BlockyKingdomPlugin
+version: 0.1
+author: jojokobi
+load: STARTUP
+depend: [JojokobiUtil, JojosGenerator]
+api-version: 1.15
