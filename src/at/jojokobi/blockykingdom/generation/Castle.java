@@ -33,6 +33,7 @@ public class Castle extends Structure{
 	public Castle(EntityHandler entityHandler, DimensionHandler dimHandler, ArcherTower archerTower, TraderHut traderHut) {
 		super(32, 32, 32, 0, 1);
 		this.entityHandler = entityHandler;
+		this.dimHandler = dimHandler;
 		this.archerTower = archerTower;
 		this.traderHut = traderHut;
 		setxModifier(-651);
