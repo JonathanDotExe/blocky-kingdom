@@ -10,10 +10,10 @@ import org.bukkit.generator.ChunkGenerator.ChunkData;
 import at.jojokobi.generator.ValueGenerator;
 import at.jojokobi.generator.biome.CustomBiome;
 
-public class CloudBiome extends CustomBiome{
+public class CloudBiome implements CustomBiome{
 
 	public CloudBiome() {
-		super(0.5, 0.8, 0.3, 0.7, 0.7, 1.0);
+		
 	}
 
 	@Override
