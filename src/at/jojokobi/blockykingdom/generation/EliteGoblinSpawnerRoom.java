@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World.Environment;
 import org.bukkit.block.Chest;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.entity.EntityType;
@@ -14,6 +16,7 @@ import org.bukkit.inventory.ItemStack;
 import at.jojokobi.blockykingdom.entities.EliteGoblin;
 import at.jojokobi.blockykingdom.items.CloudParticle;
 import at.jojokobi.blockykingdom.items.Money;
+import at.jojokobi.mcutil.dimensions.DimensionHandler;
 import at.jojokobi.mcutil.entity.spawns.CustomEntitySpawnerHandler;
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
@@ -24,11 +27,13 @@ import at.jojokobi.mcutil.loot.LootItem;
 public class EliteGoblinSpawnerRoom extends Structure {
 
 	private CustomEntitySpawnerHandler handler;
+	private DimensionHandler dimHandler;
 	private LootInventory loot = new LootInventory();
 
-	public EliteGoblinSpawnerRoom(CustomEntitySpawnerHandler handler) {
+	public EliteGoblinSpawnerRoom(CustomEntitySpawnerHandler handler, DimensionHandler dimHandler) {
 		super(9, 9, 7, 1200, 1);
 		this.handler = handler;
+		this.dimHandler = dimHandler;
 		loot.addItem(new LootItem(1, ItemHandler.getItemStack(Money.class), 3, 8));
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.WHEAT), 1, 5));
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.BREAD), 1, 2));
@@ -95,6 +100,11 @@ public class EliteGoblinSpawnerRoom extends Structure {
 		loot.fillInventory(chest.getBlockInventory(), random, null);
 		
 		return Arrays.asList(new StructureInstance<>(this, loc, getWidth(), getHeight(), getLength()));
+	}
+	
+	@Override
+	public boolean canGenerate(Chunk chunk, long seed) {
+		return super.canGenerate(chunk, seed) && chunk.getWorld().getEnvironment() == Environment.NORMAL && dimHandler.getDimension(chunk.getWorld()) == null;
 	}
 
 	@Override

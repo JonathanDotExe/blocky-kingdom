@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World.Environment;
 import org.bukkit.block.Chest;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
@@ -59,6 +61,11 @@ public class HauntedGrave extends Structure{
 		
 		setxModifier(4122);
 		setzModifier(1564);
+	}
+	
+	@Override
+	public boolean canGenerate(Chunk chunk, long seed) {
+		return super.canGenerate(chunk, seed) && chunk.getWorld().getEnvironment() == Environment.NORMAL;
 	}
 	
 	@Override

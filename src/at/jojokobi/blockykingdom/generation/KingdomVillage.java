@@ -8,9 +8,12 @@ import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
+import at.jojokobi.blockykingdom.kingdoms.Kingdom;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.blockykingdom.kingdoms.KingdomState;
+import at.jojokobi.mcutil.dimensions.DimensionHandler;
+import at.jojokobi.mcutil.generation.TerrainGenUtil;
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
 import at.jojokobi.mcutil.generation.population.VillageSpreader;
@@ -18,9 +21,11 @@ import at.jojokobi.mcutil.generation.population.VillageSpreader;
 public class KingdomVillage extends Structure {
 	
 	private VillageSpreader spreader;
+	private DimensionHandler dimHandler;
 
-	public KingdomVillage(Structure... houses) {
+	public KingdomVillage(DimensionHandler dimHandler, Structure... houses) {
 		super(128, 128, 32, 600, 1);
+		this.dimHandler = dimHandler;
 		spreader = new VillageSpreader(houses);
 		spreader.setBlockFunction(b -> {
 			switch (b) {
@@ -47,7 +52,9 @@ public class KingdomVillage extends Structure {
 	
 	@Override
 	public boolean canGenerate(Chunk chunk, long seed) {
-		return (chunk.getX() == 0 && chunk.getZ() == 0) || super.canGenerate(chunk, seed) && KingdomHandler.getInstance().generateKingdom(new KingdomPoint(chunk.getBlock(0, 0, 0).getLocation())).getState() != KingdomState.UNCLAIMED /* && new KingdomPoint(chunk.getBlock(0, 0, 0).getLocation()).toKingdom().getState() != KingdomState.UNCLAIMED*/;
+		int innerKingdomX = chunk.getX() * TerrainGenUtil.CHUNK_WIDTH % Kingdom.KINGDOM_WIDTH;
+		int innerKingdomZ = chunk.getX() * TerrainGenUtil.CHUNK_LENGTH % Kingdom.KINGDOM_LENGTH;
+		return (chunk.getX() == 0 && chunk.getZ() == 0) || (innerKingdomX + getWidth() < Kingdom.KINGDOM_WIDTH && innerKingdomZ + getLength() < Kingdom.KINGDOM_LENGTH && super.canGenerate(chunk, seed) && KingdomHandler.getInstance().generateKingdom(new KingdomPoint(chunk.getBlock(0, 0, 0).getLocation())).getState() != KingdomState.UNCLAIMED && dimHandler.getDimension(chunk.getWorld()) == null);
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import java.util.Random;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World.Environment;
 import org.bukkit.block.Chest;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.entity.EntityType;
@@ -79,7 +80,7 @@ public class DungeonTower extends Structure{
 
 	@Override
 	public boolean canGenerate(Chunk chunk, long seed) {
-		return super.canGenerate(chunk, seed) && chunk.getWorld().getHighestBlockYAt(chunk.getBlock(0, 0, 0).getLocation()) > 0;
+		return super.canGenerate(chunk, seed) && chunk.getWorld().getEnvironment() == Environment.NORMAL && chunk.getWorld().getHighestBlockYAt(chunk.getBlock(0, 0, 0).getLocation()) > 0;
 	}
 	
 	@Override

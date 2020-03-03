@@ -15,6 +15,7 @@ import at.jojokobi.blockykingdom.kingdoms.Kingdom;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.blockykingdom.kingdoms.KingdomState;
+import at.jojokobi.mcutil.dimensions.DimensionHandler;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.generation.FurnitureGenUtil;
 import at.jojokobi.mcutil.generation.TerrainGenUtil;
@@ -27,8 +28,9 @@ public class Castle extends Structure{
 	private ArcherTower archerTower;
 	private TraderHut traderHut;
 	private EntityHandler entityHandler;
+	private DimensionHandler dimHandler;
 	
-	public Castle(EntityHandler entityHandler, ArcherTower archerTower, TraderHut traderHut) {
+	public Castle(EntityHandler entityHandler, DimensionHandler dimHandler, ArcherTower archerTower, TraderHut traderHut) {
 		super(32, 32, 32, 0, 1);
 		this.entityHandler = entityHandler;
 		this.archerTower = archerTower;
@@ -156,7 +158,7 @@ public class Castle extends Structure{
 		KingdomPoint point = new KingdomPoint(chunk.getBlock(0, 0, 0).getLocation());
 		Kingdom kingdom = KingdomHandler.getInstance().generateKingdom(point);
 		Location centerLoc = point.toLocation().add(kingdom.getCenterX(), 0, kingdom.getCenterZ());
-		return chunk.getWorld().getEnvironment() == Environment.NORMAL && kingdom.getState() != KingdomState.UNCLAIMED && centerLoc.getBlockX()/TerrainGenUtil.CHUNK_WIDTH == chunk.getX() && centerLoc.getBlockZ()/TerrainGenUtil.CHUNK_LENGTH == chunk.getZ();
+		return chunk.getWorld().getEnvironment() == Environment.NORMAL && dimHandler.getDimension(chunk.getWorld()) == null && kingdom.getState() != KingdomState.UNCLAIMED && centerLoc.getBlockX()/TerrainGenUtil.CHUNK_WIDTH == chunk.getX() && centerLoc.getBlockZ()/TerrainGenUtil.CHUNK_LENGTH == chunk.getZ();
 	}
 
 	@Override

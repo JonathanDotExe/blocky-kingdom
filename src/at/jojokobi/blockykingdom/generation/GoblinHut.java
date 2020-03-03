@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World.Environment;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Chest;
 import org.bukkit.block.CreatureSpawner;
@@ -31,7 +33,7 @@ public class GoblinHut extends Structure {
 	private LootInventory loot = new LootInventory();
 
 	public GoblinHut(CustomEntitySpawnerHandler handler) {
-		super(6, 6, 4 + ROOF_HEIGHT, 600, 1);
+		super(6, 6, 4 + ROOF_HEIGHT, 1000, 1);
 		this.handler = handler;
 		loot.addItem(new LootItem(1, ItemHandler.getItemStack(Money.class), 1, 3));
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.WHEAT), 1, 5));
@@ -47,6 +49,11 @@ public class GoblinHut extends Structure {
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.GOLD_NUGGET), 1, 5));
 	}
 
+	@Override
+	public boolean canGenerate(Chunk chunk, long seed) {
+		return super.canGenerate(chunk, seed) && chunk.getWorld().getEnvironment() == Environment.NORMAL;
+	}
+	
 	@Override
 	public List<StructureInstance<? extends Structure>> generate(Location loc, long seed) {
 		Location place = loc.clone();
