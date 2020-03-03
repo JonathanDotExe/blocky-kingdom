@@ -93,11 +93,11 @@ public class VillagerHousePattern implements SummoningPattern {
 		}
 		
 		public default int getHeight () {
-			return getSize().getBlockX();
+			return getSize().getBlockY();
 		}
 		
 		public default int getLength () {
-			return getSize().getBlockX();
+			return getSize().getBlockZ();
 		}
 		
 	}
