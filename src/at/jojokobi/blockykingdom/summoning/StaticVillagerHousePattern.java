@@ -17,7 +17,7 @@ import at.jojokobi.mcutil.generation.GenerationHandler;
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
 
-public class VillagerHousePattern implements SummoningPattern {
+public class StaticVillagerHousePattern implements SummoningPattern {
 	
 	private EntityHandler handler;
 	private GenerationHandler genHandler;
@@ -26,7 +26,7 @@ public class VillagerHousePattern implements SummoningPattern {
 	private BiFunction<Location, EntityHandler, KingdomVillager<?>> villagerFunction;
 	private Function<String, String> messageFunction;
 
-	public VillagerHousePattern(EntityHandler handler, GenerationHandler genHandler, Structure structure,
+	public StaticVillagerHousePattern(EntityHandler handler, GenerationHandler genHandler, Structure structure,
 			HouseVerifier verifier, BiFunction<Location, EntityHandler, KingdomVillager<?>> villagerFunction,
 			Function<String, String> messageFunction) {
 		super();

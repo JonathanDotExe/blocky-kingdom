@@ -387,6 +387,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		SummonHandler summonHandler = new SummonHandler();
 		summonHandler.addPattern(VillagerHousePatternFactory.createRecruiterPattern(entityHandler, genHandler, recruiterHouse));
 		summonHandler.addPattern(VillagerHousePatternFactory.createTraderPattern(entityHandler, genHandler, recruiterHouse));
+		summonHandler.addPattern(VillagerHousePatternFactory.createQuestHutPattern(entityHandler, genHandler, questHut));
 		summonHandler.addPattern(new SlimererPattern(this, entityHandler));
 		summonHandler.addPattern(new ZombieBossPattern(this, entityHandler));
 		summonHandler.addPattern(new AirheadPattern(this, entityHandler));

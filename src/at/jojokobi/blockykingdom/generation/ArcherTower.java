@@ -72,7 +72,7 @@ public class ArcherTower extends Structure {
 
 		// Archer
 		place.setX(loc.getX() + getWidth() / 2);
-		place.setY(loc.getY() + getHeight() + 1);
+		place.setY(loc.getY() + getHeight() - 2);
 		place.setZ(loc.getZ() + getLength() / 2);
 		Archer archer = new Archer(place, entityHandler, random);
 		entityHandler.addSavedEntity(archer);
