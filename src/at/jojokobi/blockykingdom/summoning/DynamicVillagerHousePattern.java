@@ -79,7 +79,7 @@ public class DynamicVillagerHousePattern implements SummoningPattern {
 	}
 	
 	public boolean matches (Location start, int width, int height, int length) {
-		boolean matches = true;
+		boolean matches = genHandler.getInstanceInArea(start, width, height, length) == null;
 		List<Furniture> furnitures = new ArrayList<Furniture>(this.furnitures);
 		int airCount = 0;
 		int totalRoomSpace = (width - 2) * (height - 2) * (length - 2);
@@ -118,7 +118,10 @@ public class DynamicVillagerHousePattern implements SummoningPattern {
 	public void summon(BlockPlaceEvent event) {
 		KingdomPoint point = new KingdomPoint(event.getBlock().getLocation());
 		KingdomVillager<?> villager = villagerFunction.apply(event.getBlock().getLocation().add(1, 1, 1), handler);
-		if (point.toKingdom() != null && point.canAddVillager(villager.getVillagerCategory(), handler)) {
+		if (!point.canAddVillager(villager.getVillagerCategory(), handler)) {
+			event.getPlayer().sendMessage("Cool building but nobody wants to move here because of the low level. Increase your kingdom level to be able to increase your population.");
+		}
+		else {
 			handler.addSavedEntity(villager);
 			point.addVillager(villager);
 			event.getPlayer().sendMessage(messageFunction.apply(villager.getName()));
@@ -126,9 +129,6 @@ public class DynamicVillagerHousePattern implements SummoningPattern {
 			Location start = event.getBlock().getLocation().add(-1, -1, -1);
 			StructureInstance<?> inst = structure.getStandardInstance(start);
 			genHandler.addStructureInstance(inst);
-		}
-		else {
-			event.getPlayer().sendMessage("Cool building but nobody wants to move here because of the low level. Increase your kingdom level to be able to increase your population.");
 		}
 	}
 
