@@ -27,8 +27,11 @@ public class Lore {
 	public List<LoreChapter> getFollowingChapters (int start) {
 		List<LoreChapter> following = new ArrayList<>();
 		for (ChapterConnection conn : connections) {
-			
+			if (conn.getStartChapter() == start) {
+				following.add(chapters.get(conn.getEndChapter()));
+			}
 		}
+		return following;
 	}
 
 }
