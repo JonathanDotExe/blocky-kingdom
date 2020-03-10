@@ -1,11 +1,17 @@
 package at.jojokobi.blockykingdom.kingdoms.lore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
-public class Lore {
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
+
+import at.jojokobi.mcutil.TypedMap;
+
+public class Lore implements ConfigurationSerializable{
 	
 	private List<LoreChapter> chapters = new ArrayList<>();
 	private Set<ChapterConnection> connections = new HashSet<>();
@@ -32,6 +38,24 @@ public class Lore {
 			}
 		}
 		return following;
+	}
+
+	@Override
+	public Map<String, Object> serialize() {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("chapters", chapters);
+		map.put("connections", connections);
+		return map;
+	}
+	
+	public static Lore deserialize (Map<String, Object> map) {
+		TypedMap tMap = new TypedMap(map);
+		Lore lore = new Lore();
+		lore.chapters = tMap.getList("chapters", LoreChapter.class);
+		for (ChapterConnection conn : tMap.getList("connections", ChapterConnection.class)) {
+			lore.addChapterConnection(conn.getStartChapter(), conn.getEndChapter());
+		}
+		return lore;
 	}
 
 }

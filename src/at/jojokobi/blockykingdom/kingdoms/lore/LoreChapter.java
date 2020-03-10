@@ -14,7 +14,5 @@ public interface LoreChapter extends ConfigurationSerializable {
 	public List<String> getDescription ();
 	
 	public boolean isCompleted ();
-	
-	public List<LoreChapter> getNext ();
 
 }

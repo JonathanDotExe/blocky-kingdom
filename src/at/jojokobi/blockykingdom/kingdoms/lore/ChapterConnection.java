@@ -1,6 +1,13 @@
 package at.jojokobi.blockykingdom.kingdoms.lore;
 
-public class ChapterConnection {
+import java.util.HashMap;
+import java.util.Map;
+
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
+
+import at.jojokobi.mcutil.TypedMap;
+
+public class ChapterConnection implements ConfigurationSerializable {
 	
 	private int startChapter;
 	private int endChapter;
@@ -42,6 +49,19 @@ public class ChapterConnection {
 		if (startChapter != other.startChapter)
 			return false;
 		return true;
+	}
+
+	@Override
+	public Map<String, Object> serialize() {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startChapter", startChapter);
+		map.put("endChapter", endChapter);
+		return map;
+	}
+	
+	public static ChapterConnection deserialize (Map<String, Object> map) {
+		TypedMap tMap = new TypedMap(map);
+		return new ChapterConnection(tMap.getInt("startChapter"), tMap.getInt("endChapter"));
 	}
 
 }

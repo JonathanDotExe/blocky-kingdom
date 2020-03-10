@@ -10,6 +10,7 @@ import java.util.UUID;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.VillagerCategory;
+import at.jojokobi.blockykingdom.kingdoms.lore.Lore;
 
 public class Kingdom implements ConfigurationSerializable{
 	
@@ -23,7 +24,8 @@ public class Kingdom implements ConfigurationSerializable{
 	private static final String OWNERS_KEY = "owners";
 	private static final String HAPPINESS_KEY = "happiness";
 	private static final String LEVEL_KEY = "level";
-
+	private static final String LORE_KEY = "lore";
+	
 	private String name = "Kingdom";
 	private int centerX;
 	private int centerZ;
@@ -31,6 +33,7 @@ public class Kingdom implements ConfigurationSerializable{
 	private List<UUID> owners = new ArrayList<>();
 	private double happiness = 0;
 	private int level = 1;
+	private Lore lore;
 	
 
 	public Kingdom(String name) {
@@ -113,6 +116,7 @@ public class Kingdom implements ConfigurationSerializable{
 			owners.add(owner.toString());
 		}
 		map.put(OWNERS_KEY, owners);
+		map.put(LORE_KEY, lore);
 		
 		return map;
 	}
@@ -178,6 +182,10 @@ public class Kingdom implements ConfigurationSerializable{
 					e.printStackTrace();
 				}
 			}
+		}
+		//Lore
+		if (map.get(LORE_KEY) instanceof Lore) {
+			kingdom.lore = (Lore) map.get(LORE_KEY);
 		}
 		
 		return kingdom;
