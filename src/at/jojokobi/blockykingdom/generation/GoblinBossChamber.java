@@ -7,13 +7,18 @@ import java.util.Random;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
+import at.jojokobi.blockykingdom.entities.GoblinBoss;
+import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
 
 public class GoblinBossChamber extends Structure {
+	
+	private EntityHandler entityHandler;
 
-	public GoblinBossChamber() {
+	public GoblinBossChamber(EntityHandler entityHandler) {
 		super(32, 32, 8, 0, 1);
+		this.entityHandler = entityHandler;
 	}
 
 	@Override
@@ -58,6 +63,8 @@ public class GoblinBossChamber extends Structure {
 				}
 			}
 		}
+		//Boss
+		entityHandler.addSavedEntity(new GoblinBoss(loc.clone().add(getWidth()/2, 2, getLength()/2), entityHandler));
 		return Arrays.asList(new StructureInstance<>(this, loc, getWidth(), getHeight(), getLength()));
 	}
 

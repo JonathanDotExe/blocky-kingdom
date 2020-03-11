@@ -15,14 +15,17 @@ public class GoblinCave extends Structure{
 	
 	private static final int START_Y = 12;
 	private List<VillageSpreader> layers = new ArrayList<>();
+	private Structure center;
+	private Structure kingRoom;
 	
 	@SafeVarargs
-	public GoblinCave(Structure[]... layers) {
+	public GoblinCave(Structure center, Structure kingRoom, Structure[]... layers) {
 		super(128, 128, 64, 1200, 1);
+		this.center = center;
+		this.kingRoom = kingRoom;
 		for (Structure[] list : layers) {
 			VillageSpreader spreader = new VillageSpreader(list);
 			this.layers.add(spreader);
-			
 		}
 	}
 
@@ -40,7 +43,31 @@ public class GoblinCave extends Structure{
 		strucs.add(getStandardInstance(loc));
 		for (VillageSpreader spreader : layers) {
 			VillageNode[][] nodes = spreader.generateVillageMap(random);
-			nodes[nodes.length/2][nodes[nodes.length/2].length/2].setHouse(null);
+			int centerY = nodes.length/2;
+			int centerX = nodes[centerY].length/2;
+			nodes[centerY][centerX].setHouse(null);
+			//King room
+			if (y == START_Y) {
+				List<Point2D> points = new ArrayList<Point2D>();
+				for (int i = 0; i < nodes.length; i++) {
+					for (int j = 0; j < nodes[i].length; j++) {
+						if (nodes[i][j] != null && nodes[i][j].getHouse() != null) {
+							points.add(new Point2D(j, i));
+						}
+					}
+				}
+				if (points.isEmpty()) {
+					nodes[centerY][centerX - 1].setHouse(kingRoom);
+					nodes[centerY][centerX - 1].setRight(true);
+					nodes[centerY][centerX].setLeft(true);
+				}
+				else {
+					Point2D point = points.get(random.nextInt(points.size()));
+					nodes[point.y][point.x].setHouse(kingRoom);
+				}
+				//Cave entry
+				nodes[centerY][centerX].setHouse(center);
+			}
 			strucs.addAll(spreader.generateVillage(nodes, seed, loc.clone().add(0, y, 0)));
 			y += 12;
 		}
@@ -57,4 +84,20 @@ public class GoblinCave extends Structure{
 		return new StructureInstance<Structure>(this, location, getWidth(), getHeight(), getLength());
 	}
 
+}
+
+class Point2D {
+	
+	public int x;
+	public int y;
+	public Point2D(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+	}
+	
+	public Point2D() {
+		
+	}
+	
 }
