@@ -53,6 +53,7 @@ import at.jojokobi.blockykingdom.generation.GoblinCave;
 import at.jojokobi.blockykingdom.generation.GoblinCaveCenter;
 import at.jojokobi.blockykingdom.generation.GoblinHut;
 import at.jojokobi.blockykingdom.generation.GoblinSpawnerRoom;
+import at.jojokobi.blockykingdom.generation.GoblinTreasureRoom;
 import at.jojokobi.blockykingdom.generation.HauntedGrave;
 import at.jojokobi.blockykingdom.generation.KingdomVillage;
 import at.jojokobi.blockykingdom.generation.KnightCampfire;
@@ -388,7 +389,8 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		genHandler.addStructure(caveCenter);
 		GoblinBossChamber bossChamber = new GoblinBossChamber(entityHandler);
 		genHandler.addStructure(bossChamber);
-		GoblinCave goblinCave = new GoblinCave(caveCenter, bossChamber, new Structure[]{goblinSpawner, eliteGoblinspawner}, new Structure[]{goblinSpawner, goblinSpawner, eliteGoblinspawner}, new Structure[]{goblinSpawner, goblinSpawner, goblinSpawner, eliteGoblinspawner}, new Structure[]{goblinSpawner});
+		GoblinTreasureRoom treasureRoom = new GoblinTreasureRoom();
+		GoblinCave goblinCave = new GoblinCave(caveCenter, bossChamber, new Structure[]{goblinSpawner, eliteGoblinspawner,treasureRoom}, new Structure[]{goblinSpawner, goblinSpawner, eliteGoblinspawner, treasureRoom}, new Structure[]{goblinSpawner, goblinSpawner, goblinSpawner, eliteGoblinspawner, treasureRoom, treasureRoom}, new Structure[]{goblinSpawner, goblinSpawner, goblinSpawner, treasureRoom});
 		genHandler.addStructure(goblinCave);
 		
 		genHandler.addLegacySaveFolder(BLOCKY_KINGDOM_NAMESPACE + File.separator + "structures");
