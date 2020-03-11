@@ -61,6 +61,7 @@ public class EliteGoblinSpawnerRoom extends Structure {
 
 	@Override
 	public List<StructureInstance<? extends Structure>> generate(Location loc, long seed) {
+		loc.add(0, -1, 0);
 		Location place = loc.clone();
 		Random random = new Random(generateValueBeasedSeed(loc, seed));
 		// Walls

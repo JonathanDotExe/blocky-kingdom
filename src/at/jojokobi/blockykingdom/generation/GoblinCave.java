@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.Random;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
+import at.jojokobi.mcutil.generation.population.TunnelPathGenerator;
 import at.jojokobi.mcutil.generation.population.VillageNode;
 import at.jojokobi.mcutil.generation.population.VillageSpreader;
 
@@ -25,6 +27,9 @@ public class GoblinCave extends Structure{
 		this.kingRoom = kingRoom;
 		for (Structure[] list : layers) {
 			VillageSpreader spreader = new VillageSpreader(list);
+			spreader.setBlockFunction(m -> Material.AIR);
+			spreader.setPathGenerator(new TunnelPathGenerator());
+			spreader.setForceHeight(true);
 			this.layers.add(spreader);
 		}
 	}

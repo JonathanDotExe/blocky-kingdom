@@ -17,12 +17,13 @@ public class GoblinBossChamber extends Structure {
 	private EntityHandler entityHandler;
 
 	public GoblinBossChamber(EntityHandler entityHandler) {
-		super(32, 32, 8, 0, 1);
+		super(24, 24, 8, 0, 1);
 		this.entityHandler = entityHandler;
 	}
 
 	@Override
 	public List<StructureInstance<? extends Structure>> generate(Location loc, long seed) {
+		loc.add(0, -1, 0);
 		Location place = loc.clone();
 		Random random = new Random(generateValueBeasedSeed(loc, seed));
 		// Walls
@@ -46,13 +47,13 @@ public class GoblinBossChamber extends Structure {
 							|| ((z == 0 || z == getLength() - 1)
 									&& (x < getWidth() / 2 - 1 || x > getWidth() / 2 + 2 || y > 3))
 							|| y == 0 || y == getHeight() - 1) {
-						material = Material.BRICK;
+						material = Material.BRICKS;
 					}
 					//Table
 					else if (y == 1 && (x == getWidth()/2 - 3 || x == getWidth()/2 + 3) && (z == 10 || x == getLength() - 4)) {
 						material = Material.OAK_LOG;
 					}
-					else if (y == 2 && x > getWidth()/2 - 3 && x <= getWidth()/2 + 3 && z > 10 || x <= getLength() - 4) {
+					else if (y == 2 && x >= getWidth()/2 - 3 && x <= getWidth()/2 + 3 && z >= 10 && x <= getLength() - 4) {
 						material = Material.OAK_SLAB;
 					}
 					//Hay
@@ -64,7 +65,7 @@ public class GoblinBossChamber extends Structure {
 			}
 		}
 		//Boss
-		entityHandler.addSavedEntity(new GoblinBoss(loc.clone().add(getWidth()/2, 2, getLength()/2), entityHandler));
+		entityHandler.addSavedEntity(new GoblinBoss(loc.clone().add(getWidth()/2, 3, getLength()/2), entityHandler));
 		return Arrays.asList(new StructureInstance<>(this, loc, getWidth(), getHeight(), getLength()));
 	}
 

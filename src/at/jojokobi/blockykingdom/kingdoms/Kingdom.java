@@ -10,7 +10,6 @@ import java.util.UUID;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.VillagerCategory;
-import at.jojokobi.blockykingdom.kingdoms.lore.Lore;
 
 public class Kingdom implements ConfigurationSerializable{
 	
