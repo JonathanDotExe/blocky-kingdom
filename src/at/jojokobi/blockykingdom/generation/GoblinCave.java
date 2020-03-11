@@ -56,13 +56,21 @@ public class GoblinCave extends Structure{
 				List<Point2D> points = new ArrayList<Point2D>();
 				for (int i = 0; i < nodes.length; i++) {
 					for (int j = 0; j < nodes[i].length; j++) {
-						if (nodes[i][j] != null && nodes[i][j].getHouse() != null) {
+						if (nodes[i][j] != null && (i < centerY - 1 || i > centerY + 1) && (j < centerX - 1 && j > centerX + 1)) {
 							points.add(new Point2D(j, i));
 						}
 					}
 				}
 				if (points.isEmpty()) {
-					nodes[centerY][centerX - 1].setHouse(kingRoom);
+					if (nodes[centerY][centerX - 1] == null) {
+						nodes[centerY][centerX - 1] = new VillageNode();
+					}
+					if (nodes[centerY][centerX - 2] == null) {
+						nodes[centerY][centerX - 2] = new VillageNode();
+					}
+					nodes[centerY][centerX - 2].setHouse(kingRoom);
+					nodes[centerY][centerX - 2].setRight(true);
+					nodes[centerY][centerX - 1].setLeft(true);
 					nodes[centerY][centerX - 1].setRight(true);
 					nodes[centerY][centerX].setLeft(true);
 				}
