@@ -18,7 +18,13 @@ public class GoblinCaveCenter extends Structure {
 	}
 
 	@Override
+	public int calculatePlacementY(int width, int length, Location place) {
+		return 0;
+	}
+	
+	@Override
 	public List<StructureInstance<? extends Structure>> generate(Location loc, long seed) {
+		loc.setY(calculatePlacementY(getWidth(), getLength(), loc));
 		BasicGenUtil.generateCube(loc, Material.AIR, getWidth(), getHeight(), getLength());
 		Random random = new Random(generateValueBeasedSeed(loc, seed));
 		//Cobweb
