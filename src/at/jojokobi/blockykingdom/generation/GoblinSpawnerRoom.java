@@ -14,6 +14,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
 import at.jojokobi.blockykingdom.entities.Goblin;
+import at.jojokobi.blockykingdom.items.Hammer;
 import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.mcutil.dimensions.DimensionHandler;
 import at.jojokobi.mcutil.entity.spawns.CustomEntitySpawnerHandler;
@@ -33,19 +34,25 @@ public class GoblinSpawnerRoom extends Structure {
 		super(9, 9, 7, 800, 1);
 		this.handler = handler;
 		this.dimHandler = dimHandler;
-		loot.addItem(new LootItem(1, ItemHandler.getItemStack(Money.class), 1, 5));
+		loot.addItem(new LootItem(1, ItemHandler.getItemStack(Money.class), 2, 5));
+		loot.addItem(new LootItem(0.1, ItemHandler.getItemStack(Hammer.class), 1, 1));
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.WHEAT), 1, 5));
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.BREAD), 1, 2));
+		loot.addItem(new LootItem(0.5, new ItemStack(Material.COOKED_BEEF), 1, 3));
+		loot.addItem(new LootItem(0.05, new ItemStack(Material.GOLDEN_APPLE), 1, 1));
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.LEATHER_CHESTPLATE), 1, 1).setEnchant(true));
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.LEATHER_HELMET), 1, 1).setEnchant(true));
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.LEATHER_BOOTS), 1, 1).setEnchant(true));
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.LEATHER_LEGGINGS), 1, 1).setEnchant(true));
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.WOODEN_SWORD), 1, 1).setEnchant(true));
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.WOODEN_AXE), 1, 1).setEnchant(true));
-		loot.addItem(new LootItem(0.3, new ItemStack(Material.IRON_INGOT), 1, 5));
-		loot.addItem(new LootItem(0.2, new ItemStack(Material.GOLD_INGOT), 1, 3));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.ENCHANTED_BOOK), 1, 1).setEnchant(true));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.ENCHANTED_BOOK), 1, 1).setEnchant(true));
+		loot.addItem(new LootItem(0.6, new ItemStack(Material.IRON_INGOT), 1, 8));
+		loot.addItem(new LootItem(0.4, new ItemStack(Material.GOLD_INGOT), 1, 5));
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.GOLD_NUGGET), 1, 5));
-		loot.addItem(new LootItem(0.03, new ItemStack(Material.GOLD_BLOCK), 1, 1));
+		loot.addItem(new LootItem(0.1, new ItemStack(Material.GOLD_BLOCK), 1, 1));
+		loot.addItem(new LootItem(0.7, new ItemStack(Material.STRING), 1, 3));
 	}
 
 	@Override

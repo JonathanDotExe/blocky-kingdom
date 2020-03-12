@@ -14,7 +14,6 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
 import at.jojokobi.blockykingdom.entities.EliteGoblin;
-import at.jojokobi.blockykingdom.items.CloudParticle;
 import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.mcutil.dimensions.DimensionHandler;
 import at.jojokobi.mcutil.entity.spawns.CustomEntitySpawnerHandler;
@@ -37,20 +36,21 @@ public class EliteGoblinSpawnerRoom extends Structure {
 		loot.addItem(new LootItem(1, ItemHandler.getItemStack(Money.class), 3, 8));
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.WHEAT), 1, 5));
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.BREAD), 1, 2));
-		loot.addItem(new LootItem(0.2, new ItemStack(Material.IRON_CHESTPLATE), 1, 1).setEnchant(true));
-		loot.addItem(new LootItem(0.2, new ItemStack(Material.IRON_HELMET), 1, 1).setEnchant(true));
-		loot.addItem(new LootItem(0.2, new ItemStack(Material.IRON_BOOTS), 1, 1).setEnchant(true));
-		loot.addItem(new LootItem(0.2, new ItemStack(Material.IRON_LEGGINGS), 1, 1).setEnchant(true));
-		loot.addItem(new LootItem(0.2, new ItemStack(Material.IRON_SWORD), 1, 1).setEnchant(true));
-		loot.addItem(new LootItem(0.2, new ItemStack(Material.IRON_AXE), 1, 1).setEnchant(true));
-		loot.addItem(new LootItem(0.3, new ItemStack(Material.IRON_INGOT), 3, 8));
-		loot.addItem(new LootItem(0.2, new ItemStack(Material.GOLD_INGOT), 5, 8));
+		loot.addItem(new LootItem(0.3, new ItemStack(Material.IRON_CHESTPLATE), 1, 1).setEnchant(true));
+		loot.addItem(new LootItem(0.3, new ItemStack(Material.IRON_HELMET), 1, 1).setEnchant(true));
+		loot.addItem(new LootItem(0.3, new ItemStack(Material.IRON_BOOTS), 1, 1).setEnchant(true));
+		loot.addItem(new LootItem(0.3, new ItemStack(Material.IRON_LEGGINGS), 1, 1).setEnchant(true));
+		loot.addItem(new LootItem(0.3, new ItemStack(Material.IRON_SWORD), 1, 1).setEnchant(true));
+		loot.addItem(new LootItem(0.3, new ItemStack(Material.IRON_AXE), 1, 1).setEnchant(true));
+		loot.addItem(new LootItem(0.6, new ItemStack(Material.IRON_INGOT), 3, 16));
+		loot.addItem(new LootItem(0.3, new ItemStack(Material.GOLD_INGOT), 5, 8));
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.GOLD_NUGGET), 1, 5));
 		loot.addItem(new LootItem(0.05, new ItemStack(Material.GOLD_BLOCK), 1, 1));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.ENDER_PEARL), 1, 1));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.BLAZE_POWDER), 1, 3));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.SLIME_BALL), 1, 3));
-		loot.addItem(new LootItem(0.05, ItemHandler.getItemStack(CloudParticle.class), 1, 5));
+		loot.addItem(new LootItem(0.1, new ItemStack(Material.DIAMOND), 1, 3));
+		loot.addItem(new LootItem(0.4, new ItemStack(Material.ARROW), 1, 16));
 	}
 
 	@Override
