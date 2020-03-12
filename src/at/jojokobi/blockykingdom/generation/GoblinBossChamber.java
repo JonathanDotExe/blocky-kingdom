@@ -50,10 +50,10 @@ public class GoblinBossChamber extends Structure {
 						material = Material.BRICKS;
 					}
 					//Table
-					else if (y == 1 && (x == getWidth()/2 - 3 || x == getWidth()/2 + 3) && (z == 10 || x == getLength() - 4)) {
+					else if (y == 1 && (x == getWidth()/2 - 3 || x == getWidth()/2 + 3) && (z == 10 || z == getLength() - 4)) {
 						material = Material.OAK_LOG;
 					}
-					else if (y == 2 && x >= getWidth()/2 - 3 && x <= getWidth()/2 + 3 && z >= 10 && x <= getLength() - 4) {
+					else if (y == 2 && x >= getWidth()/2 - 3 && x <= getWidth()/2 + 3 && z >= 10 && z <= getLength() - 4) {
 						material = Material.OAK_SLAB;
 					}
 					//Hay
