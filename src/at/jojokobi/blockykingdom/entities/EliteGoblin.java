@@ -54,7 +54,7 @@ public class EliteGoblin extends CustomEntity<Zombie> implements Attacker{
 		
 		NMSEntityUtil.clearGoals(entity);
 		
-		entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20.0);
+		entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(30.0);
 		entity.setHealth(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
 		entity.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(10.0);
 		entity.setRemoveWhenFarAway(true);
@@ -94,7 +94,7 @@ public class EliteGoblin extends CustomEntity<Zombie> implements Attacker{
 
 	@Override
 	public void attack(Damageable entity) {
-		entity.damage(12);
+		entity.damage(10);
 		if (getEntity().getEquipment().getItemInMainHand().getType() == Material.AIR && entity instanceof LivingEntity && Math.random() < 0.1) {
 			getEntity().getEquipment().setItemInMainHand(((LivingEntity) entity).getEquipment().getItemInMainHand().clone());
 			getEntity().getEquipment().setItemInMainHandDropChance(1);
@@ -104,7 +104,7 @@ public class EliteGoblin extends CustomEntity<Zombie> implements Attacker{
 
 	@Override
 	public int getAttackDelay() {
-		return 8;
+		return 12;
 	}
 	
 	@Override

@@ -1,6 +1,7 @@
 package at.jojokobi.blockykingdom.entities;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -69,6 +70,12 @@ public class GoblinBoss extends CustomEntity<Zombie> implements Attacker {
 		entity.getEquipment().setItemInMainHandDropChance(1);
 		entity.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 1000000, 1, true, false));
 
+		return entity;
+	}
+	
+	public static GoblinBoss deserialize (Map<String, Object> map) {
+		GoblinBoss entity = new GoblinBoss(null, null);
+		entity.load(map);
 		return entity;
 	}
 

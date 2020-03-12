@@ -90,6 +90,7 @@ public class EliteGoblinSpawnerRoom extends Structure {
 		place.getBlock().setType(Material.SPAWNER);
 		CreatureSpawner spawner = (CreatureSpawner) place.getBlock().getState();
 		spawner.setSpawnedType(EntityType.ZOMBIE);
+		spawner.setSpawnCount(1);
 		handler.makeCustomSpawner(spawner, EliteGoblin.ELITE_GOBLIN_SPAWN_KEY);
 		spawner.update();
 		// Chest

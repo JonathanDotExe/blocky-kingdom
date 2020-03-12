@@ -390,7 +390,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		GoblinBossChamber bossChamber = new GoblinBossChamber(entityHandler);
 		genHandler.addStructure(bossChamber);
 		GoblinTreasureRoom treasureRoom = new GoblinTreasureRoom();
-		GoblinCave goblinCave = new GoblinCave(caveCenter, bossChamber, new Structure[]{goblinSpawner, eliteGoblinspawner,treasureRoom}, new Structure[]{goblinSpawner, goblinSpawner, eliteGoblinspawner, treasureRoom}, new Structure[]{goblinSpawner, goblinSpawner, goblinSpawner, eliteGoblinspawner, treasureRoom, treasureRoom}, new Structure[]{goblinSpawner, goblinSpawner, goblinSpawner, treasureRoom});
+		GoblinCave goblinCave = new GoblinCave(caveCenter, bossChamber, new Structure[]{goblinSpawner, eliteGoblinspawner, treasureRoom}, new Structure[]{goblinSpawner, goblinSpawner, eliteGoblinspawner, treasureRoom, treasureRoom}, new Structure[]{goblinSpawner, goblinSpawner, goblinSpawner, eliteGoblinspawner, treasureRoom, treasureRoom}, new Structure[]{goblinSpawner, goblinSpawner, treasureRoom});
 		genHandler.addStructure(goblinCave);
 		
 		genHandler.addLegacySaveFolder(BLOCKY_KINGDOM_NAMESPACE + File.separator + "structures");
