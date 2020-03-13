@@ -8,7 +8,6 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Chest;
-import org.bukkit.block.data.type.EndPortalFrame;
 import org.bukkit.inventory.ItemStack;
 
 import at.jojokobi.blockykingdom.entities.EliteGoblin;
@@ -37,7 +36,6 @@ public class GoblinLibraryRoom extends Structure {
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.LEATHER_HELMET), 1, 1).setEnchant(true));
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.LEATHER_BOOTS), 1, 1).setEnchant(true));
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.LEATHER_LEGGINGS), 1, 1).setEnchant(true));
-		loot.addItem(new LootItem(0.2, new ItemStack(Material.ENCHANTED_BOOK), 1, 1).setEnchant(true));
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.ENCHANTED_BOOK), 1, 1).setEnchant(true));
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.ENCHANTED_BOOK), 1, 1).setEnchant(true));
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.ENCHANTED_BOOK), 1, 1).setEnchant(true));
@@ -75,40 +73,39 @@ public class GoblinLibraryRoom extends Structure {
 					if (x == 0 || x == getWidth() - 1 || y == 0 || y == getHeight() - 1 || z == 0 || z == getWidth() - 1) {
 						material = Material.STONE_BRICKS;
 					}
-					else if ((x < getWidth()/2 - 1 || x > getWidth()/2 + 1) && (z < getLength()/2 - 1 || z > getLength()/2 + 1)) {
+					else if (((x == 1 || x == getWidth() - 1) && (z == 1 || z == getLength() - 1)) && (x < getWidth()/2 - 1 || x > getWidth()/2 + 1) && (z < getLength()/2 - 1 || z > getLength()/2 + 1)) {
 						material = Material.BOOKSHELF;
+					}
+					else if (random.nextInt(24) == 0){
+						material = Material.COBWEB;
 					}
 					place.getBlock().setType(material);
 				}
 			}
 		}
 		//Doors
-		place.setY(loc.getY());
-		place.setX(0);
+		place.setY(loc.getY() + 1);
+		place.setX(loc.getX());
 		place.setZ(loc.getZ() + getLength()/2);
 		FurnitureGenUtil.generateDoor(place, Material.SPRUCE_DOOR, BlockFace.WEST, false);
 		place.setX(loc.getX() + getWidth() - 1);
 		FurnitureGenUtil.generateDoor(place, Material.SPRUCE_DOOR, BlockFace.EAST, false);
 		place.setX(loc.getX() + getWidth()/2);
-		place.setZ(0);
+		place.setZ(loc.getZ());
 		FurnitureGenUtil.generateDoor(place, Material.SPRUCE_DOOR, BlockFace.NORTH, false);
 		place.setZ(loc.getZ() + getLength() - 1);
 		FurnitureGenUtil.generateDoor(place, Material.SPRUCE_DOOR, BlockFace.SOUTH, false);
 		// Chest
-		place.setX(loc.getX() + 1);
-		place.setY(loc.getY() + 1);
-		place.setZ(loc.getZ() + getLength()/2);
+		place = loc.clone().add(getWidth()/2, 1, getLength()/2);
 		
 		place.getBlock().setType(Material.CHEST);
 		Chest chest = (Chest) place.getBlock().getState();
 		loot.fillInventory(chest.getBlockInventory(), random, null);
+		//Top
+		place.add(0, getLength() - 3, 0);
+		place.getBlock().setType(Material.SEA_LANTERN);
 		//Entity
-		place = loc.clone().add(getWidth()/2, 1, getLength()/2);
-		place.getBlock().setType(Material.END_PORTAL_FRAME);
-		EndPortalFrame frame = (EndPortalFrame) place.getBlock().getBlockData();
-		frame.setEye(true);
-		place.getBlock().setBlockData(frame);
-		place.add(0, 1, 0);
+		place.setY(loc.getY() + 2);
 		handler.addSavedEntity(new EliteGoblin(place, handler));
 		
 		return Arrays.asList(new StructureInstance<>(this, loc, getWidth(), getHeight(), getLength()));
