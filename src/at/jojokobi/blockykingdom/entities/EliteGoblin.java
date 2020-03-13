@@ -96,7 +96,7 @@ public class EliteGoblin extends CustomEntity<Zombie> implements Attacker{
 
 	@Override
 	public void attack(Damageable entity) {
-		entity.damage(10);
+		entity.damage(5);
 		if (getEntity().getEquipment().getItemInMainHand().getType() == Material.AIR && entity instanceof LivingEntity && Math.random() < 0.1) {
 			getEntity().getEquipment().setItemInMainHand(((LivingEntity) entity).getEquipment().getItemInMainHand().clone());
 			getEntity().getEquipment().setItemInMainHandDropChance(1);
