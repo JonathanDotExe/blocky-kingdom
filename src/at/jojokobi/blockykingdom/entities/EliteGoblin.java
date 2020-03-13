@@ -57,7 +57,7 @@ public class EliteGoblin extends CustomEntity<Zombie> implements Attacker{
 		entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(30.0);
 		entity.setHealth(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
 		entity.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(10.0);
-		entity.setRemoveWhenFarAway(true);
+		entity.setRemoveWhenFarAway(isSave());
 		
 		ItemStack helmet = new ItemStack(Material.IRON_HOE);
 		ItemMeta meta = helmet.getItemMeta();
@@ -79,7 +79,9 @@ public class EliteGoblin extends CustomEntity<Zombie> implements Attacker{
 	@Override
 	public void setSave(boolean save) {
 		super.setSave(save);
-		getEntity().setRemoveWhenFarAway(save);
+		if (getEntity() != null) {
+			getEntity().setRemoveWhenFarAway(save);
+		}
 	}
 
 	@Override
