@@ -73,7 +73,7 @@ public class GoblinLibraryRoom extends Structure {
 					if (x == 0 || x == getWidth() - 1 || y == 0 || y == getHeight() - 1 || z == 0 || z == getWidth() - 1) {
 						material = Material.STONE_BRICKS;
 					}
-					else if (((x == 1 || x == getWidth() - 1) && (z == 1 || z == getLength() - 1)) && (x < getWidth()/2 - 1 || x > getWidth()/2 + 1) && (z < getLength()/2 - 1 || z > getLength()/2 + 1)) {
+					else if (((x == 1 || x == getWidth() - 2 || z == 1 || z == getLength() - 2)) && (x < getWidth()/2 - 1 || x > getWidth()/2 + 1) && (z < getLength()/2 - 1 || z > getLength()/2 + 1)) {
 						material = Material.BOOKSHELF;
 					}
 					else if (random.nextInt(24) == 0){
@@ -102,7 +102,7 @@ public class GoblinLibraryRoom extends Structure {
 		Chest chest = (Chest) place.getBlock().getState();
 		loot.fillInventory(chest.getBlockInventory(), random, null);
 		//Top
-		place.add(0, getLength() - 3, 0);
+		place.add(0, getHeight() - 3, 0);
 		place.getBlock().setType(Material.SEA_LANTERN);
 		//Entity
 		place.setY(loc.getY() + 2);
