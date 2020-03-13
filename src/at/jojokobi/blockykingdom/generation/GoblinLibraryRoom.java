@@ -86,18 +86,19 @@ public class GoblinLibraryRoom extends Structure {
 		place.setY(loc.getY());
 		place.setX(0);
 		place.setZ(loc.getZ() + getLength()/2);
-		FurnitureGenUtil.generateDoor(loc, Material.SPRUCE_DOOR, BlockFace.WEST, false);
+		FurnitureGenUtil.generateDoor(place, Material.SPRUCE_DOOR, BlockFace.WEST, false);
 		place.setX(loc.getX() + getWidth() - 1);
-		FurnitureGenUtil.generateDoor(loc, Material.SPRUCE_DOOR, BlockFace.EAST, false);
+		FurnitureGenUtil.generateDoor(place, Material.SPRUCE_DOOR, BlockFace.EAST, false);
 		place.setX(loc.getX() + getWidth()/2);
 		place.setZ(0);
-		FurnitureGenUtil.generateDoor(loc, Material.SPRUCE_DOOR, BlockFace.NORTH, false);
+		FurnitureGenUtil.generateDoor(place, Material.SPRUCE_DOOR, BlockFace.NORTH, false);
 		place.setZ(loc.getZ() + getLength() - 1);
-		FurnitureGenUtil.generateDoor(loc, Material.SPRUCE_DOOR, BlockFace.SOUTH, false);
+		FurnitureGenUtil.generateDoor(place, Material.SPRUCE_DOOR, BlockFace.SOUTH, false);
 		// Chest
-		place.setX(loc.getX() + 2);
+		place.setX(loc.getX() + 1);
 		place.setY(loc.getY() + 1);
-		place.setZ(loc.getZ() + 2);
+		place.setZ(loc.getZ() + getLength()/2);
+		
 		place.getBlock().setType(Material.CHEST);
 		Chest chest = (Chest) place.getBlock().getState();
 		loot.fillInventory(chest.getBlockInventory(), random, null);
