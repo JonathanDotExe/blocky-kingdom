@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
@@ -25,6 +26,7 @@ import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.blockykingdom.kingdoms.KingdomState;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.generation.FurnitureGenUtil;
+import at.jojokobi.mcutil.generation.TerrainGenUtil;
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
 import at.jojokobi.mcutil.item.ItemHandler;
@@ -87,6 +89,13 @@ public class TraderHut extends Structure{
 		
 		setxModifier(-95498);
 		setzModifier(54);
+	}
+	
+	@Override
+	public boolean canGenerate(Chunk chunk, long seed) {
+		int spawnChunkX = chunk.getWorld().getSpawnLocation().getBlockX()/TerrainGenUtil.CHUNK_WIDTH;
+		int spawnChunkZ = chunk.getWorld().getSpawnLocation().getBlockZ()/TerrainGenUtil.CHUNK_WIDTH;
+		return super.canGenerate(chunk, seed) || (chunk.getX() == spawnChunkX && chunk.getZ() == spawnChunkZ);
 	}
 	
 	@Override
