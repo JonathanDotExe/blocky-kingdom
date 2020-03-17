@@ -68,7 +68,7 @@ public class EliteGoblin extends CustomEntity<Zombie> implements Attacker{
 		entity.getEquipment().setHelmetDropChance(0);
 		entity.getEquipment().setItemInMainHandDropChance(1);
 		ItemStack knife = ItemHandler.getItemStack(GoblinKnife.class);
-		ItemHandler.getCustomItem(GoblinKnife.class).setDurability(knife, 1);
+		ItemHandler.getCustomItem(GoblinKnife.class).setDurability(knife, 0);
 		entity.getEquipment().setItemInMainHand(knife);
 		
 		entity.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 1000000, 1, true, false));
@@ -96,7 +96,7 @@ public class EliteGoblin extends CustomEntity<Zombie> implements Attacker{
 
 	@Override
 	public void attack(Damageable entity) {
-		entity.damage(5);
+		entity.damage(5, getEntity());
 		if (getEntity().getEquipment().getItemInMainHand().getType() == Material.AIR && entity instanceof LivingEntity && Math.random() < 0.1) {
 			getEntity().getEquipment().setItemInMainHand(((LivingEntity) entity).getEquipment().getItemInMainHand().clone());
 			getEntity().getEquipment().setItemInMainHandDropChance(1);
