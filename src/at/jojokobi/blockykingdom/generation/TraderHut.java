@@ -22,6 +22,7 @@ import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.blockykingdom.items.ProtectingFigure;
 import at.jojokobi.blockykingdom.items.Smasher;
 import at.jojokobi.blockykingdom.kingdoms.Kingdom;
+import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.blockykingdom.kingdoms.KingdomState;
 import at.jojokobi.mcutil.entity.EntityHandler;
@@ -153,7 +154,7 @@ public class TraderHut extends Structure{
 		place.add(0, 0, -1);
 		place.getBlock().setType(Material.CHEST);
 		Chest chest = (Chest) place.getBlock().getState();
-		Kingdom kingdom = new KingdomPoint(loc).toKingdom();
+		Kingdom kingdom = KingdomHandler.getInstance().generateKingdom(new KingdomPoint(loc));
 		if (kingdom != null && kingdom.getState() == KingdomState.EVIL) {
 			evilLoot.fillInventory(chest.getBlockInventory(), random, null);
 		}
