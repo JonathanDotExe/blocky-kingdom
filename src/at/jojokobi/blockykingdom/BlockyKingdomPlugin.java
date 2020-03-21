@@ -75,6 +75,7 @@ import at.jojokobi.blockykingdom.items.ExecutionersScythe;
 import at.jojokobi.blockykingdom.items.FireWand;
 import at.jojokobi.blockykingdom.items.FloatingWand;
 import at.jojokobi.blockykingdom.items.FrozenLightning;
+import at.jojokobi.blockykingdom.items.GoblinCharm;
 import at.jojokobi.blockykingdom.items.GoblinFang;
 import at.jojokobi.blockykingdom.items.GoblinKnife;
 import at.jojokobi.blockykingdom.items.GoblinSkin;
@@ -316,6 +317,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		Bukkit.getPluginManager().registerEvents(new GoblinKnife(), this);
 		Bukkit.getPluginManager().registerEvents(new GoblinFang(), this);
 		Bukkit.getPluginManager().registerEvents(new GoblinSkin(this), this);
+		Bukkit.getPluginManager().registerEvents(new GoblinCharm(this), this);
 		
 		//Entity Handler
 		
