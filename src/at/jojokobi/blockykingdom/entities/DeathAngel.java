@@ -2,14 +2,12 @@ package at.jojokobi.blockykingdom.entities;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.IronGolem;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Stray;
@@ -30,6 +28,7 @@ import at.jojokobi.mcutil.entity.Attacker;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.EntityMapData;
+import at.jojokobi.mcutil.entity.LootComponent;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
 import at.jojokobi.mcutil.entity.Targeter;
 import at.jojokobi.mcutil.entity.ai.AttackTask;
@@ -43,20 +42,20 @@ import at.jojokobi.mcutil.loot.LootItem;
 
 public class DeathAngel extends CustomEntity<Stray> implements Attacker, Targeter{
 	
-	private static final LootInventory LOOT = new LootInventory();
-	
-	static {
-		LOOT.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, CloudParticle.IDENTIFIER), 1, 3));
-		LOOT.addItem(new LootItem(0.05, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Cloud.IDENTIFIER), 1, 1));
-		LOOT.addItem(new LootItem(1, new ItemStack(Material.ARROW), 1, 3));
-		LOOT.addItem(new LootItem(1, new ItemStack(Material.BONE), 1, 3));
-		LOOT.addItem(new LootItem(0.25, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 1));
-	}
+	private final LootInventory loot = new LootInventory();
 
 	public DeathAngel(Location place, EntityHandler handler) {
 		super(place, handler, null);
 		setDespawnTicks(5000);
 //		setAi(DeathAngelAI.getInstance());
+		loot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, CloudParticle.IDENTIFIER), 1, 3));
+		loot.addItem(new LootItem(0.05, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Cloud.IDENTIFIER), 1, 1));
+		loot.addItem(new LootItem(1, new ItemStack(Material.ARROW), 1, 3));
+		loot.addItem(new LootItem(1, new ItemStack(Material.BONE), 1, 3));
+		loot.addItem(new LootItem(0.25, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 1));
+
+		addComponent(new LootComponent(loot, 10));
+		
 		addEntityTask(new AttackTask(entity -> entity instanceof Player || entity instanceof Villager || entity instanceof IronGolem));
 		addEntityTask(new RandomTask());
 	}
@@ -77,15 +76,6 @@ public class DeathAngel extends CustomEntity<Stray> implements Attacker, Targete
 		super.onDamage(event);
 		if (event.getCause() == DamageCause.FALL) {
 			event.setCancelled(true);
-		}
-		else if (Math.round(getEntity().getHealth() - event.getFinalDamage()) <= 0.0) {
-			Location place = getEntity().getLocation();
-			//Drop
-			for (ItemStack item : LOOT.populateLoot(new Random(), null)) {
-				place.getWorld().dropItem(place, item);
-			}
-			//Experience
-			place.getWorld().spawn(place, ExperienceOrb.class).setExperience(10);
 		}
 	}
 	
