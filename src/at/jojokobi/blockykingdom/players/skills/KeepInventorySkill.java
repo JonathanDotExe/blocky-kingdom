@@ -52,7 +52,7 @@ public class KeepInventorySkill extends Skill{
 		List<ItemStack> items = inventories.get(player.getUniqueId());
 		if (items != null) {
 			inventories.remove(player.getUniqueId());
-			player.getInventory().addItem(items.toArray(ItemStack[]::new));
+			player.getInventory().addItem(items.toArray(new ItemStack[0]));
 		}
 	}
 	
