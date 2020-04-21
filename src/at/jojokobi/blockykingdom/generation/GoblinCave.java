@@ -22,7 +22,7 @@ public class GoblinCave extends Structure{
 	
 	@SafeVarargs
 	public GoblinCave(Structure center, Structure kingRoom, Structure[]... layers) {
-		super(128, 128, 64, 1200, 1);
+		super(128, 128, 64, 900, 1);
 		this.center = center;
 		this.kingRoom = kingRoom;
 		for (Structure[] list : layers) {

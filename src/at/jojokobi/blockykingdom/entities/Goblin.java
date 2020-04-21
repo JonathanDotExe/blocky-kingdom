@@ -16,16 +16,22 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
+import at.jojokobi.blockykingdom.items.GoblinFang;
+import at.jojokobi.blockykingdom.items.GoblinSkin;
 import at.jojokobi.mcutil.NamespacedEntry;
 import at.jojokobi.mcutil.entity.Attacker;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.EntityMapData;
 import at.jojokobi.mcutil.entity.HealthComponent;
+import at.jojokobi.mcutil.entity.LootComponent;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
 import at.jojokobi.mcutil.entity.RealHealthAccessor;
 import at.jojokobi.mcutil.entity.ai.AttackTask;
 import at.jojokobi.mcutil.entity.ai.RandomTask;
+import at.jojokobi.mcutil.item.ItemHandler;
+import at.jojokobi.mcutil.loot.LootInventory;
+import at.jojokobi.mcutil.loot.LootItem;
 
 public class Goblin extends CustomEntity<Zombie> implements Attacker{
 	
@@ -34,7 +40,11 @@ public class Goblin extends CustomEntity<Zombie> implements Attacker{
 	public Goblin(Location place, EntityHandler handler) {
 		super(place, handler, null);
 		setDespawnTicks(5000);
+		LootInventory loot = new LootInventory ();
+		loot.addItem(new LootItem(0.7, ItemHandler.getItemStack(GoblinSkin.class), 1, 2));
+		loot.addItem(new LootItem(0.05, ItemHandler.getItemStack(GoblinFang.class), 1, 1));
 		
+		addComponent(new LootComponent(loot, 0));
 		addComponent(new HealthComponent(new RealHealthAccessor()));
 		
 		addEntityTask(new AttackTask(Player.class));
@@ -65,6 +75,7 @@ public class Goblin extends CustomEntity<Zombie> implements Attacker{
 		entity.getEquipment().setHelmetDropChance(0);
 		entity.getEquipment().setItemInMainHandDropChance(1);
 		entity.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 1000000, 1, true, false));
+		entity.setLootTable(null);
 		
 		return entity;
 	}

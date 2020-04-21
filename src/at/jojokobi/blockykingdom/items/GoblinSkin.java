@@ -38,13 +38,15 @@ public class GoblinSkin extends CustomItem{
 		ItemHandler.addCustomItem(this);
 		setMaxStackSize(0);
 		
+		leatherRecipeKey = new NamespacedKey(plugin, "leather");
+		
 		//Leather Recipe
-		ShapelessRecipe recipe = new ShapelessRecipe(leatherRecipeKey = new NamespacedKey(plugin, "leather"), new ItemStack(Material.LEATHER));
+		ShapelessRecipe recipe = new ShapelessRecipe(leatherRecipeKey, new ItemStack(Material.LEATHER));
 		recipe.addIngredient(ITEM);
 		recipe.addIngredient(ITEM);
 		recipe.addIngredient(ITEM);
 		recipe.addIngredient(ITEM);
-		Bukkit.addRecipe(recipe);
+		Bukkit.getScheduler().runTask(plugin, () -> Bukkit.addRecipe(recipe));
 	}
 	
 	@EventHandler

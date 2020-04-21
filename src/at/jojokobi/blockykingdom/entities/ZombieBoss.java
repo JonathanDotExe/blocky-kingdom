@@ -2,19 +2,15 @@ package at.jojokobi.blockykingdom.entities;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
-import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -29,9 +25,11 @@ import at.jojokobi.blockykingdom.items.ExecutionersScythe;
 import at.jojokobi.blockykingdom.items.MagicTorch;
 import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.mcutil.entity.Attacker;
+import at.jojokobi.mcutil.entity.BossBarComponent;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.EntityMapData;
+import at.jojokobi.mcutil.entity.LootComponent;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
 import at.jojokobi.mcutil.entity.Targeter;
 import at.jojokobi.mcutil.entity.ai.AttackTask;
@@ -40,23 +38,22 @@ import at.jojokobi.mcutil.loot.LootInventory;
 import at.jojokobi.mcutil.loot.LootItem;
 
 public class ZombieBoss extends CustomEntity<Zombie> implements Attacker, Targeter{
-
-	private static final LootInventory LOOT = new LootInventory();
 	
 	private int attackState = 0;
-	private BossBar bossBar;
-	
-	static {
-		LOOT.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, ExecutionersScythe.IDENTIFIER), 1, 1));
-		LOOT.addItem(new LootItem(1, new ItemStack(Material.ROTTEN_FLESH), 5, 10));
-		LOOT.addItem(new LootItem(1, new ItemStack(Material.IRON_INGOT), 10, 32));
-		LOOT.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 5, 15));
-	}
 
 	public ZombieBoss(Location place, EntityHandler handler) {
 		super(place, handler, ZombieBossType.getInstance());
 		setDespawnTicks(-1);
 //		setAi(ZombieBossAI.getInstance());
+		LootInventory loot = new LootInventory();
+		
+		loot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, ExecutionersScythe.IDENTIFIER), 1, 1));
+		loot.addItem(new LootItem(1, new ItemStack(Material.ROTTEN_FLESH), 5, 10));
+		loot.addItem(new LootItem(1, new ItemStack(Material.IRON_INGOT), 10, 32));
+		loot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 5, 15));
+		addComponent(new LootComponent(loot, 200));
+		addComponent(new BossBarComponent("Zombie Boss", BarColor.RED, BarStyle.SEGMENTED_10));
+		
 		addEntityTask(new AttackTask(Player.class));
 	}
 	
@@ -89,8 +86,6 @@ public class ZombieBoss extends CustomEntity<Zombie> implements Attacker, Target
 		zombie.setCustomName("Zombie Boss");
 		
 		NMSEntityUtil.clearGoals(zombie);
-		
-		bossBar = Bukkit.createBossBar("Zombie Boss", BarColor.RED, BarStyle.SEGMENTED_10);
 		return zombie;
 	}
 	
@@ -110,22 +105,6 @@ public class ZombieBoss extends CustomEntity<Zombie> implements Attacker, Target
 		//Fall Damage
 		if (event.getCause() == DamageCause.FALL) {
 			event.setCancelled(true);
-		}
-		//Drops
-		else if (getEntity().getHealth() - event.getFinalDamage() <= 0.0) {
-			Location place = getEntity().getLocation();
-			//Drop
-			for (ItemStack item : LOOT.populateLoot(new Random(), null)) {
-				place.getWorld().dropItem(place, item);
-			}
-			//Experience
-			for (int i = 0; i < 20; i++) {
-				place.getWorld().spawn(place, ExperienceOrb.class).setExperience(10);
-			}
-		}
-		else {
-			//Update Boss Bar
-			bossBar.setProgress((getEntity().getHealth() - event.getFinalDamage())/getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
 		}
 	}
 
@@ -170,16 +149,10 @@ public class ZombieBoss extends CustomEntity<Zombie> implements Attacker, Target
 		if (attackState >= (healthPercent > 1/3 ? 3 : 52)) {
 			attackState = 0;
 		}
-		
-		//Boss Bar
-		if (entity instanceof Player) {
-			bossBar.addPlayer((Player) entity);
-		}
 	}
 	
 	@Override
 	public void delete() {
-		bossBar.removeAll();
 		super.delete();
 	}
 	

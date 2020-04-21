@@ -1,16 +1,13 @@
 package at.jojokobi.blockykingdom.entities;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Damageable;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
@@ -24,27 +21,30 @@ import at.jojokobi.mcutil.entity.Attacker;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.EntityMapData;
+import at.jojokobi.mcutil.entity.HealthComponent;
+import at.jojokobi.mcutil.entity.LootComponent;
+import at.jojokobi.mcutil.entity.PseudoHealthAccessor;
 import at.jojokobi.mcutil.entity.ai.AttackTask;
 import at.jojokobi.mcutil.loot.LootInventory;
 import at.jojokobi.mcutil.loot.LootItem;
 
 public class Ghost extends CustomEntity<ArmorStand> implements Attacker{
 	
-	private static final LootInventory LOOT = new LootInventory();
-	
-	static {
-		LOOT.addItem(new LootItem(0.25, new ItemStack(Material.BONE), 1, 2));
-		LOOT.addItem(new LootItem(0.02, new ItemStack(Material.CHAINMAIL_HELMET), 1, 1));
-		LOOT.addItem(new LootItem(0.02, new ItemStack(Material.CHAINMAIL_CHESTPLATE), 1, 1));
-		LOOT.addItem(new LootItem(0.02, new ItemStack(Material.CHAINMAIL_LEGGINGS), 1, 1));
-		LOOT.addItem(new LootItem(0.02, new ItemStack(Material.CHAINMAIL_BOOTS), 1, 1));
-		LOOT.addItem(new LootItem(0.05, new ItemStack(Material.ENDER_PEARL), 1, 1));
-	}
 
 	public Ghost(Location place, EntityHandler handler) {
 		super(place, handler, GhostType.getInstance());
 		setDespawnTicks(5000);
 		
+		LootInventory loot = new LootInventory();
+		loot.addItem(new LootItem(0.25, new ItemStack(Material.BONE), 1, 2));
+		loot.addItem(new LootItem(0.02, new ItemStack(Material.CHAINMAIL_HELMET), 1, 1));
+		loot.addItem(new LootItem(0.02, new ItemStack(Material.CHAINMAIL_CHESTPLATE), 1, 1));
+		loot.addItem(new LootItem(0.02, new ItemStack(Material.CHAINMAIL_LEGGINGS), 1, 1));
+		loot.addItem(new LootItem(0.02, new ItemStack(Material.CHAINMAIL_BOOTS), 1, 1));
+		loot.addItem(new LootItem(0.05, new ItemStack(Material.ENDER_PEARL), 1, 1));
+		
+		addComponent(new HealthComponent(new PseudoHealthAccessor(20)));
+		addComponent(new LootComponent(loot, 10));
 		addEntityTask(new ThrowDownTask());
 		addEntityTask(new AttackTask(Player.class));
 //		setAi(GhostThrowAI.getInstance());
@@ -77,17 +77,8 @@ public class Ghost extends CustomEntity<ArmorStand> implements Attacker{
 	protected void onDamage(EntityDamageEvent event) {
 		super.onDamage(event);
 		
-		if (!getEntity().isDead() && (event.getCause() == DamageCause.FIRE || event.getCause() == DamageCause.FIRE_TICK || Math.random() < 0.1)) {
-			getEntity().eject();
-			Location place = getEntity().getLocation();
-			List<ItemStack> loot = LOOT.populateLoot(new Random(), null);
-			for (ItemStack item : loot) {
-				place.getWorld().dropItem(place, item);
-			}
-			//Experience
-			place.getWorld().spawn(place, ExperienceOrb.class).setExperience(10);
-			
-			delete ();
+		if (event.getCause() == DamageCause.FIRE || event.getCause() == DamageCause.FIRE_TICK) {
+			event.setDamage(20);
 		}
 	}
 	
