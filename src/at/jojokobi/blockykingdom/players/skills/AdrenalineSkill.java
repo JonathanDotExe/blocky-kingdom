@@ -17,7 +17,7 @@ import at.jojokobi.blockykingdom.players.Statable;
 public class AdrenalineSkill extends Skill{
 	
 	public static final String IDENTIFIER = "adrenaline";
-	private static final double HEALTH_LIMIT = 3.0;
+	private static final double HEALTH_LIMIT = 6.0;
 
 	public AdrenalineSkill() {
 		super(12, 20, "Adrenaline");

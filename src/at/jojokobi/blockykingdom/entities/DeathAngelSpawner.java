@@ -29,7 +29,6 @@ public class DeathAngelSpawner {
 								for (int i = 0; i < amount; i++) {
 									Location place = chunk.getBlock(random.nextInt(TerrainGenUtil.CHUNK_LENGTH), 150, random.nextInt(TerrainGenUtil.CHUNK_LENGTH)).getLocation();
 									handler.addEntity(new DeathAngel(place, handler));
-									System.out.println("Death Angel spawned at " + place.getX() + "/" + place.getY() + "/" + place.getZ());
 								}
 							}
 						}

@@ -7,6 +7,7 @@ import java.util.Random;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World.Environment;
 
 import at.jojokobi.blockykingdom.kingdoms.Kingdom;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
@@ -54,7 +55,7 @@ public class KingdomVillage extends Structure {
 	public boolean canGenerate(Chunk chunk, long seed) {
 		int innerKingdomX = chunk.getX() * TerrainGenUtil.CHUNK_WIDTH % Kingdom.KINGDOM_WIDTH;
 		int innerKingdomZ = chunk.getZ() * TerrainGenUtil.CHUNK_LENGTH % Kingdom.KINGDOM_LENGTH;
-		return (innerKingdomX + getWidth() < Kingdom.KINGDOM_WIDTH && innerKingdomZ + getLength() < Kingdom.KINGDOM_LENGTH && super.canGenerate(chunk, seed) && KingdomHandler.getInstance().generateKingdom(new KingdomPoint(chunk.getBlock(0, 0, 0).getLocation())).getState() != KingdomState.UNCLAIMED && dimHandler.getDimension(chunk.getWorld()) == null);
+		return chunk.getWorld().getEnvironment() == Environment.NORMAL && (innerKingdomX + getWidth() < Kingdom.KINGDOM_WIDTH && innerKingdomZ + getLength() < Kingdom.KINGDOM_LENGTH && super.canGenerate(chunk, seed) && KingdomHandler.getInstance().generateKingdom(new KingdomPoint(chunk.getBlock(0, 0, 0).getLocation())).getState() != KingdomState.UNCLAIMED && dimHandler.getDimension(chunk.getWorld()) == null);
 	}
 
 	@Override
@@ -62,7 +63,6 @@ public class KingdomVillage extends Structure {
 		List<StructureInstance<?>> structures = new ArrayList<>();
 		structures.add(new StructureInstance<Structure>(this, loc, getWidth(), getHeight(), getLength()));
 		structures.addAll(spreader.generateVillage(new Random(generateValueBeasedSeed(loc, seed)), seed, loc));
-		System.out.println("Generated village at " + loc);
 		return structures;
 	}
 

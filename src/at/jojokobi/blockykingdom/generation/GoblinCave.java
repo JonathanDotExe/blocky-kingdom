@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World.Environment;
 
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
@@ -37,6 +39,11 @@ public class GoblinCave extends Structure{
 	@Override
 	public int calculatePlacementY(int width, int length, Location place) {
 		return 0;
+	}
+	
+	@Override
+	public boolean canGenerate(Chunk chunk, long seed) {
+		return chunk.getWorld().getEnvironment() == Environment.NORMAL && super.canGenerate(chunk, seed);
 	}
 	
 	@Override

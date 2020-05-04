@@ -42,7 +42,7 @@ public class RageSkill extends Skill {
 	
 	@EventHandler
 	public void onEntityDamageByEntity (EntityDamageByEntityEvent event) {
-		Long timestamp = timestamps.get(event.getEntity().getUniqueId());
+		Long timestamp = timestamps.get(event.getDamager().getUniqueId());
 		Statable stats = StatHandler.getInstance().getStats(event.getDamager());
 		if (timestamp != null && stats != null && timestamp + RAGE_DURATION >= System.currentTimeMillis()) {
 			int level = stats.getCharacterStats().getSkillLevel(this);

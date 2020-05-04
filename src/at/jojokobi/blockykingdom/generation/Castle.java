@@ -148,9 +148,7 @@ public class Castle extends Structure{
 		knight = new Knight(place, entityHandler, random);
 		entityHandler.addSavedEntity(knight);
 		point.addVillager(knight);
-		
-		System.out.println("Generated at " + loc);
-		
+				
 		return structures;
 	}
 	
