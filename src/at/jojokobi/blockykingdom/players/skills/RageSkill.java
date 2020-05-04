@@ -20,7 +20,7 @@ import at.jojokobi.blockykingdom.players.Statable;
 public class RageSkill extends Skill {
 	
 	private static final String IDENTIFIER = "rage";
-	private static final long RAGE_DURATION = 3000;
+	private static final long RAGE_DURATION = 2000;
 	
 	private Map<UUID, Long> timestamps = new HashMap<>();
 	
@@ -47,7 +47,7 @@ public class RageSkill extends Skill {
 		if (timestamp != null && stats != null && timestamp + RAGE_DURATION >= System.currentTimeMillis()) {
 			int level = stats.getCharacterStats().getSkillLevel(this);
 			
-			event.setDamage(event.getFinalDamage() + 1.0 + level * 0.75);
+			event.setDamage(event.getFinalDamage() + 1.0 + level * 0.5);
 			event.getEntity().getWorld().spawnParticle(Particle.VILLAGER_ANGRY, event.getEntity().getLocation().add(Math.random() - 0.5, 1, Math.random() - 0.5), 1);
 			event.getEntity().getWorld().spawnParticle(Particle.VILLAGER_ANGRY, event.getEntity().getLocation().add(Math.random() - 0.5, 1, Math.random() - 0.5), 1);
 			event.getEntity().getWorld().spawnParticle(Particle.VILLAGER_ANGRY, event.getEntity().getLocation().add(Math.random() - 0.5, 1, Math.random() - 0.5), 1);
