@@ -56,7 +56,7 @@ public class GoblinBoss extends CustomEntity<Zombie> implements Attacker {
 
 		NMSEntityUtil.clearGoals(entity);
 
-		entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(100.0);
+		entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(150.0);
 		entity.setHealth(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
 		entity.setRemoveWhenFarAway(false);
 
