@@ -42,7 +42,7 @@ public class GoblinBossChamber extends Structure {
 						material = Material.FIRE;
 					}
 					//Door
-					else if ((y > 0 && y <= 3) && (((x == 0 || x == getWidth() - 1) && (z >= getLength() / 2 - 1 && z <= getLength() / 2 + 2)) || ((z == 0 || z == getLength() - 1) && (x >= getWidth() / 2 - 1 || x <= getWidth() / 2 + 2)))) {
+					else if ((y > 0 && y <= 3) && (((x == 0 || x == getWidth() - 1) && (z >= getLength() / 2 - 1 && z <= getLength() / 2 + 2)) || ((z == 0 || z == getLength() - 1) && (x >= getWidth() / 2 - 1 && x <= getWidth() / 2 + 2)))) {
 						material = Material.IRON_BARS;
 					}
 					//Wall
