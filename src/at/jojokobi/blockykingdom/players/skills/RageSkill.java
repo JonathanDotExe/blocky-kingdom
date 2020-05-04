@@ -43,11 +43,11 @@ public class RageSkill extends Skill {
 	@EventHandler
 	public void onEntityDamageByEntity (EntityDamageByEntityEvent event) {
 		Long timestamp = timestamps.get(event.getEntity().getUniqueId());
-		Statable stats = StatHandler.getInstance().getStats(event.getEntity());
+		Statable stats = StatHandler.getInstance().getStats(event.getDamager());
 		if (timestamp != null && stats != null && timestamp + RAGE_DURATION >= System.currentTimeMillis()) {
 			int level = stats.getCharacterStats().getSkillLevel(this);
 			
-			event.setDamage(event.getFinalDamage() + 1.0 + level * 0.5);
+			event.setDamage(event.getFinalDamage() + 1.0 + level * 0.75);
 			event.getEntity().getWorld().spawnParticle(Particle.VILLAGER_ANGRY, event.getEntity().getLocation().add(Math.random() - 0.5, 1, Math.random() - 0.5), 1);
 			event.getEntity().getWorld().spawnParticle(Particle.VILLAGER_ANGRY, event.getEntity().getLocation().add(Math.random() - 0.5, 1, Math.random() - 0.5), 1);
 			event.getEntity().getWorld().spawnParticle(Particle.VILLAGER_ANGRY, event.getEntity().getLocation().add(Math.random() - 0.5, 1, Math.random() - 0.5), 1);
