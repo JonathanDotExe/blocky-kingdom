@@ -98,7 +98,7 @@ public class Healer extends KingdomVillager<Villager> implements Attacker{
 			ItemStack item = new ItemStack(Material.SPLASH_POTION);
 			if (item.getItemMeta() instanceof PotionMeta) {
 				PotionMeta meta = (PotionMeta) item.getItemMeta();
-				meta.setBasePotionData(new PotionData(PotionType.INSTANT_HEAL,  getLevel() > 7, true));
+				meta.setBasePotionData(new PotionData(PotionType.INSTANT_HEAL,  false, getLevel() > 7));
 				item.setItemMeta(meta);
 			}
 			potion.setItem(item);

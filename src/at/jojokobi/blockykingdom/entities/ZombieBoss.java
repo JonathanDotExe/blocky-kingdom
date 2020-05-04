@@ -29,8 +29,10 @@ import at.jojokobi.mcutil.entity.BossBarComponent;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.EntityMapData;
+import at.jojokobi.mcutil.entity.HealthComponent;
 import at.jojokobi.mcutil.entity.LootComponent;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
+import at.jojokobi.mcutil.entity.RealHealthAccessor;
 import at.jojokobi.mcutil.entity.Targeter;
 import at.jojokobi.mcutil.entity.ai.AttackTask;
 import at.jojokobi.mcutil.item.ItemHandler;
@@ -52,6 +54,7 @@ public class ZombieBoss extends CustomEntity<Zombie> implements Attacker, Target
 		loot.addItem(new LootItem(1, new ItemStack(Material.IRON_INGOT), 10, 32));
 		loot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 5, 15));
 		addComponent(new LootComponent(loot, 200));
+		addComponent(new HealthComponent(new RealHealthAccessor()));
 		addComponent(new BossBarComponent("Zombie Boss", BarColor.RED, BarStyle.SEGMENTED_10));
 		
 		addEntityTask(new AttackTask(Player.class));
