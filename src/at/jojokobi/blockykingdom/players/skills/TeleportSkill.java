@@ -73,6 +73,16 @@ public class TeleportSkill extends Skill {
 	public Material getMaterial() {
 		return Material.ENDER_PEARL;
 	}
+	
+	@Override
+	public String getDescription() {
+		return "You can teleport over little distances when you punch in the air with your bare hands while sprinting!";
+	}
+	
+	@Override
+	public String getRequirementsDescription() {
+		return "You need to be a wizard to learn this skill!";
+	}
 
 }
 

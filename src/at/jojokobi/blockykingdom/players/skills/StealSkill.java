@@ -53,5 +53,15 @@ public class StealSkill extends Skill {
 	public Material getMaterial() {
 		return Material.IRON_SWORD;
 	}
+	
+	@Override
+	public String getDescription() {
+		return "You can steal others items by hitting them (doesn't work on players)!";
+	}
+	
+	@Override
+	public String getRequirementsDescription() {
+		return "You need to be a goblin to learn this skill!";
+	}
 
 }

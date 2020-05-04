@@ -61,5 +61,15 @@ public class HungerSkill extends Skill {
 	public Material getMaterial() {
 		return Material.ROTTEN_FLESH;
 	}
+	
+	@Override
+	public String getDescription() {
+		return "You can eat rotten flesh without becoming hungry again!";
+	}
+	
+	@Override
+	public String getRequirementsDescription() {
+		return "You need to be a dwarf to learn this skill!";
+	}
 
 }

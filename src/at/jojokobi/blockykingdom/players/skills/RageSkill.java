@@ -78,5 +78,15 @@ public class RageSkill extends Skill {
 	public Material getMaterial() {
 		return Material.FIRE_CHARGE;
 	}
+	
+	@Override
+	public String getDescription() {
+		return "You do more damage after taking damage";
+	}
+	
+	@Override
+	public String getRequirementsDescription() {
+		return "You need to be a babarian to learn this skill!";
+	}
 
 }

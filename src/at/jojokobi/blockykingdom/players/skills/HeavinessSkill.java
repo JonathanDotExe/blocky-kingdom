@@ -48,5 +48,15 @@ public class HeavinessSkill extends Skill {
 	public Material getMaterial() {
 		return Material.IRON_BLOCK;
 	}
+	
+	@Override
+	public String getDescription() {
+		return "You are more resistent to knockback!";
+	}
+	
+	@Override
+	public String getRequirementsDescription() {
+		return "You need to be a giant to learn this skill!";
+	}
 
 }

@@ -50,5 +50,15 @@ public class PunchSkill extends Skill {
 	public Material getMaterial() {
 		return Material.PORKCHOP;
 	}
+	
+	@Override
+	public String getDescription() {
+		return "You make more damage with your bare hands!";
+	}
 
+	@Override
+	public String getRequirementsDescription() {
+		return "You need to be a giant to learn this skill!";
+	}
+	
 }

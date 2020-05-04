@@ -51,5 +51,15 @@ public class VitalitySkill extends Skill implements Listener{
 	public Material getMaterial() {
 		return Material.POTION;
 	}
+	
+	@Override
+	public String getDescription() {
+		return "Your health regenerates faster!";
+	}
+	
+	@Override
+	public String getRequirementsDescription() {
+		return "You need to be a human to learn this skill!";
+	}
 
 }

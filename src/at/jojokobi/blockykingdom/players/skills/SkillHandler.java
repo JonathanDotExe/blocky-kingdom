@@ -33,6 +33,11 @@ public final class SkillHandler extends Handler<Skill>{
 			public Material getMaterial() {
 				return Material.BARRIER;
 			}
+
+			@Override
+			public String getDescription() {
+				return "Seems like a skill was removed or your savefile is corrupted";
+			}
 		};
 	}
 

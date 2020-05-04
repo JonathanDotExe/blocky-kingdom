@@ -54,5 +54,15 @@ public class PoisonSkill extends Skill implements Listener {
 	public Material getMaterial() {
 		return Material.POISONOUS_POTATO;
 	}
+	
+	@Override
+	public String getDescription() {
+		return "Your enemies get the wither effect when you hit them!";
+	}
+	
+	@Override
+	public String getRequirementsDescription() {
+		return "You need to be a lizardman to learn this skill!";
+	}
 
 }

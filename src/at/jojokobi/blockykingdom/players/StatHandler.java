@@ -146,7 +146,6 @@ public class StatHandler implements Listener{
 				if (statable != null) {
 					CharacterStats stats = statable.getCharacterStats();
 					event.setDamage(event.getDamage() * stats.getAttackDamageMultiplier());
-					System.out.println("StatHandler: " + event.getEntity().getName());
 				}
 				else if (event.getDamager() instanceof Projectile) {
 					statable = statables.get(((Projectile) event.getDamager()).getShooter());

@@ -49,5 +49,15 @@ public class InvisibilitySkill extends Skill {
 	public Material getMaterial() {
 		return Material.PRISMARINE_CRYSTALS;
 	}
+	
+	@Override
+	public String getDescription() {
+		return "You become invisible when you sneak!";
+	}
+	
+	@Override
+	public String getRequirementsDescription() {
+		return "You need to be a ninja to learn this skill!";
+	}
 
 }

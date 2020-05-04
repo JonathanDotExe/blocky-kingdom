@@ -31,18 +31,15 @@ public class SkillGUI extends ListGUI{
 	protected void initGUI() {
 		List<ItemStack> items = new ArrayList<ItemStack>();
 		skills = SkillHandler.getInstance().getItemList();
-		getOwner().sendMessage(skills + "/" + skills.size());
 		for (Skill skill : skills) {
 			ItemStack icon = skill.getIcon();
 			ItemMeta meta = icon.getItemMeta();
 			int level = stats.getSkillLevel(skill);
-			meta.setLore(Arrays.asList("Level " + level, "Cost: " + (level > 0 ? stats.getNeededSkillPoints(level) : skill.getSkillCost()) + " Skill Points"));
+			meta.setLore(Arrays.asList("Level " + level, "Cost: " + (level > 0 ? stats.getNeededSkillPoints(level) : skill.getSkillCost()) + " Skill Points", "Needed Level: " + skill.getMinLevel(), skill.getDescription(), skill.getRequirementsDescription()));
 			icon.setItemMeta(meta);
 			items.add(icon);
 		}
-		setItems(items);
-		getOwner().sendMessage(items + "/" + items.size());
-		
+		setItems(items);		
 		super.initGUI();
 		
 		fillEmpty(getFiller());

@@ -87,5 +87,15 @@ public class KeepInventorySkill extends Skill{
 	public Material getMaterial() {
 		return Material.CHEST;
 	}
+	
+	@Override
+	public String getDescription() {
+		return "Keeps random items in your inventory when you die!";
+	}
+	
+	@Override
+	public String getRequirementsDescription() {
+		return "You need to be an adventurer to learn this skill!";
+	}
 
 }

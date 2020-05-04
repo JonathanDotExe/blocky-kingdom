@@ -51,5 +51,10 @@ public class ClimbingSkill extends Skill {
 	public Material getMaterial() {
 		return Material.LADDER;
 	}
+	
+	@Override
+	public String getDescription() {
+		return "By looking up/down while sneaking torwards a wall you can climb the wall";
+	}
 
 }

@@ -128,4 +128,14 @@ public class AimSkill extends Skill {
 		return Material.ARROW;
 	}
 
+	@Override
+	public String getDescription() {
+		return "You arrows are more likely to hit your enemies!";
+	}
+	
+	@Override
+	public String getRequirementsDescription() {
+		return "You must be an elf to learn this skill";
+	}
+	
 }

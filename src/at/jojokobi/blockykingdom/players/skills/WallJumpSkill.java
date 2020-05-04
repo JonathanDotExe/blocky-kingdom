@@ -1,10 +1,15 @@
 package at.jojokobi.blockykingdom.players.skills;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.util.Vector;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
+import at.jojokobi.blockykingdom.players.CharacterStats;
+import at.jojokobi.blockykingdom.players.StatHandler;
 
 public class WallJumpSkill extends Skill {
 
@@ -16,12 +21,12 @@ public class WallJumpSkill extends Skill {
 
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent event) {
-/*		Player player = event.getPlayer();
+		Player player = event.getPlayer();
 		if (event.getAction() == Action.LEFT_CLICK_BLOCK
 				&& event.getClickedBlock().getLocation().getY() >= player.getLocation().getY()
 				&& event.getClickedBlock().getLocation().getY() <= player.getLocation().getY() + player.getHeight()
-				&& !player.getLocation().add(0, -0.1, 0).getBlock().getType().isSolid()) {
-			CharacterStats stats = StatHandler.getInstance().getStats(player).getCharcterStats();
+				&& player.getLocation().add(0, -0.1, 0).getBlock().getType().isAir()) {
+			CharacterStats stats = StatHandler.getInstance().getStats(player).getCharacterStats();
 			int level = stats.getSkillLevel(this);
 			if (level > 0) {
 //				Location place = player.getLocation();
@@ -32,7 +37,7 @@ public class WallJumpSkill extends Skill {
 				velocity.multiply(-(1 + level/10.0));
 				player.setVelocity(velocity);
 			}
-		}*/
+		}
 	}
 
 	@Override
@@ -48,6 +53,11 @@ public class WallJumpSkill extends Skill {
 	@Override
 	public Material getMaterial() {
 		return Material.LEATHER_BOOTS;
+	}
+	
+	@Override
+	public String getDescription() {
+		return "Punch a wall while youR'e in the air to jump off!";
 	}
 
 }

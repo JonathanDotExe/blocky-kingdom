@@ -61,12 +61,8 @@ public class KingdomSiege {
 		List<Entity> all = new ArrayList<>(players.size());
 		all.addAll(players);
 		for (CustomEntity<?> entity : handler.getEntities()) {
-			System.out.println(entity instanceof KingdomVillager<?>);
 			if (entity instanceof KingdomVillager<?>) {
-				System.out.println(point);
-				System.out.println(((KingdomVillager<?>) entity).getKingdomPoint());
 				if (point.equals(((KingdomVillager<?>) entity).getKingdomPoint())) {
-					System.out.println("Added villager");
 					all.add(entity.getEntity());
 				}
 			}

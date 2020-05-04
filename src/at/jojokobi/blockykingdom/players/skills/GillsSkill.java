@@ -52,5 +52,15 @@ public class GillsSkill extends Skill {
 	public Material getMaterial() {
 		return Material.SALMON;
 	}
+	
+	@Override
+	public String getDescription() {
+		return "You can breathe and move faster under water!";
+	}
+	
+	@Override
+	public String getRequirementsDescription() {
+		return "You need to be an ocean man to learn this skill!";
+	}
 
 }

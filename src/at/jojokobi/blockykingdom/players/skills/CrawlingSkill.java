@@ -89,5 +89,10 @@ public class CrawlingSkill extends Skill {
 	public Material getMaterial() {
 		return Material.GRASS;
 	}
+	
+	@Override
+	public String getDescription() {
+		return "Sneak twice to lay down on the ground!";
+	}
 
 }

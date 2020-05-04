@@ -78,13 +78,10 @@ public class GrapplingHook extends CustomTool{
 			if (hook != null) {
 				hooks.remove(hook);
 				if (hook.getSnowball().getShooter() instanceof Entity) {
-					System.out.println("Hit");
-					System.out.println(hook.getSnowball() + "/" + hook.getSnowball().getLocation());
 					Snowball ball = hook.getSnowball().getShooter().launchProjectile(Snowball.class);
 					ball.addPassenger((Entity) hook.getSnowball().getShooter());
 					ball.teleport(hook.getStartLocation());
 					ball.setVelocity(hook.getVelocity());
-					System.out.println(ball + "/" + ball.getLocation());
 				}
 			}
 		}

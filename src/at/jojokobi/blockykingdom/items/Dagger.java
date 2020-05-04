@@ -52,7 +52,6 @@ public class Dagger extends CustomTool{
 		if (moreDamage) {
 			event.setDamage(event.getDamage() + 8.0);
 		}
-		System.out.println(event.getDamage());
 	}
 	
 	@Override

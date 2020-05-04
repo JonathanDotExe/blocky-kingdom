@@ -50,4 +50,10 @@ public abstract class Skill implements Listener, Identifiable, Iconable{
 		return skillCost;
 	}
 	
+	public abstract String getDescription();
+	
+	public String getRequirementsDescription() {
+		return "Everyone can learn this skill ";
+	}
+	
 }

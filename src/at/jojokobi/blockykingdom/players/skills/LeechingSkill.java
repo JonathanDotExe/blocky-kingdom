@@ -57,5 +57,15 @@ public class LeechingSkill extends Skill {
 	public Material getMaterial() {
 		return Material.REDSTONE;
 	}
+	
+	@Override
+	public String getDescription() {
+		return "You have a chance to heal yourself when you damage another entity!";
+	}
+	
+	@Override
+	public String getRequirementsDescription() {
+		return "You need to be a vampire to learn this skill!";
+	}
 
 }

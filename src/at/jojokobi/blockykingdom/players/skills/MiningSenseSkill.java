@@ -97,5 +97,15 @@ public class MiningSenseSkill extends Skill {
 	public Material getMaterial() {
 		return Material.DIAMOND_PICKAXE;
 	}
+	
+	@Override
+	public String getDescription() {
+		return "You can hear different tones when you mine and gold or diamonds are nearby!";
+	}
+	
+	@Override
+	public String getRequirementsDescription() {
+		return "You need to be a blacksmith to learn this skill!";
+	}
 
 }

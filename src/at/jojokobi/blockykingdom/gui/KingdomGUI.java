@@ -63,7 +63,6 @@ public class KingdomGUI extends InventoryGUI{
 			}
 			lore.add(" * Level " + kingdom.getLevel());
 			for (Map.Entry<VillagerCategory, Integer> entry : point.countVillagersByCatergory(handler).entrySet()) {
-				System.out.println(entry.getKey() + "/" + entry.getKey().getMaxAmount(kingdom.getLevel()) + "/" + entry.getKey().getMaxAmount(1));
 				lore.add(" * " + ChatColor.GREEN + entry.getValue() + "/" + entry.getKey().getMaxAmount(kingdom.getLevel()) + ChatColor.DARK_PURPLE + " " + entry.getKey());
 			}
 			lore.add(" * Happiness: " + (kingdom.getHappiness() >= 0.0 ? ChatColor.GREEN : ChatColor.RED) + kingdom.getHappiness());

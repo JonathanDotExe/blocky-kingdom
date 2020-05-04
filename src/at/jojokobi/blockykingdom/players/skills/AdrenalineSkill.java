@@ -74,4 +74,14 @@ public class AdrenalineSkill extends Skill{
 		return Material.POTION;
 	}
 
+	@Override
+	public String getDescription() {
+		return "Gives you different potions effects depending on your class when you have low health!";
+	}
+	
+	@Override
+	public String getRequirementsDescription() {
+		return "You must be a knight or a sumo to learn this skill";
+	}
+
 }

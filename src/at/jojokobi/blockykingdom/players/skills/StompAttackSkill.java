@@ -85,4 +85,9 @@ public class StompAttackSkill extends Skill {
 		return Material.ANVIL;
 	}
 
+	@Override
+	public String getDescription() {
+		return "Sneak while falling (works when you have already fallen 5 - 10 blocks) to pound to the groud and damage the enemies around as well as prevent fall damage!";
+	}
+
 }
