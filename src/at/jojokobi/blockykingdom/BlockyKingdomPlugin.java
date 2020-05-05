@@ -376,7 +376,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		genHandler.addStructure(new HauntedGrave(cursedStatue));
 		ArcherTower tower = new ArcherTower(entityHandler);
 		genHandler.addStructure(tower);
-		TraderHut traderHut = new TraderHut(entityHandler);
+		TraderHut traderHut = new TraderHut(entityHandler, getDimensionHandler());
 		genHandler.addStructure(traderHut);
 		RecruiterHouse recruiterHouse = new RecruiterHouse(entityHandler);
 		genHandler.addStructure(recruiterHouse);
@@ -399,7 +399,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		GoblinLibraryRoom libraryRoom = new GoblinLibraryRoom(entityHandler);
 		genHandler.addStructure(libraryRoom);
 		GoblinTreasureRoom treasureRoom = new GoblinTreasureRoom();
-		GoblinCave goblinCave = new GoblinCave(caveCenter, bossChamber, new Structure[]{goblinSpawner, eliteGoblinspawner, treasureRoom, libraryRoom}, new Structure[]{goblinSpawner, goblinSpawner, eliteGoblinspawner, treasureRoom, treasureRoom, libraryRoom}, new Structure[]{goblinSpawner, goblinSpawner, goblinSpawner, eliteGoblinspawner, treasureRoom, treasureRoom, libraryRoom, libraryRoom}, new Structure[]{goblinSpawner, goblinSpawner, goblinSpawner, treasureRoom, libraryRoom});
+		GoblinCave goblinCave = new GoblinCave(getDimensionHandler(), caveCenter, bossChamber, new Structure[]{goblinSpawner, eliteGoblinspawner, treasureRoom, libraryRoom}, new Structure[]{goblinSpawner, goblinSpawner, eliteGoblinspawner, treasureRoom, treasureRoom, libraryRoom}, new Structure[]{goblinSpawner, goblinSpawner, goblinSpawner, eliteGoblinspawner, treasureRoom, treasureRoom, libraryRoom, libraryRoom}, new Structure[]{goblinSpawner, goblinSpawner, goblinSpawner, treasureRoom, libraryRoom});
 		genHandler.addStructure(goblinCave);
 		
 		genHandler.addLegacySaveFolder(BLOCKY_KINGDOM_NAMESPACE + File.separator + "structures");

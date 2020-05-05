@@ -109,8 +109,8 @@ public class StatHandler implements Listener{
 	@EventHandler
 	public void onPlayerExpChange (PlayerExpChangeEvent event) {
 		CharacterStats stats = statables.get(event.getPlayer()).getCharacterStats();
-		stats.gainXp(event.getAmount() * 6);
-		if (Math.random() < 0.25) {
+		stats.gainXp(event.getAmount() * 4);
+		if (Math.random() < 0.2) {
 			stats.setSkillPoints(stats.getSkillPoints() + 1);
 		}
 		stats.setMoney(stats.getMoney() + (int) (event.getAmount()*Math.random()));
@@ -119,7 +119,7 @@ public class StatHandler implements Listener{
 	@EventHandler
 	public void onPlayerAdvancementDone (PlayerAdvancementDoneEvent event) {
 		CharacterStats stats = statables.get(event.getPlayer()).getCharacterStats();
-		stats.gainXp(30);
+		stats.gainXp(20);
 	}
 	
 	@EventHandler

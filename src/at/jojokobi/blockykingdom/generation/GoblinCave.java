@@ -9,6 +9,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World.Environment;
 
+import at.jojokobi.mcutil.dimensions.DimensionHandler;
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
 import at.jojokobi.mcutil.generation.population.TunnelPathGenerator;
@@ -21,10 +22,12 @@ public class GoblinCave extends Structure{
 	private List<VillageSpreader> layers = new ArrayList<>();
 	private Structure center;
 	private Structure kingRoom;
+	private DimensionHandler dimHandler;
 	
 	@SafeVarargs
-	public GoblinCave(Structure center, Structure kingRoom, Structure[]... layers) {
+	public GoblinCave(DimensionHandler dimHandler, Structure center, Structure kingRoom, Structure[]... layers) {
 		super(128, 128, 64, 1200, 1);
+		this.dimHandler = dimHandler;
 		this.center = center;
 		this.kingRoom = kingRoom;
 		for (Structure[] list : layers) {
@@ -43,7 +46,7 @@ public class GoblinCave extends Structure{
 	
 	@Override
 	public boolean canGenerate(Chunk chunk, long seed) {
-		return chunk.getWorld().getEnvironment() == Environment.NORMAL && super.canGenerate(chunk, seed);
+		return chunk.getWorld().getEnvironment() == Environment.NORMAL && dimHandler.getDimension(chunk.getWorld()) == null && super.canGenerate(chunk, seed);
 	}
 	
 	@Override

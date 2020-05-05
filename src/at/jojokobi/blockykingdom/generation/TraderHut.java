@@ -7,6 +7,7 @@ import java.util.Random;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World.Environment;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Chest;
 import org.bukkit.inventory.ItemStack;
@@ -25,6 +26,7 @@ import at.jojokobi.blockykingdom.kingdoms.Kingdom;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.blockykingdom.kingdoms.KingdomState;
+import at.jojokobi.mcutil.dimensions.DimensionHandler;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.generation.FurnitureGenUtil;
 import at.jojokobi.mcutil.generation.TerrainGenUtil;
@@ -40,10 +42,12 @@ public class TraderHut extends Structure{
 	
 	private LootInventory loot;
 	private LootInventory evilLoot;
+	private DimensionHandler dimHandler;
 	
-	public TraderHut(EntityHandler entityHandler) {
+	public TraderHut(EntityHandler entityHandler, DimensionHandler dimHandler) {
 		super(8, 8, 5, 0, 1);
 		this.entityHandler = entityHandler;
+		this.dimHandler = dimHandler;
 		
 		loot = new LootInventory();
 		evilLoot = new LootInventory();
@@ -96,7 +100,7 @@ public class TraderHut extends Structure{
 	public boolean canGenerate(Chunk chunk, long seed) {
 		int spawnChunkX = chunk.getWorld().getSpawnLocation().getBlockX()/TerrainGenUtil.CHUNK_WIDTH;
 		int spawnChunkZ = chunk.getWorld().getSpawnLocation().getBlockZ()/TerrainGenUtil.CHUNK_WIDTH;
-		return super.canGenerate(chunk, seed) || (chunk.getX() == spawnChunkX && chunk.getZ() == spawnChunkZ);
+		return (super.canGenerate(chunk, seed) || (chunk.getX() == spawnChunkX && chunk.getZ() == spawnChunkZ)) && dimHandler.getDimension(chunk.getWorld()) == null && chunk.getWorld().getEnvironment() == Environment.NORMAL;
 	}
 	
 	@Override
