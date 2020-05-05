@@ -31,12 +31,13 @@ public class SlimerersHeart extends CustomItem{
 	}
 	
 	@Override
-	public void onUse(ItemStack item, Player player) {
+	public boolean onUse(ItemStack item, Player player) {
 		if (player.getHealth() < player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()) {
 			player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
 			item.setAmount(item.getAmount() - 1);
 			player.playSound(player.getLocation(), Sound.ITEM_TOTEM_USE, SoundCategory.AMBIENT, 1, 1);
 		}
+		return true;
 	}
 
 	@Override

@@ -36,12 +36,13 @@ public class Money extends CustomItem{
 	}
 
 	@Override
-	public void onUse(ItemStack item, Player player) {
+	public boolean onUse(ItemStack item, Player player) {
 		Statable statable = StatHandler.getInstance().getStats(player);
 		if (statable != null) {
 			statable.getCharacterStats().setMoney(statable.getCharacterStats().getMoney() + 100);
 			item.setAmount(item.getAmount() - 1);
 		}
+		return true;
 	}
 
 	@Override

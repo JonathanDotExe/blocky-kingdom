@@ -50,8 +50,8 @@ public class Sunglasses extends CustomItem {
 	}
 	
 	@Override
-	public void onUse(ItemStack item, Player player) {
-		
+	public boolean onUse(ItemStack item, Player player) {
+		return false;
 	}
 
 	@Override

@@ -101,9 +101,10 @@ public class AirGrenade extends CustomItem{
 	}
 
 	@Override
-	public void onUse(ItemStack item, Player player) {
+	public boolean onUse(ItemStack item, Player player) {
 		item.setAmount(item.getAmount() - 1);
 		shootAirGrenade(player);
+		return true;
 	}
 
 	@Override

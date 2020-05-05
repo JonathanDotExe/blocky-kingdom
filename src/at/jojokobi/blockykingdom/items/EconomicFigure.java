@@ -184,8 +184,8 @@ public class EconomicFigure extends PlaceableItem{
 	}
 
 	@Override
-	public void onUse(ItemStack item, Player player) {
-		
+	public boolean onUse(ItemStack item, Player player) {
+		return false;
 	}
 
 	@Override

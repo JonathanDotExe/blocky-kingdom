@@ -34,9 +34,10 @@ public class RainbowDye extends CustomItem{
 	}
 	
 	@Override
-	public void onUse(ItemStack item, Player player) {
+	public boolean onUse(ItemStack item, Player player) {
 		handler.addSavedEntity(new FlyingSheep(player.getLocation(), handler));
 		item.setAmount(item.getAmount() - 1);
+		return true;
 	}
 
 	@Override
