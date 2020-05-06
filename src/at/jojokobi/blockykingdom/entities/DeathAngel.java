@@ -28,8 +28,10 @@ import at.jojokobi.mcutil.entity.Attacker;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.EntityMapData;
+import at.jojokobi.mcutil.entity.HealthComponent;
 import at.jojokobi.mcutil.entity.LootComponent;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
+import at.jojokobi.mcutil.entity.RealHealthAccessor;
 import at.jojokobi.mcutil.entity.Targeter;
 import at.jojokobi.mcutil.entity.ai.AttackTask;
 import at.jojokobi.mcutil.entity.ai.RandomTask;
@@ -54,6 +56,7 @@ public class DeathAngel extends CustomEntity<Stray> implements Attacker, Targete
 		loot.addItem(new LootItem(1, new ItemStack(Material.BONE), 1, 3));
 		loot.addItem(new LootItem(0.25, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 1));
 
+		addComponent(new HealthComponent(new RealHealthAccessor()));
 		addComponent(new LootComponent(loot, 10));
 		
 		addEntityTask(new AttackTask(entity -> entity instanceof Player || entity instanceof Villager || entity instanceof IronGolem));
