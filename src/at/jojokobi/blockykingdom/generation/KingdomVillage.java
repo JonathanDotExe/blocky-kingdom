@@ -55,7 +55,7 @@ public class KingdomVillage extends Structure {
 	public boolean canGenerate(Chunk chunk, long seed) {
 		int innerKingdomX = chunk.getX() * TerrainGenUtil.CHUNK_WIDTH % Kingdom.KINGDOM_WIDTH;
 		int innerKingdomZ = chunk.getZ() * TerrainGenUtil.CHUNK_LENGTH % Kingdom.KINGDOM_LENGTH;
-		return chunk.getWorld().getEnvironment() == Environment.NORMAL && innerKingdomX + getWidth() < Kingdom.KINGDOM_WIDTH && innerKingdomZ + getLength() < Kingdom.KINGDOM_LENGTH && super.canGenerate(chunk, seed) && KingdomHandler.getInstance().generateKingdom(new KingdomPoint(chunk.getBlock(0, 0, 0).getLocation())).getState() != KingdomState.UNCLAIMED && dimHandler.getDimension(chunk.getWorld()) == null;
+		return chunk.getWorld().getEnvironment() == Environment.NORMAL && dimHandler.getDimension(chunk.getWorld()) == null && ((chunk.getX() == 0 && chunk.getZ() == 0) || (innerKingdomX + getWidth() < Kingdom.KINGDOM_WIDTH && innerKingdomZ + getLength() < Kingdom.KINGDOM_LENGTH && super.canGenerate(chunk, seed) && KingdomHandler.getInstance().generateKingdom(new KingdomPoint(chunk.getBlock(0, 0, 0).getLocation())).getState() != KingdomState.UNCLAIMED));
 	}
 
 	@Override

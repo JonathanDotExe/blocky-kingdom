@@ -153,6 +153,9 @@ public class KingdomHandler implements Listener{
 		if (Math.abs(point.getX()) > 1 && Math.abs(point.getZ()) > 1) {
 			kingdom.setState(KingdomState.values()[random.nextInt(KingdomState.values().length)]);
 		}
+		else if (point.getX() == 0 && point.getZ() == 0) {
+			kingdom.setState(KingdomState.GOOD);
+		}
 		return kingdom;
 	}
 	
