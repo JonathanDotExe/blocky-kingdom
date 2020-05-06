@@ -25,8 +25,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.WorldUnloadEvent;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
+import at.jojokobi.blockykingdom.dimensions.HeavenDimension;
+import at.jojokobi.mcutil.JojokobiUtilPlugin;
+import at.jojokobi.mcutil.dimensions.DimensionHandler;
 import at.jojokobi.mcutil.generation.TerrainGenUtil;
 
 public class KingdomHandler implements Listener{
@@ -37,9 +41,23 @@ public class KingdomHandler implements Listener{
 	
 	private HashMap<KingdomPoint, Kingdom> kingdoms = new HashMap<>();
 	private List<KingdomLoadListener> loadListeners = new ArrayList<>();
+	
+	private final Kingdom netherKingdom;
+	private final Kingdom endKingdom;
+	private final Kingdom heavenKingdom;
+	private final Kingdom otherDimensionKingdom;
+	
+
 
 	private KingdomHandler() {
-		
+		netherKingdom = new Kingdom("Nether");
+		netherKingdom.setClaimable(false);
+		endKingdom = new Kingdom("End");
+		endKingdom.setClaimable(false);
+		heavenKingdom = new Kingdom("Heaven");
+		heavenKingdom.setClaimable(false);
+		otherDimensionKingdom = new Kingdom("Unknown Dimension");
+		otherDimensionKingdom.setClaimable(false);
 	}
 	
 	public static KingdomHandler getInstance () {
@@ -61,12 +79,24 @@ public class KingdomHandler implements Listener{
 		//Get it from the map
 		loadKingdom(point);
 		Kingdom kingdom = kingdoms.get(point);
+		if (point.getWorld().getEnvironment() == Environment.NETHER) {
+			kingdom = netherKingdom;
+		}
+		else if (point.getWorld().getEnvironment() == Environment.THE_END) {
+			kingdom = endKingdom;
+		}
+		else if (HeavenDimension.getInstance().isDimension(point.getWorld())) {
+			kingdom = heavenKingdom;
+		}
+		else if (getDimensionHandler().getDimension(point.getWorld()) != null) {
+			kingdom = otherDimensionKingdom;
+		}
 		
 		return kingdom;
 	}
 	
 	private void loadKingdom (KingdomPoint point) {
-		if (kingdoms.get(point) == null) {
+		if (kingdoms.get(point) == null && point.getWorld().getEnvironment() == Environment.NORMAL && getDimensionHandler().getDimension(point.getWorld()) == null) {
 			Kingdom kingdom = load(point);
 			
 			if (kingdom == null) {
@@ -223,6 +253,11 @@ public class KingdomHandler implements Listener{
 			Kingdom kingdom = getKingdom(event.getTo());
 			event.getPlayer().sendTitle("Welcome to " + kingdom.getName() + "!", kingdom.getState().getDescrition(), 10, 70, 20);
 		}
+	}
+	
+	private DimensionHandler getDimensionHandler() {
+		//TODO store in variable
+		return JavaPlugin.getPlugin(JojokobiUtilPlugin.class).getDimensionHandler();
 	}
 
 }

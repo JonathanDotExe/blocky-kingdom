@@ -111,7 +111,7 @@ public class KingdomGUI extends InventoryGUI{
 		if (index == CLAIM_INDEX) {
 			//Claim
 			if (kingdom.getOwners().isEmpty()) {
-				if (getStatePrice(kingdom.getState()) >= 0 && stats.getMoney() >= getStatePrice(kingdom.getState())) {
+				if (kingdom.claimable() && getStatePrice(kingdom.getState()) >= 0 && stats.getMoney() >= getStatePrice(kingdom.getState())) {
 					stats.setMoney(stats.getMoney() - getStatePrice(kingdom.getState()));
 					kingdom.addOwner(getOwner().getUniqueId());
 					getOwner().sendMessage("You claimed " + kingdom.getName() + "!");

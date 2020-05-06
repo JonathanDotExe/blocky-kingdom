@@ -31,6 +31,7 @@ public class Kingdom implements ConfigurationSerializable{
 	private List<UUID> owners = new ArrayList<>();
 	private double happiness = 0;
 	private int level = 1;
+	private boolean claimable = true;
 	
 
 	public Kingdom(String name) {
@@ -183,6 +184,18 @@ public class Kingdom implements ConfigurationSerializable{
 		return kingdom;
 	}
 	
+	public boolean isClaimable() {
+		return claimable;
+	}
+
+	public void setClaimable(boolean claimable) {
+		this.claimable = claimable;
+	}
+	
+	public boolean claimable () {
+		return claimable && owners.isEmpty();
+	}
+
 	public int getLevelUpPrice () {
 		return 1000 * level;
 	}
