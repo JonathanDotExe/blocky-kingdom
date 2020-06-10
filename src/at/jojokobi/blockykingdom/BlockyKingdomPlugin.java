@@ -30,6 +30,7 @@ import at.jojokobi.blockykingdom.entities.Goblin;
 import at.jojokobi.blockykingdom.entities.GoblinBoss;
 import at.jojokobi.blockykingdom.entities.SlimeTrap;
 import at.jojokobi.blockykingdom.entities.Slimerer;
+import at.jojokobi.blockykingdom.entities.StoneBeetle;
 import at.jojokobi.blockykingdom.entities.ZombieBoss;
 import at.jojokobi.blockykingdom.entities.ZombieBossType;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Archer;
@@ -175,6 +176,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		ConfigurationSerialization.registerClass(Goblin.class, "BlockyKingdomGoblin");
 		ConfigurationSerialization.registerClass(GoblinBoss.class, "BlockyKingdomGoblinBoss");
 		ConfigurationSerialization.registerClass(EliteGoblin.class, "BlockyKingdomEliteGoblin");
+		ConfigurationSerialization.registerClass(StoneBeetle.class, "BlockyKingdomStoneBeetle");
 		
 		ConfigurationSerialization.registerClass(Archer.class, "BlockyKingdomArcher");
 		ConfigurationSerialization.registerClass(Healer.class, "BlockyKingdomHealer");
@@ -264,7 +266,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 //		SkillHandler.getInstance().addItem(aim);
 //		SkillHandler.getInstance().addItem(steal);
 //		SkillHandler.getInstance().addItem(teleport);
-//		
+
 		EntityHandler entityHandler = util.getEntityHandler();
 		entityHandler.addLegacySaveFolder(new EntityHandler.LegacySaveFolder("blockykingdom" + File.separator + "entities") {
 			@Override
@@ -351,7 +353,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		CustomSpawnsHandler.getInstance().addItem(new FunctionSpawn (Goblin.GOBLIN_SPAWN_KEY, l -> new Goblin(l, null)));
 		CustomSpawnsHandler.getInstance().addItem(new FunctionSpawn (GoblinBoss.GOBLIN_BOSS_SPAWN_KEY, l -> new GoblinBoss(l, null)));
 		CustomSpawnsHandler.getInstance().addItem(new FunctionSpawn (EliteGoblin.ELITE_GOBLIN_SPAWN_KEY, l -> new EliteGoblin(l, null)));
-
+		CustomSpawnsHandler.getInstance().addItem(new FunctionSpawn(StoneBeetle.STONE_BEETLE_KEY, l -> new StoneBeetle(l, null)));
 		
 //		KingdomHandler.getInstance().addLoadListener(new KingdomCountVillagerListener(entityHandler));
 				
