@@ -37,7 +37,7 @@ public class CrawlingSkill extends Skill {
 		Player player = event.getPlayer();
 		CharacterStats stats = StatHandler.getInstance().getStats(player).getCharacterStats();
 		int level = stats.getSkillLevel(this);
-		if (level > 0 && event.isSneaking() && event.getPlayer().isOnGround()) {
+		if (level > 0 && event.isSneaking() && event.getPlayer().getLocation().subtract(0, 0.1, 0).getBlock().getType().isSolid()) {
 			Long timestamp = timestamps.get(event.getPlayer().getUniqueId());
 			if (timestamp != null && timestamp + SNEAK_DELAY >= System.currentTimeMillis()) {
 				crawling.add(event.getPlayer().getUniqueId());
@@ -53,7 +53,7 @@ public class CrawlingSkill extends Skill {
 	
 	@EventHandler
 	public void onPlayerMove (PlayerMoveEvent event) {
-		if (!event.getPlayer().isOnGround()) {
+		if (!event.getPlayer().getLocation().subtract(0, 0.1, 0).getBlock().getType().isSolid()) {
 			crawling.remove(event.getPlayer().getUniqueId());
 		}
 	}

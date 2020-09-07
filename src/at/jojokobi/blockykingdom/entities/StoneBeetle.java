@@ -54,7 +54,6 @@ public class StoneBeetle extends CustomEntity<ArmorStand>{
 		if (velocity.lengthSquared() > 1.4 * 1.4 && goal != null) {
 			Vector goalDirection = goal.getLocation().toVector().subtract(getEntity().getLocation().toVector());
 			if (getEntity().isOnGround() && Math.signum(goalDirection.getX()) == Math.signum(velocity.getX()) && Math.signum(goalDirection.getZ()) == Math.signum(velocity.getZ())) {
-				System.out.println("Block smash");
 				//Block smash
 				Location center = getEntity().getLocation().add(velocity);
 				if (center.getBlock().getType().isSolid()) {

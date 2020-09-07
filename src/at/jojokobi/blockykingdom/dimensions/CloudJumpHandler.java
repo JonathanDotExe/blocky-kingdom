@@ -54,7 +54,7 @@ public class CloudJumpHandler implements Listener {
 //			velocity.setY(y);
 //			player.setVelocity(velocity);
 			// Remove
-			if (event.getPlayer().isOnGround()) {
+			if (event.getPlayer().getLocation().subtract(0, 0.1, 0).getBlock().getType().isSolid()) {
 				player.setFallDistance(0);
 				jumping.remove(player.getUniqueId());
 			}
