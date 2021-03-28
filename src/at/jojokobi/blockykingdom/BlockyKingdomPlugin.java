@@ -425,6 +425,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 	public void onDisable() {
 		super.onDisable();
 		KingdomHandler.getInstance().onDisable();
+		util.getDimensionHandler().unloadWorlds(HeavenDimension.getInstance());
 	}
 
 	public GenerationHandler getGenHandler() {
