@@ -36,7 +36,7 @@ Beim erstmaligen Betreten des Spiels erscheint bei jedem Spieler ein Inventarmen
 	* +2 Attack
 	* -1 Speed
 	* -1 Magic
-	* Exklusiver Skill: Rage (Mach nach Erleiden von Schaden selbst mehr Schaden)
+	* Exklusiver Skill: Rage (Macht nach Erleiden von Schaden selbst mehr Schaden)
 * Ocean Man
 	* -1 Defense
 	* +2 Magic
