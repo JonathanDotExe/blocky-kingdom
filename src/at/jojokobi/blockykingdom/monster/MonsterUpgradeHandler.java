@@ -88,7 +88,7 @@ public class MonsterUpgradeHandler implements Listener {
 				}
 				//Upgrade
 				if (!available.isEmpty()) {
-					MonsterUpgrade upgrade = available.get(random.nextInt(upgrades.size()));
+					MonsterUpgrade upgrade = available.get(random.nextInt(available.size()));
 					upgrade.apply(entity);
 				}
 			}
