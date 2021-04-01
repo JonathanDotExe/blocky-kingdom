@@ -1,8 +1,8 @@
-package at.jojokobi.blockykingdom.kingdoms;
+package at.jojokobi.blockykingdom.monster;
 
 import org.bukkit.entity.Entity;
 
-public interface KingdomMonsterUpgrade {
+public interface MonsterUpgrade {
 	
 	public void apply(Entity entity);
 	

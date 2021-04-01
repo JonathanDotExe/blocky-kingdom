@@ -1,4 +1,4 @@
-package at.jojokobi.blockykingdom.kingdoms;
+package at.jojokobi.blockykingdom.monster;
 
 import java.util.List;
 import java.util.Random;
@@ -8,7 +8,7 @@ import org.bukkit.entity.LivingEntity;
 
 import at.jojokobi.mcutil.loot.LootItem;
 
-public class MonsterItemUpgrade implements KingdomMonsterUpgrade {
+public class MonsterItemUpgrade implements MonsterUpgrade {
 	
 	private LootItem item;
 	private int minLevel;
