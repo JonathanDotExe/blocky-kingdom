@@ -99,6 +99,7 @@ import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHappinessHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.blockykingdom.kingdoms.siege.KingdomSiegeHandler;
+import at.jojokobi.blockykingdom.monster.MonsterUpgradeHandler;
 import at.jojokobi.blockykingdom.players.CharacterStats;
 import at.jojokobi.blockykingdom.players.PlayerActionHandler;
 import at.jojokobi.blockykingdom.players.StatHandler;
@@ -349,6 +350,8 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		entityHandler.getHandler().addItem(HealerType.getInstance());
 		entityHandler.getHandler().addItem(RecruiterType.getInstance());
 		entityHandler.getHandler().addItem(FlyingSheepType.getInstance());
+		
+		Bukkit.getPluginManager().registerEvents(new MonsterUpgradeHandler(entityHandler), this);
 		
 		CustomSpawnsHandler.getInstance().addItem(new FunctionSpawn (Goblin.GOBLIN_SPAWN_KEY, l -> new Goblin(l, null)));
 		CustomSpawnsHandler.getInstance().addItem(new FunctionSpawn (GoblinBoss.GOBLIN_BOSS_SPAWN_KEY, l -> new GoblinBoss(l, null)));
