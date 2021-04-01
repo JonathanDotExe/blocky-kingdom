@@ -50,6 +50,7 @@ public class StoneBeetle extends CustomEntity<ArmorStand>{
 	public void loop() {
 		super.loop();
 		Vector velocity = getEntity().getVelocity();
+		velocity.setY(0);
 		Locatable goal = getGoal();
 		if (velocity.lengthSquared() > 1.4 * 1.4 && goal != null) {
 			Vector goalDirection = goal.getLocation().toVector().subtract(getEntity().getLocation().toVector());
@@ -68,8 +69,8 @@ public class StoneBeetle extends CustomEntity<ArmorStand>{
 						}
 					}
 				}
-				velocity.multiply(-1);
-				velocity.setY(Math.abs(velocity.getY()));
+				velocity.multiply(-0.5);
+				velocity.setY(Math.abs(getEntity().getVelocity().getY()));
 				getEntity().setVelocity(velocity);
 			}
 		}
@@ -125,16 +126,6 @@ public class StoneBeetle extends CustomEntity<ArmorStand>{
 	@Override
 	protected double getWalkSpeed() {
 		return 0.7;
-	}
-	
-	@Override
-	protected double getClimbSpeed() {
-		return 1;
-	}
-	
-	@Override
-	protected boolean canClimb() {
-		return true;
 	}
 	
 }
