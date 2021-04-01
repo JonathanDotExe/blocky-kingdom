@@ -6,6 +6,8 @@ import java.util.function.Function;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Damageable;
@@ -164,6 +166,17 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 //					}
 //				}
 //			}
+		if (event.getPlayer().isSneaking()) {
+			if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BREAD) {
+				event.getPlayer().getInventory().getItemInMainHand().setAmount(event.getPlayer().getInventory().getItemInMainHand().getAmount() - 1);
+				getEntity().setHealth(Math.min(getEntity().getHealth() + 4.0, getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()));
+				addHappiness(0.3);
+				event.getPlayer().sendMessage("[" + getName() + "] Thank you the bread was delicous!");
+				getEntity().getEyeLocation().getWorld().spawnParticle(Particle.HEART, getEntity().getEyeLocation(), 5);
+			}
+			event.getPlayer().sendMessage("[" + getName() + "] my happiness value is currently " + getHappiness() + "!");
+		}
+		
 		Inventory inv = Bukkit.createInventory(event.getPlayer(), 9);
 		event.getPlayer().openInventory(inv);
 		getHandler().runTaskLater(() -> event.getPlayer().closeInventory(), 0L);
