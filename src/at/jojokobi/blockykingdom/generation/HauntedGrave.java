@@ -32,7 +32,7 @@ public class HauntedGrave extends Structure{
 	private CursedFigure cursedFigure;
 
 	public HauntedGrave(CursedFigure cursedFigure) {
-		super(9, 9, 6, 600, 1);
+		super(9, 9, 6, 800, 1);
 		
 		this.cursedFigure = cursedFigure;
 		
