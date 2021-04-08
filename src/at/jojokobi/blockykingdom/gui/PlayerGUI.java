@@ -216,7 +216,7 @@ public class PlayerGUI extends InventoryGUI{
 		{
 			ItemStack item = new ItemStack(statable.getCharacterStats().getProfession().getIcon());
 			ItemMeta meta = item.getItemMeta();
-			meta.setDisplayName(statable.getCharacterStats().getSpecies().getName());
+			meta.setDisplayName(statable.getCharacterStats().getProfession().getName());
 			List<String> lore = new ArrayList<>();
 			lore.add(" * Your profession");
 			meta.setLore(lore);

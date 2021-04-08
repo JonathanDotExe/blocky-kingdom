@@ -63,7 +63,7 @@ public class SkillGUI extends ListGUI{
 			lore.add("Needed Level: " + skill.getMinLevel());
 			splitLines(skill.getDescription(), lore, 30);
 			splitLines(skill.getRequirementsDescription(), lore, 30);
-			
+			meta.setLore(lore);
 			icon.setItemMeta(meta);
 			items.add(icon);
 		}
