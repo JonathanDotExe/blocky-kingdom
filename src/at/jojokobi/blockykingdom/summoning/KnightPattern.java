@@ -11,12 +11,12 @@ import org.bukkit.plugin.Plugin;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Knight;
 import at.jojokobi.mcutil.entity.EntityHandler;
 
-public class KnightVillagerPattern implements SummoningPattern{
+public class KnightPattern implements SummoningPattern{
 	
 	private Plugin plugin;
 	private EntityHandler handler;
 
-	public KnightVillagerPattern(Plugin plugin, EntityHandler handler) {
+	public KnightPattern(Plugin plugin, EntityHandler handler) {
 		super();
 		this.plugin = plugin;
 		this.handler = handler;

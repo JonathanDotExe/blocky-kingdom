@@ -128,6 +128,7 @@ import at.jojokobi.blockykingdom.players.skills.TeleportSkill;
 import at.jojokobi.blockykingdom.players.skills.VitalitySkill;
 import at.jojokobi.blockykingdom.players.skills.WallJumpSkill;
 import at.jojokobi.blockykingdom.summoning.AirheadPattern;
+import at.jojokobi.blockykingdom.summoning.KnightPattern;
 import at.jojokobi.blockykingdom.summoning.SlimererPattern;
 import at.jojokobi.blockykingdom.summoning.SummonHandler;
 import at.jojokobi.blockykingdom.summoning.VillagerHousePatternFactory;
@@ -414,6 +415,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		summonHandler.addPattern(VillagerHousePatternFactory.createRecruiterPattern(entityHandler, genHandler, recruiterHouse));
 		summonHandler.addPattern(VillagerHousePatternFactory.createTraderPattern(entityHandler, genHandler, recruiterHouse));
 		summonHandler.addPattern(VillagerHousePatternFactory.createQuestHutPattern(entityHandler, genHandler, questHut));
+		summonHandler.addPattern(new KnightPattern(this, entityHandler));
 		summonHandler.addPattern(new SlimererPattern(this, entityHandler));
 		summonHandler.addPattern(new ZombieBossPattern(this, entityHandler));
 		summonHandler.addPattern(new AirheadPattern(this, entityHandler));
