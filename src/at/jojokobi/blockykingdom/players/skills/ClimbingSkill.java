@@ -27,7 +27,7 @@ public class ClimbingSkill extends Skill {
 						|| player.getLocation().add(-1, 0, 0).getBlock().getType().isSolid()
 						|| player.getLocation().add(0, 0, 1).getBlock().getType().isSolid()
 						|| player.getLocation().add(0, 0, -1).getBlock().getType().isSolid())) {
-			player.setVelocity(player.getVelocity().setY(player.getLocation().getPitch()/-90 * 0.2 * level));
+			player.setVelocity(player.getVelocity().setY(player.getLocation().getPitch()/-90 * 0.1 * level));
 			player.setFallDistance(0);
 		}
 	}
