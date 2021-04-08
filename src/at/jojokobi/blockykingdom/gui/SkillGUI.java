@@ -1,7 +1,6 @@
 package at.jojokobi.blockykingdom.gui;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -27,6 +26,28 @@ public class SkillGUI extends ListGUI{
 		initGUI();
 	}
 	
+	private static void splitLines(String str, List<String> lines, int maxChars) {
+		String[] words = str.split(" ");
+		StringBuilder currLine = new StringBuilder();
+		for (String w : words) {
+			if (currLine.length() <= 0) {
+				currLine.append(w);
+			}
+			else if (currLine.length() + w.length() + 1 < maxChars){
+				currLine.append(" ");
+				currLine.append(w);
+			}
+			else {
+				lines.add(currLine.toString());
+				currLine = new StringBuilder(w);
+			}
+		}
+		
+		if (currLine.length() > 0) {
+			lines.add(currLine.toString());
+		}
+	}
+	
 	@Override
 	protected void initGUI() {
 		List<ItemStack> items = new ArrayList<ItemStack>();
@@ -35,7 +56,14 @@ public class SkillGUI extends ListGUI{
 			ItemStack icon = skill.getIcon();
 			ItemMeta meta = icon.getItemMeta();
 			int level = stats.getSkillLevel(skill);
-			meta.setLore(Arrays.asList("Level " + level, "Cost: " + (level > 0 ? stats.getNeededSkillPoints(level) : skill.getSkillCost()) + " Skill Points", "Needed Level: " + skill.getMinLevel(), skill.getDescription(), skill.getRequirementsDescription()));
+			
+			List<String> lore = new ArrayList<String>();
+			lore.add("Level " + level);
+			lore.add("Cost: " + (level > 0 ? stats.getNeededSkillPoints(level) : skill.getSkillCost()) + " Skill Points");
+			lore.add("Needed Level: " + skill.getMinLevel());
+			splitLines(skill.getDescription(), lore, 30);
+			splitLines(skill.getRequirementsDescription(), lore, 30);
+			
 			icon.setItemMeta(meta);
 			items.add(icon);
 		}
