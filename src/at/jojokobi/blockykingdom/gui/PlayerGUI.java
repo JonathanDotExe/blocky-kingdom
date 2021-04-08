@@ -201,6 +201,28 @@ public class PlayerGUI extends InventoryGUI{
 			item.setItemMeta(meta);
 			addButton(item, INV_ROW * 2 + 4);
 		}
+		//Species
+		{
+			ItemStack item = new ItemStack(statable.getCharacterStats().getSpecies().getIcon());
+			ItemMeta meta = item.getItemMeta();
+			meta.setDisplayName(statable.getCharacterStats().getSpecies().getName());
+			List<String> lore = new ArrayList<>();
+			lore.add(" * Your species");
+			meta.setLore(lore);
+			item.setItemMeta(meta);
+			addButton(item, INV_ROW * 3 - 2);
+		}
+		//Profession
+		{
+			ItemStack item = new ItemStack(statable.getCharacterStats().getProfession().getIcon());
+			ItemMeta meta = item.getItemMeta();
+			meta.setDisplayName(statable.getCharacterStats().getSpecies().getName());
+			List<String> lore = new ArrayList<>();
+			lore.add(" * Your profession");
+			meta.setLore(lore);
+			item.setItemMeta(meta);
+			addButton(item, INV_ROW * 3 - 1);
+		}
 		
 		fillEmpty(getFiller());
 	}

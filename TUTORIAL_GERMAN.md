@@ -47,6 +47,7 @@ Beim erstmaligen Betreten des Spiels erscheint bei jedem Spieler ein Inventarmen
 	* -2 Defense
 	* +1 Magic
 	* -1 Health
+	* Exklusiver Skill: Leeching (Regenerieration der Leben wenn man Gegner tötet)
 
 ### Klassen
 * Ninja
@@ -80,5 +81,6 @@ Beim erstmaligen Betreten des Spiels erscheint bei jedem Spieler ein Inventarmen
 ## Skill - System
 Mit einem Shift-Klick in den Offhand-Slot im Inventar öffnet man das Player-Menü wo man, unter anderem, seine Skills vewalten kann. Man erhält im Laufe des Spiels Skill-Punkte mit denen man sowohl die Basis-Skills (Attack, Defense, Speed, Magic, Health) als auch die Spezial-Skills (im Skills-Tab) verbessern kann.
 
-*Dieser Abschnit wird noch ausgebaut*
-*Hinweis: Der Magic-Skill erhöht den Schaden der Magiewaffen dieses Plugins (Erlärung folgt noch)
+Die maximalen und minimalen Werte der Basis-Skills wird von er gewählten Spezies bestimmt und der Startwert von der Klasse.
+*Hinweis: Der Magic-Skill erhöht den Schaden der Magiewaffen dieses Plugins (Erklärung folgt noch)*
+
