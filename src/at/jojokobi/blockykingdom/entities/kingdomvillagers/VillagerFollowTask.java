@@ -3,6 +3,7 @@ package at.jojokobi.blockykingdom.entities.kingdomvillagers;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
+import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.ai.EntityTask;
 import at.jojokobi.mcutil.locatables.EntityLocatable;
@@ -35,13 +36,17 @@ public class VillagerFollowTask implements EntityTask {
 	@Override
 	public void onInteract(CustomEntity<?> entity, PlayerInteractEntityEvent event) {
 		EntityTask.super.onInteract(entity, event);
-		if (follow == null) {
-			follow = event.getPlayer();
-			follow.sendMessage(entity.getEntity().getName() + " is now following you!");
-		}
-		else {
-			follow.sendMessage(entity.getEntity().getName() + " is no longer following you!");
-			follow = null;
+		Player player = event.getPlayer();
+		if (entity instanceof KingdomVillager<?>) {
+			KingdomVillager<?> villager = (KingdomVillager<?>) entity;
+			if (follow == null && villager.getKingdomPoint() != null && KingdomHandler.getInstance().getKingdom(villager.getKingdomPoint()).isOwner(player.getUniqueId())) {
+				follow = event.getPlayer();
+				follow.sendMessage(entity.getEntity().getName() + " is now following you!");
+			}
+			else if (follow == player) {
+				follow.sendMessage(entity.getEntity().getName() + " is no longer following you!");
+				follow = null;
+			}
 		}
 	}
 	
