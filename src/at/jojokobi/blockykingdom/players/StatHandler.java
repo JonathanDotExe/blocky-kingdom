@@ -144,7 +144,7 @@ public class StatHandler implements Listener{
 	
 	@EventHandler
 	public void onSave(WorldSaveEvent event) {
-		for (var p : statables.entrySet()) {
+		for (Map.Entry<Player, Statable> p : statables.entrySet()) {
 			save(p.getKey(), p.getValue().getCharacterStats());
 		}
 	}

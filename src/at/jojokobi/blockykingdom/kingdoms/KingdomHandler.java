@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
@@ -140,7 +141,7 @@ public class KingdomHandler implements Listener{
 	
 	@EventHandler
 	public void onSave(WorldSaveEvent event) {
-		for (var k : kingdoms.entrySet()) {
+		for (Map.Entry<KingdomPoint, Kingdom> k : kingdoms.entrySet()) {
 			save(k.getValue(), k.getKey());
 		}
 	}
