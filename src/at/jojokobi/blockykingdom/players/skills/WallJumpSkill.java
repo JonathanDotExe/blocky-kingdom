@@ -1,15 +1,10 @@
 package at.jojokobi.blockykingdom.players.skills;
 
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.util.Vector;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
-import at.jojokobi.blockykingdom.players.CharacterStats;
-import at.jojokobi.blockykingdom.players.StatHandler;
 
 public class WallJumpSkill extends Skill {
 
@@ -21,7 +16,7 @@ public class WallJumpSkill extends Skill {
 
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent event) {
-		Player player = event.getPlayer();
+		/*Player player = event.getPlayer();
 		if (event.getAction() == Action.LEFT_CLICK_BLOCK
 				&& event.getClickedBlock().getLocation().getY() >= player.getLocation().getY()
 				&& event.getClickedBlock().getLocation().getY() <= player.getLocation().getY() + player.getHeight()
@@ -37,7 +32,7 @@ public class WallJumpSkill extends Skill {
 				velocity.multiply(-(1 + level/10.0));
 				player.setVelocity(velocity);
 			}
-		}
+		}*/
 	}
 
 	@Override

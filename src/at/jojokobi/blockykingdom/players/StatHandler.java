@@ -28,6 +28,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerToggleSprintEvent;
+import org.bukkit.event.world.WorldSaveEvent;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
 import at.jojokobi.blockykingdom.players.quests.KillQuest;
@@ -125,15 +126,26 @@ public class StatHandler implements Listener{
 	@EventHandler
 	public void onPlayerQuit (PlayerQuitEvent event) {
 		CharacterStats stats = statables.remove(event.getPlayer()).getCharacterStats();
+		save(event.getPlayer(), stats);
+	}
+	
+	private void save(Player player, CharacterStats stats) {
 		File dataFolder = new File(Bukkit.getPluginManager().getPlugin(BlockyKingdomPlugin.PLUGIN_NAME).getDataFolder(), PLAYER_PATH);
 		dataFolder.mkdirs();
 		//Save
 		FileConfiguration config = new YamlConfiguration();
 		config.set("stats", stats);
 		try {
-			config.save(new File(dataFolder, event.getPlayer().getUniqueId() + ".yml"));
+			config.save(new File(dataFolder, player.getUniqueId() + ".yml"));
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	@EventHandler
+	public void onSave(WorldSaveEvent event) {
+		for (var p : statables.entrySet()) {
+			save(p.getKey(), p.getValue().getCharacterStats());
 		}
 	}
 	
