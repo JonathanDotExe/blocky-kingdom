@@ -35,6 +35,7 @@ import at.jojokobi.blockykingdom.entities.ZombieBoss;
 import at.jojokobi.blockykingdom.entities.ZombieBossType;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Archer;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.ArcherType;
+import at.jojokobi.blockykingdom.entities.kingdomvillagers.GolemKnightType;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Healer;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.HealerType;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Knight;
@@ -351,6 +352,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		entityHandler.getHandler().addItem(HealerType.getInstance());
 		entityHandler.getHandler().addItem(RecruiterType.getInstance());
 		entityHandler.getHandler().addItem(FlyingSheepType.getInstance());
+		entityHandler.getHandler().addItem(GolemKnightType.getInstance());
 		
 		Bukkit.getPluginManager().registerEvents(new MonsterUpgradeHandler(entityHandler), this);
 		
