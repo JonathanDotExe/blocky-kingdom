@@ -108,12 +108,17 @@ public class Goblin extends CustomEntity<Zombie> implements Attacker{
 
 	@Override
 	public int getAttackDelay() {
-		return 8 ;
+		return 10;
 	}
 	
 	@Override
 	protected double getSprintSpeed() {
 		return 0.6;
+	}
+	
+	@Override
+	protected boolean canSwim() {
+		return false;
 	}
 
 }
