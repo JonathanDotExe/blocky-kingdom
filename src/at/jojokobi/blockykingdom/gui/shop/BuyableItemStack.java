@@ -39,8 +39,9 @@ public class BuyableItemStack implements Buyable{
 	}
 
 	@Override
-	public void onBuy(Player player, CharacterStats stats) {
+	public boolean onBuy(Player player, CharacterStats stats) {
 		player.getInventory().addItem(itemStack.clone());
+		return true;
 	}
 
 	@Override

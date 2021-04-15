@@ -41,7 +41,7 @@ public class BuyableVillager implements Buyable{
 	}
 
 	@Override
-	public void onBuy(Player player, CharacterStats stats) {
+	public boolean onBuy(Player player, CharacterStats stats) {
 		KingdomPoint point = new KingdomPoint(player.getLocation());
 		KingdomVillager<?> villager = entity.createInstance(player.getLocation(), handler);
 		if (point.canAddVillager(villager.getVillagerCategory(), handler)) {
@@ -50,10 +50,12 @@ public class BuyableVillager implements Buyable{
 				villager.setKingdomPoint(point);
 				player.sendMessage(villager.getName() + " arrived in " + point.toKingdom().getName() + "!");
 			}
+			return true;
 		}
 		else {
 			player.sendMessage("The kingdom is already full!");
 		}
+		return false;
 	}
 
 	@Override
