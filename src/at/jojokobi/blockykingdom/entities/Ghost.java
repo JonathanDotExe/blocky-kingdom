@@ -57,7 +57,7 @@ public class Ghost extends CustomEntity<Skeleton> implements Attacker{
 	protected Skeleton createEntity(Location place) {
 		Skeleton entity = place.getWorld().spawn(place, Skeleton.class);
 		NMSEntityUtil.clearGoals(entity);
-		entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(8.0);
+		entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20.0);
 		entity.setHealth(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
 		entity.setRemoveWhenFarAway(true);
 
