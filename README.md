@@ -12,6 +12,8 @@ Blocky Kingdom is a plugin for Minecraft 1.16.5 Spigot Servers that adds RPG ele
  * Different types of dungeons and bosses
  * A sky dimension
  * And much more ...
+ 
+[Tutorial](TUTORIAL.md)
 
 ## Trailer
-[Click here](https://www.youtube.com/watch?v=EGrrBEF7r38) 
+[Click here](https://www.youtube.com/watch?v=EGrrBEF7r38)
