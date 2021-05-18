@@ -16,6 +16,7 @@ import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import at.jojokobi.blockykingdom.commands.ResetStatsCommand;
 import at.jojokobi.blockykingdom.dimensions.CloudJumpHandler;
 import at.jojokobi.blockykingdom.dimensions.HeavenDimension;
 import at.jojokobi.blockykingdom.entities.Airhead;
@@ -426,6 +427,9 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		Bukkit.getPluginManager().registerEvents(this, this);
 		
 		Bukkit.getScheduler().runTask(this, () -> Bukkit.addRecipe(getExperienceRecipe()));
+		
+		//Commands
+		getCommand(ResetStatsCommand.COMMAND_NAME).setExecutor(new ResetStatsCommand(util.getGuiHandler()));
 	}
 	
 	@Override

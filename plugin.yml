@@ -5,3 +5,7 @@ author: jojokobi
 load: STARTUP
 depend: [JojokobiUtil, JojosGenerator]
 api-version: 1.16
+commands:
+  resetstats:
+    description: Resets a players skills
+    usage: /resetstats
