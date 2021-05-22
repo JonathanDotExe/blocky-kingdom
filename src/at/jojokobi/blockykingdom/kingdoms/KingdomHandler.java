@@ -258,7 +258,9 @@ public class KingdomHandler implements Listener{
 	public void onPlayerMove (PlayerMoveEvent event) {
 		if (!getKingdomPoint(event.getTo()).equals(getKingdomPoint(event.getFrom()))) {
 			Kingdom kingdom = getKingdom(event.getTo());
-			event.getPlayer().sendTitle("Welcome to " + kingdom.getName() + "!", kingdom.getState().getDescrition(), 10, 70, 20);
+			if (kingdom != noneKingdom) {
+				event.getPlayer().sendTitle("Welcome to " + kingdom.getName() + "!", kingdom.getState().getDescrition(), 10, 70, 20);
+			}
 		}
 	}
 	
