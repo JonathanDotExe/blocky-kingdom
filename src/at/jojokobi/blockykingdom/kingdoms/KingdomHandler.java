@@ -43,23 +43,14 @@ public class KingdomHandler implements Listener{
 	
 	private HashMap<KingdomPoint, Kingdom> kingdoms = new HashMap<>();
 	private List<KingdomLoadListener> loadListeners = new ArrayList<>();
+	private Set<String> noKingdomWorlds = new HashSet<>();
 	
-	private final Kingdom netherKingdom;
-	private final Kingdom endKingdom;
-	private final Kingdom heavenKingdom;
-	private final Kingdom otherDimensionKingdom;
-	
+	private final Kingdom noneKingdom;
 
 
 	private KingdomHandler() {
-		netherKingdom = new Kingdom("Nether");
-		netherKingdom.setClaimable(false);
-		endKingdom = new Kingdom("End");
-		endKingdom.setClaimable(false);
-		heavenKingdom = new Kingdom("Heaven");
-		heavenKingdom.setClaimable(false);
-		otherDimensionKingdom = new Kingdom("Unknown Dimension");
-		otherDimensionKingdom.setClaimable(false);
+		noneKingdom = new Kingdom("None");
+		noneKingdom.setClaimable(false);
 	}
 	
 	public static KingdomHandler getInstance () {
@@ -80,18 +71,22 @@ public class KingdomHandler implements Listener{
 	public Kingdom getKingdom (KingdomPoint point) {
 		//Get it from the map
 		loadKingdom(point);
+		//No kingdom
 		Kingdom kingdom = kingdoms.get(point);
 		if (point.getWorld().getEnvironment() == Environment.NETHER) {
-			kingdom = netherKingdom;
+			kingdom = noneKingdom;
 		}
 		else if (point.getWorld().getEnvironment() == Environment.THE_END) {
-			kingdom = endKingdom;
+			kingdom = noneKingdom;
 		}
 		else if (HeavenDimension.getInstance().isDimension(point.getWorld())) {
-			kingdom = heavenKingdom;
+			kingdom = noneKingdom;
 		}
 		else if (getDimensionHandler().getDimension(point.getWorld()) != null) {
-			kingdom = otherDimensionKingdom;
+			kingdom = noneKingdom;
+		}
+		else if (noKingdomWorlds.contains(point.getWorld().getName())) {
+			kingdom = noneKingdom;
 		}
 		
 		return kingdom;
@@ -270,6 +265,10 @@ public class KingdomHandler implements Listener{
 	private DimensionHandler getDimensionHandler() {
 		//TODO store in variable
 		return JavaPlugin.getPlugin(JojokobiUtilPlugin.class).getDimensionHandler();
+	}
+
+	public void addNoKingdomWorlds(String name) {
+		noKingdomWorlds.add(name);
 	}
 
 }
