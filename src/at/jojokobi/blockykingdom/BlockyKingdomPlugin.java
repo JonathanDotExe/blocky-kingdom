@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -430,6 +431,13 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		
 		//Commands
 		getCommand(ResetStatsCommand.COMMAND_NAME).setExecutor(new ResetStatsCommand(util.getGuiHandler()));
+		
+		//Config
+		saveDefaultConfig();
+		FileConfiguration config = getConfig();
+		for (String name : config.getStringList("kingdoms.noKingdomWorlds")) {
+			KingdomHandler.getInstance().addNoKingdomWorlds(name);
+		}
 	}
 	
 	@Override
