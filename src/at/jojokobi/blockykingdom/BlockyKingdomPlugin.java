@@ -16,6 +16,7 @@ import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import at.jojokobi.blockykingdom.commands.ResetStatsCommand;
 import at.jojokobi.blockykingdom.dimensions.CloudJumpHandler;
 import at.jojokobi.blockykingdom.dimensions.HeavenDimension;
 import at.jojokobi.blockykingdom.entities.Airhead;
@@ -35,6 +36,7 @@ import at.jojokobi.blockykingdom.entities.ZombieBoss;
 import at.jojokobi.blockykingdom.entities.ZombieBossType;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Archer;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.ArcherType;
+import at.jojokobi.blockykingdom.entities.kingdomvillagers.GolemKnightType;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Healer;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.HealerType;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Knight;
@@ -351,6 +353,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		entityHandler.getHandler().addItem(HealerType.getInstance());
 		entityHandler.getHandler().addItem(RecruiterType.getInstance());
 		entityHandler.getHandler().addItem(FlyingSheepType.getInstance());
+		entityHandler.getHandler().addItem(GolemKnightType.getInstance());
 		
 		Bukkit.getPluginManager().registerEvents(new MonsterUpgradeHandler(entityHandler), this);
 		
@@ -424,6 +427,9 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		Bukkit.getPluginManager().registerEvents(this, this);
 		
 		Bukkit.getScheduler().runTask(this, () -> Bukkit.addRecipe(getExperienceRecipe()));
+		
+		//Commands
+		getCommand(ResetStatsCommand.COMMAND_NAME).setExecutor(new ResetStatsCommand(util.getGuiHandler()));
 	}
 	
 	@Override

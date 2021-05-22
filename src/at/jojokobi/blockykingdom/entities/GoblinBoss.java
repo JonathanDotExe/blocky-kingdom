@@ -20,6 +20,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
+import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.mcutil.NamespacedEntry;
 import at.jojokobi.mcutil.entity.Attacker;
 import at.jojokobi.mcutil.entity.BossBarComponent;
@@ -28,20 +29,29 @@ import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.EntityMapData;
 import at.jojokobi.mcutil.entity.EntityUtil;
 import at.jojokobi.mcutil.entity.HealthComponent;
+import at.jojokobi.mcutil.entity.LootComponent;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
 import at.jojokobi.mcutil.entity.RealHealthAccessor;
 import at.jojokobi.mcutil.entity.ai.AttackTask;
+import at.jojokobi.mcutil.item.ItemHandler;
+import at.jojokobi.mcutil.loot.LootInventory;
+import at.jojokobi.mcutil.loot.LootItem;
 
 public class GoblinBoss extends CustomEntity<Zombie> implements Attacker {
 
 	public static final NamespacedEntry GOBLIN_BOSS_SPAWN_KEY = new NamespacedEntry(
 			BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, "goblin_boss");
+	
+	private LootInventory loot = new LootInventory();
 
 	public GoblinBoss(Location place, EntityHandler handler) {
 		super(place, handler, null);
 		addComponent(new HealthComponent(new RealHealthAccessor()));
 		addComponent(new BossBarComponent("Goblin Boss", BarColor.GREEN, BarStyle.SEGMENTED_10));
-
+		loot.addItem(new LootItem(1, new ItemStack(Material.EMERALD), 1, 5));
+		loot.addItem(new LootItem(1, ItemHandler.getItemStack(Money.class), 10, 20));
+		
+		addComponent(new LootComponent(loot, 200));
 		addEntityTask(new AttackTask(Player.class));
 	}
 

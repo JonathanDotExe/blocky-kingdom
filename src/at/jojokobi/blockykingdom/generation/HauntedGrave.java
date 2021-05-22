@@ -43,9 +43,9 @@ public class HauntedGrave extends Structure{
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.GOLD_NUGGET), 1, 12));
 		loot.addItem(new LootItem(0.8, new ItemStack(Material.IRON_INGOT), 1, 12));
 		loot.addItem(new LootItem(1, new ItemStack(Material.BREAD), 1, 2));
-		loot.addItem(new LootItem(0.2, new ItemStack(Material.BOW), 1, 1));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.BOW), 1, 1).setEnchant(true));
 		loot.addItem(new LootItem(0.4, new ItemStack(Material.STONE_SWORD), 1, 1));
-		loot.addItem(new LootItem(0.4, new ItemStack(Material.STONE_PICKAXE), 1, 1));
+		loot.addItem(new LootItem(0.4, new ItemStack(Material.STONE_PICKAXE), 1, 1).setEnchant(true));
 		loot.addItem(new LootItem(1, new ItemStack(Material.BONE), 1, 5));
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.STRING), 1, 5));
 		loot.addItem(new LootItem(1, new ItemStack(Material.ARROW), 1, 16));
@@ -53,11 +53,11 @@ public class HauntedGrave extends Structure{
 		loot.addItem(new LootItem(0.05, new ItemStack(Material.DIAMOND_HORSE_ARMOR), 1, 1));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_HORSE_ARMOR), 1, 1));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.GOLDEN_HORSE_ARMOR), 1, 1));
-		loot.addItem(new LootItem(0.1, new ItemStack(Material.EMERALD), 1, 1));
+		loot.addItem(new LootItem(0.1, new ItemStack(Material.EMERALD), 1, 3));
 		
-		loot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, DoubleBow.IDENTIFIER), 1, 1));
+		loot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, DoubleBow.IDENTIFIER), 1, 1).setEnchant(true));
 		loot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, GrapplingHook.IDENTIFIER), 1, 1));
-		loot.addItem(new LootItem(0.7, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 5));
+		loot.addItem(new LootItem(0.7, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 15));
 		
 		setxModifier(4122);
 		setzModifier(1564);

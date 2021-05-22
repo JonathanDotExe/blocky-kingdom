@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
@@ -24,6 +25,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
+import org.bukkit.event.world.WorldSaveEvent;
 import org.bukkit.event.world.WorldUnloadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -135,6 +137,13 @@ public class KingdomHandler implements Listener{
 		}
 		
 		return kingdom;
+	}
+	
+	@EventHandler
+	public void onSave(WorldSaveEvent event) {
+		for (Map.Entry<KingdomPoint, Kingdom> k : kingdoms.entrySet()) {
+			save(k.getValue(), k.getKey());
+		}
 	}
 	
 	public Kingdom generateKingdom (KingdomPoint point) {

@@ -67,6 +67,10 @@ public class CursedFigure extends PlaceableItem{
 			for (Entity entity : event.getClickedBlock().getChunk().getEntities()) {
 				if (isItemEntity(entity) && entity.getLocation().distanceSquared(event.getClickedBlock().getLocation()) < 3 * 3) {
 					spawnGhosts(entity.getLocation());
+					if (Math.random() < 0.01) {
+						event.getPlayer().sendMessage("The cursed figure broke");
+						entity.remove();
+					}
 				}
 			}
 		}

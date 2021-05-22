@@ -55,8 +55,9 @@ public class ShopGUI extends ListGUI{
 				Buyable buyable = shopItems.get(index);
 				if (stats.getMoney() >= buyable.getPrice()) {
 					if (stats.getLevel() >= buyable.getMinLevel()) {
-						stats.setMoney(stats.getMoney() - buyable.getPrice());
-						buyable.onBuy(getOwner(), stats);
+						if (buyable.onBuy(getOwner(), stats)) {
+							stats.setMoney(stats.getMoney() - buyable.getPrice());
+						}
 						callback.accept(buyable);
 					}
 					else {

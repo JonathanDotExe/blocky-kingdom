@@ -64,6 +64,23 @@ public class CharacterStats implements ConfigurationSerializable{
 		this(CharacterProfession.VILLAGER, CharacterSpecies.HUMAN);
 	}
 	
+	public void reset() {
+		attack = 0;
+		defense = 0;
+		magic = 0;
+		health = 0;
+		speed = 0;
+		
+		level = 0;
+		xp = 0;
+		skillPoints = 0;
+		money = 0;
+		
+		skills.clear();
+		quests.clear();
+		
+	}
+	
 	@Override
 	public String toString() {
 		return "CharacterStats [profession=" + profession + ", species=" + species + ", attack=" + attack + ", defense="

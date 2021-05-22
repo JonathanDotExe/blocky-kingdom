@@ -12,7 +12,7 @@ public interface Buyable extends ConfigurationSerializable{
 	
 	public int getPrice ();
 	
-	public void onBuy (Player player, CharacterStats stats);
+	public boolean onBuy (Player player, CharacterStats stats);
 	
 	public int getMinLevel ();
 	

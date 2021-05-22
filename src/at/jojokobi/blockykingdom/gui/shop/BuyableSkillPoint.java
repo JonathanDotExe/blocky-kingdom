@@ -22,8 +22,9 @@ public class BuyableSkillPoint implements Buyable{
 	}
 
 	@Override
-	public void onBuy(Player player, CharacterStats stats) {
+	public boolean onBuy(Player player, CharacterStats stats) {
 		stats.setSkillPoints(stats.getSkillPoints() + 1);
+		return true;
 	}
 
 	@Override

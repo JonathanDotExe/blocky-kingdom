@@ -35,7 +35,7 @@ public class Recruiter extends ShopVillager<Villager>{
 		getOffers().add(new BuyableVillager(KnightType.getInstance(), getHandler(), ItemUtil.rename(new ItemStack(Material.IRON_SWORD), "Knight"), Knight.KNGIHT_PRICE, 0));
 		getOffers().add(new BuyableVillager(ArcherType.getInstance(), getHandler(), ItemUtil.rename(new ItemStack(Material.BOW), "Archer"), Archer.ARCHER_PRICE, 8));
 		getOffers().add(new BuyableVillager(HealerType.getInstance(), getHandler(), ItemUtil.rename(new ItemStack(Material.POTION), "Healer"), Healer.HEALER_PRICE, 10));
-
+		getOffers().add(new BuyableVillager(GolemKnightType.getInstance(), getHandler(), ItemUtil.rename(new ItemStack(Material.IRON_BLOCK), "Golem Knight"), GolemKnight.GOLEM_KNIGHT_PRICE, 15));
 	}
 
 	@Override
