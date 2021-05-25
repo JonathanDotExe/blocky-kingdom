@@ -6,6 +6,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Damageable;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
@@ -27,6 +28,7 @@ import at.jojokobi.mcutil.entity.HealthComponent;
 import at.jojokobi.mcutil.entity.LootComponent;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
 import at.jojokobi.mcutil.entity.RealHealthAccessor;
+import at.jojokobi.mcutil.entity.ai.ApproachEntityTask;
 import at.jojokobi.mcutil.entity.ai.AttackTask;
 import at.jojokobi.mcutil.entity.ai.RandomTask;
 import at.jojokobi.mcutil.item.ItemHandler;
@@ -47,6 +49,12 @@ public class Goblin extends CustomEntity<Zombie> implements Attacker{
 		addComponent(new LootComponent(loot, 0));
 		addComponent(new HealthComponent(new RealHealthAccessor()));
 		
+		addEntityTask(new ApproachEntityTask(p -> p.getPassengers().isEmpty() && this.getHandler().getCustomEntityForEntity(p, StoneBeetle.class) != null, 20) {
+			@Override
+			protected void interact(Entity entity) {
+				entity.addPassenger(getEntity());
+			}
+		});
 		addEntityTask(new AttackTask(Player.class));
 		addEntityTask(new RandomTask());
 	}
