@@ -64,6 +64,7 @@ import at.jojokobi.blockykingdom.generation.KingdomVillage;
 import at.jojokobi.blockykingdom.generation.KnightCampfire;
 import at.jojokobi.blockykingdom.generation.QuestHut;
 import at.jojokobi.blockykingdom.generation.RecruiterHouse;
+import at.jojokobi.blockykingdom.generation.StoneBeetleRoom;
 import at.jojokobi.blockykingdom.generation.TraderHut;
 import at.jojokobi.blockykingdom.gui.shop.BuyableItemStack;
 import at.jojokobi.blockykingdom.gui.shop.BuyableSkillPoint;
@@ -409,7 +410,10 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		GoblinLibraryRoom libraryRoom = new GoblinLibraryRoom(entityHandler);
 		genHandler.addStructure(libraryRoom);
 		GoblinTreasureRoom treasureRoom = new GoblinTreasureRoom();
-		GoblinCave goblinCave = new GoblinCave(getDimensionHandler(), caveCenter, bossChamber, new Structure[]{goblinSpawner, eliteGoblinspawner, treasureRoom, libraryRoom}, new Structure[]{goblinSpawner, goblinSpawner, eliteGoblinspawner, treasureRoom, treasureRoom, libraryRoom}, new Structure[]{goblinSpawner, goblinSpawner, goblinSpawner, eliteGoblinspawner, treasureRoom, treasureRoom, libraryRoom, libraryRoom}, new Structure[]{goblinSpawner, goblinSpawner, goblinSpawner, treasureRoom, libraryRoom});
+		genHandler.addStructure(treasureRoom);
+		StoneBeetleRoom beetleRoom = new StoneBeetleRoom(entityHandler);
+		genHandler.addStructure(beetleRoom);
+		GoblinCave goblinCave = new GoblinCave(getDimensionHandler(), caveCenter, bossChamber, new Structure[]{goblinSpawner, eliteGoblinspawner, treasureRoom, libraryRoom}, new Structure[]{goblinSpawner, goblinSpawner, eliteGoblinspawner, treasureRoom, treasureRoom, libraryRoom, beetleRoom}, new Structure[]{goblinSpawner, goblinSpawner, goblinSpawner, eliteGoblinspawner, treasureRoom, treasureRoom, libraryRoom, libraryRoom, beetleRoom, beetleRoom}, new Structure[]{goblinSpawner, goblinSpawner, goblinSpawner, treasureRoom, libraryRoom, beetleRoom});
 		genHandler.addStructure(goblinCave);
 		
 		genHandler.addLegacySaveFolder(BLOCKY_KINGDOM_NAMESPACE + File.separator + "structures");
