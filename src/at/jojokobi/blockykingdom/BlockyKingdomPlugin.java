@@ -69,6 +69,7 @@ import at.jojokobi.blockykingdom.generation.TraderHut;
 import at.jojokobi.blockykingdom.gui.shop.BuyableItemStack;
 import at.jojokobi.blockykingdom.gui.shop.BuyableSkillPoint;
 import at.jojokobi.blockykingdom.items.AirGrenade;
+import at.jojokobi.blockykingdom.items.Claws;
 import at.jojokobi.blockykingdom.items.Cloud;
 import at.jojokobi.blockykingdom.items.CloudParticle;
 import at.jojokobi.blockykingdom.items.CursedFigure;
@@ -326,6 +327,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		Bukkit.getPluginManager().registerEvents(new GoblinFang(), this);
 		Bukkit.getPluginManager().registerEvents(new GoblinSkin(this), this);
 		Bukkit.getPluginManager().registerEvents(new GoblinCharm(this), this);
+		Bukkit.getPluginManager().registerEvents(new Claws(this), this);
 		
 		//Entity Handler
 		

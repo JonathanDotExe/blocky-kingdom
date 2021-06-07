@@ -4,9 +4,13 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.CraftingInventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
@@ -25,6 +29,8 @@ public class Claws extends CustomTool{
 	public static final String IDENTIFIER = "claws";
 	public static final short META = 7;
 	public static final Material ITEM = Material.IRON_SWORD;
+	
+	
 
 	public Claws(BlockyKingdomPlugin plugin) {
 		super(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, IDENTIFIER);
@@ -60,7 +66,28 @@ public class Claws extends CustomTool{
 		recipe.setIngredient('F', GoblinFang.ITEM);
 		return recipe;
 	}
-
+	
+	@Override
+	@EventHandler
+	public void onPlayerInteract(PlayerInteractEvent event) {
+		super.onPlayerInteract(event);
+		if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
+			ItemStack held = event.getItem();
+			if (held != null && isItem(held)) {
+				event.getPlayer().setVelocity(event.getPlayer().getVelocity().multiply(2).setY(event.getPlayer().getVelocity().getY()));
+			}
+		}
+	}
+	
+	@Override
+	public void onHit(ItemStack item, EntityDamageByEntityEvent event) {
+		Entity damager = event.getDamager();
+		if (damager instanceof LivingEntity && isItem(((LivingEntity) damager).getEquipment().getItemInOffHand())) {
+			event.setDamage(event.getDamage() + 3.0);
+		}
+		super.onHit(item, event);
+	}
+	
 	@Override
 	public boolean useItem(ItemStack item, Player player) {
 		return false;
@@ -68,6 +95,9 @@ public class Claws extends CustomTool{
 
 	@Override
 	public boolean hit(ItemStack item, Entity damager, Entity defender) {
+		if (!damager.isOnGround()) {
+			defender.setVelocity(damager.getVelocity().setY(0));
+		}
 		return true;
 	}
 
