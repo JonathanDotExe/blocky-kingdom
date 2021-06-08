@@ -74,7 +74,7 @@ public class Claws extends CustomTool{
 		if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
 			ItemStack held = event.getItem();
 			if (held != null && isItem(held)) {
-				event.getPlayer().setVelocity(event.getPlayer().getVelocity().multiply(2).setY(event.getPlayer().getVelocity().getY()));
+				event.getPlayer().setVelocity(event.getPlayer().getVelocity().multiply(3));
 			}
 		}
 	}
@@ -96,7 +96,7 @@ public class Claws extends CustomTool{
 	@Override
 	public boolean hit(ItemStack item, Entity damager, Entity defender) {
 		if (!damager.isOnGround()) {
-			defender.setVelocity(damager.getVelocity().setY(0));
+			defender.setVelocity(damager.getVelocity().setY(0.2));
 		}
 		return true;
 	}
