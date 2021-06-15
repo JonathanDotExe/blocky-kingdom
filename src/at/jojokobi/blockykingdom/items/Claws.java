@@ -96,7 +96,7 @@ public class Claws extends CustomTool{
 	@Override
 	public boolean hit(ItemStack item, Entity damager, Entity defender) {
 		if (!damager.isOnGround()) {
-			defender.setVelocity(damager.getVelocity().setY(0.2));
+			defender.setVelocity(damager.getLocation().getDirection().setY(0.2));
 		}
 		return true;
 	}
