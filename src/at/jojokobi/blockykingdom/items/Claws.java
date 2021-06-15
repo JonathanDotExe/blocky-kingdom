@@ -74,7 +74,7 @@ public class Claws extends CustomTool{
 		if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
 			ItemStack held = event.getItem();
 			if (held != null && isItem(held)) {
-				event.getPlayer().setVelocity(event.getPlayer().getVelocity().multiply(3));
+				event.getPlayer().setVelocity(event.getPlayer().getVelocity().setY(0).multiply(2));
 			}
 		}
 	}
