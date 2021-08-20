@@ -66,8 +66,8 @@ public class ProtectingFigure extends PlaceableItem{
 		ShapedRecipe recipe = new ShapedRecipe (new NamespacedKey(plugin, getIdentifier()), createItem());
 		recipe.shape(" P ", "SCS", "SSS");
 		recipe.setIngredient('S', Material.STONE);
-		recipe.setIngredient('C', Material.IRON_SHOVEL);
-		recipe.setIngredient('P', Material.IRON_SHOVEL);
+		recipe.setIngredient('C', Cloud.ITEM);
+		recipe.setIngredient('P', CloudParticle.ITEM);
 		
 		return recipe;
 	}
