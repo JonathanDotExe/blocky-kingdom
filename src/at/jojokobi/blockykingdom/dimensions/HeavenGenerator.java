@@ -7,6 +7,7 @@ import java.util.Random;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
+import org.bukkit.generator.WorldInfo;
 import org.bukkit.util.noise.NoiseGenerator;
 import org.bukkit.util.noise.SimplexNoiseGenerator;
 
@@ -28,10 +29,10 @@ import at.jojokobi.generator.populators.ore.OrePopulator;
 import at.jojokobi.mcutil.generation.TerrainGenUtil;
 
 public class HeavenGenerator extends AbstractGenerator{
-
+	
 	@Override
-	public ChunkData generateChunkData(World world, Random random, int x, int z, BiomeGrid grid) {
-		ChunkData data = super.generateChunkData(world, random, x, z, grid);
+	public void generateNoise(WorldInfo world, Random random, int x, int z, ChunkData data) {
+		super.generateNoise(world, random, x, z, data);
 		for (int y = 30; y < 55; y += 5) {
 			NoiseGenerator generator = new SimplexNoiseGenerator(world.getSeed() + y);
 			for (int i = 0; i < TerrainGenUtil.CHUNK_WIDTH; i++) {
@@ -44,7 +45,6 @@ public class HeavenGenerator extends AbstractGenerator{
 				}
 			}
 		}
-		return data;
 	}
 	
 	@Override

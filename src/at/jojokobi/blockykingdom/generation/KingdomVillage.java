@@ -31,7 +31,7 @@ public class KingdomVillage extends Structure {
 		spreader.setBlockFunction(b -> {
 			switch (b) {
 			case GRASS_BLOCK:
-				return Material.GRASS_PATH;
+				return Material.DIRT_PATH;
 			case STONE:
 				return Material.COBBLESTONE;
 			case SAND:

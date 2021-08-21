@@ -17,19 +17,23 @@ public class CloudBiome implements CustomBiome{
 	}
 
 	@Override
-	public Biome generate(ChunkData data, int x, int z, int startHeight, int height, double heightNoise,
+	public void generate(ChunkData data, int x, int z, int startHeight, int height, double heightNoise,
 			Random random) {
 		
 		for (int y = startHeight; y < height; y++) {
 			data.setBlock(x, y, z, Material.WHITE_WOOL);
 		}
 		
-		return Biome.THE_VOID;
 	}
 
 	@Override
 	public void populate(Chunk chunk, ValueGenerator generator, Random random) {
 		
+	}
+
+	@Override
+	public Biome getBiome(int x, int y, int z, int height, double heightNoise) {
+		return Biome.THE_VOID;
 	}
 
 }
