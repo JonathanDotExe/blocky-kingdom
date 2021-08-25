@@ -1,6 +1,6 @@
 # blocky-kingdom
 
-Blocky Kingdom is a plugin for Minecraft 1.16.5 Spigot Servers that adds RPG elements to the game. Each player can choose their species and role and has different stats that they can upgrade. Furthermore, the world is devided into kingdoms. Some are friendly, but some are not.
+Blocky Kingdom is a plugin for Minecraft 1.17.5 Spigot Servers that adds RPG elements to the game. Each player can choose their species and role and has different stats that they can upgrade. Furthermore, the world is devided into kingdoms. Some are friendly, but some are not.
 
 ## Main features
  * Different species and professions, with different skills and stat advantages
@@ -17,3 +17,5 @@ Blocky Kingdom is a plugin for Minecraft 1.16.5 Spigot Servers that adds RPG ele
 
 ## Trailer
 [Click here](https://www.youtube.com/watch?v=EGrrBEF7r38)
+
+If you have questions or want to talk feel, free to join my Discord server: https://discord.gg/XZXnXas2YJ
