@@ -137,19 +137,20 @@ public class ZombieBoss extends CustomEntity<Zombie> implements Attacker, Target
 		}
 		else {
 			//Hit
-			entity.damage(healthPercent > 1/3 ? 6.0 : 10.0);
+			entity.damage(healthPercent > 1/3.0 ? 6.0 : 9.0);
 			Vector dir = entity.getLocation().subtract(getEntity().getLocation()).toVector();
 			dir.setY(0);
 			if (dir.lengthSquared() != 0) {
 				dir.normalize();
-				dir.setY(1.5);
+				dir.multiply(0.7);
+				dir.setY(0.9);
 				entity.setVelocity(dir);
 			}
 		}
 		
 		//Update state
 		attackState++;
-		if (attackState >= (healthPercent > 1/3 ? 3 : 52)) {
+		if (attackState >= (healthPercent > 1/3.0 ? 5 : 3)) {
 			attackState = 0;
 		}
 	}
