@@ -143,7 +143,7 @@ public class KingdomHandler implements Listener{
 	
 	public Kingdom generateKingdom (KingdomPoint point) {
 		World world = point.getWorld();
-		long seed = TerrainGenUtil.generateValueBasedSeed(world.getSeed(), point.getX() + 6542, 1, point.getZ() - 555, 1);
+		long seed = TerrainGenUtil.generateValueBasedSeed(world.getSeed(), point.getX() + 6542, 1, point.getZ() - 555);
 		if (world.getEnvironment() == Environment.NETHER) {
 			seed++;
 		}

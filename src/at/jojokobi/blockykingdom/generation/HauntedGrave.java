@@ -108,7 +108,7 @@ public class HauntedGrave extends Structure{
 		place.setY(loc.getY() + 2);
 		place.setZ(loc.getZ() + 2);
 		
-		Random random = new Random(TerrainGenUtil.generateValueBasedSeed(seed, loc.getBlockX(), loc.getBlockY(), loc.getBlockZ(), 1));
+		Random random = new Random(TerrainGenUtil.generateValueBasedSeed(seed, loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()));
 		
 		place.getBlock().setType(Material.CHEST);
 		Chest chest = (Chest) place.getBlock().getState();

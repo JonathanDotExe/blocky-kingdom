@@ -87,7 +87,7 @@ public class DungeonTower extends Structure{
 	public List<StructureInstance<? extends Structure>> generate(Location loc, long seed) {
 		Location place = loc.clone();
 		
-		Random random = new Random(TerrainGenUtil.generateValueBasedSeed(seed, loc.getBlockX(), loc.getBlockY(), loc.getBlockZ(), 1));
+		Random random = new Random(TerrainGenUtil.generateValueBasedSeed(seed, loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()));
 		
 		for (int floor = 0; floor < FLOOR_COUNT; floor++) {
 			for (int y = 0; y < STAGE_HEIGHT; y++) {

@@ -12,13 +12,13 @@ import org.bukkit.util.noise.NoiseGenerator;
 import org.bukkit.util.noise.SimplexNoiseGenerator;
 
 import at.jojokobi.generator.AbstractGenerator;
-import at.jojokobi.generator.NoiseValueGenerator;
-import at.jojokobi.generator.ValueGenerator;
 import at.jojokobi.generator.biome.BiomeEntry;
 import at.jojokobi.generator.biome.BiomeSystem;
+import at.jojokobi.generator.biome.HeightBiomeSystem;
+import at.jojokobi.generator.NoiseValueGenerator;
+import at.jojokobi.generator.ValueGenerator;
 import at.jojokobi.generator.biome.Desert;
 import at.jojokobi.generator.biome.Forest;
-import at.jojokobi.generator.biome.HeightBiomeSystem;
 import at.jojokobi.generator.biome.Jungle;
 import at.jojokobi.generator.biome.Mountains;
 import at.jojokobi.generator.biome.Plains;
