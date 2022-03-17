@@ -92,11 +92,6 @@ public class Knight extends KingdomVillager<Villager> implements Attacker{
 	}
 	
 	@Override
-	protected double getSwimSpeed() {
-		return 0.2;
-	}
-	
-	@Override
 	protected boolean canClimb() {
 		return true;
 	}

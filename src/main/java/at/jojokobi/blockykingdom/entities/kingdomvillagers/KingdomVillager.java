@@ -200,6 +200,11 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 			addHappiness(0.1);
 		}
 	}
+	
+	@Override
+	protected double getSwimSpeed() {
+		return 0.2;
+	}
 
 	public String getName() {
 		return name;

@@ -61,6 +61,12 @@ public class Recruiter extends ShopVillager<Villager>{
 		return 0.5;
 	}
 	
+	@Override
+	protected double getWalkSpeed() {
+		return 0.4;
+	}
+	
+	
 	public static Recruiter deserialize (Map<String, Object> map) {
 		Recruiter entity = new Recruiter(null, null);
 		entity.load(map);

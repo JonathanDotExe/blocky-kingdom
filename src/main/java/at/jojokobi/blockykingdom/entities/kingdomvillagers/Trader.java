@@ -195,6 +195,11 @@ public class Trader extends ShopVillager<Villager>{
 	}
 	
 	@Override
+	protected double getWalkSpeed() {
+		return 0.4;
+	}
+	
+	@Override
 	public VillagerCategory getVillagerCategory() {
 		return VillagerCategory.TRADER;
 	}

@@ -94,7 +94,10 @@ public class QuestVillager extends KingdomVillager<Villager>{
 	@Override
 	protected void onInteract(PlayerInteractEntityEvent event) {
 		Player player = event.getPlayer();
-		if (lastQuestTimes.get(player.getUniqueId()) == null || lastQuestTimes.get(player.getUniqueId()) != getDayInt()) {
+		if (event.getPlayer().isSneaking()) {
+			super.onInteract(event);
+		}		
+		else if (lastQuestTimes.get(player.getUniqueId()) == null || lastQuestTimes.get(player.getUniqueId()) != getDayInt()) {
 			CharacterStats stats = StatHandler.getInstance().getStats(event.getPlayer()).getCharacterStats();
 			IQuest quest = generateDailyQuest();
 			if (stats.addQuest(quest, event.getPlayer())) {
@@ -191,4 +194,10 @@ public class QuestVillager extends KingdomVillager<Villager>{
 		return LINEAR_LEVEL_FUNCTION;
 	}
 
+	@Override
+	protected double getWalkSpeed() {
+		return 0.4;
+	}
+	
+	
 }
