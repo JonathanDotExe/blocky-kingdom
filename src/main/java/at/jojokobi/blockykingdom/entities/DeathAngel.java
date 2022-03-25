@@ -24,6 +24,7 @@ import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
 import at.jojokobi.blockykingdom.items.Cloud;
 import at.jojokobi.blockykingdom.items.CloudParticle;
 import at.jojokobi.blockykingdom.items.Money;
+import at.jojokobi.mcutil.NamespacedEntry;
 import at.jojokobi.mcutil.entity.Attacker;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.EntityHandler;
@@ -44,12 +45,12 @@ import at.jojokobi.mcutil.loot.LootItem;
 
 public class DeathAngel extends CustomEntity<Stray> implements Attacker, Targeter{
 	
+	public static final NamespacedEntry DEATH_ANGEL_KEY = new NamespacedEntry(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, "death_angel");
 	private final LootInventory loot = new LootInventory();
 
 	public DeathAngel(Location place, EntityHandler handler) {
 		super(place, handler, null);
-		setDespawnTicks(5000);
-//		setAi(DeathAngelAI.getInstance());
+		setDespawnTicks(2500);
 		loot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, CloudParticle.IDENTIFIER), 1, 3));
 		loot.addItem(new LootItem(0.05, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Cloud.IDENTIFIER), 1, 1));
 		loot.addItem(new LootItem(1, new ItemStack(Material.ARROW), 1, 3));
@@ -64,11 +65,22 @@ public class DeathAngel extends CustomEntity<Stray> implements Attacker, Targete
 	}
 	
 	@Override
+	protected void spawn() {
+		super.spawn();
+	}
+	
+	@Override
+	public void delete() {
+		super.delete();
+	}
+		
+	@Override
 	public void loop() {
 		super.loop();
 //		if (!getEntity().isOnGround()) {
 //			getEntity().setGliding(true);
 //		}
+		//Fall slow
 		if (getEntity().getVelocity().getY() < -0.2) {
 			getEntity().setVelocity(getEntity().getVelocity().setY(-0.2));
 		}

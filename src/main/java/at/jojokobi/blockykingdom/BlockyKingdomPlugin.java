@@ -22,7 +22,6 @@ import at.jojokobi.blockykingdom.dimensions.CloudJumpHandler;
 import at.jojokobi.blockykingdom.dimensions.HeavenDimension;
 import at.jojokobi.blockykingdom.entities.Airhead;
 import at.jojokobi.blockykingdom.entities.DeathAngel;
-import at.jojokobi.blockykingdom.entities.DeathAngelSpawner;
 import at.jojokobi.blockykingdom.entities.EliteGoblin;
 import at.jojokobi.blockykingdom.entities.FlyingSheep;
 import at.jojokobi.blockykingdom.entities.FlyingSheepType;
@@ -143,6 +142,8 @@ import at.jojokobi.mcutil.JojokobiUtilPlugin;
 import at.jojokobi.mcutil.dimensions.DimensionHandler;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.EntityHandler;
+import at.jojokobi.mcutil.entity.spawns.CustomEntitySpawnData;
+import at.jojokobi.mcutil.entity.spawns.CustomEntitySpawner;
 import at.jojokobi.mcutil.entity.spawns.CustomEntitySpawnerHandler;
 import at.jojokobi.mcutil.entity.spawns.CustomSpawnsHandler;
 import at.jojokobi.mcutil.entity.spawns.FunctionSpawn;
@@ -206,6 +207,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		util = getPlugin(JojokobiUtilPlugin.class);
 		
 		CustomEntitySpawnerHandler spawnerHandler = util.getSpawnerHandler();
+		CustomEntitySpawner spawner = util.getEntitySpawner();
 		
 		//Input Handler
 		inputHandler = new ChatInputHandler(this);
@@ -365,11 +367,14 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		CustomSpawnsHandler.getInstance().addItem(new FunctionSpawn (GoblinBoss.GOBLIN_BOSS_SPAWN_KEY, l -> new GoblinBoss(l, null)));
 		CustomSpawnsHandler.getInstance().addItem(new FunctionSpawn (EliteGoblin.ELITE_GOBLIN_SPAWN_KEY, l -> new EliteGoblin(l, null)));
 		CustomSpawnsHandler.getInstance().addItem(new FunctionSpawn(StoneBeetle.STONE_BEETLE_KEY, l -> new StoneBeetle(l, null)));
-		
-//		KingdomHandler.getInstance().addLoadListener(new KingdomCountVillagerListener(entityHandler));
-				
-		//Spawner
-		new DeathAngelSpawner(this, entityHandler);
+		CustomSpawnsHandler.getInstance().addItem(new FunctionSpawn(DeathAngel.DEATH_ANGEL_KEY, l -> new DeathAngel(l, null)));
+
+						
+		//Spawns
+		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(DeathAngel.DEATH_ANGEL_KEY), 0.3, 3).setCanSpawn(p -> HeavenDimension.getInstance().isDimension(p.getWorld())));
+		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(Goblin.GOBLIN_SPAWN_KEY), 0.2, 2).setCanSpawn(p -> p.getWorld().getTime() >= 12300 && p.getWorld().getTime() < 23850));
+		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(EliteGoblin.ELITE_GOBLIN_SPAWN_KEY), 0.05, 1).setCanSpawn(p -> p.getWorld().getTime() >= 12300 && p.getWorld().getTime() < 23850));
+
 		
 		//Happiness Handler
 		Bukkit.getPluginManager().registerEvents(new KingdomHappinessHandler(this, entityHandler), this);
@@ -377,8 +382,6 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		siegeHandler = new KingdomSiegeHandler(this, entityHandler);
 		
 		//Dimensions
-//		dimensionHandler = new DimensionHandler();
-//		Bukkit.getPluginManager().registerEvents(dimensionHandler, this);
 		util.getDimensionHandler().addDimension(HeavenDimension.getInstance());
 		
 		Bukkit.getPluginManager().registerEvents(CloudJumpHandler.getInstance(), this);
