@@ -371,9 +371,9 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 
 						
 		//Spawns
-		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(DeathAngel.DEATH_ANGEL_KEY), 0.4, 3).setCanSpawn(p -> HeavenDimension.getInstance().isDimension(p.getWorld())));
-		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(Goblin.GOBLIN_SPAWN_KEY), 0.2, 2).setCanSpawn(p -> p.getWorld().getTime() >= 12300 && p.getWorld().getTime() < 23850));
-		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(EliteGoblin.ELITE_GOBLIN_SPAWN_KEY), 0.05, 1).setCanSpawn(p -> p.getWorld().getTime() >= 12300 && p.getWorld().getTime() < 23850));
+		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(DeathAngel.DEATH_ANGEL_KEY), 0.4, 3).setCanSpawn(p -> HeavenDimension.getInstance().isDimension(p.getWorld())).setMaxEntitiesAround(32));
+		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(Goblin.GOBLIN_SPAWN_KEY), 0.4, 4).setCanSpawn(p -> p.getWorld().getTime() >= 12300 && p.getWorld().getTime() < 23850).setMaxEntitiesAround(16));
+		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(EliteGoblin.ELITE_GOBLIN_SPAWN_KEY), 0.05, 1).setCanSpawn(p -> p.getWorld().getTime() >= 12300 && p.getWorld().getTime() < 23850).setMaxEntitiesAround(16));
 
 		
 		//Happiness Handler
