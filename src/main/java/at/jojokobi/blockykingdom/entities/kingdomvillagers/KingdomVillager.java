@@ -12,8 +12,10 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Ghast;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Monster;
+import org.bukkit.entity.Phantom;
 import org.bukkit.entity.PigZombie;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -349,7 +351,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	@Override
 	public boolean isTarget(Entity entity) {
 		CustomEntity<?> custom = getHandler().getCustomEntityForEntity(entity);
-		return (entity instanceof Monster && !(entity instanceof Creeper) && !(entity instanceof PigZombie)
+		return ((entity instanceof Monster || entity instanceof Phantom || entity instanceof Ghast) && !(entity instanceof Creeper) && !(entity instanceof PigZombie)
 				&& (getKingdomPoint() == null || !(custom instanceof KingdomVillager<?>)
 						|| !getKingdomPoint().equals(((KingdomVillager<?>) custom).getKingdomPoint())))
 				|| ((kingdomPoint == null
