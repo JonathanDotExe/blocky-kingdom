@@ -10,6 +10,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
+import org.bukkit.event.entity.EntityTransformEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -127,6 +128,12 @@ public class Goblin extends CustomEntity<Zombie> implements Attacker{
 	@Override
 	protected boolean canSwim() {
 		return false;
+	}
+	
+	@Override
+	protected void onTransform(EntityTransformEvent event) {
+		super.onTransform(event);
+		event.setCancelled(true);
 	}
 
 }

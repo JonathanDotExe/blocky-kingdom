@@ -15,6 +15,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityTransformEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -166,6 +167,12 @@ public class ZombieBoss extends CustomEntity<Zombie> implements Attacker, Target
 			minion.getEquipment().setHelmet(new ItemStack(Material.GOLDEN_HELMET));
 			minion.getEquipment().setItemInMainHand(ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, MagicTorch.IDENTIFIER));
 		}
+	}
+	
+	@Override
+	protected void onTransform(EntityTransformEvent event) {
+		super.onTransform(event);
+		event.setCancelled(true);
 	}
 
 	@Override

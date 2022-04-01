@@ -12,6 +12,7 @@ import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.entity.Zombie;
+import org.bukkit.event.entity.EntityTransformEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -142,4 +143,10 @@ public class GoblinBoss extends CustomEntity<Zombie> implements Attacker {
 		return 0.4;
 	}
 
+	@Override
+	protected void onTransform(EntityTransformEvent event) {
+		super.onTransform(event);
+		event.setCancelled(true);
+	}
+	
 }
