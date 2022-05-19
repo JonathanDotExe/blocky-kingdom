@@ -138,4 +138,9 @@ public class Ghost extends CustomEntity<Skeleton> implements Attacker{
 		return BlockyKingdomPlugin.class;
 	}
 	
+	@Override
+	public double getAttackRange() {
+		return 2;
+	}
+	
 }

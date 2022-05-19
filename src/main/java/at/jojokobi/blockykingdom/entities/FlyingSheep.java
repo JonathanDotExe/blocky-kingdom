@@ -7,7 +7,6 @@ import java.util.Random;
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -21,18 +20,16 @@ import org.w3c.dom.Element;
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
 import at.jojokobi.blockykingdom.dimensions.CloudJumpHandler;
 import at.jojokobi.blockykingdom.dimensions.HeavenDimension;
-import at.jojokobi.mcutil.entity.Attacker;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.EntityMapData;
 import at.jojokobi.mcutil.entity.ai.RidingTask;
 
-public class FlyingSheep extends CustomEntity<Sheep> implements Attacker{
+public class FlyingSheep extends CustomEntity<Sheep>{
 
 	public FlyingSheep(Location place, EntityHandler handler) {
 		super(place, handler, FlyingSheepType.getInstance());
 		setDespawnTicks(-1);
-//		setAi(FlyingSheepAI.getInstance());
 		addEntityTask(new RidingTask());
 	}
 	
@@ -90,17 +87,6 @@ public class FlyingSheep extends CustomEntity<Sheep> implements Attacker{
 	@Override
 	protected double getFlySpeed() {
 		return 0.5;
-	}
-	
-
-	@Override
-	public void attack(Damageable entity) {
-		entity.damage(0, this.getEntity());
-	}
-
-	@Override
-	public int getAttackDelay() {
-		return 8;
 	}
 	
 	@Override

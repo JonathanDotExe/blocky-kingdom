@@ -122,7 +122,7 @@ public class Goblin extends CustomEntity<Zombie> implements Attacker{
 	
 	@Override
 	protected double getSprintSpeed() {
-		return 0.6;
+		return 0.5;
 	}
 	
 	@Override
@@ -134,6 +134,11 @@ public class Goblin extends CustomEntity<Zombie> implements Attacker{
 	protected void onTransform(EntityTransformEvent event) {
 		super.onTransform(event);
 		event.setCancelled(true);
+	}
+
+	@Override
+	public double getAttackRange() {
+		return 2;
 	}
 
 }

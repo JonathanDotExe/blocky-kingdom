@@ -132,4 +132,9 @@ public class EliteGoblin extends CustomEntity<Zombie> implements Attacker{
 		event.setCancelled(true);
 	}
 	
+	@Override
+	public double getAttackRange() {
+		return 2.5;
+	}
+	
 }

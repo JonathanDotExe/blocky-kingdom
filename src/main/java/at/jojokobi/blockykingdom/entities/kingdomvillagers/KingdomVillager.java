@@ -378,5 +378,5 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	public boolean isLoaded() {
 		return reloadTime <= 0;
 	}
-
+	
 }

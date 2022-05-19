@@ -165,5 +165,10 @@ public class GolemKnight extends KingdomVillager<IronGolem> implements Attacker{
 	public Function<Integer, Integer> getLevelXPFunction() {
 		return HALF_QUADRATIC_LEVEL_FUNCTION;
 	}
+
+	@Override
+	public double getAttackRange() {
+		return 3;
+	}
 	
 }

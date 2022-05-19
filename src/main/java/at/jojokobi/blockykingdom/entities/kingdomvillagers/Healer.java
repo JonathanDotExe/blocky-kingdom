@@ -155,4 +155,9 @@ public class Healer extends KingdomVillager<Villager> implements Attacker{
 		return HALF_QUADRATIC_LEVEL_FUNCTION;
 	}
 	
+	@Override
+	public double getAttackRange() {
+		return 3;
+	}
+	
 }
