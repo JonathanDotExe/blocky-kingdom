@@ -20,6 +20,7 @@ import org.bukkit.entity.PigZombie;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityPortalEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason;
@@ -124,50 +125,6 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	@Override
 	protected void onInteract(PlayerInteractEntityEvent event) {
 		super.onInteract(event);
-//			if (following) {
-//				setTask(null);
-//				setGoal(null);
-//				following = false;
-//				if (kingdomPoint == null) {
-//					KingdomPoint kingdomPoint = new KingdomPoint(getEntity().getLocation());
-//					Kingdom kingdom = kingdomPoint.toKingdom();
-//					CharacterStats stats = StatHandler.getInstance().getStats(event.getPlayer()).getCharacterStats();
-//					if (kingdom != null && kingdomPoint.canAddVillager(getVillagerCategory(), getHandler())) {
-//						if (kingdom.isOwner(event.getPlayer().getUniqueId()) && stats.getMoney() >= price) {
-//							this.kingdomPoint = kingdomPoint;
-//							stats.setMoney(stats.getMoney() - price);
-//							event.getPlayer().sendMessage(name + " is now fighting for " + kingdom.getName() + ".");
-//							setSave(true);
-//							setDespawnTicks(-1);
-//						} else {
-//							event.getPlayer().sendMessage("You have to own this kingdom and be able to pay " + price + "$!");
-//						}
-//					}
-//					else {
-//						event.getPlayer().sendMessage("The kingdom is already full!");
-//					}
-//				} else {
-//					event.getPlayer().sendMessage(name + " is no longer following you! " + isSave());
-//				}
-//				setSpawnPoint(getEntity().getLocation());
-//			} else {
-//				if (kingdomPoint == null || (reloadTime <= 0
-//						&& KingdomHandler.getInstance().getKingdom(kingdomPoint) != null && KingdomHandler.getInstance()
-//								.getKingdom(kingdomPoint).isOwner(event.getPlayer().getUniqueId()))) {
-//					reloadTime = 0;
-//					following = true;
-//					setTask(new LegacyFollowTask(event.getPlayer(), -1));
-//					event.getPlayer().sendMessage(name + " is following you! Happiness: " + happiness);
-//					//Feed
-//					if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BREAD) {
-//						event.getPlayer().getInventory().getItemInMainHand().setAmount(event.getPlayer().getInventory().getItemInMainHand().getAmount() - 1);
-//						getEntity().setHealth(Math.min(getEntity().getHealth() + 4.0, getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()));
-//						addHappiness(0.3);
-//						event.getPlayer().sendMessage("[" + getName() + "] Thank you the bread was delicous!");
-//						getEntity().getEyeLocation().getWorld().spawnParticle(Particle.HEART, getEntity().getEyeLocation(), 5);
-//					}
-//				}
-//			}
 		if (event.getPlayer().isSneaking()) {
 			if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BREAD) {
 				event.getPlayer().getInventory().getItemInMainHand().setAmount(event.getPlayer().getInventory().getItemInMainHand().getAmount() - 1);
@@ -184,14 +141,6 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		getHandler().runTaskLater(() -> event.getPlayer().closeInventory(), 0L);
 	}
 	
-//	@Override
-//	protected void onPotionSplash(PotionSplashEvent event) {
-//		super.onPotionSplash(event);
-//		if (event.getPotion().getEffects().stream().allMatch((effect) -> effect.getType() == PotionEffectType.HEAL || effect.getType() == PotionEffectType.REGENERATION)) {
-//			addHappiness(0.2);
-//		}
-//	}
-	
 	@Override
 	protected void onRegainHealth(EntityRegainHealthEvent event) {
 		super.onRegainHealth(event);
@@ -201,6 +150,12 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		else if (event.getRegainReason() == RegainReason.MAGIC_REGEN){
 			addHappiness(0.1);
 		}
+	}
+	
+	@Override
+	protected void onPortalTeleport(EntityPortalEvent event) {
+		super.onPortalTeleport(event);
+		event.setCancelled(true);
 	}
 	
 	@Override
