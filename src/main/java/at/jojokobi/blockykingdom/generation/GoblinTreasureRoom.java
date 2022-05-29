@@ -24,7 +24,7 @@ public class GoblinTreasureRoom extends Structure{
 	private LootInventory loot;
 
 	public GoblinTreasureRoom() {
-		super(6, 6, 6, 0, 1);
+		super(6, 6, 6, 0);
 		loot = new LootInventory();
 		loot.addItem(new LootItem(1, ItemHandler.getItemStack(Money.class), 1, 2));
 		loot.addItem(new LootItem(0.7, new ItemStack(Material.WHEAT), 1, 5));

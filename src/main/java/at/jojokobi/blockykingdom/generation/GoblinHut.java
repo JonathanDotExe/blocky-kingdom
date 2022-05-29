@@ -18,6 +18,7 @@ import at.jojokobi.blockykingdom.entities.Goblin;
 import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.mcutil.entity.spawns.CustomEntitySpawnerHandler;
 import at.jojokobi.mcutil.generation.FurnitureGenUtil;
+import at.jojokobi.mcutil.generation.TerrainGenUtil;
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
 import at.jojokobi.mcutil.item.ItemHandler;
@@ -33,7 +34,7 @@ public class GoblinHut extends Structure {
 	private LootInventory loot = new LootInventory();
 
 	public GoblinHut(CustomEntitySpawnerHandler handler) {
-		super(6, 6, 4 + ROOF_HEIGHT, 1000, 1);
+		super(6, 6, 4 + ROOF_HEIGHT, 1000);
 		this.handler = handler;
 		loot.addItem(new LootItem(1, ItemHandler.getItemStack(Money.class), 1, 3));
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.WHEAT), 1, 5));
@@ -52,6 +53,12 @@ public class GoblinHut extends Structure {
 	@Override
 	public boolean canGenerate(Chunk chunk, long seed) {
 		return super.canGenerate(chunk, seed) && chunk.getWorld().getEnvironment() == Environment.NORMAL;
+	}
+	
+	@Override
+	public List<StructureInstance<? extends Structure>> generateNaturally(Location place, long seed) {
+		TerrainGenUtil.buildGroundBelow(place, getWidth(), getLength(), b -> b.setType(Material.OAK_PLANKS));
+		return super.generateNaturally(place, seed);
 	}
 	
 	@Override

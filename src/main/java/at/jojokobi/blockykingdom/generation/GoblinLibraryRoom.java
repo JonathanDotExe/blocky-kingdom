@@ -28,7 +28,7 @@ public class GoblinLibraryRoom extends Structure {
 	private LootInventory loot = new LootInventory();
 
 	public GoblinLibraryRoom(EntityHandler handler) {
-		super(9, 9, 7, 0, 1);
+		super(9, 9, 7, 0);
 		this.handler = handler;
 		loot.addItem(new LootItem(1, ItemHandler.getItemStack(Money.class), 2, 5));
 		loot.addItem(new LootItem(0.1, ItemHandler.getItemStack(Hammer.class), 1, 1));

@@ -43,7 +43,7 @@ public class DungeonTower extends Structure{
 	private EntityHandler handler;
 	
 	public DungeonTower(EntityHandler handler) {
-		super(16, 16, STAGE_HEIGHT * FLOOR_COUNT, 600, 1);
+		super(16, 16, STAGE_HEIGHT * FLOOR_COUNT, 600);
 		this.handler = handler;
 		loot = new LootInventory();
 		

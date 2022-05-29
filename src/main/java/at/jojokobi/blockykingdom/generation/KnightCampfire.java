@@ -17,6 +17,7 @@ import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.blockykingdom.items.Smasher;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.mcutil.entity.EntityHandler;
+import at.jojokobi.mcutil.generation.TerrainGenUtil;
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
 import at.jojokobi.mcutil.item.ItemHandler;
@@ -30,7 +31,7 @@ public class KnightCampfire extends Structure{
 	private LootInventory loot;
 	
 	public KnightCampfire(EntityHandler entityHandler) {
-		super(5, 5, 2, 0, 1);
+		super(5, 5, 2, 0);
 		this.entityHandler = entityHandler;
 		
 		loot = new LootInventory();
@@ -61,6 +62,12 @@ public class KnightCampfire extends Structure{
 	@Override
 	public int calculatePlacementY(int width, int length, Location place) {
 		return super.calculatePlacementY(width, length, place);
+	}
+	
+	@Override
+	public List<StructureInstance<? extends Structure>> generateNaturally(Location place, long seed) {
+		TerrainGenUtil.buildGroundBelow(place, getWidth(), getLength(), b -> b.setType(Material.COBBLESTONE));
+		return super.generateNaturally(place, seed);
 	}
 
 	@Override

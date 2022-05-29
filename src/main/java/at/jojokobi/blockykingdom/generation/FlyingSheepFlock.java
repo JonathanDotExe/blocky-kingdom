@@ -18,7 +18,7 @@ public class FlyingSheepFlock extends Structure{
 	private EntityHandler entityHandler;
 	
 	public FlyingSheepFlock(EntityHandler entityHandler) {
-		super(16, 16, 1, 50, 1);
+		super(16, 16, 1, 50);
 		this.entityHandler = entityHandler;
 	}
 	

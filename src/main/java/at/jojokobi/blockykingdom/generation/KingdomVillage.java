@@ -25,7 +25,7 @@ public class KingdomVillage extends Structure {
 	private DimensionHandler dimHandler;
 
 	public KingdomVillage(DimensionHandler dimHandler, Structure... houses) {
-		super(128, 128, 32, 600, 1);
+		super(128, 128, 32, 600);
 		this.dimHandler = dimHandler;
 		spreader = new VillageSpreader(houses);
 		spreader.setBlockFunction(b -> {

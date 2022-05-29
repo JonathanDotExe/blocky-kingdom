@@ -17,7 +17,7 @@ public class GoblinBossChamber extends Structure {
 	private EntityHandler entityHandler;
 
 	public GoblinBossChamber(EntityHandler entityHandler) {
-		super(22, 22, 8, 0, 1);
+		super(22, 22, 8, 0);
 		this.entityHandler = entityHandler;
 	}
 

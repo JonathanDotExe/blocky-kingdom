@@ -31,7 +31,7 @@ public class Castle extends Structure{
 	private DimensionHandler dimHandler;
 	
 	public Castle(EntityHandler entityHandler, DimensionHandler dimHandler, ArcherTower archerTower, TraderHut traderHut) {
-		super(32, 32, 32, 0, 1);
+		super(32, 32, 32, 0);
 		this.entityHandler = entityHandler;
 		this.dimHandler = dimHandler;
 		this.archerTower = archerTower;
@@ -43,6 +43,12 @@ public class Castle extends Structure{
 	@Override
 	public int calculatePlacementY(int width, int length, Location place) {
 		return super.calculatePlacementY(width, length, place) - 1;
+	}
+	
+	@Override
+	public List<StructureInstance<? extends Structure>> generateNaturally(Location place, long seed) {
+		TerrainGenUtil.buildGroundBelow(place.clone().add(0, -1, 0), getWidth(), getLength(), b -> b.setType(Material.STONE_BRICKS));
+		return super.generateNaturally(place, seed);
 	}
 
 	@Override

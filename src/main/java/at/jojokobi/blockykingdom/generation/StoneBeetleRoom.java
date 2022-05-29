@@ -27,7 +27,7 @@ public class StoneBeetleRoom extends Structure {
 	private LootInventory loot = new LootInventory();
 
 	public StoneBeetleRoom(EntityHandler handler) {
-		super(11, 11, 7, 0, 1);
+		super(11, 11, 7, 0);
 		this.handler = handler;
 		loot.addItem(new LootItem(1, ItemHandler.getItemStack(Money.class), 2, 5));
 		loot.addItem(new LootItem(0.1, ItemHandler.getItemStack(Hammer.class), 1, 1));

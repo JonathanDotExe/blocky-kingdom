@@ -12,6 +12,7 @@ import at.jojokobi.blockykingdom.entities.kingdomvillagers.QuestVillager;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.generation.FurnitureGenUtil;
+import at.jojokobi.mcutil.generation.TerrainGenUtil;
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
 
@@ -20,7 +21,7 @@ public class QuestHut extends Structure{
 	private EntityHandler entityHandler;
 	
 	public QuestHut(EntityHandler entityHandler) {
-		super(5, 5, 5, 0, 1);
+		super(5, 5, 5, 0);
 		this.entityHandler = entityHandler;
 		
 		setxModifier(1201);
@@ -32,7 +33,12 @@ public class QuestHut extends Structure{
 		return super.calculatePlacementY(width, length, place) - 1;
 	}
 
-
+	@Override
+	public List<StructureInstance<? extends Structure>> generateNaturally(Location place, long seed) {
+		TerrainGenUtil.buildGroundBelow(place, getWidth(), getLength(), b -> b.setType(Material.COBBLESTONE));
+		return super.generateNaturally(place, seed);
+	}
+	
 	@Override
 	public List<StructureInstance<? extends Structure>> generate(Location loc, long seed) {
 		Location place = loc.clone();

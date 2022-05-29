@@ -12,6 +12,7 @@ import at.jojokobi.blockykingdom.entities.kingdomvillagers.Archer;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.generation.FurnitureGenUtil;
+import at.jojokobi.mcutil.generation.TerrainGenUtil;
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
 
@@ -20,11 +21,22 @@ public class ArcherTower extends Structure {
 	private EntityHandler entityHandler;
 
 	public ArcherTower(EntityHandler entityHandler) {
-		super(7, 7, 20, 0, 1);
+		super(7, 7, 20, 0);
 		this.entityHandler = entityHandler;
 
 		setxModifier(-6417);
 		setzModifier(-894);
+	}
+	
+	@Override
+	public int calculatePlacementY(int width, int length, Location place) {
+		return super.calculatePlacementY(width, length, place) - 1;
+	}
+	
+	@Override
+	public List<StructureInstance<? extends Structure>> generateNaturally(Location place, long seed) {
+		TerrainGenUtil.buildGroundBelow(place.clone().add(0, -1, 0), getWidth(), getLength(), b -> b.setType(Material.STONE_BRICKS));
+		return super.generateNaturally(place, seed);
 	}
 
 	@Override

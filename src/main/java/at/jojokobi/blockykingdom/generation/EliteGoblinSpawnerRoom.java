@@ -30,7 +30,7 @@ public class EliteGoblinSpawnerRoom extends Structure {
 	private LootInventory loot = new LootInventory();
 
 	public EliteGoblinSpawnerRoom(CustomEntitySpawnerHandler handler, DimensionHandler dimHandler) {
-		super(9, 9, 7, 1200, 1);
+		super(9, 9, 7, 1200);
 		this.handler = handler;
 		this.dimHandler = dimHandler;
 		loot.addItem(new LootItem(1, ItemHandler.getItemStack(Money.class), 3, 8));

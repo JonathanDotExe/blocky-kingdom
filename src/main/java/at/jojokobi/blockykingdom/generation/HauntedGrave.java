@@ -32,7 +32,7 @@ public class HauntedGrave extends Structure{
 	private CursedFigure cursedFigure;
 
 	public HauntedGrave(CursedFigure cursedFigure) {
-		super(9, 9, 6, 800, 1);
+		super(9, 9, 6, 800);
 		
 		this.cursedFigure = cursedFigure;
 		
@@ -71,6 +71,12 @@ public class HauntedGrave extends Structure{
 	@Override
 	public int calculatePlacementY(int width, int length, Location place) {
 		return super.calculatePlacementY(width, length, place) - 2;
+	}
+	
+	@Override
+	public List<StructureInstance<? extends Structure>> generateNaturally(Location place, long seed) {
+		TerrainGenUtil.buildGroundBelow(place, getWidth(), getLength(), b -> b.setType(Material.STONE_BRICKS));
+		return super.generateNaturally(place, seed);
 	}
 
 	@Override

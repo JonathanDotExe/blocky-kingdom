@@ -15,7 +15,7 @@ import at.jojokobi.mcutil.generation.population.StructureInstance;
 public class GoblinCaveCenter extends Structure {
 	
 	public GoblinCaveCenter() {
-		super(16, 16, 256, 0, 1);
+		super(16, 16, 256, 0);
 	}
 
 	@Override

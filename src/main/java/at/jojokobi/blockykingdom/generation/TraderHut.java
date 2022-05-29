@@ -45,7 +45,7 @@ public class TraderHut extends Structure{
 	private DimensionHandler dimHandler;
 	
 	public TraderHut(EntityHandler entityHandler, DimensionHandler dimHandler) {
-		super(8, 8, 5, 0, 1);
+		super(8, 8, 5, 0);
 		this.entityHandler = entityHandler;
 		this.dimHandler = dimHandler;
 		
@@ -106,6 +106,12 @@ public class TraderHut extends Structure{
 	@Override
 	public int calculatePlacementY(int width, int length, Location place) {
 		return super.calculatePlacementY(width, length, place) - 1;
+	}
+	
+	@Override
+	public List<StructureInstance<? extends Structure>> generateNaturally(Location place, long seed) {
+		TerrainGenUtil.buildGroundBelow(place, getWidth(), getLength(), b -> b.setType(Material.COBBLESTONE));
+		return super.generateNaturally(place, seed);
 	}
 
 	@Override

@@ -26,7 +26,7 @@ public class GoblinCave extends Structure{
 	
 	@SafeVarargs
 	public GoblinCave(DimensionHandler dimHandler, Structure center, Structure kingRoom, Structure[]... layers) {
-		super(128, 128, 64, 1200, 1);
+		super(128, 128, 64, 1200);
 		this.dimHandler = dimHandler;
 		this.center = center;
 		this.kingRoom = kingRoom;
