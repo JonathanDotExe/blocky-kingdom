@@ -26,30 +26,6 @@ public class HeavenGenerator extends ChunkGenerator {
 	@Override
 	public void generateSurface(WorldInfo world, Random random, int x, int z, ChunkData data) {
 		super.generateSurface(world, random, x, z, data);
-		//Remove bottom
-		NoiseGenerator generator = new MultiNoiseGenerator(world.getSeed(), 5);
-		for (int xPos = 0; xPos < TerrainGenUtil.CHUNK_WIDTH; xPos++) {
-			for (int zPos = 0; zPos < TerrainGenUtil.CHUNK_LENGTH; zPos++) {
-				int height = (int) generator.noise((x * TerrainGenUtil.CHUNK_WIDTH + xPos) * 0.005, (z * TerrainGenUtil.CHUNK_LENGTH + zPos) * 0.005) * 40 + 60;
-				for (int yPos = 0; yPos < height; yPos++) {
-					data.setBlock(xPos, yPos, zPos, Material.AIR);
-				}
-			}
-		}
-		//Clouds
-		for (int y = 30; y < 55; y += 5) {
-			NoiseGenerator g = new SimplexNoiseGenerator(world.getSeed() + y);
-			for (int i = 0; i < TerrainGenUtil.CHUNK_WIDTH; i++) {
-				for (int j = 0; j < TerrainGenUtil.CHUNK_LENGTH; j++) {
-					if (g.noise((x * TerrainGenUtil.CHUNK_WIDTH + i) * 0.025, (z * TerrainGenUtil.CHUNK_LENGTH + j) * 0.025) > 0.7) {
-						data.setBlock(i, y, j, Material.WHITE_WOOL);
-						data.setBlock(i, y + 1, j, Material.WHITE_WOOL);
-						data.setBlock(i, y + 1, j, Material.WHITE_WOOL);
-					}
-				}
-			}
-		}
-		System.out.println("Surface " + x + "/" + z);
 	}
 	
 	@Override
@@ -65,9 +41,10 @@ public class HeavenGenerator extends ChunkGenerator {
 					for (int zPos = 0; zPos < TerrainGenUtil.CHUNK_LENGTH; zPos++) {
 						int height = (int) generator.noise((x * TerrainGenUtil.CHUNK_WIDTH + xPos) * 0.005, (z * TerrainGenUtil.CHUNK_LENGTH + zPos) * 0.005) * 50 + 50;
 						boolean ended = false;
-						for (int yPos = 0; yPos < height && ended; yPos++) {
+						for (int yPos = worldInfo.getMinHeight(); yPos < height && !ended; yPos++) {
 							Material type = limitedRegion.getType(x * TerrainGenUtil.CHUNK_WIDTH + xPos, yPos, z * TerrainGenUtil.CHUNK_LENGTH + zPos);
 							ended = !type.isSolid() || type.isAir();
+							
 							limitedRegion.setType(x * TerrainGenUtil.CHUNK_WIDTH + xPos, yPos, z * TerrainGenUtil.CHUNK_LENGTH + zPos, Material.AIR);
 						}
 					}
@@ -78,9 +55,9 @@ public class HeavenGenerator extends ChunkGenerator {
 					for (int i = 0; i < TerrainGenUtil.CHUNK_WIDTH; i++) {
 						for (int j = 0; j < TerrainGenUtil.CHUNK_LENGTH; j++) {
 							if (g.noise((x * TerrainGenUtil.CHUNK_WIDTH + i) * 0.025, (z * TerrainGenUtil.CHUNK_LENGTH + j) * 0.025) > 0.7) {
-								limitedRegion.setType(x * TerrainGenUtil.CHUNK_WIDTH + x, y, z * TerrainGenUtil.CHUNK_LENGTH + j, Material.WHITE_WOOL);
-								limitedRegion.setType(x * TerrainGenUtil.CHUNK_WIDTH + x, y + 1, z * TerrainGenUtil.CHUNK_LENGTH + j, Material.WHITE_WOOL);
-								limitedRegion.setType(x * TerrainGenUtil.CHUNK_WIDTH + x, y + 2, z * TerrainGenUtil.CHUNK_LENGTH + j, Material.WHITE_WOOL);							
+								limitedRegion.setType(x * TerrainGenUtil.CHUNK_WIDTH + i, y, z * TerrainGenUtil.CHUNK_LENGTH + j, Material.WHITE_WOOL);
+								limitedRegion.setType(x * TerrainGenUtil.CHUNK_WIDTH + i, y + 1, z * TerrainGenUtil.CHUNK_LENGTH + j, Material.WHITE_WOOL);
+								limitedRegion.setType(x * TerrainGenUtil.CHUNK_WIDTH + i, y + 2, z * TerrainGenUtil.CHUNK_LENGTH + j, Material.WHITE_WOOL);							
 							}
 						}
 					}
