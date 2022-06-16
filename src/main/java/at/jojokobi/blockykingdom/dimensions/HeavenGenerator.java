@@ -19,16 +19,17 @@ public class HeavenGenerator extends ChunkGenerator {
 	}
 	
 	@Override
-	public void generateCaves(WorldInfo world, Random random, int x, int z, ChunkData data) {
-		super.generateCaves(world, random, x, z, data);
+	public void generateSurface(WorldInfo world, Random random, int x, int z, ChunkData data) {
+		super.generateSurface(world, random, x, z, data);
 		//Remove bottom
 		NoiseGenerator generator = new MultiNoiseGenerator(world.getSeed(), 5);
 		for (int xPos = 0; xPos < TerrainGenUtil.CHUNK_WIDTH; xPos++) {
 			for (int zPos = 0; zPos < TerrainGenUtil.CHUNK_LENGTH; zPos++) {
 				int height = (int) generator.noise((x * TerrainGenUtil.CHUNK_WIDTH + xPos) * 0.005, (z * TerrainGenUtil.CHUNK_LENGTH + zPos) * 0.005) * 40 + 60;
-				for (int yPos = data.getMinHeight() + 1; yPos < height; yPos++) {
+				for (int yPos = 0; yPos < height; yPos++) {
 					data.setBlock(xPos, yPos, zPos, Material.AIR);
 				}
+				data.set
 			}
 		}
 		//Clouds
@@ -44,6 +45,12 @@ public class HeavenGenerator extends ChunkGenerator {
 				}
 			}
 		}
+		System.out.println("Surface " + x + "/" + z);
+	}
+	
+	@Override
+	public void generateCaves(WorldInfo world, Random random, int x, int z, ChunkData data) {
+		super.generateCaves(world, random, x, z, data);
 	}
 
 	@Override
