@@ -30,6 +30,33 @@ public enum CharacterSpecies implements Iconable{
 	}
 	
 	@Override
+	public String getName() {
+		switch (this) {
+		case BARBARIAN:
+			return "Barbarian";
+		case DWARF:
+			return "Dwarf";
+		case ELF:
+			return "Elf";
+		case GIANT:
+			return "Giant";
+		case GOBLIN:
+			return "Goblin";
+		case HUMAN:
+			return "Human";
+		case LIZARDMAN:
+			return "Lizardman";
+		case OCEAN_MAN:
+			return "Ocean Man";
+		case VAMPIRE:
+			return "Vampire";
+		default:
+			break;
+		
+		}
+		return Iconable.super.getName();
+	}
+	@Override
 	public Material getMaterial() {
 		return material;
 	}
