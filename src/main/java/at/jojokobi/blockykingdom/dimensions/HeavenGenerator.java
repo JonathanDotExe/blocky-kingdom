@@ -6,6 +6,7 @@ import java.util.Random;
 
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.block.BlockState;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.LimitedRegion;
@@ -36,16 +37,21 @@ public class HeavenGenerator extends ChunkGenerator {
 			public void populate(WorldInfo worldInfo, Random random, int x, int z, LimitedRegion limitedRegion) {
 				super.populate(worldInfo, random, x, z, limitedRegion);
 				//Remove bottom
-				NoiseGenerator generator = new MultiNoiseGenerator(world.getSeed(), 5);
+				NoiseGenerator generator = new SimplexNoiseGenerator(world.getSeed() + 87);
 				for (int xPos = 0; xPos < TerrainGenUtil.CHUNK_WIDTH; xPos++) {
 					for (int zPos = 0; zPos < TerrainGenUtil.CHUNK_LENGTH; zPos++) {
-						int height = (int) generator.noise((x * TerrainGenUtil.CHUNK_WIDTH + xPos) * 0.005, (z * TerrainGenUtil.CHUNK_LENGTH + zPos) * 0.005) * 50 + 50;
+						int height = (int) generator.noise((x * TerrainGenUtil.CHUNK_WIDTH + xPos) * 0.005, (z * TerrainGenUtil.CHUNK_LENGTH + zPos) * 0.005) * 60 + 80;
+						System.out.println(height);
 						boolean ended = false;
-						for (int yPos = worldInfo.getMinHeight(); yPos < height && !ended; yPos++) {
+						for (int yPos = -64; yPos < height || !ended; yPos++) {
 							Material type = limitedRegion.getType(x * TerrainGenUtil.CHUNK_WIDTH + xPos, yPos, z * TerrainGenUtil.CHUNK_LENGTH + zPos);
 							ended = !type.isSolid() || type.isAir();
 							
-							limitedRegion.setType(x * TerrainGenUtil.CHUNK_WIDTH + xPos, yPos, z * TerrainGenUtil.CHUNK_LENGTH + zPos, Material.AIR);
+							if (yPos < height || !ended) {
+								BlockState state = limitedRegion.getBlockState(x * TerrainGenUtil.CHUNK_WIDTH + xPos, yPos, z * TerrainGenUtil.CHUNK_LENGTH + zPos);
+								state.setType(Material.AIR);
+								state.update(true, false);
+							}
 						}
 					}
 				}
