@@ -1,6 +1,7 @@
 package at.jojokobi.blockykingdom.dimensions;
 
 import java.util.HashSet;
+import java.util.OptionalLong;
 import java.util.Set;
 import java.util.UUID;
 
@@ -24,6 +25,7 @@ import org.bukkit.util.noise.SimplexNoiseGenerator;
 
 import at.jojokobi.mcutil.JojokobiUtilPlugin;
 import at.jojokobi.mcutil.generation.TerrainGenUtil;
+import net.minecraft.world.level.dimension.DimensionType;
 
 public class HeavenDimensionHandler implements Listener {
 	
@@ -126,7 +128,7 @@ public class HeavenDimensionHandler implements Listener {
 		jumping.remove(event.getPlayer().getUniqueId());
 	}
 	
-	@EventHandler
+	/*@EventHandler
 	public void onChunkPopulate(ChunkPopulateEvent event) {
 		//Generate heaven
 		if (HeavenDimension.getInstance().isDimension(event.getChunk().getWorld())) {
@@ -136,10 +138,9 @@ public class HeavenDimensionHandler implements Listener {
 			NoiseGenerator generator = new SimplexNoiseGenerator(event.getChunk().getWorld().getSeed() + 87);
 			for (int xPos = 0; xPos < TerrainGenUtil.CHUNK_WIDTH; xPos++) {
 				for (int zPos = 0; zPos < TerrainGenUtil.CHUNK_LENGTH; zPos++) {
-					int height = (int) generator.noise((x * TerrainGenUtil.CHUNK_WIDTH + xPos) * 0.005, (z * TerrainGenUtil.CHUNK_LENGTH + zPos) * 0.005) * 60 + 80;
-					System.out.println(height);
+					int height = (int) (generator.noise((x * TerrainGenUtil.CHUNK_WIDTH + xPos) * 0.005, (z * TerrainGenUtil.CHUNK_LENGTH + zPos) * 0.005) * 60 + 80);
 					boolean ended = false;
-					for (int yPos = -64; yPos < height || !ended; yPos++) {
+					for (int yPos = event.getWorld().getMinHeight(); yPos < height || !ended; yPos++) {
 						Material type = event.getChunk().getBlock(xPos, yPos, zPos).getType();
 						ended = !type.isSolid() || type.isAir();
 						
@@ -164,6 +165,33 @@ public class HeavenDimensionHandler implements Listener {
 					}
 				}
 			}
+		}
+	}*/
+	
+	@EventHandler
+	public void onWorldInit(World world) {
+		//Set custom dimension
+		if (HeavenDimension.getInstance().isDimension(world)) {
+			DimensionType type = new DimensionType(
+					OptionalLong.empty(), // Fixed Time
+					true, // Sky light
+					false, // Ceiling
+					false, // Ultra Warm
+					true, // Natural
+					true, // Coordinate Scale
+					false, // Dragon Fight
+					true, // Piglin Safe
+					true, // Bed works
+					false, // Respawn anchor
+					false, // Raids
+					0, // Min Y
+					256, // Max Y,
+					255, // Logical height
+					false, //Infinite burn
+					false, // Effects location
+					true //Ambient light
+			);
+			new Dimen	
 		}
 	}
 
