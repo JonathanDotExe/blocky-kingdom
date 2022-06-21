@@ -20,17 +20,17 @@ import org.bukkit.util.Vector;
 
 import at.jojokobi.mcutil.JojokobiUtilPlugin;
 
-public class CloudJumpHandler implements Listener {
+public class HeavenDimensionHandlerHandler implements Listener {
 	
-	private static CloudJumpHandler instance;
+	private static HeavenDimensionHandlerHandler instance;
 
-	private CloudJumpHandler() {
+	private HeavenDimensionHandlerHandler() {
 		
 	}
 	
-	public static CloudJumpHandler getInstance() {
+	public static HeavenDimensionHandlerHandler getInstance() {
 		if (instance == null) {
-			instance = new CloudJumpHandler();
+			instance = new HeavenDimensionHandlerHandler();
 		}
 		return instance;
 	}
