@@ -10,6 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.World;
 import org.bukkit.block.BlockState;
+import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -25,6 +26,7 @@ import org.bukkit.util.noise.SimplexNoiseGenerator;
 
 import at.jojokobi.mcutil.JojokobiUtilPlugin;
 import at.jojokobi.mcutil.generation.TerrainGenUtil;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.dimension.DimensionType;
 
 public class HeavenDimensionHandler implements Listener {
@@ -167,32 +169,5 @@ public class HeavenDimensionHandler implements Listener {
 			}
 		}
 	}*/
-	
-	@EventHandler
-	public void onWorldInit(World world) {
-		//Set custom dimension
-		if (HeavenDimension.getInstance().isDimension(world)) {
-			DimensionType type = new DimensionType(
-					OptionalLong.empty(), // Fixed Time
-					true, // Sky light
-					false, // Ceiling
-					false, // Ultra Warm
-					true, // Natural
-					true, // Coordinate Scale
-					false, // Dragon Fight
-					true, // Piglin Safe
-					true, // Bed works
-					false, // Respawn anchor
-					false, // Raids
-					0, // Min Y
-					256, // Max Y,
-					255, // Logical height
-					false, //Infinite burn
-					false, // Effects location
-					true //Ambient light
-			);
-			new Dimen	
-		}
-	}
 
 }
