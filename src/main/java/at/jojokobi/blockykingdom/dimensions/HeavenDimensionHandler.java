@@ -8,6 +8,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.World;
+import org.bukkit.block.BlockState;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,22 +16,26 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.world.ChunkPopulateEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
+import org.bukkit.util.noise.NoiseGenerator;
+import org.bukkit.util.noise.SimplexNoiseGenerator;
 
 import at.jojokobi.mcutil.JojokobiUtilPlugin;
+import at.jojokobi.mcutil.generation.TerrainGenUtil;
 
-public class HeavenDimensionHandlerHandler implements Listener {
+public class HeavenDimensionHandler implements Listener {
 	
-	private static HeavenDimensionHandlerHandler instance;
+	private static HeavenDimensionHandler instance;
 
-	private HeavenDimensionHandlerHandler() {
+	private HeavenDimensionHandler() {
 		
 	}
 	
-	public static HeavenDimensionHandlerHandler getInstance() {
+	public static HeavenDimensionHandler getInstance() {
 		if (instance == null) {
-			instance = new HeavenDimensionHandlerHandler();
+			instance = new HeavenDimensionHandler();
 		}
 		return instance;
 	}
@@ -119,6 +124,47 @@ public class HeavenDimensionHandlerHandler implements Listener {
 	@EventHandler
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		jumping.remove(event.getPlayer().getUniqueId());
+	}
+	
+	@EventHandler
+	public void onChunkPopulate(ChunkPopulateEvent event) {
+		//Generate heaven
+		if (HeavenDimension.getInstance().isDimension(event.getChunk().getWorld())) {
+			int x = event.getChunk().getX();
+			int z = event.getChunk().getZ();
+			//Remove bottom
+			NoiseGenerator generator = new SimplexNoiseGenerator(event.getChunk().getWorld().getSeed() + 87);
+			for (int xPos = 0; xPos < TerrainGenUtil.CHUNK_WIDTH; xPos++) {
+				for (int zPos = 0; zPos < TerrainGenUtil.CHUNK_LENGTH; zPos++) {
+					int height = (int) generator.noise((x * TerrainGenUtil.CHUNK_WIDTH + xPos) * 0.005, (z * TerrainGenUtil.CHUNK_LENGTH + zPos) * 0.005) * 60 + 80;
+					System.out.println(height);
+					boolean ended = false;
+					for (int yPos = -64; yPos < height || !ended; yPos++) {
+						Material type = event.getChunk().getBlock(xPos, yPos, zPos).getType();
+						ended = !type.isSolid() || type.isAir();
+						
+						if (yPos < height || !ended) {
+							BlockState state = event.getChunk().getBlock(xPos, yPos, zPos).getState();
+							state.setType(Material.AIR);
+							state.update(true, false);
+						}
+					}
+				}
+			}
+			//Clouds
+			for (int y = 30; y < 55; y += 5) {
+				NoiseGenerator g = new SimplexNoiseGenerator(event.getChunk().getWorld().getSeed() + y);
+				for (int i = 0; i < TerrainGenUtil.CHUNK_WIDTH; i++) {
+					for (int j = 0; j < TerrainGenUtil.CHUNK_LENGTH; j++) {
+						if (g.noise((x * TerrainGenUtil.CHUNK_WIDTH + i) * 0.025, (z * TerrainGenUtil.CHUNK_LENGTH + j) * 0.025) > 0.7) {
+							event.getChunk().getBlock(i, y, j).setType(Material.WHITE_WOOL, false);
+							event.getChunk().getBlock(i, y + 1, j).setType(Material.WHITE_WOOL, false);
+							event.getChunk().getBlock(i, y + 2, j).setType(Material.WHITE_WOOL, false);
+						}
+					}
+				}
+			}
+		}
 	}
 
 }

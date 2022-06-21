@@ -18,7 +18,7 @@ import org.spigotmc.event.entity.EntityDismountEvent;
 import org.w3c.dom.Element;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
-import at.jojokobi.blockykingdom.dimensions.HeavenDimensionHandlerHandler;
+import at.jojokobi.blockykingdom.dimensions.HeavenDimensionHandler;
 import at.jojokobi.blockykingdom.dimensions.HeavenDimension;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.EntityHandler;
@@ -52,7 +52,7 @@ public class FlyingSheep extends CustomEntity<Sheep>{
 	protected void onGetDismounted(EntityDismountEvent event) {
 		super.onGetDismounted(event);
 		if (event.getEntity() instanceof Player && getEntity().getLocation().getY() > 200) {
-			HeavenDimensionHandlerHandler.getInstance().doSuperJump((Player) event.getEntity(), 10);
+			HeavenDimensionHandler.getInstance().doSuperJump((Player) event.getEntity(), 10);
 		}
 	}
 	

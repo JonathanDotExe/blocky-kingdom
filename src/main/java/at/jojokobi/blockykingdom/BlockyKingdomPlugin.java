@@ -18,7 +18,7 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import at.jojokobi.blockykingdom.commands.ResetStatsCommand;
-import at.jojokobi.blockykingdom.dimensions.HeavenDimensionHandlerHandler;
+import at.jojokobi.blockykingdom.dimensions.HeavenDimensionHandler;
 import at.jojokobi.blockykingdom.dimensions.HeavenDimension;
 import at.jojokobi.blockykingdom.entities.Airhead;
 import at.jojokobi.blockykingdom.entities.DeathAngel;
@@ -384,7 +384,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		//Dimensions
 		util.getDimensionHandler().addDimension(HeavenDimension.getInstance());
 		
-		Bukkit.getPluginManager().registerEvents(HeavenDimensionHandlerHandler.getInstance(), this);
+		Bukkit.getPluginManager().registerEvents(HeavenDimensionHandler.getInstance(), this);
 		
 		//Generation
 		GenerationHandler genHandler = util.getGenerationHandler();
