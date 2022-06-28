@@ -14,6 +14,7 @@ import org.bukkit.util.noise.SimplexNoiseGenerator;
 import at.jojokobi.generator.AbstractGenerator;
 import at.jojokobi.generator.biome.BiomeSystem;
 import at.jojokobi.generator.biome.NoiseValueGenerator;
+import at.jojokobi.generator.biome.ValueGenerator;
 import at.jojokobi.generator.biome.biomes.ArcticOcean;
 import at.jojokobi.generator.biome.biomes.DarkForest;
 import at.jojokobi.generator.biome.biomes.Desert;
@@ -74,18 +75,33 @@ public class HeavenGenerator extends AbstractGenerator{
 		system.registerOceanBiome(new GridBiomeEntry(new ArcticOcean(), 0.0, 0.4, 0.0, 1.0));
 		return system;
 	}
+	
+	@Override
+	public boolean shouldGenerateMobs() {
+		return true;
+	}
+	
+	@Override
+	public boolean shouldGenerateCaves() {
+		return true;
+	}
+	
+	@Override
+	public boolean shouldGenerateDecorations() {
+		return true;
+	}
 
 }
 
 class HeavenValueGenerator extends NoiseValueGenerator {
 
-	private NoiseValueGenerator generator;
+	private ValueGenerator generator;
+	private NoiseGenerator gen;
 	
 	public HeavenValueGenerator(long seed) {
 		super(seed, 64, 150);
+		gen = new SimplexNoiseGenerator(seed - 81426);
 		generator = new NoiseValueGenerator(seed + 96, 0, 180);
-		generator.setMinHeight(0);
-		generator.setMaxHeight(180);
 		setMinHeight(60);
 		setMaxHeight(100);
 		setSeaLevel(60);
@@ -95,8 +111,13 @@ class HeavenValueGenerator extends NoiseValueGenerator {
 	}	
 	
 	@Override
+	public int getHeight(double x, double z, double noise) {
+		return super.getHeight(x, z, noise) + (int) (60 * (gen.noise(x * 0.00025, z * 0.00025) + 1));
+	}	
+	
+	@Override
 	public int getStartHeight(double x, double z) {
-		return generator.getHeight(x, z, getHeightNoise(x, z));
+		return generator.getHeight(x, z, generator.getHeightNoise(x, z)) + (int) (60 * (gen.noise(x * 0.00025, z * 0.00025) + 1));
 	}
 	
 }
