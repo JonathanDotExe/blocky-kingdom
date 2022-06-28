@@ -79,4 +79,9 @@ public class HeavenDimension implements CustomDimension{
 		};*/
 	}
 
+	@Override
+	public long getSeedOffset() {
+		return -87;
+	}
+
 }
