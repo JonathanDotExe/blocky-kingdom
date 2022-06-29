@@ -41,7 +41,7 @@ public class FlyingSheep extends CustomEntity<Sheep>{
 		}
 		
 		//Go to normal world
-		if (getEntity().getLocation().getY() < 2 && HeavenDimension.getInstance().isDimension(getEntity().getWorld())) {
+		if (getEntity().getLocation().getY() < getEntity().getWorld().getMinHeight() - 2 && HeavenDimension.getInstance().isDimension(getEntity().getWorld())) {
 			getEntity().eject();
 			Location place = new Location (HeavenDimension.getInstance().getNormalWorld(getEntity().getWorld()), getEntity().getLocation().getX(), 255, getEntity().getLocation().getZ());
 			getEntity().teleport(place);

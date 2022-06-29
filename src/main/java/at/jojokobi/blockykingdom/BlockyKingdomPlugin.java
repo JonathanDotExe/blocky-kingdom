@@ -496,7 +496,8 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 //	
 	@EventHandler
 	public void onPlayerMove (PlayerMoveEvent event) {
-		if (HeavenDimension.getInstance().isDimension(event.getTo().getWorld()) && event.getTo().getY() < 0) {
+		//Teleport back to normal world
+		if (HeavenDimension.getInstance().isDimension(event.getTo().getWorld()) && event.getTo().getY() < event.getPlayer().getWorld().getMinHeight()) {
 			Location to = new Location(util.getDimensionHandler().getNormalWorld(event.getTo().getWorld()), event.getTo().getX(), 255, event.getTo().getZ());
 			event.setTo(to);
 //			util.getEntityHandler().addEntity(new DeathAngel(to, util.getEntityHandler()));

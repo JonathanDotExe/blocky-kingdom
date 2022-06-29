@@ -38,6 +38,12 @@ public class HeavenGenerator extends AbstractGenerator{
 	@Override
 	public void generateNoise(WorldInfo world, Random random, int x, int z, ChunkData data) {
 		super.generateNoise(world, random, x, z, data);
+		
+	}
+	
+	@Override
+	public void generateCaves(WorldInfo world, Random random, int x, int z, ChunkData data) {
+		super.generateCaves(world, random, x, z, data);
 		for (int y = 30; y < 55; y += 5) {
 			NoiseGenerator generator = new SimplexNoiseGenerator(world.getSeed() + y);
 			for (int i = 0; i < TerrainGenUtil.CHUNK_WIDTH; i++) {
@@ -112,12 +118,12 @@ class HeavenValueGenerator extends NoiseValueGenerator {
 	
 	@Override
 	public int getHeight(double x, double z, double noise) {
-		return super.getHeight(x, z, noise) + (int) (60 * (gen.noise(x * 0.00025, z * 0.00025) + 1));
+		return super.getHeight(x, z, noise) + (int) (40 * (gen.noise(x * 0.00025, z * 0.00025) + 1));
 	}	
 	
 	@Override
 	public int getStartHeight(double x, double z) {
-		return generator.getHeight(x, z, generator.getHeightNoise(x, z)) + (int) (60 * (gen.noise(x * 0.00025, z * 0.00025) + 1));
+		return generator.getHeight(x, z, generator.getHeightNoise(x, z)) + (int) (40 * (gen.noise(x * 0.00025, z * 0.00025) + 1));
 	}
 	
 }

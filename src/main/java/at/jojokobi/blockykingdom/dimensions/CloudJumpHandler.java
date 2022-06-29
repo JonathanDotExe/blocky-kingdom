@@ -59,7 +59,7 @@ public class CloudJumpHandler implements Listener {
 				jumping.remove(player.getUniqueId());
 			}
 			//Go to heaven
-			if (player.getLocation().getY() > 255) {
+			if (player.getLocation().getY() > player.getWorld().getMaxHeight()) {
 				jumping.remove(player.getUniqueId());
 				JojokobiUtilPlugin util = JavaPlugin.getPlugin(JojokobiUtilPlugin.class);
 				World dimWorld = util.getDimensionHandler().getDimensionWorld(event.getPlayer().getWorld(), HeavenDimension.getInstance());
@@ -67,7 +67,7 @@ public class CloudJumpHandler implements Listener {
 					System.out.println("Teleporting to " + dimWorld.getName());
 					Location place = new Location(dimWorld, player.getLocation().getX(), 150, player.getLocation().getZ());
 					place.setY(place.getWorld().getHighestBlockYAt(place));
-					if (place.getBlockY() == 0) {
+					if (place.getBlockY() <= place.getWorld().getMinHeight()) {
 						place.setY(70);
 						place.getBlock().setType(Material.GLASS);
 						place.add(0, 1, 0);
@@ -109,6 +109,7 @@ public class CloudJumpHandler implements Listener {
 
 	@EventHandler
 	public void onEntityDamage(EntityDamageEvent event) {
+		//Cancel fall damage on super jump or on wool in heaven
 		if (event.getCause() == DamageCause.FALL && (jumping.contains(event.getEntity().getUniqueId())
 				|| (event.getEntity().getLocation().add(0, -0.1, 0).getBlock().getType() == Material.WHITE_WOOL
 						&& HeavenDimension.getInstance().isDimension(event.getEntity().getWorld())))) {
