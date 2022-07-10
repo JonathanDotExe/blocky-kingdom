@@ -101,18 +101,17 @@ public class HeavenGenerator extends AbstractGenerator{
 
 class HeavenValueGenerator extends NoiseValueGenerator {
 
-	private ValueGenerator generator;
+	private NoiseValueGenerator generator;
 	private NoiseGenerator gen;
 	
 	public HeavenValueGenerator(long seed) {
 		super(seed, 64, 150);
 		gen = new SimplexNoiseGenerator(seed - 81426);
-		generator = new NoiseValueGenerator(seed + 96, 0, 180);
+		generator = new NoiseValueGenerator(seed + 96, 0, 160);
+		generator.setHeightMultiplier(0.005);
 		setMinHeight(60);
-		setMaxHeight(100);
-		setSeaLevel(60);
-		setMoistureMultiplier(0.01);
-		setTemperatureMultiplier(0.01);
+		setMaxHeight(120);
+		setSeaLevel(59);
 		setHeightMultiplier(0.005);
 	}	
 	

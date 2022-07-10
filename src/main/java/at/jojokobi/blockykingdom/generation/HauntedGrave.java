@@ -104,7 +104,7 @@ public class HauntedGrave extends Structure{
 					place.setY(loc.getY() + y);
 					place.setZ(loc.getZ() + z);
 					
-					place.getBlock().setType(type);
+					place.getBlock().setType(type, false);
 				}
 			}
 		}
@@ -116,7 +116,7 @@ public class HauntedGrave extends Structure{
 		
 		Random random = new Random(TerrainGenUtil.generateValueBasedSeed(seed, loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()));
 		
-		place.getBlock().setType(Material.CHEST);
+		place.getBlock().setType(Material.CHEST, false);
 		Chest chest = (Chest) place.getBlock().getState();
 		loot.fillInventory(chest.getBlockInventory(), random, null);
 		
