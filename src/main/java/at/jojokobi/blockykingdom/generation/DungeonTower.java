@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.bukkit.Chunk;
+import org.bukkit.HeightMap;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World.Environment;
@@ -77,7 +78,7 @@ public class DungeonTower extends Structure{
 	
 	@Override
 	public int calculatePlacementY(int width, int length, Location place) {
-		return super.calculatePlacementY(width, length, place) - 1;
+		return super.calculatePlacementY(width, length, place, HeightMap.OCEAN_FLOOR) - 1;
 	}
 	
 	@Override
