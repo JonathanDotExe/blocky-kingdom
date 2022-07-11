@@ -173,16 +173,17 @@ public class DungeonTower extends Structure{
 						place.setZ(loc.getZ() + z);
 						//Wall
 						Material block = Material.AIR;
-						if (floor < floorCount - 1) {
-							if (x == 0 || z == 0 || x == getWidth() - 1 || z == getLength() - 1) {
-								block = wallMaterials [random.nextInt(wallMaterials.length)];
-							}
-							else if (y == 0) {
-								block = floorMaterials [random.nextInt(floorMaterials.length)];
-							}
+
+						if (x == 0 || z == 0 || x == getWidth() - 1 || z == getLength() - 1) {
+							block = wallMaterials [random.nextInt(wallMaterials.length)];
 						}
 						else if (y == 0) {
-							block = Material.INFESTED_STONE_BRICKS;
+							if (floor < floorCount - 1) {
+								block = floorMaterials [random.nextInt(floorMaterials.length)];
+							}
+							else {
+								block = Material.INFESTED_STONE_BRICKS;
+							}
 						}
 
 						place.getBlock().setType(block, false);
@@ -210,7 +211,7 @@ public class DungeonTower extends Structure{
 			place.setZ(loc.getZ() + getLength()/2);
 			
 			//Spawner
-			if (floor != FLOOR_COUNT - 1) {
+			if (floor != floorCount - 1) {
 				place.getBlock().setType(Material.SPAWNER);
 				CreatureSpawner spawner = (CreatureSpawner) place.getBlock().getState();
 				spawner.setSpawnedType(spawnerTypes[random.nextInt(spawnerTypes.length)]);
