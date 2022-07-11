@@ -46,7 +46,6 @@ public class DungeonTower extends Structure{
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.COAL), 1, 16));
 		loot.addItem(new LootItem(1, new ItemStack(Material.ROTTEN_FLESH), 1, 5));
 		loot.addItem(new LootItem(0.05, new ItemStack(Material.DIAMOND), 1, 3));
-		loot.addItem(new LootItem(0.05, new ItemStack(Material.EMERALD), 1, 3));
 		loot.addItem(new LootItem(0.7, new ItemStack(Material.GOLD_INGOT), 1, 8));
 		loot.addItem(new LootItem(1, new ItemStack(Material.IRON_INGOT), 1, 8));
 		loot.addItem(new LootItem(1, new ItemStack(Material.BREAD), 1, 5));
@@ -55,9 +54,7 @@ public class DungeonTower extends Structure{
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.BOW), 1, 1));
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.STONE_SWORD), 1, 1));
 		loot.addItem(new LootItem(0.3, new ItemStack(Material.BONE), 1, 3));
-		loot.addItem(new LootItem(0.05, new ItemStack(Material.SLIME_BALL), 1, 2));
 		loot.addItem(new LootItem(0.8, new ItemStack(Material.ARROW), 1, 10));	
-		loot.addItem(new LootItem(0.05, new ItemStack(Material.NAME_TAG), 1, 1));
 		loot.addItem(new LootItem(0.05, new ItemStack(Material.DIAMOND_HORSE_ARMOR), 1, 1));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_HORSE_ARMOR), 1, 1));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.GOLDEN_HORSE_ARMOR), 1, 1));
@@ -85,7 +82,26 @@ public class DungeonTower extends Structure{
 	
 	@Override
 	public List<StructureInstance<? extends Structure>> generateNaturally(Location place, long seed) {
-		TerrainGenUtil.buildGroundBelow(place.clone().add(0, -1, 0), getWidth(), getLength(), b -> b.setType(Material.STONE_BRICKS));
+		Material fillMaterial;
+		if (Arrays.asList(Biome.BADLANDS, Biome.ERODED_BADLANDS, Biome.BADLANDS, Biome.DESERT, Biome.SAVANNA, Biome.BASALT_DELTAS).contains(place.getBlock().getBiome())) {
+			fillMaterial = Material.SAND;
+		}
+		//Ocean
+		else if (Arrays.asList(Biome.COLD_OCEAN, Biome.DEEP_COLD_OCEAN, Biome.DEEP_FROZEN_OCEAN, Biome.DEEP_LUKEWARM_OCEAN, Biome.DEEP_OCEAN, Biome.FROZEN_OCEAN, Biome.LUKEWARM_OCEAN, Biome.OCEAN, Biome.COLD_OCEAN).contains(place.getBlock().getBiome())) {
+			fillMaterial = Material.SAND;
+		}
+		//Snow
+		else if (Arrays.asList(Biome.SNOWY_TAIGA, Biome.SNOWY_BEACH, Biome.SNOWY_PLAINS, Biome.SNOWY_SLOPES, Biome.ICE_SPIKES).contains(place.getBlock().getBiome())) {
+			fillMaterial = Material.SNOW_BLOCK;
+		}
+		//Forest
+		else if (Arrays.asList(Biome.JUNGLE, Biome.BAMBOO_JUNGLE, Biome.SPARSE_JUNGLE, Biome.DARK_FOREST).contains(place.getBlock().getBiome())) {
+			fillMaterial = Material.DIRT;
+		}
+		else {
+			fillMaterial = Material.STONE_BRICKS;
+		}
+		TerrainGenUtil.buildGroundBelow(place.clone().add(0, -1, 0), getWidth(), getLength(), b -> b.setType(fillMaterial));
 		return super.generateNaturally(place, seed);
 	}
 	
@@ -104,28 +120,50 @@ public class DungeonTower extends Structure{
 			floorMaterials = new Material[]{Material.SANDSTONE, Material.SANDSTONE, Material.SMOOTH_SANDSTONE, Material.SAND, Material.SAND, Material.SAND, Material.AIR};
 			wallMaterials = new Material[]{Material.SANDSTONE, Material.SANDSTONE, Material.SAND, Material.RED_SANDSTONE};
 			spawnerTypes = new EntityType[]{EntityType.ZOMBIE, EntityType.HUSK, EntityType.HUSK, EntityType.SPIDER, EntityType.SKELETON, EntityType.CAVE_SPIDER, EntityType.CREEPER};
+			specialLoot.addItem(new LootItem(0.25, new ItemStack(Material.BONE_BLOCK), 1, 4));
+			specialLoot.addItem(new LootItem(0.2, new ItemStack(Material.LAPIS_LAZULI), 1, 8));
+			specialLoot.addItem(new LootItem(0.4, new ItemStack(Material.COBWEB), 1, 8));
 		}
 		//Ocean
 		else if (Arrays.asList(Biome.COLD_OCEAN, Biome.DEEP_COLD_OCEAN, Biome.DEEP_FROZEN_OCEAN, Biome.DEEP_LUKEWARM_OCEAN, Biome.DEEP_OCEAN, Biome.FROZEN_OCEAN, Biome.LUKEWARM_OCEAN, Biome.OCEAN, Biome.COLD_OCEAN).contains(place.getBlock().getBiome())) {
 			floorMaterials = new Material[]{Material.DARK_PRISMARINE};
 			wallMaterials = new Material[]{Material.PRISMARINE_BRICKS};
 			spawnerTypes = new EntityType[]{EntityType.ZOMBIE, EntityType.DROWNED, EntityType.SPIDER, EntityType.SKELETON, EntityType.GUARDIAN, EntityType.GUARDIAN};
+			specialLoot.addItem(new LootItem(0.5, new ItemStack(Material.PRISMARINE_SHARD), 4, 16));
+			specialLoot.addItem(new LootItem(0.5, new ItemStack(Material.PRISMARINE_CRYSTALS), 1, 8));
+			specialLoot.addItem(new LootItem(0.2, new ItemStack(Material.SEA_LANTERN), 1, 1));
 		}
 		//Snow
 		else if (Arrays.asList(Biome.SNOWY_TAIGA, Biome.SNOWY_BEACH, Biome.SNOWY_PLAINS, Biome.SNOWY_SLOPES, Biome.ICE_SPIKES).contains(place.getBlock().getBiome())) {
-			floorMaterials = new Material[]{Material.DARK_PRISMARINE};
-			wallMaterials = new Material[]{Material.PRISMARINE_BRICKS};
+			floorMaterials = new Material[]{Material.PACKED_ICE, Material.PACKED_ICE, Material.PACKED_ICE, Material.AIR};
+			wallMaterials = new Material[]{Material.SNOW_BLOCK, Material.SNOW_BLOCK, Material.SNOW_BLOCK, Material.PACKED_ICE};
 			spawnerTypes = new EntityType[]{EntityType.ZOMBIE, EntityType.DROWNED, EntityType.SPIDER, EntityType.SKELETON, EntityType.GUARDIAN, EntityType.GUARDIAN};
+			specialLoot.addItem(new LootItem(0.5, new ItemStack(Material.BLUE_ICE), 4, 16));
+			specialLoot.addItem(new LootItem(0.1, new ItemStack(Material.CHAINMAIL_BOOTS), 1, 1).setEnchant(true));
+			specialLoot.addItem(new LootItem(0.1, new ItemStack(Material.CHAINMAIL_CHESTPLATE), 1, 1).setEnchant(true));
+			specialLoot.addItem(new LootItem(0.1, new ItemStack(Material.CHAINMAIL_HELMET), 1, 1).setEnchant(true));
+			specialLoot.addItem(new LootItem(0.1, new ItemStack(Material.CHAINMAIL_LEGGINGS), 1, 1).setEnchant(true));
 		}
 		//Forest
 		else if (Arrays.asList(Biome.JUNGLE, Biome.BAMBOO_JUNGLE, Biome.SPARSE_JUNGLE, Biome.DARK_FOREST).contains(place.getBlock().getBiome())) {
 			floorMaterials = new Material[]{Material.DARK_OAK_WOOD};
 			wallMaterials = new Material[]{Material.DARK_OAK_WOOD};
 			spawnerTypes = new EntityType[]{EntityType.ZOMBIE, EntityType.ZOMBIE, EntityType.SPIDER, EntityType.SKELETON, EntityType.ENDERMAN, EntityType.PILLAGER};
+			specialLoot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_BOOTS), 1, 1).setEnchant(true));
+			specialLoot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_CHESTPLATE), 1, 1).setEnchant(true));
+			specialLoot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_HELMET), 1, 1).setEnchant(true));
+			specialLoot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_LEGGINGS), 1, 1).setEnchant(true));
+			specialLoot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_AXE), 1, 1).setEnchant(true));
+		}
+		else {
+			specialLoot.addItem(new LootItem(0.2, new ItemStack(Material.SLIME_BALL), 1, 2));
+			specialLoot.addItem(new LootItem(0.05, new ItemStack(Material.EMERALD), 1, 3));
+			specialLoot.addItem(new LootItem(0.1, new ItemStack(Material.NAME_TAG), 1, 1));
 		}
 		
 		//Floors
-		for (int floor = 0; floor < FLOOR_COUNT; floor++) {
+		int floorCount = FLOOR_COUNT - 2 + random.nextInt(5);
+		for (int floor = 0; floor < floorCount; floor++) {
 			for (int y = 0; y < STAGE_HEIGHT; y++) {
 				for (int x = 0; x < getWidth(); x++) {
 					for (int z = 0; z < getLength(); z++) {
@@ -134,7 +172,7 @@ public class DungeonTower extends Structure{
 						place.setZ(loc.getZ() + z);
 						//Wall
 						Material block = Material.AIR;
-						if (floor < FLOOR_COUNT - 1) {
+						if (floor < floorCount - 1) {
 							if (x == 0 || z == 0 || x == getWidth() - 1 || z == getLength() - 1) {
 								block = wallMaterials [random.nextInt(wallMaterials.length)];
 							}
@@ -162,6 +200,9 @@ public class DungeonTower extends Structure{
 			if (floor >= 2) {
 				loot.fillInventory(chest.getBlockInventory(), random, null);
 			}
+			if (floor >= floorCount - 3) {
+				specialLoot.fillInventory(chest.getBlockInventory(), random, null);
+			}
 			
 			place.setX(loc.getX() + getWidth()/2);
 			place.setY(loc.getY()+ STAGE_HEIGHT * floor + 1);
@@ -183,7 +224,7 @@ public class DungeonTower extends Structure{
 			
 		}
 		
-		return Arrays.asList(new StructureInstance<DungeonTower>(this, loc, getWidth(), getHeight(), getLength()));
+		return Arrays.asList(new StructureInstance<DungeonTower>(this, loc, getWidth(), floorCount * STAGE_HEIGHT, getLength()));
 	}
 
 	@Override
