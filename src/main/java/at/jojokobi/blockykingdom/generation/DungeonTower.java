@@ -8,6 +8,7 @@ import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World.Environment;
+import org.bukkit.block.Biome;
 import org.bukkit.block.Chest;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.entity.EntityType;
@@ -33,17 +34,12 @@ public class DungeonTower extends Structure{
 	private static final int FLOOR_COUNT = 5;
 	private static final int STAGE_HEIGHT = 10;
 	
-	private static final Material[] FLOOR_MATERIALS = {Material.COBBLESTONE, Material.COBBLESTONE, Material.MOSSY_COBBLESTONE, Material.AIR};
-	private static final Material[] WALL_MATERIALS = {Material.STONE_BRICKS, Material.STONE_BRICKS, Material.CHISELED_STONE_BRICKS, Material.MOSSY_STONE_BRICKS, Material.INFESTED_STONE_BRICKS};
-	private static final EntityType[] SPAWNER_TYPES = {EntityType.ZOMBIE, EntityType.ZOMBIE, EntityType.SPIDER, EntityType.SKELETON, EntityType.CAVE_SPIDER};
-	
-	
 	private LootInventory loot;
 	
 	private EntityHandler handler;
 	
 	public DungeonTower(EntityHandler handler) {
-		super(16, 16, STAGE_HEIGHT * FLOOR_COUNT, 600);
+		super(16, 16, STAGE_HEIGHT * FLOOR_COUNT, 700);
 		this.handler = handler;
 		loot = new LootInventory();
 		
@@ -99,7 +95,28 @@ public class DungeonTower extends Structure{
 		Location place = loc.clone();
 		
 		Random random = new Random(TerrainGenUtil.generateValueBasedSeed(seed, loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()));
+		Material[] FLOOR_MATERIALS = {Material.COBBLESTONE, Material.COBBLESTONE, Material.MOSSY_COBBLESTONE, Material.AIR};
+		Material[] WALL_MATERIALS = {Material.STONE_BRICKS, Material.STONE_BRICKS, Material.CHISELED_STONE_BRICKS, Material.MOSSY_STONE_BRICKS, Material.INFESTED_STONE_BRICKS};
+		EntityType[] SPAWNER_TYPES = {EntityType.ZOMBIE, EntityType.ZOMBIE, EntityType.SPIDER, EntityType.SKELETON, EntityType.CAVE_SPIDER};
+		//Custom blocks
+		//Desert
+		if (Arrays.asList(Biome.BADLANDS, Biome.ERODED_BADLANDS, Biome.BADLANDS, Biome.DESERT, Biome.SAVANNA, Biome.BASALT_DELTAS).contains(place.getBlock().getBiome())) {
+			
+		}
+		//Ocean
+		else if (Arrays.asList(Biome.COLD_OCEAN, Biome.DEEP_COLD_OCEAN, Biome.DEEP_FROZEN_OCEAN, Biome.DEEP_LUKEWARM_OCEAN, Biome.DEEP_OCEAN, Biome.FROZEN_OCEAN, Biome.LUKEWARM_OCEAN, Biome.OCEAN, Biome.COLD_OCEAN).contains(place.getBlock().getBiome())) {
+			
+		}
+		//Snow
+		else if (Arrays.asList(Biome.SNOWY_TAIGA, Biome.SNOWY_BEACH, Biome.SNOWY_PLAINS, Biome.SNOWY_SLOPES, Biome.ICE_SPIKES).contains(place.getBlock().getBiome())) {
+			
+		}
+		//Forest
+		else if (Arrays.asList(Biome.JUNGLE, Biome.BAMBOO_JUNGLE, Biome.SPARSE_JUNGLE, Biome.DARK_FOREST).contains(place.getBlock().getBiome())) {
+			
+		}
 		
+		//Floors
 		for (int floor = 0; floor < FLOOR_COUNT; floor++) {
 			for (int y = 0; y < STAGE_HEIGHT; y++) {
 				for (int x = 0; x < getWidth(); x++) {
@@ -110,11 +127,11 @@ public class DungeonTower extends Structure{
 						//Wall
 						Material block = Material.AIR;
 						if (floor < FLOOR_COUNT - 1) {
-							if (y == 0) {
-								block = FLOOR_MATERIALS [random.nextInt(FLOOR_MATERIALS.length)];
-							}
-							else if (x == 0 || z == 0 || x == getWidth() - 1 || z == getLength() - 1) {
+							if (x == 0 || z == 0 || x == getWidth() - 1 || z == getLength() - 1) {
 								block = WALL_MATERIALS [random.nextInt(WALL_MATERIALS.length)];
+							}
+							else if (y == 0) {
+								block = FLOOR_MATERIALS [random.nextInt(FLOOR_MATERIALS.length)];
 							}
 						}
 						else if (y == 0) {
