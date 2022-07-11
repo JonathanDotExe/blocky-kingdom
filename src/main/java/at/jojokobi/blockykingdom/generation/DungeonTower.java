@@ -52,13 +52,12 @@ public class DungeonTower extends Structure{
 		loot.addItem(new LootItem(1, new ItemStack(Material.BREAD), 1, 5));
 		loot.addItem(new LootItem(1, new ItemStack(Material.APPLE), 1, 3));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.ENDER_PEARL), 1, 16));
-		loot.addItem(new LootItem(0.1, new ItemStack(Material.BLAZE_ROD), 1, 1));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.BOW), 1, 1));
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.STONE_SWORD), 1, 1));
 		loot.addItem(new LootItem(0.3, new ItemStack(Material.BONE), 1, 3));
-		loot.addItem(new LootItem(0.1, new ItemStack(Material.SLIME_BALL), 1, 2));
+		loot.addItem(new LootItem(0.05, new ItemStack(Material.SLIME_BALL), 1, 2));
 		loot.addItem(new LootItem(0.8, new ItemStack(Material.ARROW), 1, 10));	
-		loot.addItem(new LootItem(0.1, new ItemStack(Material.NAME_TAG), 1, 1));
+		loot.addItem(new LootItem(0.05, new ItemStack(Material.NAME_TAG), 1, 1));
 		loot.addItem(new LootItem(0.05, new ItemStack(Material.DIAMOND_HORSE_ARMOR), 1, 1));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_HORSE_ARMOR), 1, 1));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.GOLDEN_HORSE_ARMOR), 1, 1));
@@ -95,25 +94,34 @@ public class DungeonTower extends Structure{
 		Location place = loc.clone();
 		
 		Random random = new Random(TerrainGenUtil.generateValueBasedSeed(seed, loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()));
-		Material[] FLOOR_MATERIALS = {Material.COBBLESTONE, Material.COBBLESTONE, Material.MOSSY_COBBLESTONE, Material.AIR};
-		Material[] WALL_MATERIALS = {Material.STONE_BRICKS, Material.STONE_BRICKS, Material.CHISELED_STONE_BRICKS, Material.MOSSY_STONE_BRICKS, Material.INFESTED_STONE_BRICKS};
-		EntityType[] SPAWNER_TYPES = {EntityType.ZOMBIE, EntityType.ZOMBIE, EntityType.SPIDER, EntityType.SKELETON, EntityType.CAVE_SPIDER};
+		Material[] floorMaterials = {Material.COBBLESTONE, Material.COBBLESTONE, Material.MOSSY_COBBLESTONE, Material.AIR};
+		Material[] wallMaterials = {Material.STONE_BRICKS, Material.STONE_BRICKS, Material.CHISELED_STONE_BRICKS, Material.MOSSY_STONE_BRICKS, Material.INFESTED_STONE_BRICKS};
+		EntityType[] spawnerTypes = {EntityType.ZOMBIE, EntityType.ZOMBIE, EntityType.SPIDER, EntityType.SKELETON, EntityType.CAVE_SPIDER};
+		LootInventory specialLoot = new LootInventory();
 		//Custom blocks
 		//Desert
 		if (Arrays.asList(Biome.BADLANDS, Biome.ERODED_BADLANDS, Biome.BADLANDS, Biome.DESERT, Biome.SAVANNA, Biome.BASALT_DELTAS).contains(place.getBlock().getBiome())) {
-			
+			floorMaterials = new Material[]{Material.SANDSTONE, Material.SANDSTONE, Material.SMOOTH_SANDSTONE, Material.SAND, Material.SAND, Material.SAND, Material.AIR};
+			wallMaterials = new Material[]{Material.SANDSTONE, Material.SANDSTONE, Material.SAND, Material.RED_SANDSTONE};
+			spawnerTypes = new EntityType[]{EntityType.ZOMBIE, EntityType.HUSK, EntityType.HUSK, EntityType.SPIDER, EntityType.SKELETON, EntityType.CAVE_SPIDER, EntityType.CREEPER};
 		}
 		//Ocean
 		else if (Arrays.asList(Biome.COLD_OCEAN, Biome.DEEP_COLD_OCEAN, Biome.DEEP_FROZEN_OCEAN, Biome.DEEP_LUKEWARM_OCEAN, Biome.DEEP_OCEAN, Biome.FROZEN_OCEAN, Biome.LUKEWARM_OCEAN, Biome.OCEAN, Biome.COLD_OCEAN).contains(place.getBlock().getBiome())) {
-			
+			floorMaterials = new Material[]{Material.DARK_PRISMARINE};
+			wallMaterials = new Material[]{Material.PRISMARINE_BRICKS};
+			spawnerTypes = new EntityType[]{EntityType.ZOMBIE, EntityType.DROWNED, EntityType.SPIDER, EntityType.SKELETON, EntityType.GUARDIAN, EntityType.GUARDIAN};
 		}
 		//Snow
 		else if (Arrays.asList(Biome.SNOWY_TAIGA, Biome.SNOWY_BEACH, Biome.SNOWY_PLAINS, Biome.SNOWY_SLOPES, Biome.ICE_SPIKES).contains(place.getBlock().getBiome())) {
-			
+			floorMaterials = new Material[]{Material.DARK_PRISMARINE};
+			wallMaterials = new Material[]{Material.PRISMARINE_BRICKS};
+			spawnerTypes = new EntityType[]{EntityType.ZOMBIE, EntityType.DROWNED, EntityType.SPIDER, EntityType.SKELETON, EntityType.GUARDIAN, EntityType.GUARDIAN};
 		}
 		//Forest
 		else if (Arrays.asList(Biome.JUNGLE, Biome.BAMBOO_JUNGLE, Biome.SPARSE_JUNGLE, Biome.DARK_FOREST).contains(place.getBlock().getBiome())) {
-			
+			floorMaterials = new Material[]{Material.DARK_OAK_WOOD};
+			wallMaterials = new Material[]{Material.DARK_OAK_WOOD};
+			spawnerTypes = new EntityType[]{EntityType.ZOMBIE, EntityType.ZOMBIE, EntityType.SPIDER, EntityType.SKELETON, EntityType.ENDERMAN, EntityType.PILLAGER};
 		}
 		
 		//Floors
@@ -128,17 +136,17 @@ public class DungeonTower extends Structure{
 						Material block = Material.AIR;
 						if (floor < FLOOR_COUNT - 1) {
 							if (x == 0 || z == 0 || x == getWidth() - 1 || z == getLength() - 1) {
-								block = WALL_MATERIALS [random.nextInt(WALL_MATERIALS.length)];
+								block = wallMaterials [random.nextInt(wallMaterials.length)];
 							}
 							else if (y == 0) {
-								block = FLOOR_MATERIALS [random.nextInt(FLOOR_MATERIALS.length)];
+								block = floorMaterials [random.nextInt(floorMaterials.length)];
 							}
 						}
 						else if (y == 0) {
 							block = Material.INFESTED_STONE_BRICKS;
 						}
 
-						place.getBlock().setType(block);
+						place.getBlock().setType(block, false);
 					}
 				}
 			}
@@ -148,7 +156,7 @@ public class DungeonTower extends Structure{
 			place.setY(loc.getY()+ STAGE_HEIGHT * floor + 1);
 			place.setZ(loc.getZ() + 1);
 			
-			place.getBlock().setType(Material.CHEST);
+			place.getBlock().setType(Material.CHEST, false);
 			Chest chest = (Chest) place.getBlock().getState();
 			loot.fillInventory(chest.getBlockInventory(), random, null);
 			if (floor >= 2) {
@@ -163,7 +171,7 @@ public class DungeonTower extends Structure{
 			if (floor != FLOOR_COUNT - 1) {
 				place.getBlock().setType(Material.SPAWNER);
 				CreatureSpawner spawner = (CreatureSpawner) place.getBlock().getState();
-				spawner.setSpawnedType(SPAWNER_TYPES[random.nextInt(SPAWNER_TYPES.length)]);
+				spawner.setSpawnedType(spawnerTypes[random.nextInt(spawnerTypes.length)]);
 				spawner.update();
 			}
 			else {
