@@ -15,7 +15,6 @@ import java.util.function.Function;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
@@ -33,6 +32,7 @@ import at.jojokobi.blockykingdom.players.quests.MineQuest;
 import at.jojokobi.blockykingdom.players.quests.QuestGenetator;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
+import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
 public class QuestVillager extends KingdomVillager<Villager>{
 
@@ -43,6 +43,9 @@ public class QuestVillager extends KingdomVillager<Villager>{
 	public QuestVillager(Location place, EntityHandler handler, Random random) {
 		super(place, handler, random, null);
 		questSeed = random.nextLong();
+		//Peaceful AI
+		addEntityTask(new VillagerFollowTask());
+		addEntityTask(new ReturnToSpawnTask());
 		Map<Integer, List<QuestGenetator>> quests = new HashMap<>();
 		quests.put(1, Collections.unmodifiableList(Arrays.asList(
 				MineQuest.newMineQuestGenerator(Material.STONE).setMaxAmount(1).setAmountMultiplier(64).setBasicReward(1000).makeImutable(),
@@ -83,7 +86,7 @@ public class QuestVillager extends KingdomVillager<Villager>{
 				KillQuest.newKillQuestGenerator(EntityType.ENDER_DRAGON).setMaxAmount(1).setAmountMultiplier(1).setBasicReward(20000).makeImutable(),
 				KillQuest.newKillQuestGenerator(EntityType.WITHER).setMaxAmount(1).setAmountMultiplier(1).setBasicReward(20000).makeImutable(),
 				MineQuest.newMineQuestGenerator(Material.BEDROCK).setMaxAmount(1).setBasicReward(Integer.MAX_VALUE).makeImutable(),
-				MineQuest.newMineQuestGenerator(Material.DRAGON_EGG).setMaxAmount(1).setBasicReward(1000).makeImutable())));
+				MineQuest.newMineQuestGenerator(Material.DRAGON_EGG).setMaxAmount(1).setBasicReward(10000).makeImutable())));
 		generators = Collections.unmodifiableMap(quests);				
 	}
 	
@@ -112,11 +115,6 @@ public class QuestVillager extends KingdomVillager<Villager>{
 		else {
 			player.sendMessage("<" + getName() + "> Sorry I have no work to do for you!");
 		}
-	}
-
-	@Override
-	public boolean isTarget(Entity entity) {
-		return false;
 	}
 	
 	public static QuestVillager deserialize (Map<String, Object> map) {

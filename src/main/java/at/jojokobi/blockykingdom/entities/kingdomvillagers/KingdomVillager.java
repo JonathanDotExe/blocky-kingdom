@@ -9,15 +9,8 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Damageable;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Ghast;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Monster;
-import org.bukkit.entity.Phantom;
-import org.bukkit.entity.PigZombie;
-import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityPortalEvent;
@@ -30,19 +23,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
-import at.jojokobi.blockykingdom.kingdoms.KingdomState;
 import at.jojokobi.blockykingdom.kingdoms.RandomWordGenerator;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.CustomEntityType;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.EntityMapData;
-import at.jojokobi.mcutil.entity.Targeter;
-import at.jojokobi.mcutil.entity.ai.AttackTask;
-import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
-public abstract class KingdomVillager<T extends LivingEntity> extends CustomEntity<T> implements Targeter {
+public abstract class KingdomVillager<T extends LivingEntity> extends CustomEntity<T> {
 	
 	public static final Function<Integer, Integer> LINEAR_LEVEL_FUNCTION = l -> l;
 	public static final Function<Integer, Integer> HALF_QUADRATIC_LEVEL_FUNCTION = l -> (l * l) / 2;
@@ -70,9 +58,6 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		name = new RandomWordGenerator().generateWord(random, 2, 10);
 		setDespawnTicks(5000);
 		setTeleportToGoal(true);
-		addEntityTask(new VillagerFollowTask());
-		addEntityTask(new AttackTask(this::isTarget, 20));
-		addEntityTask(new ReturnToSpawnTask());
 	}
 
 	@Override
@@ -307,18 +292,6 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	
 	public double getKingdomHappiness() {
 		return Math.max(-1, Math.min(this.happiness, 1));
-	}
-
-	@Override
-	public boolean isTarget(Entity entity) {
-		CustomEntity<?> custom = getHandler().getCustomEntityForEntity(entity);
-		//Attack monsters, villagers of other kingdoms and players if kingdom is evil or no kingdom is set at all
-		return ((entity instanceof Monster || entity instanceof Phantom || entity instanceof Ghast) && !(entity instanceof Creeper) && !(entity instanceof PigZombie)
-				&& (getKingdomPoint() == null || !(custom instanceof KingdomVillager<?>)
-						|| !getKingdomPoint().equals(((KingdomVillager<?>) custom).getKingdomPoint())))
-				|| ((kingdomPoint == null
-						|| KingdomHandler.getInstance().getKingdom(kingdomPoint).getState() == KingdomState.EVIL)
-						&& entity instanceof Player);
 	}
 	
 	public abstract VillagerCategory getVillagerCategory ();

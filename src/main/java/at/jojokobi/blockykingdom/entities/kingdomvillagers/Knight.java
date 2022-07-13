@@ -17,17 +17,22 @@ import org.bukkit.inventory.MerchantRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
-import at.jojokobi.mcutil.entity.Attacker;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
+import at.jojokobi.mcutil.entity.ai.AttackTask;
+import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
-public class Knight extends KingdomVillager<Villager> implements Attacker{
+public class Knight extends WarriorVillager<Villager>{
 	
-	public static final int KNGIHT_PRICE = 1000;
+	public static final int KNIGHT_PRICE = 1000;
 
 	public Knight(Location place, EntityHandler handler, Random random) {
 		super(place, handler, random, KnightType.getInstance());
-		setPrice(KNGIHT_PRICE);
+		setPrice(KNIGHT_PRICE);
+		//Attack
+		addEntityTask(new VillagerFollowTask());
+		addEntityTask(new AttackTask(this::isTarget, 15));
+		addEntityTask(new ReturnToSpawnTask());
 	}
 	
 	public Knight(Location place, EntityHandler handler) {

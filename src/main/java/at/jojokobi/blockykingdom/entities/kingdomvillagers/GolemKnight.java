@@ -17,14 +17,20 @@ import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
 import at.jojokobi.mcutil.entity.Attacker;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
+import at.jojokobi.mcutil.entity.ai.AttackTask;
+import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
-public class GolemKnight extends KingdomVillager<IronGolem> implements Attacker{
+public class GolemKnight extends WarriorVillager<IronGolem> {
 	
 	public static final int GOLEM_KNIGHT_PRICE = 10000;
 
 	public GolemKnight(Location place, EntityHandler handler, Random random) {
 		super(place, handler, random, null);
 		setPrice(GOLEM_KNIGHT_PRICE);
+		//Attack
+		addEntityTask(new VillagerFollowTask());
+		addEntityTask(new AttackTask(this::isTarget, 20));
+		addEntityTask(new ReturnToSpawnTask());
 	}
 	
 	public GolemKnight(Location place, EntityHandler handler) {

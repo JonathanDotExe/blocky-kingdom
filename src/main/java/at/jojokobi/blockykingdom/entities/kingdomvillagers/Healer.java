@@ -28,14 +28,21 @@ import at.jojokobi.mcutil.entity.Attacker;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
+import at.jojokobi.mcutil.entity.Targeter;
+import at.jojokobi.mcutil.entity.ai.AttackTask;
+import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
-public class Healer extends KingdomVillager<Villager> implements Attacker{
+public class Healer extends KingdomVillager<Villager> implements Attacker, Targeter{
 	
 	public static final int HEALER_PRICE = 7500;
 
 	public Healer(Location place, EntityHandler handler, Random random) {
 		super(place, handler, random, HealerType.getInstance());
 		setPrice(HEALER_PRICE);
+		//Approach other villagers
+		addEntityTask(new VillagerFollowTask());
+		addEntityTask(new AttackTask(this::isTarget, 20));
+		addEntityTask(new ReturnToSpawnTask());
 	}
 
 	public Healer(Location place, EntityHandler handler) {
@@ -77,6 +84,7 @@ public class Healer extends KingdomVillager<Villager> implements Attacker{
 	
 	@Override
 	public boolean isTarget(Entity entity) {
+		//Target villagers to heal
 		CustomEntity<?> custom = getHandler().getCustomEntityForEntity(entity);
 		return custom instanceof KingdomVillager<?> && ((KingdomVillager<?>) custom).getEntity().getHealth() < ((KingdomVillager<?>) custom).getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() && getKingdomPoint() != null && getKingdomPoint().equals(((KingdomVillager<?>) custom).getKingdomPoint());
 	}

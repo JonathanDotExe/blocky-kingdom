@@ -19,18 +19,22 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
-import at.jojokobi.mcutil.entity.Attacker;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
+import at.jojokobi.mcutil.entity.ai.AttackTask;
+import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
-public class Archer extends KingdomVillager<Villager> implements Attacker {
+public class Archer extends WarriorVillager<Villager> {
 	
 	public static final int ARCHER_PRICE = 2000;
 
 	public Archer(Location place, EntityHandler handler, Random random) {
 		super(place, handler, random, ArcherType.getInstance());
 		setPrice(ARCHER_PRICE);
-//		setAi(KingdomDefenderAI.getInstance());
+		//Attack
+		addEntityTask(new VillagerFollowTask());
+		addEntityTask(new AttackTask(this::isTarget, 30));
+		addEntityTask(new ReturnToSpawnTask());
 	}
 	
 	public Archer(Location place, EntityHandler handler) {
