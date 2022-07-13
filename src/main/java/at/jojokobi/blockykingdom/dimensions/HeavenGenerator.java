@@ -1,5 +1,6 @@
 package at.jojokobi.blockykingdom.dimensions;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -14,13 +15,11 @@ import org.bukkit.util.noise.SimplexNoiseGenerator;
 import at.jojokobi.generator.AbstractGenerator;
 import at.jojokobi.generator.biome.BiomeSystem;
 import at.jojokobi.generator.biome.NoiseValueGenerator;
-import at.jojokobi.generator.biome.biomes.ArcticOcean;
 import at.jojokobi.generator.biome.biomes.DarkForest;
 import at.jojokobi.generator.biome.biomes.Desert;
 import at.jojokobi.generator.biome.biomes.Forest;
 import at.jojokobi.generator.biome.biomes.Jungle;
 import at.jojokobi.generator.biome.biomes.Mountains;
-import at.jojokobi.generator.biome.biomes.Ocean;
 import at.jojokobi.generator.biome.biomes.Plains;
 import at.jojokobi.generator.biome.biomes.Savanna;
 import at.jojokobi.generator.biome.biomes.SnowyPlains;
@@ -81,20 +80,24 @@ public class HeavenGenerator extends AbstractGenerator{
 	
 	@Override
 	public BiomeSystem createBiomeSystem(WorldInfo info) {
-		GridBiomeSystem system = new GridBiomeSystem(info.getSeed(), s -> new HeavenValueGenerator(s));
-		system.registerBiome(new GridBiomeEntry(new Plains(), 0.0, 0.6, 0.0, 0.6));
-		system.registerBiome(new GridBiomeEntry(new Desert(), 0.5, 1, 0.0, 0.5));
-		system.registerBiome(new GridBiomeEntry(new Mountains(), 0.0, 0.7, 0.0, 0.8));
-		system.registerBiome(new GridBiomeEntry(new VolcanoMountains(), 0.5, 1.0, 0.0, 0.5));
-		system.registerBiome(new GridBiomeEntry(new SnowyPlains(), 0.0, 0.5, 0.3, 1.0));
-		system.registerBiome(new GridBiomeEntry(new Forest(), 0.4, 0.7, 0.2, 0.7));
-		system.registerBiome(new GridBiomeEntry(new Jungle(), 0.5, 1.0, 0.5, 1.0));
-		system.registerBiome(new GridBiomeEntry(new Taiga(), 0.1, 0.7, 0.0, 0.7));
-		system.registerBiome(new GridBiomeEntry(new DarkForest(), 0.4, 0.85, 0.35, 0.9));
-		system.registerBiome(new GridBiomeEntry(new Savanna(), 0.5, 1.0, 0.0, 0.6));
+		List<GridBiomeEntry> biomes = new ArrayList<>();
+		biomes.add(new GridBiomeEntry(new Plains(), 0.0, 0.6, 0.0, 0.6));
+		biomes.add(new GridBiomeEntry(new Desert(), 0.5, 1, 0.0, 0.5));
+		biomes.add(new GridBiomeEntry(new Mountains(), 0.0, 0.7, 0.0, 0.8));
+		biomes.add(new GridBiomeEntry(new VolcanoMountains(), 0.5, 1.0, 0.0, 0.5));
+		biomes.add(new GridBiomeEntry(new SnowyPlains(), 0.0, 0.5, 0.3, 1.0));
+		biomes.add(new GridBiomeEntry(new Forest(), 0.4, 0.7, 0.2, 0.7));
+		biomes.add(new GridBiomeEntry(new Jungle(), 0.5, 1.0, 0.5, 1.0));
+		biomes.add(new GridBiomeEntry(new Taiga(), 0.1, 0.7, 0.0, 0.7));
+		biomes.add(new GridBiomeEntry(new DarkForest(), 0.4, 0.85, 0.35, 0.9));
+		biomes.add(new GridBiomeEntry(new Savanna(), 0.5, 1.0, 0.0, 0.6));
 		
-		system.registerOceanBiome(new GridBiomeEntry(new Ocean(), 0.0, 1.0, 0.0, 1.0));
-		system.registerOceanBiome(new GridBiomeEntry(new ArcticOcean(), 0.0, 0.4, 0.0, 1.0));
+		GridBiomeSystem system = new GridBiomeSystem(info.getSeed(), s -> new HeavenValueGenerator(s));
+
+		for (GridBiomeEntry entry : biomes) {
+			system.registerBiome(entry);
+			system.registerOceanBiome(entry);
+		}
 		return system;
 	}
 	
@@ -126,8 +129,8 @@ class HeavenValueGenerator extends NoiseValueGenerator {
 		generator = new NoiseValueGenerator(seed + 96, 0, 160);
 		generator.setHeightMultiplier(0.005);
 		setMinHeight(60);
-		setMaxHeight(120);
-		setSeaLevel(59);
+		setMaxHeight(150);
+		setSeaLevel(95);
 		setHeightMultiplier(0.005);
 	}	
 	
