@@ -8,7 +8,7 @@ import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World.Environment;
-import org.bukkit.block.Chest;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
@@ -118,8 +118,9 @@ public class HauntedGrave extends Structure{
 		
 		place.getBlock().setType(Material.CHEST, false);
 		System.out.println(place.getBlock().getState().getClass());
-		Chest chest = (Chest) place.getBlock().getState();
-		loot.fillInventory(chest.getBlockInventory(), random, null);
+		System.out.println(place.getBlock().getType());
+		InventoryHolder chest = (InventoryHolder) place.getBlock().getState();
+		loot.fillInventory(chest.getInventory(), random, null);
 		
 		//Cursed Figure
 		place.add(0, 1, 0);

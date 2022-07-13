@@ -40,8 +40,25 @@ public class HeavenGenerator extends AbstractGenerator{
 	}
 	
 	@Override
+	public void generateBedrock(WorldInfo world, Random random, int x, int z, ChunkData data) {
+		super.generateBedrock(world, random, x, z, data);
+		for (int y = 50; y <= 98; y += 12) {
+			NoiseGenerator generator = new SimplexNoiseGenerator(world.getSeed() + y);
+			for (int i = 0; i < TerrainGenUtil.CHUNK_WIDTH; i++) {
+				for (int j = 0; j < TerrainGenUtil.CHUNK_LENGTH; j++) {
+					if (generator.noise((x * TerrainGenUtil.CHUNK_WIDTH + i) * 0.025, (z * TerrainGenUtil.CHUNK_LENGTH + j) * 0.025) > 0.7) {
+						data.setBlock(i, y, j, Material.WHITE_WOOL);
+						data.setBlock(i, y + 1, j, Material.WHITE_WOOL);
+						data.setBlock(i, y + 1, j, Material.WHITE_WOOL);
+					}
+				}
+			}
+		}
+	}
+	
+	@Override
 	public List<BlockPopulator> getDefaultPopulators(World world) {
-		return Arrays.asList(new BiomePopulator(this), new OrePopulator(), new CloudPopulator());
+		return Arrays.asList(new BiomePopulator(this), new OrePopulator());
 	}
 	
 	@Override
