@@ -174,7 +174,7 @@ public class DungeonTower extends Structure{
 						//Wall
 						Material block = Material.AIR;
 
-						if ((x == 0 || z == 0 || x == getWidth() - 1 || z == getLength() - 1) && (floor < floorCount - 1)) {
+						if ((x == 0 || z == 0 || x == getWidth() - 1 || z == getLength() - 1) && (floor < floorCount - 1 || y == 0)) {
 							block = wallMaterials [random.nextInt(wallMaterials.length)];
 						}
 						else if (y == 0) {
