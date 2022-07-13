@@ -133,7 +133,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	@Override
 	protected void onRegainHealth(EntityRegainHealthEvent event) {
 		super.onRegainHealth(event);
-		//Happines ragain
+		//Happiness regain
 		if (event.getRegainReason() == RegainReason.MAGIC) {
 			addHappiness(0.3);
 		}

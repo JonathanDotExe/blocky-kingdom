@@ -60,7 +60,7 @@ public class Slimerer extends CustomEntity<ArmorStand> implements Attacker, Targ
 		
 		loot.addItem(new LootItem(1, new ItemStack(Material.SLIME_BALL), 10, 20));
 		loot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, SlimerersHeart.IDENTIFIER), 1, 2));
-		loot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, RainbowDye.IDENTIFIER), 1, 0));
+		loot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, RainbowDye.IDENTIFIER), 1, 1));
 		loot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 10, 20));
 		addComponent(new LootComponent(loot, 200));
 		addComponent(new HealthComponent(health = new PseudoHealthAccessor(200)));

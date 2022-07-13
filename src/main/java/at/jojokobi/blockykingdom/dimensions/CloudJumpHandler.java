@@ -89,7 +89,7 @@ public class CloudJumpHandler implements Listener {
 				// Super jump
 				else if (player.isSprinting() && from.clone().add(0, -0.1, 0).getBlock().getType() == Material.WHITE_WOOL
 						&& !to.clone().add(0, -0.1, 0).getBlock().getType().isSolid()) {
-					doSuperJump(player, 3);
+					doSuperJump(player, 3.2);
 				}
 			}
 		}

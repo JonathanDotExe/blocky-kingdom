@@ -40,42 +40,8 @@ public class HeavenGenerator extends AbstractGenerator{
 	}
 	
 	@Override
-	public void generateBedrock(WorldInfo world, Random random, int x, int z, ChunkData data) {
-		super.generateBedrock(world, random, x, z, data);
-		for (int y = 30; y < 55; y += 5) {
-			NoiseGenerator generator = new SimplexNoiseGenerator(world.getSeed() + y);
-			for (int i = 0; i < TerrainGenUtil.CHUNK_WIDTH; i++) {
-				for (int j = 0; j < TerrainGenUtil.CHUNK_LENGTH; j++) {
-					if (generator.noise((x * TerrainGenUtil.CHUNK_WIDTH + i) * 0.025, (z * TerrainGenUtil.CHUNK_LENGTH + j) * 0.025) > 0.7) {
-						data.setBlock(i, y, j, Material.WHITE_WOOL);
-						data.setBlock(i, y + 1, j, Material.WHITE_WOOL);
-						data.setBlock(i, y + 1, j, Material.WHITE_WOOL);
-					}
-				}
-			}
-		}
-	}
-	
-	@Override
-	public void generateCaves(WorldInfo world, Random random, int x, int z, ChunkData data) {
-		super.generateCaves(world, random, x, z, data);
-		for (int y = 30; y < 55; y += 5) {
-			NoiseGenerator generator = new SimplexNoiseGenerator(world.getSeed() + y);
-			for (int i = 0; i < TerrainGenUtil.CHUNK_WIDTH; i++) {
-				for (int j = 0; j < TerrainGenUtil.CHUNK_LENGTH; j++) {
-					if (generator.noise((x * TerrainGenUtil.CHUNK_WIDTH + i) * 0.025, (z * TerrainGenUtil.CHUNK_LENGTH + j) * 0.025) > 0.7) {
-						data.setBlock(i, y, j, Material.WHITE_WOOL);
-						data.setBlock(i, y + 1, j, Material.WHITE_WOOL);
-						data.setBlock(i, y + 1, j, Material.WHITE_WOOL);
-					}
-				}
-			}
-		}
-	}
-	
-	@Override
 	public List<BlockPopulator> getDefaultPopulators(World world) {
-		return Arrays.asList(new BiomePopulator(this), new OrePopulator());
+		return Arrays.asList(new BiomePopulator(this), new OrePopulator(), new CloudPopulator());
 	}
 	
 	@Override
@@ -127,6 +93,7 @@ class HeavenValueGenerator extends NoiseValueGenerator {
 
 	private NoiseValueGenerator generator;
 	private NoiseGenerator gen;
+	private double heightShiftMul = 0.0001;
 	
 	public HeavenValueGenerator(long seed) {
 		super(seed, 64, 150);
@@ -142,12 +109,12 @@ class HeavenValueGenerator extends NoiseValueGenerator {
 	
 	@Override
 	public int getHeight(double x, double z, double noise) {
-		return super.getHeight(x, z, noise) + (int) (40 * (gen.noise(x * 0.00025, z * 0.00025) + 1));
+		return super.getHeight(x, z, noise) + (int) (40 * (gen.noise(x * heightShiftMul, z * heightShiftMul) + 1));
 	}	
 	
 	@Override
 	public int getStartHeight(double x, double z) {
-		return generator.getHeight(x, z, generator.getHeightNoise(x, z)) + (int) (40 * (gen.noise(x * 0.00025, z * 0.00025) + 1));
+		return generator.getHeight(x, z, generator.getHeightNoise(x, z)) + (int) (40 * (gen.noise(x * heightShiftMul, z * heightShiftMul) + 1));
 	}
 	
 }
