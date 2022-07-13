@@ -78,6 +78,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	@Override
 	public void loop() {
 		super.loop();
+		//Reload logic
 		if (reloadTime > 0) {
 			int time = reloadTime / 4;
 			getEntity().setCustomName("Reloading - " + time / 60 + "m " + time % 60 + "s");
@@ -98,7 +99,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	@Override
 	protected void onDamage(EntityDamageEvent event) {
 		super.onDamage(event);
-		
+		//Respawning
 		if (event.getCause() == DamageCause.DROWNING || event.getCause() == DamageCause.FALL || event.getCause() == DamageCause.SUFFOCATION || reloadTime > 0) {
 			event.setCancelled(true);
 		} else if (Math.round(getEntity().getHealth() - event.getFinalDamage()) < 1) {
@@ -106,6 +107,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 			event.setCancelled(true);
 			getEntity().setHealth(getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
 			reloadTime = 4 * 60 * 10;
+			//Teleport to spawn if the kingdom is set
 			if (kingdomPoint != null) {
 				getEntity().teleport(getSpawnPoint());
 			}
@@ -116,6 +118,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	@Override
 	protected void onDamageOther(EntityDamageByEntityEvent event) {
 		super.onDamageOther(event);
+		//XP on damage other
 		if (event.getEntity() instanceof Damageable && Math.round(((Damageable) event.getEntity()).getHealth() - event.getFinalDamage()) <= 0) {
 			addHappiness(0.2);
 			gainXP(1);
@@ -125,6 +128,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	@Override
 	protected void onInteract(PlayerInteractEntityEvent event) {
 		super.onInteract(event);
+		//Feed bread
 		if (event.getPlayer().isSneaking()) {
 			if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BREAD) {
 				event.getPlayer().getInventory().getItemInMainHand().setAmount(event.getPlayer().getInventory().getItemInMainHand().getAmount() - 1);
@@ -144,6 +148,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	@Override
 	protected void onRegainHealth(EntityRegainHealthEvent event) {
 		super.onRegainHealth(event);
+		//Happines ragain
 		if (event.getRegainReason() == RegainReason.MAGIC) {
 			addHappiness(0.3);
 		}
@@ -155,6 +160,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	@Override
 	protected void onPortalTeleport(EntityPortalEvent event) {
 		super.onPortalTeleport(event);
+		//No teleport to the nether
 		event.setCancelled(true);
 	}
 	
@@ -306,6 +312,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	@Override
 	public boolean isTarget(Entity entity) {
 		CustomEntity<?> custom = getHandler().getCustomEntityForEntity(entity);
+		//Attack monsters, villagers of other kingdoms and players if kingdom is evil or no kingdom is set at all
 		return ((entity instanceof Monster || entity instanceof Phantom || entity instanceof Ghast) && !(entity instanceof Creeper) && !(entity instanceof PigZombie)
 				&& (getKingdomPoint() == null || !(custom instanceof KingdomVillager<?>)
 						|| !getKingdomPoint().equals(((KingdomVillager<?>) custom).getKingdomPoint())))

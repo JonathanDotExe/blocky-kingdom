@@ -116,6 +116,11 @@ public class HeavenGenerator extends AbstractGenerator{
 		return true;
 	}
 
+	@Override
+	public boolean shouldGenerateStructures() {
+		return true;
+	}
+	
 }
 
 class HeavenValueGenerator extends NoiseValueGenerator {
@@ -128,9 +133,10 @@ class HeavenValueGenerator extends NoiseValueGenerator {
 		gen = new SimplexNoiseGenerator(seed - 81426);
 		generator = new NoiseValueGenerator(seed + 96, 0, 160);
 		generator.setHeightMultiplier(0.005);
-		setMinHeight(60);
-		setMaxHeight(150);
-		setSeaLevel(95);
+		generator.setSeaLevel(70);
+		setMinHeight(40);
+		setMaxHeight(120);
+		setSeaLevel(70);
 		setHeightMultiplier(0.005);
 	}	
 	
