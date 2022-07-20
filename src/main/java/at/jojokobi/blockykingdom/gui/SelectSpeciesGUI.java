@@ -2,8 +2,6 @@ package at.jojokobi.blockykingdom.gui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.ClickType;
-import org.bukkit.inventory.ItemStack;
 
 import at.jojokobi.blockykingdom.players.CharacterSpecies;
 import at.jojokobi.blockykingdom.players.Statable;
@@ -23,19 +21,13 @@ public class SelectSpeciesGUI extends InventoryGUI {
 	protected void initGUI() {
 		CharacterSpecies[] species = CharacterSpecies.values();
 		for (int i = 0; i < species.length; i++) {
-			addButton(species[i].getIcon(), i);
+			CharacterSpecies s = species[i];
+			addButton(species[i].getIcon(), i, (button, index, click) -> {
+				statable.getCharacterStats().setSpecies(s);
+				close();
+			});
 		}
 		fillEmpty(getFiller());
-	}
-
-	@Override
-	protected void onButtonPress(ItemStack button, ClickType click) {
-		int index = getInventory().first(button);
-		if (index < CharacterSpecies.values().length) {
-			statable.getCharacterStats().setSpecies(CharacterSpecies.values()[index]);
-			setNext(new SelectProfessionGUI(getOwner(), statable));
-			close();
-		}
 	}
 
 }
