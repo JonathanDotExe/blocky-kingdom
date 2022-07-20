@@ -31,7 +31,7 @@ public class BuyableVillager implements Buyable{
 	}
 
 	@Override
-	public ItemStack getIcon() {
+	public ItemStack getDisplayItem() {
 		return icon.clone();
 	}
 
