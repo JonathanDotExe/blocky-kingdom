@@ -14,6 +14,9 @@ import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.players.StatHandler;
 import at.jojokobi.mcutil.entity.CustomEntityType;
 import at.jojokobi.mcutil.entity.EntityHandler;
+import at.jojokobi.mcutil.entity.ai.InteractEntityTask;
+import at.jojokobi.mcutil.entity.ai.RandomAroundPlaceTask;
+import at.jojokobi.mcutil.entity.ai.RandomTimeCondition;
 import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
 public abstract class ShopVillager<T extends LivingEntity> extends KingdomVillager<T>{
@@ -24,6 +27,8 @@ public abstract class ShopVillager<T extends LivingEntity> extends KingdomVillag
 		super(place, handler, random, type);
 		//Peaceful AI
 		addEntityTask(new VillagerFollowTask());
+		addEntityTask(new InteractEntityTask(new RandomTimeCondition(1 * 4, 5 * 4, 5 * 4, 30 * 4), 5));
+		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 10, 15, 4, true, false));
 		addEntityTask(new ReturnToSpawnTask());
 	}
 	

@@ -30,6 +30,9 @@ import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
 import at.jojokobi.mcutil.entity.Targeter;
 import at.jojokobi.mcutil.entity.ai.AttackTask;
+import at.jojokobi.mcutil.entity.ai.InteractEntityTask;
+import at.jojokobi.mcutil.entity.ai.RandomAroundPlaceTask;
+import at.jojokobi.mcutil.entity.ai.RandomTimeCondition;
 import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
 public class Healer extends KingdomVillager<Villager> implements Attacker, Targeter{
@@ -42,6 +45,8 @@ public class Healer extends KingdomVillager<Villager> implements Attacker, Targe
 		//Approach other villagers
 		addEntityTask(new VillagerFollowTask());
 		addEntityTask(new AttackTask(this::isTarget, 20));
+		addEntityTask(new InteractEntityTask(new RandomTimeCondition(1 * 4, 5 * 4, 5 * 4, 30 * 4), 5));
+		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 10, 15, 4, true, false));
 		addEntityTask(new ReturnToSpawnTask());
 	}
 
