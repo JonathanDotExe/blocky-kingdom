@@ -55,7 +55,7 @@ public class PlayerGUI extends InventoryGUI{
 			meta.setOwningPlayer(getOwner());
 			meta.setDisplayName(getOwner().getDisplayName());
 			item.setItemMeta(meta);
-			addButton(item, 0);
+			addButton(item, 0, null);
 		}
 		//Money
 		{
@@ -66,7 +66,7 @@ public class PlayerGUI extends InventoryGUI{
 			lore.add(" * Your money");
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, 1);
+			addButton(item, 1, null);
 		}
 		//Kingdom
 		{
@@ -77,7 +77,11 @@ public class PlayerGUI extends InventoryGUI{
 			lore.add(" * " + kingdom.toKingdom().getState().getDescrition());
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, 2);
+			addButton(item, 2, (button, index, click) -> {
+				CharacterStats stats = statable.getCharacterStats();
+				setNext(new KingdomGUI(getOwner(), stats, kingdom, handler, inputHandler));
+				close ();
+			});
 		}
 		
 		//Quests
@@ -89,7 +93,11 @@ public class PlayerGUI extends InventoryGUI{
 			lore.add(" * Your quests");
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, INV_ROW - 5);
+			addButton(item, INV_ROW - 5, (button, index, click) -> {
+				CharacterStats stats = statable.getCharacterStats();
+				setNext(new QuestGUI(getOwner(), stats));
+				close();
+			});
 		}
 		
 		//Skills
@@ -101,7 +109,11 @@ public class PlayerGUI extends InventoryGUI{
 			lore.add(" * Your skills");
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, INV_ROW - 4);
+			addButton(item, INV_ROW - 4, (button, index, click) -> {
+				CharacterStats stats = statable.getCharacterStats();
+				setNext(new SkillGUI(getOwner(), stats));
+				close();
+			});
 		}
 		
 		//Skill points
@@ -113,7 +125,7 @@ public class PlayerGUI extends InventoryGUI{
 			lore.add(" * Your skill points");
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, INV_ROW - 3);
+			addButton(item, INV_ROW - 3, null);
 		}
 		
 		//Experience
@@ -125,7 +137,7 @@ public class PlayerGUI extends InventoryGUI{
 			lore.add(" * Your experience");
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, INV_ROW - 2);
+			addButton(item, INV_ROW - 2, null);
 		}
 		
 		//Level
@@ -137,7 +149,7 @@ public class PlayerGUI extends InventoryGUI{
 			lore.add(" * Your level");
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, INV_ROW - 1);
+			addButton(item, INV_ROW - 1, null);
 		}
 		
 		//Attack
@@ -150,7 +162,11 @@ public class PlayerGUI extends InventoryGUI{
 			lore.add(" * Needed Skill Points " + statable.getCharacterStats().getNeededSkillPoints(statable.getCharacterStats().getAttack()));
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, INV_ROW * 2 + 0);
+			addButton(item, INV_ROW * 2 + 0, (button, index, click) -> {
+				CharacterStats stats = statable.getCharacterStats();
+				stats.doAttackPowerUp();
+				initGUI();
+			});
 		}
 		
 		//Defense
@@ -163,7 +179,11 @@ public class PlayerGUI extends InventoryGUI{
 			lore.add(" * Needed Skill Points " + statable.getCharacterStats().getNeededSkillPoints(statable.getCharacterStats().getDefense()));
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, INV_ROW * 2 + 1);
+			addButton(item, INV_ROW * 2 + 1, (button, index, click) -> {
+				CharacterStats stats = statable.getCharacterStats();
+				stats.doDefensePowerUp();
+				initGUI();
+			});
 		}
 		//Speed
 		{
@@ -175,7 +195,11 @@ public class PlayerGUI extends InventoryGUI{
 			lore.add(" * Needed Skill Points " + statable.getCharacterStats().getNeededSkillPoints(statable.getCharacterStats().getSpeed()));
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, INV_ROW * 2 + 2);
+			addButton(item, INV_ROW * 2 + 2, (button, index, click) -> {
+				CharacterStats stats = statable.getCharacterStats();
+				stats.doSpeedPowerUp();
+				initGUI();
+			});
 		}
 		//Magic
 		{
@@ -187,7 +211,11 @@ public class PlayerGUI extends InventoryGUI{
 			lore.add(" * Needed Skill Points " + statable.getCharacterStats().getNeededSkillPoints(statable.getCharacterStats().getMagic()));
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, INV_ROW * 2 + 3);
+			addButton(item, INV_ROW * 2 + 3, (button, index, click) -> {
+				CharacterStats stats = statable.getCharacterStats();
+				stats.doMagicPowerUp();
+				initGUI();
+			});
 		}
 		//Health
 		{
@@ -199,7 +227,11 @@ public class PlayerGUI extends InventoryGUI{
 			lore.add(" * Needed Skill Points " + statable.getCharacterStats().getNeededSkillPoints(statable.getCharacterStats().getHealth()));
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, INV_ROW * 2 + 4);
+			addButton(item, INV_ROW * 2 + 4, (button, index, click) -> {
+				CharacterStats stats = statable.getCharacterStats();
+				stats.doHealthPowerUp();
+				initGUI();
+			});
 		}
 		//Species
 		{
@@ -226,41 +258,5 @@ public class PlayerGUI extends InventoryGUI{
 		
 		fillEmpty(getFiller());
 	}
-
-	@Override
-	protected void onButtonPress(ItemStack button, ClickType click) {
-		if (click == ClickType.LEFT) {
-			CharacterStats stats = statable.getCharacterStats();
-			if (button.getType() == ATTACK_MATERIAL) {
-				stats.doAttackPowerUp();
-			}
-			else if (button.getType() == DEFENSE_MATERIAL) {
-				stats.doDefensePowerUp();
-			}
-			else if (button.getType() == SPEED_MATERIAL) {
-				stats.doSpeedPowerUp();
-			}
-			else if (button.getType() == MAGIC_MATERIAL) {
-				stats.doMagicPowerUp();
-			}
-			else if (button.getType() == HEALTH_MATERIAL) {
-				stats.doHealthPowerUp();
-			}
-			else if (button.getType() == SKILLS_MATERIAL) {
-				setNext(new SkillGUI(getOwner(), stats));
-				close ();
-			}
-			else if (button.getType() == QUESTS_MATERIAL) {
-				setNext(new QuestGUI(getOwner(), stats));
-				close ();
-			}
-			else if (button.getType() == KINGDOM_MATERIAL) {
-				setNext(new KingdomGUI(getOwner(), stats, kingdom, handler, inputHandler));
-				close ();
-			}
-			initGUI();
-		}
-	}
-
 
 }
