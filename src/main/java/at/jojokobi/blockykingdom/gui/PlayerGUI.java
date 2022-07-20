@@ -6,7 +6,6 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -242,7 +241,7 @@ public class PlayerGUI extends InventoryGUI{
 			lore.add(" * Your species");
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, INV_ROW * 3 - 2);
+			addButton(item, INV_ROW * 3 - 2, null);
 		}
 		//Profession
 		{
@@ -253,7 +252,7 @@ public class PlayerGUI extends InventoryGUI{
 			lore.add(" * Your profession");
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, INV_ROW * 3 - 1);
+			addButton(item, INV_ROW * 3 - 1, null);
 		}
 		
 		fillEmpty(getFiller());
