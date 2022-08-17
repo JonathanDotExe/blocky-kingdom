@@ -116,7 +116,9 @@ public class GolemKnight extends WarriorVillager<IronGolem> {
 	@Override
 	protected void onLevelUp() {
 		super.onLevelUp();
-		updateArmor(getEntity());
+		if (getEntity() != null ) {
+			updateArmor(getEntity());
+		}
 	}
 	
 	public static GolemKnight deserialize (Map<String, Object> map) {

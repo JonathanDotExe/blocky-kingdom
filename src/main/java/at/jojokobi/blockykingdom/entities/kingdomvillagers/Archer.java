@@ -129,7 +129,9 @@ public class Archer extends WarriorVillager<Villager> {
 	@Override
 	protected void onLevelUp() {
 		super.onLevelUp();
-		updateArmor(getEntity());
+		if (getEntity() != null ) {
+			updateArmor(getEntity());
+		}
 	}
 	
 	@Override
