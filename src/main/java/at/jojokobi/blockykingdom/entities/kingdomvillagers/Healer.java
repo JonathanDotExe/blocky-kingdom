@@ -139,7 +139,7 @@ public class Healer extends KingdomVillager<Villager> implements Attacker, Targe
 	
 	@Override
 	protected boolean canClimb() {
-		return true;
+		return false;
 	}
 	
 	@Override

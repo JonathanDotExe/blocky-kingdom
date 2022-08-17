@@ -87,7 +87,7 @@ public class Archer extends WarriorVillager<Villager> {
 	
 	@Override
 	protected boolean canClimb() {
-		return true;
+		return false;
 	}
 	
 	@Override
