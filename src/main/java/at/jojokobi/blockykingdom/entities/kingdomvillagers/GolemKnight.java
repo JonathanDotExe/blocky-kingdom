@@ -32,8 +32,8 @@ public class GolemKnight extends WarriorVillager<IronGolem> {
 		//Attack
 		addEntityTask(new VillagerFollowTask());
 		addEntityTask(new AttackTask(this::isTarget, 20));
-		addEntityTask(new InteractEntityTask(new RandomTimeCondition(1 * 4, 5 * 4, 5 * 4, 30 * 4), 5));
-		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 10, 15, 4, true, false));
+		addEntityTask(new InteractEntityTask(new RandomTimeCondition(1 * 4, 10 * 4, 5 * 4, 30 * 4), 5));
+		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 15, 30, 4, true, false));
 		addEntityTask(new ReturnToSpawnTask());
 	}
 	
@@ -49,7 +49,7 @@ public class GolemKnight extends WarriorVillager<IronGolem> {
 		golem.setRemoveWhenFarAway(false);
 		
 		updateArmor(golem);
-		golem.getEquipment().setItemInMainHand(new ItemStack(Material.IRON_SWORD));
+		golem.getEquipment().setItemInMainHand(new ItemStack(Material.POPPY));
 		
 		golem.getEquipment().setHelmetDropChance(0);
 		golem.getEquipment().setChestplateDropChance(0);
@@ -87,7 +87,7 @@ public class GolemKnight extends WarriorVillager<IronGolem> {
 	
 	@Override
 	protected double getWalkSpeed() {
-		return 0.2;
+		return 0.1;
 	}
 	
 	@Override

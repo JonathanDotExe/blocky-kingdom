@@ -38,8 +38,8 @@ public class Knight extends WarriorVillager<Villager>{
 		//Attack
 		addEntityTask(new VillagerFollowTask());
 		addEntityTask(new AttackTask(this::isTarget, 15));
-		addEntityTask(new InteractEntityTask(new RandomTimeCondition(1 * 4, 5 * 4, 5 * 4, 30 * 4), 5));
-		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 10, 15, 4, true, false));
+		addEntityTask(new InteractEntityTask(new RandomTimeCondition(1 * 4, 10 * 4, 5 * 4, 30 * 4), 5));
+		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 10, 20, 4, true, false));
 		addEntityTask(new ReturnToSpawnTask());
 	}
 	
@@ -100,8 +100,13 @@ public class Knight extends WarriorVillager<Villager>{
 	}
 	
 	@Override
+	protected double getSprintSpeed() {
+		return 0.6;
+	}
+	
+	@Override
 	protected double getWalkSpeed() {
-		return 0.4;
+		return 0.2;
 	}
 	
 	@Override

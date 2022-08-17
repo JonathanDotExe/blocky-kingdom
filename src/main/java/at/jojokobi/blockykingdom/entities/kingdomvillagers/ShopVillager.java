@@ -27,8 +27,8 @@ public abstract class ShopVillager<T extends LivingEntity> extends KingdomVillag
 		super(place, handler, random, type);
 		//Peaceful AI
 		addEntityTask(new VillagerFollowTask());
-		addEntityTask(new InteractEntityTask(new RandomTimeCondition(1 * 4, 5 * 4, 5 * 4, 30 * 4), 5));
-		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 10, 15, 4, true, false));
+		addEntityTask(new InteractEntityTask(new RandomTimeCondition(1 * 4, 10 * 4, 5 * 4, 30 * 4), 5));
+		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 10, 20, 4, true, false));
 		addEntityTask(new ReturnToSpawnTask());
 	}
 	

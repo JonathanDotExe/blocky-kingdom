@@ -78,9 +78,15 @@ public class Archer extends WarriorVillager<Villager> {
 	}
 	
 	@Override
-	protected double getWalkSpeed() {
-		return 0.4;
+	protected double getSprintSpeed() {
+		return 0.6;
 	}
+	
+	@Override
+	protected double getWalkSpeed() {
+		return 0.2;
+	}
+	
 	
 	@Override
 	protected double getSwimSpeed() {

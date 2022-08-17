@@ -128,8 +128,13 @@ public class Healer extends KingdomVillager<Villager> implements Attacker, Targe
 	}
 	
 	@Override
+	protected double getSprintSpeed() {
+		return 0.7;
+	}
+	
+	@Override
 	protected double getWalkSpeed() {
-		return 0.6;
+		return 0.2;
 	}
 	
 	@Override
