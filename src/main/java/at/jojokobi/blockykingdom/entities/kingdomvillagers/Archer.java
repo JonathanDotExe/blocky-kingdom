@@ -19,6 +19,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
+import at.jojokobi.mcutil.NamespacedEntry;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
 import at.jojokobi.mcutil.entity.ai.AttackTask;
@@ -27,6 +28,7 @@ import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 public class Archer extends WarriorVillager<Villager> {
 	
 	public static final int ARCHER_PRICE = 2000;
+	public static final NamespacedEntry ARCHER_SPAWN_KEY = new NamespacedEntry(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, "archer");
 
 	public Archer(Location place, EntityHandler handler, Random random) {
 		super(place, handler, random, ArcherType.getInstance());

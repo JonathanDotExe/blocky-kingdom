@@ -1,6 +1,7 @@
 package at.jojokobi.blockykingdom;
 
 import java.io.File;
+import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -368,13 +369,23 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		CustomSpawnsHandler.getInstance().addItem(new FunctionSpawn (EliteGoblin.ELITE_GOBLIN_SPAWN_KEY, l -> new EliteGoblin(l, null)));
 		CustomSpawnsHandler.getInstance().addItem(new FunctionSpawn(StoneBeetle.STONE_BEETLE_KEY, l -> new StoneBeetle(l, null)));
 		CustomSpawnsHandler.getInstance().addItem(new FunctionSpawn(DeathAngel.DEATH_ANGEL_KEY, l -> new DeathAngel(l, null)));
-
+		CustomSpawnsHandler.getInstance().addItem(new FunctionSpawn(Knight.KNIGHT_SPAWN_KEY, l -> {
+			Knight knight = new Knight(l, null);
+			knight.gainXP(new Random().nextInt(30) + 1);
+			return knight;
+		}));
+		CustomSpawnsHandler.getInstance().addItem(new FunctionSpawn(Archer.ARCHER_SPAWN_KEY, l -> {
+			Archer archer = new Archer(l, null);
+			archer.gainXP(new Random().nextInt(30) + 1);
+			return archer;
+		}));
 						
 		//Spawns
 		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(DeathAngel.DEATH_ANGEL_KEY), 0.4, 3).setSpawnGroupSize(3).setCanSpawn((l, p) -> HeavenDimension.getInstance().isDimension(l.getWorld())).setMaxEntitiesAround(32));
 		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(Goblin.GOBLIN_SPAWN_KEY), 0.1, 3).setSpawnGroupSize(4).setCanSpawn((l, p) -> l.getBlock().getLightLevel() <= 7).setMaxEntitiesAround(16));
 		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(EliteGoblin.ELITE_GOBLIN_SPAWN_KEY), 0.05, 1).setCanSpawn((l, p) -> l.getBlock().getLightLevel() <= 7).setMaxEntitiesAround(16));
-
+		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(Knight.KNIGHT_SPAWN_KEY), 0.05, 1).setMaxEntitiesAround(16));
+		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(Archer.ARCHER_SPAWN_KEY), 0.025, 1).setMaxEntitiesAround(16));
 		
 		//Happiness Handler
 		Bukkit.getPluginManager().registerEvents(new KingdomHappinessHandler(this, entityHandler), this);
@@ -459,10 +470,6 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 	public GenerationHandler getGenHandler() {
 		return util.getGenerationHandler();
 	}
-//	
-//	public EntityHandler<CustomEntity<?>> getEntityHandler() {
-//		return entityHandler;
-//	}
 
 	public ChatInputHandler getInputHandler() {
 		return inputHandler;
@@ -476,31 +483,12 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		return util.getGuiHandler();
 	}
 	
-//	@EventHandler
-//	public void onPlayerInteract (PlayerInteractEvent event) {
-//		if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getClickedBlock().getType() == Material.RED_BED && event.getClickedBlock().getLocation().add(0, -1, 0).getBlock().getType() == Material.GLOWSTONE) {
-//			event.setCancelled(true);
-//			World dimWorld = util.getDimensionHandler().getDimensionWorld(event.getPlayer().getWorld(), HeavenDimension.getInstance());
-//			if (dimWorld != null) {
-//				System.out.println("Teleporting to " + dimWorld.getName());
-//				Player player = event.getPlayer();
-//				Location place = new Location(dimWorld, player.getLocation().getX(), 80, player.getLocation().getZ());
-//				player.teleport(place);
-////				util.getEntityHandler().addEntity(new DeathAngel(place, util.getEntityHandler()));
-//			}
-//		}
-////		else if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getPlayer().isSneaking()) {
-////			util.getEntityHandler().addEntity(new DeathAngel(event.getClickedBlock().getLocation().add(0, 1, 0), util.getEntityHandler()));
-////		}
-//	}
-//	
 	@EventHandler
 	public void onPlayerMove (PlayerMoveEvent event) {
 		//Teleport back to normal world
 		if (HeavenDimension.getInstance().isDimension(event.getTo().getWorld()) && event.getTo().getY() < event.getPlayer().getWorld().getMinHeight()) {
 			Location to = new Location(util.getDimensionHandler().getNormalWorld(event.getTo().getWorld()), event.getTo().getX(), 255, event.getTo().getZ());
 			event.setTo(to);
-//			util.getEntityHandler().addEntity(new DeathAngel(to, util.getEntityHandler()));
 		}
 	}
 

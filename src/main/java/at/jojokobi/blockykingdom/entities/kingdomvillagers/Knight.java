@@ -17,6 +17,7 @@ import org.bukkit.inventory.MerchantRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
+import at.jojokobi.mcutil.NamespacedEntry;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
 import at.jojokobi.mcutil.entity.ai.AttackTask;
@@ -28,6 +29,8 @@ import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 public class Knight extends WarriorVillager<Villager>{
 	
 	public static final int KNIGHT_PRICE = 1000;
+	public static final NamespacedEntry KNIGHT_SPAWN_KEY = new NamespacedEntry(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, "knight");
+
 
 	public Knight(Location place, EntityHandler handler, Random random) {
 		super(place, handler, random, KnightType.getInstance());
