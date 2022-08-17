@@ -27,10 +27,17 @@ import at.jojokobi.blockykingdom.items.MagicTorch;
 import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.blockykingdom.items.Smasher;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
+import at.jojokobi.blockykingdom.players.StatHandler;
+import at.jojokobi.blockykingdom.players.Statable;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.item.ItemHandler;
 import at.jojokobi.mcutil.loot.LootItem;
 
+/**
+ * 
+ * Upgrades monsters with effects and weapons in stronger kingdoms and nearby strong players
+ *
+ */
 public class MonsterUpgradeHandler implements Listener {
 	
 	private EntityHandler handler;
@@ -77,6 +84,13 @@ public class MonsterUpgradeHandler implements Listener {
 		if (handler.getCustomEntityForEntity(entity) == null) {
 			//Chance
 			int level = KingdomHandler.getInstance().getKingdom(entity.getLocation()).getLevel();
+			//Find strong players
+			for (Entity e : entity.getNearbyEntities(64, 64, 64)) {
+				Statable s = StatHandler.getInstance().getStats(e);
+				if (s != null) {
+					level = Math.max(level, s.getCharacterStats().getLevel()/2); //Take half the level of the player
+				}
+			}
 			double chance = Math.min(level/20.0, 0.5);
 			if (chance > random.nextDouble()) {
 				//Get available upgrades
