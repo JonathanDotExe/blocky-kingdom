@@ -40,6 +40,7 @@ public class KingdomVillage extends Structure {
 			case ICE:
 			case BLUE_ICE:
 			case PACKED_ICE:
+			case AIR:
 				return Material.OAK_PLANKS;
 			case LAVA:
 				return Material.OBSIDIAN;
