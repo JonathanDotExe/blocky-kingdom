@@ -23,6 +23,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.blockykingdom.kingdoms.RandomWordGenerator;
 import at.jojokobi.mcutil.entity.CustomEntity;
@@ -113,8 +114,8 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	@Override
 	protected void onInteract(PlayerInteractEntityEvent event) {
 		super.onInteract(event);
-		//Feed bread
-		if (event.getPlayer().isSneaking()) {
+		//Feed bread (only players who own the kingdom)
+		if (event.getPlayer().isSneaking() && getKingdomPoint() != null && KingdomHandler.getInstance().getKingdom(getKingdomPoint()).getOwners().contains(event.getPlayer().getUniqueId())) {
 			if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BREAD) {
 				event.getPlayer().getInventory().getItemInMainHand().setAmount(event.getPlayer().getInventory().getItemInMainHand().getAmount() - 1);
 				getEntity().setHealth(Math.min(getEntity().getHealth() + 4.0, getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()));
@@ -337,6 +338,14 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		return xp;
 	}
 	
+	public int getReloadTime() {
+		return reloadTime;
+	}
+
+	public void setReloadTime(int reloadTime) {
+		this.reloadTime = reloadTime;
+	}
+
 	/**
 	 * 
 	 * @param amount

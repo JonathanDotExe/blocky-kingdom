@@ -17,14 +17,20 @@ import org.bukkit.inventory.MerchantRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
+import at.jojokobi.mcutil.NamespacedEntry;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
 import at.jojokobi.mcutil.entity.ai.AttackTask;
+import at.jojokobi.mcutil.entity.ai.InteractEntityTask;
+import at.jojokobi.mcutil.entity.ai.RandomAroundPlaceTask;
+import at.jojokobi.mcutil.entity.ai.RandomTimeCondition;
 import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
 public class Knight extends WarriorVillager<Villager>{
 	
 	public static final int KNIGHT_PRICE = 1000;
+	public static final NamespacedEntry KNIGHT_SPAWN_KEY = new NamespacedEntry(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, "knight");
+
 
 	public Knight(Location place, EntityHandler handler, Random random) {
 		super(place, handler, random, KnightType.getInstance());
@@ -32,6 +38,8 @@ public class Knight extends WarriorVillager<Villager>{
 		//Attack
 		addEntityTask(new VillagerFollowTask());
 		addEntityTask(new AttackTask(this::isTarget, 15));
+		addEntityTask(new InteractEntityTask(new RandomTimeCondition(1 * 4, 10 * 4, 5 * 4, 15 * 4), 10));
+		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 20, 50, 8, false, false));
 		addEntityTask(new ReturnToSpawnTask());
 	}
 	
@@ -92,13 +100,18 @@ public class Knight extends WarriorVillager<Villager>{
 	}
 	
 	@Override
+	protected double getSprintSpeed() {
+		return 0.6;
+	}
+	
+	@Override
 	protected double getWalkSpeed() {
-		return 0.4;
+		return 0.2;
 	}
 	
 	@Override
 	protected boolean canClimb() {
-		return true;
+		return false;
 	}
 	
 	@Override
@@ -121,7 +134,9 @@ public class Knight extends WarriorVillager<Villager>{
 	@Override
 	protected void onLevelUp() {
 		super.onLevelUp();
-		updateArmor(getEntity());
+		if (getEntity() != null ) {
+			updateArmor(getEntity());
+		}
 	}
 	
 	public static Knight deserialize (Map<String, Object> map) {

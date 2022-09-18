@@ -19,6 +19,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
+import at.jojokobi.mcutil.NamespacedEntry;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
 import at.jojokobi.mcutil.entity.ai.AttackTask;
@@ -27,6 +28,7 @@ import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 public class Archer extends WarriorVillager<Villager> {
 	
 	public static final int ARCHER_PRICE = 2000;
+	public static final NamespacedEntry ARCHER_SPAWN_KEY = new NamespacedEntry(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, "archer");
 
 	public Archer(Location place, EntityHandler handler, Random random) {
 		super(place, handler, random, ArcherType.getInstance());
@@ -76,9 +78,15 @@ public class Archer extends WarriorVillager<Villager> {
 	}
 	
 	@Override
-	protected double getWalkSpeed() {
-		return 0.4;
+	protected double getSprintSpeed() {
+		return 0.6;
 	}
+	
+	@Override
+	protected double getWalkSpeed() {
+		return 0.2;
+	}
+	
 	
 	@Override
 	protected double getSwimSpeed() {
@@ -87,7 +95,7 @@ public class Archer extends WarriorVillager<Villager> {
 	
 	@Override
 	protected boolean canClimb() {
-		return true;
+		return false;
 	}
 	
 	@Override
@@ -121,7 +129,9 @@ public class Archer extends WarriorVillager<Villager> {
 	@Override
 	protected void onLevelUp() {
 		super.onLevelUp();
-		updateArmor(getEntity());
+		if (getEntity() != null ) {
+			updateArmor(getEntity());
+		}
 	}
 	
 	@Override

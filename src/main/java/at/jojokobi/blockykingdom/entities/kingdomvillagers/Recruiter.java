@@ -62,10 +62,14 @@ public class Recruiter extends ShopVillager<Villager>{
 	}
 	
 	@Override
-	protected double getWalkSpeed() {
-		return 0.4;
+	protected double getSprintSpeed() {
+		return 0.6;
 	}
 	
+	@Override
+	protected double getWalkSpeed() {
+		return 0.2;
+	}
 	
 	public static Recruiter deserialize (Map<String, Object> map) {
 		Recruiter entity = new Recruiter(null, null);

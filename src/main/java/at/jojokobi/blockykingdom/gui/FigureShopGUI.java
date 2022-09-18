@@ -6,7 +6,6 @@ import org.bukkit.Material;
 import org.bukkit.block.Chest;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -44,7 +43,21 @@ public class FigureShopGUI extends InventoryGUI {
 		if (chest.getBlockInventory().getItem(0) != null && chest.getBlockInventory().getItem(0).getAmount() > 0) {
 			ItemStack item = new ItemStack(chest.getBlockInventory().getItem(0));
 			item.setAmount(1);
-			addButton(item, SELL_SLOT);
+			addButton(item, SELL_SLOT, (button, index, click) -> {
+				int price = figure.getPrice(figureEntity.getEquipment().getHelmet());
+				int money = figure.getMoney(figureEntity.getEquipment().getHelmet());
+				if (chest.getBlockInventory().getItem(0) != null && chest.getBlockInventory().getItem(0).getAmount() > 0 && price >= 0&& stats.getMoney() >= price) {
+					ItemStack buy = chest.getBlockInventory().getItem(0).clone();
+					chest.getBlockInventory().getItem(0).setAmount(chest.getBlockInventory().getItem(0).getAmount() - 1);
+					buy.setAmount(1);
+					
+					getOwner().getInventory().addItem(buy);
+					stats.setMoney(stats.getMoney() - price);
+					figureEntity.getEquipment().setHelmet(figure.setMoney(figureEntity.getEquipment().getHelmet(), money + price));
+					getOwner().sendMessage(ChatColor.GREEN + "[Economic Figure] KAT-SCHING! You bought " + buy.getItemMeta().getDisplayName() + "!");
+					initGUI();
+				}
+			});
 		}
 		// Price
 		{
@@ -52,7 +65,24 @@ public class FigureShopGUI extends InventoryGUI {
 			ItemMeta meta = item.getItemMeta();
 			meta.setDisplayName("Price: " + figure.getPrice(figureEntity.getEquipment().getHelmet()));
 			item.setItemMeta(meta);
-			addButton(item, PRICE_SLOT);
+			addButton(item, PRICE_SLOT, (button, index, click) -> {
+				if (getOwner().getUniqueId().equals(figure.getOwner(figureEntity.getEquipment().getHelmet()))) {
+					getOwner().sendMessage("[Economic Figure] Please enter the new price to the chat!");
+					inputHandler.requestPlayerInput(getOwner(), new ChatInputHandler.InputProcessor() {
+						@Override
+						public void process(Player player, String input) {
+							try {
+								figureEntity.getEquipment().setHelmet(figure.setPrice(figureEntity.getEquipment().getHelmet(), Integer.parseInt(input)));
+								player.sendMessage(ChatColor.GREEN + "[Economic Figure] You set the price to " + input + "!");
+							}
+							catch (NumberFormatException e) {
+								player.sendMessage(ChatColor.RED + "[Economic Figure] You have to enter a valid number!");
+							}
+						}
+					});
+					close ();
+				}
+			});
 		}
 		// Money
 		{
@@ -60,52 +90,18 @@ public class FigureShopGUI extends InventoryGUI {
 			ItemMeta meta = item.getItemMeta();
 			meta.setDisplayName("Money: " + figure.getMoney(figureEntity.getEquipment().getHelmet()));
 			item.setItemMeta(meta);
-			addButton(item, MONEY_SLOT);
+			addButton(item, MONEY_SLOT, (button, index, click) -> {
+				int money = figure.getMoney(figureEntity.getEquipment().getHelmet());
+				if (getOwner().getUniqueId().equals(figure.getOwner(figureEntity.getEquipment().getHelmet()))) {
+					stats.setMoney(stats.getMoney() + money);
+					getOwner().sendMessage(ChatColor.GREEN + "[Economic Figure] KAT-SCHING! You recieved " + money + " $!");
+					getOwner().sendMessage(ChatColor.GREEN + "[Economic Figure] I recommend you to invest it into some new economic stuff for or shop!");
+					figureEntity.getEquipment().setHelmet(figure.setMoney(figureEntity.getEquipment().getHelmet(), 0));
+					initGUI();
+				}
+			});
 		}
 		fillEmpty(getFiller());
-	}
-
-	@Override
-	protected void onButtonPress(ItemStack button, ClickType click) {
-		int slot = getInventory().first(button);
-		int price = figure.getPrice(figureEntity.getEquipment().getHelmet());
-		int money = figure.getMoney(figureEntity.getEquipment().getHelmet());
-
-		if (slot == SELL_SLOT && chest.getBlockInventory().getItem(0) != null && chest.getBlockInventory().getItem(0).getAmount() > 0 && price >= 0&& stats.getMoney() >= price) {
-			ItemStack buy = chest.getBlockInventory().getItem(0).clone();
-			chest.getBlockInventory().getItem(0).setAmount(chest.getBlockInventory().getItem(0).getAmount() - 1);
-			buy.setAmount(1);
-			
-			getOwner().getInventory().addItem(buy);
-			stats.setMoney(stats.getMoney() - price);
-			figureEntity.getEquipment().setHelmet(figure.setMoney(figureEntity.getEquipment().getHelmet(), money + price));
-			getOwner().sendMessage(ChatColor.GREEN + "[Economic Figure] KAT-SCHING! You bought " + buy.getItemMeta().getDisplayName() + "!");
-			initGUI();
-		} else if (getOwner().getUniqueId().equals(figure.getOwner(figureEntity.getEquipment().getHelmet()))) {
-			if (slot == PRICE_SLOT) {
-				getOwner().sendMessage("[Economic Figure] Please enter the new price to the chat!");
-				inputHandler.requestPlayerInput(getOwner(), new ChatInputHandler.InputProcessor() {
-					@Override
-					public void process(Player player, String input) {
-						try {
-							figureEntity.getEquipment().setHelmet(figure.setPrice(figureEntity.getEquipment().getHelmet(), Integer.parseInt(input)));
-							player.sendMessage(ChatColor.GREEN + "[Economic Figure] You set the price to " + input + "!");
-						}
-						catch (NumberFormatException e) {
-							player.sendMessage(ChatColor.RED + "[Economic Figure] You have to enter a valid number!");
-						}
-					}
-				});
-				close ();
-			}
-			else if (slot == MONEY_SLOT) {
-				stats.setMoney(stats.getMoney() + money);
-				getOwner().sendMessage(ChatColor.GREEN + "[Economic Figure] KAT-SCHING! You recieved " + money + " $!");
-				getOwner().sendMessage(ChatColor.GREEN + "[Economic Figure] I recommend you to invest it into some new economic stuff for or shop!");
-				figureEntity.getEquipment().setHelmet(figure.setMoney(figureEntity.getEquipment().getHelmet(), 0));
-				initGUI();
-			}
-		}
 	}
 
 }

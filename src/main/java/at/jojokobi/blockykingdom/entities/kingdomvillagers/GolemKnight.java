@@ -17,6 +17,9 @@ import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
 import at.jojokobi.mcutil.entity.ai.AttackTask;
+import at.jojokobi.mcutil.entity.ai.InteractEntityTask;
+import at.jojokobi.mcutil.entity.ai.RandomAroundPlaceTask;
+import at.jojokobi.mcutil.entity.ai.RandomTimeCondition;
 import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
 public class GolemKnight extends WarriorVillager<IronGolem> {
@@ -29,6 +32,8 @@ public class GolemKnight extends WarriorVillager<IronGolem> {
 		//Attack
 		addEntityTask(new VillagerFollowTask());
 		addEntityTask(new AttackTask(this::isTarget, 20));
+		addEntityTask(new InteractEntityTask(new RandomTimeCondition(1 * 4, 10 * 4, 5 * 4, 15 * 4), 10));
+		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 20, 50, 8, false, false));
 		addEntityTask(new ReturnToSpawnTask());
 	}
 	
@@ -44,7 +49,7 @@ public class GolemKnight extends WarriorVillager<IronGolem> {
 		golem.setRemoveWhenFarAway(false);
 		
 		updateArmor(golem);
-		golem.getEquipment().setItemInMainHand(new ItemStack(Material.IRON_SWORD));
+		golem.getEquipment().setItemInMainHand(new ItemStack(Material.POPPY));
 		
 		golem.getEquipment().setHelmetDropChance(0);
 		golem.getEquipment().setChestplateDropChance(0);
@@ -82,7 +87,7 @@ public class GolemKnight extends WarriorVillager<IronGolem> {
 	
 	@Override
 	protected double getWalkSpeed() {
-		return 0.2;
+		return 0.1;
 	}
 	
 	@Override
@@ -111,7 +116,9 @@ public class GolemKnight extends WarriorVillager<IronGolem> {
 	@Override
 	protected void onLevelUp() {
 		super.onLevelUp();
-		updateArmor(getEntity());
+		if (getEntity() != null ) {
+			updateArmor(getEntity());
+		}
 	}
 	
 	public static GolemKnight deserialize (Map<String, Object> map) {

@@ -4,7 +4,9 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public interface Iconable {
+import at.jojokobi.mcutil.gui.ListGUIEntry;
+
+public interface Iconable extends ListGUIEntry {
 
 	public Material getMaterial();
 	

@@ -29,7 +29,7 @@ public class BuyableItemStack implements Buyable{
 
 
 	@Override
-	public ItemStack getIcon() {
+	public ItemStack getDisplayItem() {
 		return itemStack.clone();
 	}
 

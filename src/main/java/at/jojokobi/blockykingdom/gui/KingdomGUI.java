@@ -10,7 +10,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -72,7 +71,29 @@ public class KingdomGUI extends InventoryGUI{
 			}
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, CLAIM_INDEX);
+			addButton(item, CLAIM_INDEX, (button, index, click) -> {
+				//Claim
+				if (kingdom.getOwners().isEmpty()) {
+					if (kingdom.claimable() && getStatePrice(kingdom.getState()) >= 0 && stats.getMoney() >= getStatePrice(kingdom.getState())) {
+						stats.setMoney(stats.getMoney() - getStatePrice(kingdom.getState()));
+						kingdom.addOwner(getOwner().getUniqueId());
+						getOwner().sendMessage("You claimed " + kingdom.getName() + "!");
+						for (KingdomVillager<?> villager : point.getVillagers(handler)) {
+							villager.setHappiness(0);
+						}
+						close ();
+					}
+				}
+				//Upgrade
+				else if (kingdom.isOwner(getOwner().getUniqueId())){
+					if (stats.getMoney() >= kingdom.getLevelUpPrice() && kingdom.getHappiness() >= kingdom.getLevelUpHappiness()) {
+						stats.setMoney(stats.getMoney() - kingdom.getLevelUpPrice());
+						kingdom.setLevel(kingdom.getLevel() + 1);
+						getOwner().sendMessage(kingdom.getName() + " is now on level " + kingdom.getLevel() + "!");
+						close ();
+					}
+				}
+			});
 		}
 		//Owners
 		{
@@ -88,7 +109,7 @@ public class KingdomGUI extends InventoryGUI{
 			}
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, 1);
+			addButton(item, 1, null);
 		}
 		//Add Owner
 		{
@@ -99,54 +120,26 @@ public class KingdomGUI extends InventoryGUI{
 			lore.add(" * Click to add an owner");
 			meta.setLore(lore);
 			item.setItemMeta(meta);
-			addButton(item, ADD_OWNER_INDEX);
-		}
-		fillEmpty(getFiller());
-	}
-
-	@Override
-	protected void onButtonPress(ItemStack button, ClickType click) {
-		Kingdom kingdom = this.point.toKingdom ();
-		int index = getInventory().first(button);
-		if (index == CLAIM_INDEX) {
-			//Claim
-			if (kingdom.getOwners().isEmpty()) {
-				if (kingdom.claimable() && getStatePrice(kingdom.getState()) >= 0 && stats.getMoney() >= getStatePrice(kingdom.getState())) {
-					stats.setMoney(stats.getMoney() - getStatePrice(kingdom.getState()));
-					kingdom.addOwner(getOwner().getUniqueId());
-					getOwner().sendMessage("You claimed " + kingdom.getName() + "!");
-					for (KingdomVillager<?> villager : point.getVillagers(handler)) {
-						villager.setHappiness(0);
-					}
-					close ();
-				}
-			}
-			//Upgrade
-			else if (kingdom.isOwner(getOwner().getUniqueId())){
-				if (stats.getMoney() >= kingdom.getLevelUpPrice() && kingdom.getHappiness() >= kingdom.getLevelUpHappiness()) {
-					stats.setMoney(stats.getMoney() - kingdom.getLevelUpPrice());
-					kingdom.setLevel(kingdom.getLevel() + 1);
-					getOwner().sendMessage(kingdom.getName() + " is now on level " + kingdom.getLevel() + "!");
-					close ();
-				}
-			}
-		}
-		else if (index == ADD_OWNER_INDEX && kingdom.isOwner(getOwner().getUniqueId())) {
-			getOwner().sendMessage("Enter the name of the new owner!");
-			inputHandler.requestPlayerInput(getOwner(), new ChatInputHandler.InputProcessor() {
-				@Override
-				public void process(Player player, String input) {
-					Player pl = Bukkit.getPlayer(input);
-					if  (pl != null && !kingdom.isOwner(pl.getUniqueId())) {
-						kingdom.addOwner(pl.getUniqueId());
-						player.sendMessage(pl.getName() + " is now an owner of " + kingdom.getName());
-					}
-					else {
-						player.sendMessage("That player does not exist or isn't online!");
-					}
+			addButton(item, ADD_OWNER_INDEX, (button, index, click) -> {
+				if (kingdom.isOwner(getOwner().getUniqueId())) {
+					getOwner().sendMessage("Enter the name of the new owner!");
+					inputHandler.requestPlayerInput(getOwner(), new ChatInputHandler.InputProcessor() {
+						@Override
+						public void process(Player player, String input) {
+							Player pl = Bukkit.getPlayer(input);
+							if  (pl != null && !kingdom.isOwner(pl.getUniqueId())) {
+								kingdom.addOwner(pl.getUniqueId());
+								player.sendMessage(pl.getName() + " is now an owner of " + kingdom.getName());
+							}
+							else {
+								player.sendMessage("That player does not exist or isn't online!");
+							}
+						}
+					});
 				}
 			});
 		}
+		fillEmpty(getFiller());
 	}
 	
 	private int getStatePrice (KingdomState state) {

@@ -12,7 +12,7 @@ import at.jojokobi.blockykingdom.players.CharacterStats;
 public class BuyableSkillPoint implements Buyable{
 
 	@Override
-	public ItemStack getIcon() {
+	public ItemStack getDisplayItem() {
 		return new ItemStack(Material.EXPERIENCE_BOTTLE);
 	}
 

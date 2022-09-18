@@ -77,7 +77,7 @@ public class RecruiterHouse extends Structure{
 		for (int x = 0; x < getWidth(); x++) {
 			for (int z = 0; z < getLength(); z++) {
 				for (int y = 0; y < getHeight(); y++) {
-					BlockData data = null;
+					BlockData data = Material.AIR.createBlockData();
 					if (y == 0 || y == getHeight() - 1) {
 						data = Material.SMOOTH_STONE_SLAB.createBlockData();
 						((Slab) data).setType(Slab.Type.DOUBLE);
