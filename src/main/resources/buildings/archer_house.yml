@@ -1,0 +1,1167 @@
+building:
+  ==: at.jojokobi.mcutil.building.Building
+  blocks:
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 0
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 1
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 2
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 3
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 4
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 5
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 1
+    z: 0
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 1
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 1
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 1
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 1
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 1
+    z: 5
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 2
+    z: 0
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 2
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 2
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 2
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 2
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 2
+    z: 5
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 3
+    z: 0
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 3
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 3
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 3
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 3
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 3
+    z: 5
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 0
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 5
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 0
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 5
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 6
+    z: 0
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 6
+    z: 1
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 6
+    z: 2
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 6
+    z: 3
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 6
+    z: 4
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 6
+    z: 5
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 7
+    z: 0
+    block: minecraft:oak_fence[east=true,north=false,south=true,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 7
+    z: 1
+    block: minecraft:oak_fence[east=false,north=true,south=true,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 7
+    z: 2
+    block: minecraft:oak_fence[east=false,north=true,south=true,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 7
+    z: 3
+    block: minecraft:oak_fence[east=false,north=true,south=true,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 7
+    z: 4
+    block: minecraft:oak_fence[east=false,north=true,south=true,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 7
+    z: 5
+    block: minecraft:oak_fence[east=true,north=true,south=false,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 8
+    z: 0
+    block: minecraft:oak_fence[east=false,north=false,south=false,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 8
+    z: 5
+    block: minecraft:oak_fence[east=false,north=false,south=false,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 9
+    z: 0
+    block: minecraft:lantern[hanging=false,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 9
+    z: 5
+    block: minecraft:lantern[hanging=false,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 0
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 5
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 2
+    block: minecraft:light_gray_bed[facing=south,occupied=false,part=foot]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 3
+    block: minecraft:light_gray_bed[facing=south,occupied=false,part=head]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 4
+    block: minecraft:oak_stairs[facing=west,half=top,shape=straight,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 1
+    block: minecraft:lantern[hanging=true,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 4
+    block: minecraft:bookshelf
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 6
+    z: 0
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 6
+    z: 1
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 6
+    z: 2
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 6
+    z: 3
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 6
+    z: 4
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 6
+    z: 5
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 7
+    z: 0
+    block: minecraft:oak_fence[east=true,north=false,south=false,waterlogged=false,west=true]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 7
+    z: 5
+    block: minecraft:oak_fence[east=true,north=false,south=false,waterlogged=false,west=true]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 0
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 5
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 1
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 1
+    z: 4
+    block: minecraft:oak_stairs[facing=east,half=top,shape=straight,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 1
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 2
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 2
+    z: 4
+    block: minecraft:potted_cornflower
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 2
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 3
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 3
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 4
+    block: minecraft:bookshelf
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 6
+    z: 0
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 6
+    z: 1
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 6
+    z: 2
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 6
+    z: 3
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 6
+    z: 4
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 6
+    z: 5
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 7
+    z: 0
+    block: minecraft:oak_fence[east=true,north=false,south=false,waterlogged=false,west=true]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 7
+    z: 5
+    block: minecraft:oak_fence[east=true,north=false,south=false,waterlogged=false,west=true]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 0
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 5
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 1
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 1
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 2
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 2
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 3
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 3
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 6
+    z: 0
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 6
+    z: 1
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 6
+    z: 2
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 6
+    z: 3
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 6
+    z: 4
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 6
+    z: 5
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 7
+    z: 0
+    block: minecraft:oak_fence[east=true,north=false,south=false,waterlogged=false,west=true]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 7
+    z: 5
+    block: minecraft:oak_fence[east=true,north=false,south=false,waterlogged=false,west=true]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 0
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 5
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 1
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 1
+    z: 1
+    block: minecraft:ladder[facing=south,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 1
+    z: 4
+    block: minecraft:fletching_table
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 1
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 2
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 2
+    z: 1
+    block: minecraft:ladder[facing=south,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 2
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 3
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 3
+    z: 1
+    block: minecraft:ladder[facing=south,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 3
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 1
+    block: minecraft:ladder[facing=south,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 4
+    block: minecraft:lantern[hanging=true,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 0
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 1
+    block: minecraft:ladder[facing=south,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 6
+    z: 0
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 6
+    z: 1
+    block: minecraft:ladder[facing=south,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 6
+    z: 2
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 6
+    z: 3
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 6
+    z: 4
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 6
+    z: 5
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 7
+    z: 0
+    block: minecraft:oak_fence[east=true,north=false,south=false,waterlogged=false,west=true]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 7
+    z: 5
+    block: minecraft:oak_fence[east=true,north=false,south=false,waterlogged=false,west=true]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 0
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 1
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 2
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 3
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 4
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 5
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 1
+    z: 0
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 1
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 1
+    z: 2
+    block: minecraft:oak_door[facing=west,half=lower,hinge=right,open=true,powered=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 1
+    z: 3
+    block: minecraft:oak_door[facing=west,half=lower,hinge=left,open=false,powered=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 1
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 1
+    z: 5
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 2
+    z: 0
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 2
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 2
+    z: 2
+    block: minecraft:oak_door[facing=west,half=upper,hinge=right,open=true,powered=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 2
+    z: 3
+    block: minecraft:oak_door[facing=west,half=upper,hinge=left,open=false,powered=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 2
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 2
+    z: 5
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 3
+    z: 0
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 3
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 3
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 3
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 3
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 3
+    z: 5
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 0
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 5
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 0
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 5
+    block: minecraft:oak_log[axis=y]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 6
+    z: 0
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 6
+    z: 1
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 6
+    z: 2
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 6
+    z: 3
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 6
+    z: 4
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 6
+    z: 5
+    block: minecraft:smooth_stone_slab[type=double,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 7
+    z: 0
+    block: minecraft:oak_fence[east=false,north=false,south=true,waterlogged=false,west=true]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 7
+    z: 1
+    block: minecraft:oak_fence[east=false,north=true,south=true,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 7
+    z: 2
+    block: minecraft:oak_fence[east=false,north=true,south=true,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 7
+    z: 3
+    block: minecraft:oak_fence[east=false,north=true,south=true,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 7
+    z: 4
+    block: minecraft:oak_fence[east=false,north=true,south=true,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 7
+    z: 5
+    block: minecraft:oak_fence[east=false,north=true,south=false,waterlogged=false,west=true]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 8
+    z: 0
+    block: minecraft:oak_fence[east=false,north=false,south=false,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 8
+    z: 5
+    block: minecraft:oak_fence[east=false,north=false,south=false,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 9
+    z: 0
+    block: minecraft:lantern[hanging=false,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 9
+    z: 5
+    block: minecraft:lantern[hanging=false,waterlogged=false]
+  width: 6
+  length: 6
+  marks:
+  - ==: at.jojokobi.mcutil.building.BuildingMark
+    x: 2
+    y: 7
+    z: 3
+    mark: archer_villager
+  - ==: at.jojokobi.mcutil.building.BuildingMark
+    x: 4
+    y: 7
+    z: 4
+    mark: chest
+  height: 10
