@@ -1,7 +1,7 @@
 package at.jojokobi.blockykingdom.entities.kingdomvillagers;
 
 public enum VillagerCategory {
-	TRADER, WARRIOR, HEALER;
+	TRADER, WARRIOR, HEALER, WORKER;
 	
 	public int getMaxAmount (int kingdomLevel) {
 		int amount = 0;
@@ -15,6 +15,8 @@ public enum VillagerCategory {
 		case TRADER:
 			amount = 2 + 2 * kingdomLevel;
 			break;
+		case WORKER:
+			amount = 1 + kingdomLevel;
 		}
 		return amount;
 	}
