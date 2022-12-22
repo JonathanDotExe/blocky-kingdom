@@ -30,6 +30,8 @@ import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
 public class Farmer extends KingdomVillager<Villager> {
 	
+	public static final int FARMER_PRICE = 2500;
+	
 	static final List<Material> CROP_ITEMS = Arrays.asList(Material.CARROT, Material.BEETROOT, Material.WHEAT, Material.WHEAT_SEEDS, Material.POTATO, Material.POISONOUS_POTATO);
 	static final List<Material> CROP_BLOCKS = Arrays.asList(Material.CARROTS, Material.BEETROOTS, Material.POTATOES, Material.WHEAT);
 	
@@ -79,6 +81,11 @@ public class Farmer extends KingdomVillager<Villager> {
 		NMSEntityUtil.clearGoals(villager);
 		
 		return villager;
+	}
+	
+	@Override
+	public int getPrice() {
+		return FARMER_PRICE;
 	}
 	
 	@Override
