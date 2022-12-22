@@ -63,7 +63,8 @@ public class Farmer extends KingdomVillager<Villager> {
 	
 	@Override
 	protected void spawn() {
-		super.spawn();	}
+		super.spawn();
+	}
 
 	@Override
 	protected Villager createEntity(Location place) {
