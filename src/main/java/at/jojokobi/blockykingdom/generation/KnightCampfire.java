@@ -16,6 +16,7 @@ import at.jojokobi.blockykingdom.items.Katana;
 import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.blockykingdom.items.Smasher;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
+import at.jojokobi.mcutil.building.Building;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.generation.TerrainGenUtil;
 import at.jojokobi.mcutil.generation.population.Structure;
@@ -28,11 +29,13 @@ public class KnightCampfire extends Structure{
 
 	private EntityHandler entityHandler;
 	
+	private Building building;
 	private LootInventory loot;
 	
 	public KnightCampfire(EntityHandler entityHandler) {
 		super(5, 5, 2, 0);
 		this.entityHandler = entityHandler;
+		building = Building.loadBuilding(getClass().getResourceAsStream("building/knight_campfire.yml"));
 		
 		loot = new LootInventory();
 		
@@ -72,11 +75,9 @@ public class KnightCampfire extends Structure{
 
 	@Override
 	public List<StructureInstance<? extends Structure>> generate(Location loc, long seed) {
-		Location place = loc.clone();
-		
 		Random random = new Random(generateValueBeasedSeed(loc, seed));
 		
-		for (int x = 0; x < getWidth(); x++) {
+		/*for (int x = 0; x < getWidth(); x++) {
 			for (int z = 0; z < getLength(); z++) {
 				place.setX(loc.getX() + x);
 				place.setZ(loc.getZ() + z);
@@ -119,7 +120,30 @@ public class KnightCampfire extends Structure{
 		Knight knight = new Knight(place, entityHandler, random);
 		entityHandler.addSavedEntity(knight);
 		knight.gainXP(random.nextInt(25));
-		new KingdomPoint(loc).addVillager(knight);
+		new KingdomPoint(loc).addVillager(knight);*/
+		
+		building.build(loc, (place, mark) -> {
+			switch (mark) {
+			case "knight_villager":
+			{
+				place.setX(loc.getX() + getWidth()/2);
+				place.setY(loc.getY() + 2);
+				place.setZ(loc.getZ());
+				Knight knight = new Knight(place, entityHandler, random);
+				entityHandler.addSavedEntity(knight);
+				knight.gainXP(random.nextInt(25));
+				new KingdomPoint(loc).addVillager(knight);
+			}
+			break;
+			case "chest":
+			{
+				place.getBlock().setType(Material.CHEST);
+				Chest chest = (Chest) place.getBlock().getState();
+				loot.fillInventory(chest.getBlockInventory(), random, null);
+			}
+			break;
+			}
+		}, random.nextInt(4), false);
 		
 		return Arrays.asList(new StructureInstance<KnightCampfire>(this, loc, getWidth(), getHeight(), getLength()));
 	}

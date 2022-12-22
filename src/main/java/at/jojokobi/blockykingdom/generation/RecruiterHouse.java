@@ -6,18 +6,15 @@ import java.util.Random;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
 import org.bukkit.block.Chest;
-import org.bukkit.block.data.BlockData;
-import org.bukkit.block.data.type.Slab;
 import org.bukkit.inventory.ItemStack;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Recruiter;
 import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
+import at.jojokobi.mcutil.building.Building;
 import at.jojokobi.mcutil.entity.EntityHandler;
-import at.jojokobi.mcutil.generation.FurnitureGenUtil;
 import at.jojokobi.mcutil.generation.TerrainGenUtil;
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
@@ -30,10 +27,12 @@ public class RecruiterHouse extends Structure{
 	private EntityHandler entityHandler;
 	
 	private LootInventory loot;
+	private Building building;
 	
 	public RecruiterHouse(EntityHandler entityHandler) {
 		super(8, 8, 5, 0);
 		this.entityHandler = entityHandler;
+		building = Building.loadBuilding(getClass().getResourceAsStream("building/recruiter_house.yml"));
 		
 		loot = new LootInventory();
 		
@@ -69,12 +68,12 @@ public class RecruiterHouse extends Structure{
 	
 	@Override
 	public List<StructureInstance<? extends Structure>> generate(Location loc, long seed) {
-		Location place = loc.clone();
+		//Location place = loc.clone();
 		
 		Random random = new Random(generateValueBeasedSeed(loc, seed));
 		
 		//Walls
-		for (int x = 0; x < getWidth(); x++) {
+		/*for (int x = 0; x < getWidth(); x++) {
 			for (int z = 0; z < getLength(); z++) {
 				for (int y = 0; y < getHeight(); y++) {
 					BlockData data = Material.AIR.createBlockData();
@@ -133,7 +132,26 @@ public class RecruiterHouse extends Structure{
 		place.setX(loc.getX());
 		place.setY(loc.getY() + 1);
 		place.setZ(loc.getZ() + getLength()/2);
-		FurnitureGenUtil.generateDoor(place, Material.OAK_DOOR, BlockFace.EAST, false, true);
+		FurnitureGenUtil.generateDoor(place, Material.OAK_DOOR, BlockFace.EAST, false, true);*/
+		building.build(loc, (place, mark) -> {
+			switch (mark) {
+			case "recruiter":
+			{
+				Recruiter recruiter = new Recruiter(place, entityHandler);
+				entityHandler.addSavedEntity(recruiter);
+				recruiter.gainXP(random.nextInt(15));
+				new KingdomPoint(place).addVillager(recruiter);
+			}
+			break;
+			case "chest":
+			{
+				place.getBlock().setType(Material.CHEST);
+				Chest chest = (Chest) place.getBlock().getState();
+				loot.fillInventory(chest.getBlockInventory(), random, null);
+			}
+			break;
+			}
+		}, random.nextInt(3), false);
 		return Arrays.asList(new StructureInstance<RecruiterHouse>(this, loc, getWidth(), getHeight(), getLength()));
 	}
 
