@@ -30,7 +30,7 @@ public class RecruiterHouse extends Structure{
 	private Building building;
 	
 	public RecruiterHouse(EntityHandler entityHandler) {
-		super(10, 10, 5, 0);
+		super(10, 10, 6, 0);
 		this.entityHandler = entityHandler;
 		building = Building.loadBuilding(getClass().getResourceAsStream("/buildings/recruiter_house.yml"));
 		
@@ -134,7 +134,6 @@ public class RecruiterHouse extends Structure{
 		place.setZ(loc.getZ() + getLength()/2);
 		FurnitureGenUtil.generateDoor(place, Material.OAK_DOOR, BlockFace.EAST, false, true);*/
 		building.build(loc, (place, mark) -> {
-			System.out.println(mark);
 			switch (mark) {
 			case "recruiter":
 			{
