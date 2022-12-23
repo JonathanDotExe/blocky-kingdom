@@ -23,7 +23,7 @@ public class QuestHut extends Structure{
 	public QuestHut(EntityHandler entityHandler) {
 		super(5, 5, 5, 0);
 		this.entityHandler = entityHandler;
-		building = Building.loadBuilding(getClass().getResourceAsStream("buildings/quest_hut.yml"));
+		building = Building.loadBuilding(getClass().getResourceAsStream("/buildings/quest_hut.yml"));
 		
 		setxModifier(1201);
 		setzModifier(1454);

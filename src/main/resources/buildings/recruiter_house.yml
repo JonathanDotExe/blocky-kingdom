@@ -1354,4 +1354,9 @@ building:
     y: 1
     z: 7
     mark: recruiter
+  - ==: at.jojokobi.mcutil.building.BuildingMark
+    x: 6
+    y: 1
+    z: 2
+    mark: chest
   height: 6

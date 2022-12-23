@@ -35,7 +35,7 @@ public class KnightCampfire extends Structure{
 	public KnightCampfire(EntityHandler entityHandler) {
 		super(5, 5, 2, 0);
 		this.entityHandler = entityHandler;
-		building = Building.loadBuilding(getClass().getResourceAsStream("building/knight_campfire.yml"));
+		building = Building.loadBuilding(getClass().getResourceAsStream("/buildings/knight_campfire.yml"));
 		
 		loot = new LootInventory();
 		
