@@ -56,11 +56,6 @@ public class RecruiterHouse extends Structure{
 	}
 
 	@Override
-	public int calculatePlacementY(int width, int length, Location place) {
-		return super.calculatePlacementY(width, length, place) - 1;
-	}
-
-	@Override
 	public List<StructureInstance<? extends Structure>> generateNaturally(Location place, long seed) {
 		TerrainGenUtil.buildGroundBelow(place.clone().add(0, -1, 0), getWidth(), getLength(), b -> b.setType(Material.COBBLESTONE));
 		return super.generateNaturally(place, seed);
