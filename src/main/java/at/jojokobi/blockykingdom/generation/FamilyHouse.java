@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Farmer;
-import at.jojokobi.blockykingdom.entities.kingdomvillagers.Trader;
+import at.jojokobi.blockykingdom.entities.kingdomvillagers.Knight;
 import at.jojokobi.blockykingdom.items.DoubleBow;
 import at.jojokobi.blockykingdom.items.FireWand;
 import at.jojokobi.blockykingdom.items.GrapplingHook;
@@ -110,7 +110,7 @@ public class FamilyHouse extends Structure {
 			break;
 			case "knight_villager":
 			{
-				Trader shopKeeper = new Trader(place, entityHandler, random);
+				Knight shopKeeper = new Knight(place, entityHandler, random);
 				entityHandler.addSavedEntity(shopKeeper);
 				shopKeeper.gainXP(random.nextInt(20));
 				new KingdomPoint(loc).addVillager(shopKeeper);

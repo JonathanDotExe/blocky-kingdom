@@ -411,7 +411,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		genHandler.addStructure(questHut);
 		KnightCampfire campfire = new KnightCampfire(entityHandler);
 		genHandler.addStructure(campfire);
-		genHandler.addStructure(new Castle(entityHandler, getDimensionHandler(), tower, traderHut));
+		genHandler.addStructure(new Castle(entityHandler, getDimensionHandler()));
 		genHandler.addStructure(new FlyingSheepFlock(entityHandler));
 		genHandler.addStructure(new KingdomVillage(getDimensionHandler(), traderHut, traderHut, traderHut, recruiterHouse, recruiterHouse, questHut, questHut, tower, campfire));
 		genHandler.addStructure(new GoblinHut(spawnerHandler));
