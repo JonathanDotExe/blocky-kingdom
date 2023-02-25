@@ -77,51 +77,6 @@ public class KnightCampfire extends Structure{
 	public List<StructureInstance<? extends Structure>> generate(Location loc, long seed) {
 		Random random = new Random(generateValueBeasedSeed(loc, seed));
 		
-		/*for (int x = 0; x < getWidth(); x++) {
-			for (int z = 0; z < getLength(); z++) {
-				place.setX(loc.getX() + x);
-				place.setZ(loc.getZ() + z);
-				place.getBlock().setType(Material.COBBLESTONE);
-			}
-		}
-		
-		place.add(0, 1, 0);
-		
-		//Campfire
-		place.setX(loc.getX() + getWidth()/2);
-		place.setZ(loc.getZ() + getLength()/2);
-		place.getBlock().setType(Material.CAMPFIRE);
-		
-		//Crafting table
-		place.setX(loc.getX());
-		place.setZ(loc.getZ() + getLength()/2);
-		place.getBlock().setType(Material.CRAFTING_TABLE);
-
-		//Chest
-		place.setX(loc.getX() + getWidth()/2);
-		place.setZ(loc.getZ() + getLength() - 1);
-		place.getBlock().setType(Material.CHEST);
-		Chest chest = (Chest) place.getBlock().getState();
-		loot.fillInventory(chest.getBlockInventory(), random, null);
-		
-		//Seats
-		place.setX(loc.getX() + getWidth() - 1);
-		place.setZ(loc.getZ() + getLength()/2);
-		place.getBlock().setType(Material.OAK_SLAB);
-		
-		place.setX(loc.getX() + getWidth()/2);
-		place.setZ(loc.getZ());
-		place.getBlock().setType(Material.OAK_SLAB);
-
-		//Knight
-		place.setX(loc.getX() + getWidth()/2);
-		place.setY(loc.getY() + 2);
-		place.setZ(loc.getZ());
-		Knight knight = new Knight(place, entityHandler, random);
-		entityHandler.addSavedEntity(knight);
-		knight.gainXP(random.nextInt(25));
-		new KingdomPoint(loc).addVillager(knight);*/
-		
 		building.build(loc, (place, mark) -> {
 			switch (mark) {
 			case "knight_villager":

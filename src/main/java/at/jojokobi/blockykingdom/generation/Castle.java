@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Archer;
+import at.jojokobi.blockykingdom.entities.kingdomvillagers.Farmer;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Knight;
 import at.jojokobi.blockykingdom.items.Katana;
 import at.jojokobi.blockykingdom.kingdoms.Kingdom;
@@ -153,9 +154,31 @@ public class Castle extends Structure{
 				new KingdomPoint(loc).addVillager(knight);
 			}
 				break;
+			case "farmer_villager":
+			{
+				Farmer knight = new Farmer(place, entityHandler, random);
+				entityHandler.addSavedEntity(knight);
+				knight.gainXP(random.nextInt(20));
+				new KingdomPoint(loc).addVillager(knight);
+			}
+				break;
+			case "barn_chest":
+				break;
+			case "horse":
+				break;
+			case "shop_chest":
+				break;
+			case "trader_villager":
+				break;
+			case "weapon_chest":
+				break;
 			}
 		};
 		castleBuilding.build(loc, markInterpreter, 0, false);
+		
+		//Add side structures
+		rightBuildings.get(random.nextInt(rightBuildings.size())).build(loc.clone().add(1, 0, 9), markInterpreter, 0, false);
+		leftBuildings.get(random.nextInt(leftBuildings.size())).build(loc.clone().add(24, 0, 9), markInterpreter, 0, false);
 		
 		structures.add(new StructureInstance<Castle>(this, loc.clone(), getWidth(), getHeight(), getLength()));
 				
