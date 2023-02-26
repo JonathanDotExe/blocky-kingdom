@@ -119,8 +119,8 @@ public class ArcherHouse extends Structure {
 		evilLoot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 2, 10));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.ENCHANTED_BOOK), 1, 1).setEnchant(true));
 		
-		setxModifier(81);
-		setzModifier(-15155);
+		setxModifier(9284);
+		setzModifier(645);
 	}
 
 	@Override
