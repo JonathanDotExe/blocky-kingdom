@@ -11,13 +11,20 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World.Environment;
 import org.bukkit.block.Chest;
+import org.bukkit.entity.Horse;
 import org.bukkit.inventory.ItemStack;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Archer;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Farmer;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Knight;
+import at.jojokobi.blockykingdom.entities.kingdomvillagers.Trader;
+import at.jojokobi.blockykingdom.items.Dagger;
+import at.jojokobi.blockykingdom.items.DoubleBow;
+import at.jojokobi.blockykingdom.items.Hammer;
 import at.jojokobi.blockykingdom.items.Katana;
+import at.jojokobi.blockykingdom.items.Money;
+import at.jojokobi.blockykingdom.items.Smasher;
 import at.jojokobi.blockykingdom.kingdoms.Kingdom;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
@@ -41,8 +48,11 @@ public class Castle extends Structure{
 	private DimensionHandler dimHandler;
 	
 	private LootInventory loot;
+	private LootInventory barnLoot;
+	private LootInventory shopLoot;
 	private LootInventory evilLoot;
 	private LootInventory archerLoot;
+	private LootInventory weaponLoot;
 	
 	public Castle(EntityHandler entityHandler, DimensionHandler dimHandler) {
 		super(32, 32, 32, 0);
@@ -68,6 +78,65 @@ public class Castle extends Structure{
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.IRON_SWORD), 1, 1));
 		loot.addItem(new LootItem(0.4, new ItemStack(Material.STONE_SWORD), 1, 1));
 		loot.addItem(new LootItem(0.05, new ItemStack(Material.DIAMOND), 1, 1));
+		loot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 5));
+		
+		barnLoot = new LootInventory();
+		barnLoot.addItem(new LootItem(0.2, new ItemStack(Material.COAL), 1, 8));
+		barnLoot.addItem(new LootItem(0.05, new ItemStack(Material.DIAMOND), 1, 3));
+		barnLoot.addItem(new LootItem(0.1, new ItemStack(Material.GOLD_INGOT), 1, 3));
+		barnLoot.addItem(new LootItem(0.2, new ItemStack(Material.IRON_INGOT), 1, 5));
+		barnLoot.addItem(new LootItem(1, new ItemStack(Material.BREAD), 1, 7));
+		barnLoot.addItem(new LootItem(1, new ItemStack(Material.APPLE), 1, 3));
+		barnLoot.addItem(new LootItem(0.2, new ItemStack(Material.STONE_SWORD), 1, 1));
+		barnLoot.addItem(new LootItem(0.4, new ItemStack(Material.STONE_HOE), 1, 1));
+		barnLoot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_HOE), 1, 1));
+		barnLoot.addItem(new LootItem(0.1, new ItemStack(Material.NAME_TAG), 1, 1));
+		barnLoot.addItem(new LootItem(1, new ItemStack(Material.WHEAT_SEEDS), 1, 16));
+		barnLoot.addItem(new LootItem(0.4, new ItemStack(Material.CARROT), 1, 4));
+		barnLoot.addItem(new LootItem(0.4, new ItemStack(Material.HAY_BLOCK), 1, 4));	
+		barnLoot.addItem(new LootItem(0.1, new ItemStack(Material.PUMPKIN), 1, 2));
+		barnLoot.addItem(new LootItem(0.05, new ItemStack(Material.MELON), 1, 2));
+		barnLoot.addItem(new LootItem(0.1, new ItemStack(Material.POTATO), 1, 2));
+		barnLoot.addItem(new LootItem(0.05, new ItemStack(Material.BEETROOT_SEEDS), 1, 4));	
+		barnLoot.addItem(new LootItem(0.5, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 5));
+		
+		shopLoot = new LootInventory();
+		shopLoot.addItem(new LootItem(1, new ItemStack(Material.COAL), 1, 16));
+		shopLoot.addItem(new LootItem(0.05, new ItemStack(Material.DIAMOND), 1, 3));
+		shopLoot.addItem(new LootItem(0.5, new ItemStack(Material.GOLD_INGOT), 1, 4));
+		shopLoot.addItem(new LootItem(0.8, new ItemStack(Material.IRON_INGOT), 1, 8));
+		shopLoot.addItem(new LootItem(1, new ItemStack(Material.BREAD), 1, 5));
+		shopLoot.addItem(new LootItem(1, new ItemStack(Material.APPLE), 1, 3));
+		shopLoot.addItem(new LootItem(0.1, new ItemStack(Material.BOW), 1, 1));
+		shopLoot.addItem(new LootItem(0.5, new ItemStack(Material.STONE_SWORD), 1, 1));
+		shopLoot.addItem(new LootItem(0.7, new ItemStack(Material.ARROW), 1, 10));	
+		shopLoot.addItem(new LootItem(0.1, new ItemStack(Material.NAME_TAG), 1, 1));
+		shopLoot.addItem(new LootItem(1, new ItemStack(Material.WHEAT_SEEDS), 1, 16));
+		shopLoot.addItem(new LootItem(0.2, new ItemStack(Material.CARROT), 1, 2));
+		shopLoot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Dagger.IDENTIFIER), 1, 1));
+		shopLoot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Smasher.IDENTIFIER), 1, 1));
+		shopLoot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, DoubleBow.IDENTIFIER), 1, 1));
+		shopLoot.addItem(new LootItem(0.05, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Hammer.IDENTIFIER), 1, 1));
+		shopLoot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 5));
+		
+		weaponLoot = new LootInventory();
+		weaponLoot.addItem(new LootItem(0.05, new ItemStack(Material.DIAMOND), 1, 2));
+		weaponLoot.addItem(new LootItem(0.05, new ItemStack(Material.EMERALD), 1, 2));
+		weaponLoot.addItem(new LootItem(0.5, new ItemStack(Material.GOLD_INGOT), 1, 6));
+		weaponLoot.addItem(new LootItem(0.05, new ItemStack(Material.IRON_BLOCK), 1, 3));
+		weaponLoot.addItem(new LootItem(0.4, new ItemStack(Material.IRON_BARS), 1, 16));
+		weaponLoot.addItem(new LootItem(0.05, new ItemStack(Material.DAMAGED_ANVIL), 1, 1));
+		weaponLoot.addItem(new LootItem(0.8, new ItemStack(Material.IRON_INGOT), 1, 10));
+		weaponLoot.addItem(new LootItem(0.05, new ItemStack(Material.BOW), 1, 1).setEnchant(true));
+		weaponLoot.addItem(new LootItem(0.5, new ItemStack(Material.STONE_SWORD), 1, 1).setEnchant(true));
+		weaponLoot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_SWORD), 1, 1).setEnchant(true));
+		weaponLoot.addItem(new LootItem(0.7, new ItemStack(Material.ARROW), 1, 10));
+		weaponLoot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Katana.IDENTIFIER), 1, 1));
+		weaponLoot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Dagger.IDENTIFIER), 1, 1));
+		weaponLoot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Smasher.IDENTIFIER), 1, 1));
+		weaponLoot.addItem(new LootItem(0.05, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, DoubleBow.IDENTIFIER), 1, 1));
+		weaponLoot.addItem(new LootItem(0.05, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Hammer.IDENTIFIER), 1, 1));
+		weaponLoot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 5));
 		
 		evilLoot = new LootInventory();
 		evilLoot.addItem(new LootItem(0.2, new ItemStack(Material.FEATHER), 1, 4));
@@ -88,6 +157,7 @@ public class Castle extends Structure{
 		evilLoot.addItem(new LootItem(0.2, new ItemStack(Material.IRON_SWORD), 1, 1).setDamage(true).setEnchant(true));
 		evilLoot.addItem(new LootItem(0.05, new ItemStack(Material.ENCHANTED_BOOK), 1, 1).setEnchant(true));
 		evilLoot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Katana.IDENTIFIER), 1, 1).setEnchant(true));		
+		evilLoot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 5));
 		
 		archerLoot = new LootInventory();
 		archerLoot.addItem(new LootItem(1, new ItemStack(Material.ARROW), 1, 16));
@@ -163,14 +233,39 @@ public class Castle extends Structure{
 			}
 				break;
 			case "barn_chest":
+			{
+				Chest chest = (Chest) place.getBlock().getState();
+				barnLoot.fillInventory(chest.getBlockInventory(), random, null);
+			}
 				break;
 			case "horse":
+			{
+				Horse horse = place.getWorld().spawn(place, Horse.class);
+				horse.setAdult();
+				horse.setTamed(true);
+				horse.setStyle(Horse.Style.values()[random.nextInt(Horse.Style.values().length)]);
+				horse.setColor(Horse.Color.values()[random.nextInt(Horse.Color.values().length)]);
+			}
 				break;
 			case "shop_chest":
+			{
+				Chest chest = (Chest) place.getBlock().getState();
+				shopLoot.fillInventory(chest.getBlockInventory(), random, null);
+			}
 				break;
 			case "trader_villager":
+			{
+				Trader knight = new Trader(place, entityHandler, random);
+				entityHandler.addSavedEntity(knight);
+				knight.gainXP(random.nextInt(20));
+				new KingdomPoint(loc).addVillager(knight);
+			}
 				break;
 			case "weapon_chest":
+			{
+				Chest chest = (Chest) place.getBlock().getState();
+				weaponLoot.fillInventory(chest.getBlockInventory(), random, null);
+			}
 				break;
 			}
 		};
