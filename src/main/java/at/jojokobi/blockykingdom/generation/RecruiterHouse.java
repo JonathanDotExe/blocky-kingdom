@@ -66,68 +66,6 @@ public class RecruiterHouse extends Structure{
 		//Location place = loc.clone();
 		
 		Random random = new Random(generateValueBeasedSeed(loc, seed));
-		
-		//Walls
-		/*for (int x = 0; x < getWidth(); x++) {
-			for (int z = 0; z < getLength(); z++) {
-				for (int y = 0; y < getHeight(); y++) {
-					BlockData data = Material.AIR.createBlockData();
-					if (y == 0 || y == getHeight() - 1) {
-						data = Material.SMOOTH_STONE_SLAB.createBlockData();
-						((Slab) data).setType(Slab.Type.DOUBLE);
-					}
-					else if ((x == 0 || x == getWidth() - 1) && (z == 0 || z == getLength() - 1)) {
-						data = Material.OAK_FENCE.createBlockData();
-					}
-					else if (y >= 2 && y < getHeight() - 1 && (x > 1 || x < getWidth() - 2) && (z == 0 || z == getLength() - 1)) {
-						data = Material.GLASS.createBlockData();
-					}
-					else if (x == 0 || x == getWidth() - 1 || z == 0 || z == getLength() - 1 ) {
-						data = Material.COBBLESTONE.createBlockData();
-					}
-					
-					place.setX(loc.getX() + x);
-					place.setY(loc.getY() + y);
-					place.setZ(loc.getZ() + z);
-					if (data != null) {
-						place.getBlock().setBlockData(data);
-					}
-				}
-			}
-		}
-		
-		//Recruiter
-		place.setX(loc.getX() + getWidth()/2);
-		place.setY(loc.getY() + 1);
-		place.setZ(loc.getZ() + getLength()/2);
-		Recruiter recruiter = new Recruiter(place, entityHandler);
-		entityHandler.addSavedEntity(recruiter);
-		recruiter.gainXP(random.nextInt(15));
-		new KingdomPoint(place).addVillager(recruiter);
-		
-		//Crafting table
-		place.setX(loc.getX() + getWidth() - 2);
-		place.setY(loc.getY() + 1);
-		place.setZ(loc.getZ() + getLength() - 2);
-		place.getBlock().setType(Material.CRAFTING_TABLE);
-		//Furnace
-		place.add(0, 0, -1);
-		place.getBlock().setType(Material.FURNACE);
-		//Chest
-		place.add(0, 0, -1);
-		place.getBlock().setType(Material.CHEST);
-		Chest chest = (Chest) place.getBlock().getState();
-		loot.fillInventory(chest.getBlockInventory(), random, null);
-		
-		//Chest
-		place.add(0, 0, -1);
-		place.getBlock().setType(Material.ANVIL);
-		
-		//Door
-		place.setX(loc.getX());
-		place.setY(loc.getY() + 1);
-		place.setZ(loc.getZ() + getLength()/2);
-		FurnitureGenUtil.generateDoor(place, Material.OAK_DOOR, BlockFace.EAST, false, true);*/
 		building.build(loc, (place, mark) -> {
 			switch (mark) {
 			case "recruiter":

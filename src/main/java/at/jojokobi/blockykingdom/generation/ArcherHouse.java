@@ -148,6 +148,7 @@ public class ArcherHouse extends Structure {
 			break;
 			case "chest":
 			{
+				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
 				Kingdom kingdom = KingdomHandler.getInstance().generateKingdom(new KingdomPoint(loc));
 				if (kingdom != null && kingdom.getState() == KingdomState.EVIL) {

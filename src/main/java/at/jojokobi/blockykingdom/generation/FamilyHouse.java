@@ -118,6 +118,7 @@ public class FamilyHouse extends Structure {
 			break;
 			case "chest":
 			{
+				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
 				loot.fillInventory(chest.getBlockInventory(), random, null);
 			}

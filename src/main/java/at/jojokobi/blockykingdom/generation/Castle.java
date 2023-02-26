@@ -60,7 +60,7 @@ public class Castle extends Structure{
 		this.dimHandler = dimHandler;
 		this.castleBuilding = Building.loadBuilding(getClass().getResourceAsStream("/buildings/castle.yml"));
 		this.leftBuildings = Arrays.asList(Building.loadBuilding(getClass().getResourceAsStream("/buildings/castle_food_shop.yml")));
-		this.rightBuildings = Arrays.asList(Building.loadBuilding(getClass().getResourceAsStream("/buildings/castle_weapon_chamber.yml")), Building.loadBuilding(getClass().getResourceAsStream("/buildings/horse_barn.yml")));
+		this.rightBuildings = Arrays.asList(Building.loadBuilding(getClass().getResourceAsStream("/buildings/castle_weapon_chamber.yml")), Building.loadBuilding(getClass().getResourceAsStream("/buildings/castle_horse_barn.yml")));
 
 		setxModifier(-651);
 		setzModifier(81132);
@@ -193,6 +193,7 @@ public class Castle extends Structure{
 			switch (mark) {
 			case "bridge_chest":
 			{
+				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
 				if (KingdomHandler.getInstance().generateKingdom(new KingdomPoint(loc)).getState() == KingdomState.EVIL) {
 					evilLoot.fillInventory(chest.getBlockInventory(), random, null);
@@ -204,6 +205,7 @@ public class Castle extends Structure{
 				break;
 			case "archer_chest":
 			{
+				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
 				archerLoot.fillInventory(chest.getBlockInventory(), random, null);
 			}
@@ -234,6 +236,7 @@ public class Castle extends Structure{
 				break;
 			case "barn_chest":
 			{
+				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
 				barnLoot.fillInventory(chest.getBlockInventory(), random, null);
 			}
@@ -249,6 +252,7 @@ public class Castle extends Structure{
 				break;
 			case "shop_chest":
 			{
+				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
 				shopLoot.fillInventory(chest.getBlockInventory(), random, null);
 			}
@@ -263,6 +267,7 @@ public class Castle extends Structure{
 				break;
 			case "weapon_chest":
 			{
+				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
 				weaponLoot.fillInventory(chest.getBlockInventory(), random, null);
 			}
