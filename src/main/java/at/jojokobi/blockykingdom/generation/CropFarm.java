@@ -48,7 +48,7 @@ public class CropFarm extends Structure{
 				if (x == 0 || x == getWidth() - 1 || z == 0 || z == getLength() - 1) {
 					place.getBlock().setType(Material.OAK_LOG);
 				}
-				else if (x >= getWidth()/2 - 1 && x >= getWidth()/2 && z >= getLength()/2 - 1 && z >= getLength()/2) {
+				else if (x >= getWidth()/2 - 1 && x <= getWidth()/2) {
 					place.getBlock().setType(Material.WATER);
 				}
 				else {
