@@ -15,6 +15,7 @@ import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.mcutil.building.Building;
 import at.jojokobi.mcutil.entity.EntityHandler;
+import at.jojokobi.mcutil.generation.BasicGenUtil;
 import at.jojokobi.mcutil.generation.TerrainGenUtil;
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
@@ -64,6 +65,7 @@ public class RecruiterHouse extends Structure{
 	@Override
 	public List<StructureInstance<? extends Structure>> generate(Location loc, long seed) {
 		//Location place = loc.clone();
+		BasicGenUtil.generateCube(loc, Material.AIR, getWidth(), getHeight(), getLength());
 		
 		Random random = new Random(generateValueBeasedSeed(loc, seed));
 		building.build(loc, (place, mark) -> {

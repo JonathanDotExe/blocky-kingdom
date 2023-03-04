@@ -32,6 +32,7 @@ import at.jojokobi.blockykingdom.kingdoms.KingdomState;
 import at.jojokobi.mcutil.building.Building;
 import at.jojokobi.mcutil.dimensions.DimensionHandler;
 import at.jojokobi.mcutil.entity.EntityHandler;
+import at.jojokobi.mcutil.generation.BasicGenUtil;
 import at.jojokobi.mcutil.generation.TerrainGenUtil;
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
@@ -188,6 +189,7 @@ public class Castle extends Structure{
 	public List<StructureInstance<? extends Structure>> generate(Location loc, long seed) {
 		List<StructureInstance<? extends Structure>> structures = new ArrayList<>();		
 		Random random = new Random(generateValueBeasedSeed(loc, seed));
+		BasicGenUtil.generateCube(loc, Material.AIR, getWidth(), getHeight(), getLength());
 		
 		BiConsumer<Location, String> markInterpreter = (place, mark) -> {
 			switch (mark) {

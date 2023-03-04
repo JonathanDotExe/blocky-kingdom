@@ -125,7 +125,8 @@ public class TraderHut extends Structure{
 			for (int z = 0; z < getLength(); z++) {
 				for (int y = 0; y < getHeight(); y++) {
 					Material block = Material.AIR;
-					if ((x == 0 || x == getWidth() - 1) && (z == 0 || z == getLength() - 1)) {
+					if (((x == 0 || x == getWidth() - 1) && (z == 0 || z == getLength() - 1)) ||
+							((x == 0 || x == getWidth() - 1 || z == 0 || z == getLength() - 1) && (y == 0 || y == getHeight() - 1))) {
 						block = Material.OAK_LOG;
 					}
 					else if (y >= 2 && y < getHeight() - 1 && x == getWidth() - 1 && z >= 4 &&  z < getLength() - 2 ) {

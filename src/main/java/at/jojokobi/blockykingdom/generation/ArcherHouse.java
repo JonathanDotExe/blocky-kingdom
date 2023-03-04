@@ -24,6 +24,7 @@ import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.blockykingdom.kingdoms.KingdomState;
 import at.jojokobi.mcutil.building.Building;
 import at.jojokobi.mcutil.entity.EntityHandler;
+import at.jojokobi.mcutil.generation.BasicGenUtil;
 import at.jojokobi.mcutil.generation.TerrainGenUtil;
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
@@ -135,6 +136,7 @@ public class ArcherHouse extends Structure {
 		
 		Random random = new Random(generateValueBeasedSeed(loc, seed));
 		
+		BasicGenUtil.generateCube(loc, Material.AIR, getWidth(), getHeight(), getLength());
 		building.build(loc, (place, mark) -> {
 			System.out.println(mark);
 			switch (mark) {
