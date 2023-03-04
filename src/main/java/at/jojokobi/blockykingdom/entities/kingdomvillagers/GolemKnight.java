@@ -31,9 +31,9 @@ public class GolemKnight extends WarriorVillager<IronGolem> {
 		setPrice(GOLEM_KNIGHT_PRICE);
 		//Attack
 		addEntityTask(new VillagerFollowTask());
-		addEntityTask(new AttackTask(this::isTarget, 20));
-		addEntityTask(new InteractEntityTask(new RandomTimeCondition(1 * 4, 10 * 4, 5 * 4, 15 * 4), 10));
-		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 20, 50, 8, false, false));
+		addEntityTask(new AttackTask(this::isTarget, 25));
+		addEntityTask(new InteractEntityTask(new RandomTimeCondition(2 * 4, 15 * 4, 5 * 4, 15 * 4), 20));
+		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 30, 70, 8, false, false, 16));
 		addEntityTask(new ReturnToSpawnTask());
 	}
 	

@@ -17,6 +17,7 @@ import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.ai.InteractEntityTask;
 import at.jojokobi.mcutil.entity.ai.RandomAroundPlaceTask;
 import at.jojokobi.mcutil.entity.ai.RandomTimeCondition;
+import at.jojokobi.mcutil.entity.ai.ReturnToSpawnAtNightTask;
 import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
 public abstract class ShopVillager<T extends LivingEntity> extends KingdomVillager<T>{
@@ -27,8 +28,9 @@ public abstract class ShopVillager<T extends LivingEntity> extends KingdomVillag
 		super(place, handler, random, type);
 		//Peaceful AI
 		addEntityTask(new VillagerFollowTask());
-		addEntityTask(new InteractEntityTask(new RandomTimeCondition(1 * 4, 10 * 4, 5 * 4, 15 * 4), 10));
-		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 20, 50, 8, false, false));
+		addEntityTask(new ReturnToSpawnAtNightTask());
+		addEntityTask(new InteractEntityTask(new RandomTimeCondition(2 * 4, 15 * 4, 5 * 4, 15 * 4), 20));
+		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 30, 50, 8, false, false, 16));
 		addEntityTask(new ReturnToSpawnTask());
 	}
 	

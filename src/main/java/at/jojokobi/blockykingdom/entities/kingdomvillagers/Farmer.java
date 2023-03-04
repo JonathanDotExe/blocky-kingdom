@@ -26,6 +26,7 @@ import at.jojokobi.mcutil.entity.ai.ExamineBlockTask;
 import at.jojokobi.mcutil.entity.ai.InteractEntityTask;
 import at.jojokobi.mcutil.entity.ai.RandomAroundPlaceTask;
 import at.jojokobi.mcutil.entity.ai.RandomTimeCondition;
+import at.jojokobi.mcutil.entity.ai.ReturnToSpawnAtNightTask;
 import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
 public class Farmer extends KingdomVillager<Villager> {
@@ -39,6 +40,7 @@ public class Farmer extends KingdomVillager<Villager> {
 		super(place, handler, random, RecruiterType.getInstance());
 		//Peaceful AI
 		addEntityTask(new VillagerFollowTask());
+		addEntityTask(new ReturnToSpawnAtNightTask());
 		addEntityTask(new CarryTask(e -> e.getType() == EntityType.DROPPED_ITEM && CROP_ITEMS.contains(((Item) e).getItemStack().getType()), 15)); //Carry the dropped items
 		addEntityTask(new ExamineBlockTask(b -> CROP_BLOCKS.contains(b.getType()) && ((Ageable) b.getBlockData()).getAge() == ((Ageable) b.getBlockData()).getMaximumAge(), b -> b.breakNaturally(), 15));
 		addEntityTask(new ExamineBlockTask(b -> b.getType() == Material.CHEST && !getEntity().getPassengers().isEmpty(), b -> {
@@ -52,8 +54,8 @@ public class Farmer extends KingdomVillager<Villager> {
 			}
 			getEntity().eject();
 		}, 15));
-		addEntityTask(new InteractEntityTask(new RandomTimeCondition(1 * 4, 10 * 4, 5 * 4, 15 * 4), 10));
-		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 20, 50, 8, false, false));
+		addEntityTask(new InteractEntityTask(new RandomTimeCondition(2 * 4, 15 * 4, 5 * 4, 15 * 4), 20));
+		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 30, 50, 8, false, false, 16));
 		addEntityTask(new ReturnToSpawnTask());
 	}
 	

@@ -45,8 +45,8 @@ public class Healer extends KingdomVillager<Villager> implements Attacker, Targe
 		//Approach other villagers
 		addEntityTask(new VillagerFollowTask());
 		addEntityTask(new AttackTask(this::isTarget, 20));
-		addEntityTask(new InteractEntityTask(new RandomTimeCondition(1 * 4, 10 * 4, 5 * 4, 15 * 4), 10));
-		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 20, 40, 8, false, false));
+		addEntityTask(new InteractEntityTask(new RandomTimeCondition(2 * 4, 15 * 4, 5 * 4, 15 * 4), 20));
+		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 20, 40, 8, false, false, 16));
 		addEntityTask(new ReturnToSpawnTask());
 	}
 
