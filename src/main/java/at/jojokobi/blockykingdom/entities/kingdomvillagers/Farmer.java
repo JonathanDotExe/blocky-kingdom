@@ -41,25 +41,18 @@ public class Farmer extends KingdomVillager<Villager> {
 		//Peaceful AI
 		addEntityTask(new VillagerFollowTask());
 		addEntityTask(new ReturnToSpawnAtNightTask());
-		addEntityTask(new CarryTask(e -> e.getType() == EntityType.DROPPED_ITEM && CROP_ITEMS.contains(((Item) e).getItemStack().getType()), 15)); //Carry the dropped items
+		addEntityTask(new CarryTask(e -> e.getType() == EntityType.DROPPED_ITEM && e.getVehicle() == null && CROP_ITEMS.contains(((Item) e).getItemStack().getType()), 15)); //Carry the dropped items
 		addEntityTask(new ExamineBlockTask(b -> {
 			//Add one because plants are not considered
 			b = b.getRelative(0, 1, 0);
-			if (CROP_BLOCKS.contains(b.getType())) {
-				System.out.println("Found: " + b.getType());
-				System.out.println(((Ageable) b.getBlockData()).getAge() + "/" + ((Ageable) b.getBlockData()).getMaximumAge());
-				System.out.println(CROP_BLOCKS.contains(b.getType()) && ((Ageable) b.getBlockData()).getAge() == ((Ageable) b.getBlockData()).getMaximumAge());
-			}
 			return CROP_BLOCKS.contains(b.getType()) && ((Ageable) b.getBlockData()).getAge() == ((Ageable) b.getBlockData()).getMaximumAge();
 		}, b -> b.getRelative(0, 1, 0).breakNaturally(), 15));
 		addEntityTask(new ExamineBlockTask(b -> b.getType() == Material.CHEST && !getEntity().getPassengers().isEmpty(), b -> {
-			System.out.println("Found chest");
 			Chest chest = (Chest) b.getState();
 			for (Entity e : getEntity().getPassengers()) {
 				if (e instanceof Item) {
 					Item i = (Item) e;
 					chest.getInventory().addItem(i.getItemStack());
-					System.out.println("Adding " + i.getItemStack());
 					e.remove();
 				}
 			}
