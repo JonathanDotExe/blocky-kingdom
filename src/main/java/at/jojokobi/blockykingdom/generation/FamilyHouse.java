@@ -102,7 +102,7 @@ public class FamilyHouse extends Structure {
 
 	@Override
 	public List<StructureInstance<? extends Structure>> generateNaturally(Location place, long seed) {
-		TerrainGenUtil.buildGroundBelow(place.clone().add(0, -1, 0), getWidth(), getLength(), b -> b.setType(Material.COBBLESTONE));
+		TerrainGenUtil.buildGroundBelow(place.clone(), getWidth(), getLength(), b -> b.setType(Material.COBBLESTONE));
 		return super.generateNaturally(place, seed);
 	}
 	

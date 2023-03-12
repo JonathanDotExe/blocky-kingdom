@@ -25,6 +25,7 @@ import org.w3c.dom.Node;
 
 import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
+import at.jojokobi.blockykingdom.kingdoms.KingdomState;
 import at.jojokobi.blockykingdom.kingdoms.RandomWordGenerator;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.CustomEntityType;
@@ -73,12 +74,8 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 			getEntity().setCustomName(name + " [Lvl. " + level + " " + xp + "/" + getLevelXP() + "]");
 		}
 		if (getEntity().getLocation().getY() < 0) {
-			getEntity().setHealth(getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
-			reloadTime = 4 * 60 * 10;
-			if (kingdomPoint != null) {
-				getEntity().teleport(getSpawnPoint());
-			}
-			addHappiness(-1);
+			kill();
+			getEntity().teleport(getSpawnPoint());
 		}
 	}
 
@@ -91,14 +88,22 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		} else if (Math.round(getEntity().getHealth() - event.getFinalDamage()) < 1) {
 			event.setDamage(0);
 			event.setCancelled(true);
-			getEntity().setHealth(getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
-			reloadTime = 4 * 60 * 10;
-			//Teleport to spawn if the kingdom is set
-			if (kingdomPoint != null) {
-				getEntity().teleport(getSpawnPoint());
-			}
-			addHappiness(-1);
+			kill();
 		}
+	}
+	
+	void kill() {
+		getEntity().setHealth(getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+		reloadTime = 4 * 60 * 10;
+		//Teleport to spawn if the kingdom is set
+		if (kingdomPoint != null) {
+			if (KingdomHandler.getInstance().getKingdom(kingdomPoint).getState() == KingdomState.EVIL) {
+				//Extra respawn time in evil kingdom
+				reloadTime = 4 * 60 * 5;
+			}
+			getEntity().teleport(getSpawnPoint());
+		}
+		addHappiness(-1);
 	}
 
 	@Override

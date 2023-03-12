@@ -147,7 +147,7 @@ public class KingdomGUI extends InventoryGUI{
 	private int getStatePrice (KingdomState state, double defeatPercentage) {
 		switch (state) {
 		case EVIL:
-			return defeatPercentage >= 1 ? 5000 : -1;
+			return defeatPercentage >= 0.75 ? 5000 : -1;
 		case GOOD:
 			return 20000;
 		case UNCLAIMED:

@@ -226,6 +226,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		Bukkit.getPluginManager().registerEvents(KingdomHandler.getInstance(), this);
 		KingdomHandler.getInstance().onEnable();
 		KingdomChestLockHandler lockHandler = new KingdomChestLockHandler(this);
+		Bukkit.getPluginManager().registerEvents(lockHandler, this);
 		//Stats
 		Bukkit.getPluginManager().registerEvents(StatHandler.getInstance(), this);
 		//Init Skills
