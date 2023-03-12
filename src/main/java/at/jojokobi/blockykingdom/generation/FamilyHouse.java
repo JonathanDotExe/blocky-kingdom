@@ -7,7 +7,6 @@ import java.util.Random;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Chest;
-import org.bukkit.entity.ArmorStand;
 import org.bukkit.inventory.ItemStack;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
@@ -20,6 +19,7 @@ import at.jojokobi.blockykingdom.items.Hammer;
 import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.blockykingdom.items.ProtectingFigure;
 import at.jojokobi.blockykingdom.items.Smasher;
+import at.jojokobi.blockykingdom.kingdoms.KingdomChestLockHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.mcutil.building.Building;
 import at.jojokobi.mcutil.entity.EntityHandler;
@@ -37,10 +37,12 @@ public class FamilyHouse extends Structure {
 	
 	private LootInventory loot;
 	private Building building;
+	private KingdomChestLockHandler lockHandler;
 	
-	public FamilyHouse(EntityHandler entityHandler) {
+	public FamilyHouse(EntityHandler entityHandler, KingdomChestLockHandler lockHandler) {
 		super(12, 12, 10, 0);
 		this.entityHandler = entityHandler;
+		this.lockHandler = lockHandler;
 		building = Building.loadBuilding(getClass().getResourceAsStream("/buildings/family_house1.yml"));
 		
 		loot = new LootInventory();
@@ -122,12 +124,13 @@ public class FamilyHouse extends Structure {
 			{
 				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
+				lockHandler.lockKingdomChest(chest);
 				loot.fillInventory(chest.getBlockInventory(), random, null);
 			}
 			break;
 			case "armor_stand":
 			{
-				place.getWorld().spawn(place, ArmorStand.class);
+				//place.getWorld().spawn(place, ArmorStand.class);
 				//TODO put armor on
 			}
 			break;

@@ -12,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Recruiter;
 import at.jojokobi.blockykingdom.items.Money;
+import at.jojokobi.blockykingdom.kingdoms.KingdomChestLockHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.mcutil.building.Building;
 import at.jojokobi.mcutil.entity.EntityHandler;
@@ -29,6 +30,7 @@ public class RecruiterHouse extends Structure{
 	
 	private LootInventory loot;
 	private Building building;
+	private KingdomChestLockHandler lockHandler;
 	
 	public RecruiterHouse(EntityHandler entityHandler) {
 		super(10, 10, 6, 0);

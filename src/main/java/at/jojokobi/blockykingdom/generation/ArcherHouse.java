@@ -19,6 +19,7 @@ import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.blockykingdom.items.ProtectingFigure;
 import at.jojokobi.blockykingdom.items.Smasher;
 import at.jojokobi.blockykingdom.kingdoms.Kingdom;
+import at.jojokobi.blockykingdom.kingdoms.KingdomChestLockHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.blockykingdom.kingdoms.KingdomState;
@@ -39,10 +40,12 @@ public class ArcherHouse extends Structure {
 	private LootInventory loot;
 	private LootInventory evilLoot;
 	private Building building;
+	private KingdomChestLockHandler lockHandler;
 	
-	public ArcherHouse(EntityHandler entityHandler) {
+	public ArcherHouse(EntityHandler entityHandler, KingdomChestLockHandler lockHandler) {
 		super(6, 6, 10, 0);
 		this.entityHandler = entityHandler;
+		this.lockHandler = lockHandler;
 		building = Building.loadBuilding(getClass().getResourceAsStream("/buildings/archer_house.yml"));
 		
 		loot = new LootInventory();
@@ -152,6 +155,7 @@ public class ArcherHouse extends Structure {
 			{
 				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
+				lockHandler.lockKingdomChest(chest);
 				Kingdom kingdom = KingdomHandler.getInstance().generateKingdom(new KingdomPoint(loc));
 				if (kingdom != null && kingdom.getState() == KingdomState.EVIL) {
 					evilLoot.fillInventory(chest.getBlockInventory(), random, null);

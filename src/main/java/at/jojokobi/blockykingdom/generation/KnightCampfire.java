@@ -15,6 +15,7 @@ import at.jojokobi.blockykingdom.items.Dagger;
 import at.jojokobi.blockykingdom.items.Katana;
 import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.blockykingdom.items.Smasher;
+import at.jojokobi.blockykingdom.kingdoms.KingdomChestLockHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.mcutil.building.Building;
 import at.jojokobi.mcutil.entity.EntityHandler;
@@ -31,10 +32,12 @@ public class KnightCampfire extends Structure{
 	
 	private Building building;
 	private LootInventory loot;
+	private KingdomChestLockHandler lockHandler;
 	
-	public KnightCampfire(EntityHandler entityHandler) {
+	public KnightCampfire(EntityHandler entityHandler, KingdomChestLockHandler lockHandler) {
 		super(5, 5, 2, 0);
 		this.entityHandler = entityHandler;
+		this.lockHandler = lockHandler;
 		building = Building.loadBuilding(getClass().getResourceAsStream("/buildings/knight_campfire.yml"));
 		
 		loot = new LootInventory();
@@ -94,6 +97,7 @@ public class KnightCampfire extends Structure{
 			{
 				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
+				lockHandler.lockKingdomChest(chest);
 				loot.fillInventory(chest.getBlockInventory(), random, null);
 			}
 			break;

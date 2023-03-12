@@ -23,6 +23,7 @@ import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.blockykingdom.items.ProtectingFigure;
 import at.jojokobi.blockykingdom.items.Smasher;
 import at.jojokobi.blockykingdom.kingdoms.Kingdom;
+import at.jojokobi.blockykingdom.kingdoms.KingdomChestLockHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.blockykingdom.kingdoms.KingdomState;
@@ -43,11 +44,13 @@ public class TraderHut extends Structure{
 	private LootInventory loot;
 	private LootInventory evilLoot;
 	private DimensionHandler dimHandler;
+	private KingdomChestLockHandler lockHandler;
 	
-	public TraderHut(EntityHandler entityHandler, DimensionHandler dimHandler) {
+	public TraderHut(EntityHandler entityHandler, DimensionHandler dimHandler, KingdomChestLockHandler lockHandler) {
 		super(8, 8, 5, 0);
 		this.entityHandler = entityHandler;
 		this.dimHandler = dimHandler;
+		this.lockHandler = lockHandler;
 		
 		loot = new LootInventory();
 		evilLoot = new LootInventory();
@@ -165,6 +168,7 @@ public class TraderHut extends Structure{
 		place.add(0, 0, -1);
 		place.getBlock().setType(Material.CHEST);
 		Chest chest = (Chest) place.getBlock().getState();
+		lockHandler.lockKingdomChest(chest);
 		Kingdom kingdom = KingdomHandler.getInstance().generateKingdom(new KingdomPoint(loc));
 		if (kingdom != null && kingdom.getState() == KingdomState.EVIL) {
 			evilLoot.fillInventory(chest.getBlockInventory(), random, null);

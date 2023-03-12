@@ -26,6 +26,7 @@ import at.jojokobi.blockykingdom.items.Katana;
 import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.blockykingdom.items.Smasher;
 import at.jojokobi.blockykingdom.kingdoms.Kingdom;
+import at.jojokobi.blockykingdom.kingdoms.KingdomChestLockHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.blockykingdom.kingdoms.KingdomState;
@@ -47,6 +48,7 @@ public class Castle extends Structure{
 	private List<Building> rightBuildings;
 	private EntityHandler entityHandler;
 	private DimensionHandler dimHandler;
+	KingdomChestLockHandler lockHandler;
 	
 	private LootInventory loot;
 	private LootInventory barnLoot;
@@ -55,10 +57,11 @@ public class Castle extends Structure{
 	private LootInventory archerLoot;
 	private LootInventory weaponLoot;
 	
-	public Castle(EntityHandler entityHandler, DimensionHandler dimHandler) {
+	public Castle(EntityHandler entityHandler, DimensionHandler dimHandler, KingdomChestLockHandler lockHandler) {
 		super(32, 32, 32, 0);
 		this.entityHandler = entityHandler;
 		this.dimHandler = dimHandler;
+		this.lockHandler = lockHandler;
 		this.castleBuilding = Building.loadBuilding(getClass().getResourceAsStream("/buildings/castle.yml"));
 		this.leftBuildings = Arrays.asList(Building.loadBuilding(getClass().getResourceAsStream("/buildings/castle_food_shop.yml")));
 		this.rightBuildings = Arrays.asList(Building.loadBuilding(getClass().getResourceAsStream("/buildings/castle_weapon_chamber.yml")), Building.loadBuilding(getClass().getResourceAsStream("/buildings/castle_horse_barn.yml")));
@@ -197,6 +200,7 @@ public class Castle extends Structure{
 			{
 				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
+				lockHandler.lockKingdomChest(chest);
 				if (KingdomHandler.getInstance().generateKingdom(new KingdomPoint(loc)).getState() == KingdomState.EVIL) {
 					evilLoot.fillInventory(chest.getBlockInventory(), random, null);
 				}
@@ -209,6 +213,7 @@ public class Castle extends Structure{
 			{
 				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
+				lockHandler.lockKingdomChest(chest);
 				archerLoot.fillInventory(chest.getBlockInventory(), random, null);
 			}
 				break;
@@ -240,6 +245,7 @@ public class Castle extends Structure{
 			{
 				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
+				lockHandler.lockKingdomChest(chest);
 				barnLoot.fillInventory(chest.getBlockInventory(), random, null);
 			}
 				break;
@@ -256,6 +262,7 @@ public class Castle extends Structure{
 			{
 				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
+				lockHandler.lockKingdomChest(chest);
 				shopLoot.fillInventory(chest.getBlockInventory(), random, null);
 			}
 				break;
@@ -271,6 +278,7 @@ public class Castle extends Structure{
 			{
 				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
+				lockHandler.lockKingdomChest(chest);
 				weaponLoot.fillInventory(chest.getBlockInventory(), random, null);
 			}
 				break;

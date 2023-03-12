@@ -104,6 +104,7 @@ import at.jojokobi.blockykingdom.items.Smasher;
 import at.jojokobi.blockykingdom.items.Sunglasses;
 import at.jojokobi.blockykingdom.items.ThunderWand;
 import at.jojokobi.blockykingdom.kingdoms.Kingdom;
+import at.jojokobi.blockykingdom.kingdoms.KingdomChestLockHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHappinessHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
@@ -224,6 +225,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 //		kingdomHandler = new KingdomHandler();
 		Bukkit.getPluginManager().registerEvents(KingdomHandler.getInstance(), this);
 		KingdomHandler.getInstance().onEnable();
+		KingdomChestLockHandler lockHandler = new KingdomChestLockHandler(this);
 		//Stats
 		Bukkit.getPluginManager().registerEvents(StatHandler.getInstance(), this);
 		//Init Skills
@@ -407,13 +409,13 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		genHandler.addStructure(new HauntedGrave(cursedStatue));
 		ArcherTower tower = new ArcherTower(entityHandler);
 		genHandler.addStructure(tower);
-		ArcherHouse archerHouse = new ArcherHouse(entityHandler);
+		ArcherHouse archerHouse = new ArcherHouse(entityHandler, lockHandler);
 		genHandler.addStructure(archerHouse);
-		TraderHut traderHut = new TraderHut(entityHandler, getDimensionHandler());
+		TraderHut traderHut = new TraderHut(entityHandler, getDimensionHandler(), lockHandler);
 		genHandler.addStructure(traderHut);
-		TraderHouse traderHouse = new TraderHouse(entityHandler);
+		TraderHouse traderHouse = new TraderHouse(entityHandler, lockHandler);
 		genHandler.addStructure(traderHouse);
-		FamilyHouse familyHouse = new FamilyHouse(entityHandler);
+		FamilyHouse familyHouse = new FamilyHouse(entityHandler, lockHandler);
 		genHandler.addStructure(familyHouse);
 		CropFarm cropFarm = new CropFarm();
 		genHandler.addStructure(cropFarm);
@@ -421,9 +423,9 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		genHandler.addStructure(recruiterHouse);
 		QuestHut questHut = new QuestHut(entityHandler);
 		genHandler.addStructure(questHut);
-		KnightCampfire campfire = new KnightCampfire(entityHandler);
+		KnightCampfire campfire = new KnightCampfire(entityHandler, lockHandler);
 		genHandler.addStructure(campfire);
-		genHandler.addStructure(new Castle(entityHandler, getDimensionHandler()));
+		genHandler.addStructure(new Castle(entityHandler, getDimensionHandler(), lockHandler));
 		genHandler.addStructure(new FlyingSheepFlock(entityHandler));
 		genHandler.addStructure(new KingdomVillage(getDimensionHandler(), traderHut, traderHut, traderHouse, traderHouse, familyHouse, recruiterHouse, questHut, questHut, archerHouse, campfire, cropFarm));
 		genHandler.addStructure(new GoblinHut(spawnerHandler));
