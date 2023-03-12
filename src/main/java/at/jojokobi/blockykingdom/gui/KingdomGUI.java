@@ -45,6 +45,7 @@ public class KingdomGUI extends InventoryGUI{
 	@Override
 	protected void initGUI() {
 		Kingdom kingdom = this.point.toKingdom ();
+		double defeatedPercentage = this.point.getDefeatedPercentage(handler);
 		//Kingdom
 		{
 			ItemStack item = new ItemStack(Material.MAP);
@@ -53,8 +54,8 @@ public class KingdomGUI extends InventoryGUI{
 			List<String> lore = new ArrayList<>();
 			lore.add(" * " + kingdom.getState().getDescrition());
 			if (kingdom.getOwners().isEmpty()) {
-				if (getStatePrice(kingdom.getState()) >= 0) {
-					lore.add(" * " + getStatePrice(kingdom.getState()) + "$ - Click to claim");
+				if (getStatePrice(kingdom.getState(), defeatedPercentage) >= 0) {
+					lore.add(" * " + getStatePrice(kingdom.getState(), defeatedPercentage) + "$ - Click to claim");
 				}
 				else {
 					lore.add(" * You have to fight to claim this kingdom.");
@@ -69,13 +70,14 @@ public class KingdomGUI extends InventoryGUI{
 				lore.add(" * Level up cost: " + kingdom.getLevelUpPrice());
 				lore.add(" * Your folk has to have a happiness of at least " + kingdom.getLevelUpHappiness() + "!");
 			}
+			lore.add(" * Defeated percentage: " + defeatedPercentage);
 			meta.setLore(lore);
 			item.setItemMeta(meta);
 			addButton(item, CLAIM_INDEX, (button, index, click) -> {
 				//Claim
 				if (kingdom.getOwners().isEmpty()) {
-					if (kingdom.claimable() && getStatePrice(kingdom.getState()) >= 0 && stats.getMoney() >= getStatePrice(kingdom.getState())) {
-						stats.setMoney(stats.getMoney() - getStatePrice(kingdom.getState()));
+					if (kingdom.claimable() && getStatePrice(kingdom.getState(), defeatedPercentage) >= 0 && stats.getMoney() >= getStatePrice(kingdom.getState(), defeatedPercentage)) {
+						stats.setMoney(stats.getMoney() - getStatePrice(kingdom.getState(), defeatedPercentage));
 						kingdom.addOwner(getOwner().getUniqueId());
 						getOwner().sendMessage("You claimed " + kingdom.getName() + "!");
 						for (KingdomVillager<?> villager : point.getVillagers(handler)) {
@@ -142,10 +144,10 @@ public class KingdomGUI extends InventoryGUI{
 		fillEmpty(getFiller());
 	}
 	
-	private int getStatePrice (KingdomState state) {
+	private int getStatePrice (KingdomState state, double defeatPercentage) {
 		switch (state) {
 		case EVIL:
-			return -1;
+			return defeatPercentage >= 1 ? 5000 : -1;
 		case GOOD:
 			return 20000;
 		case UNCLAIMED:
