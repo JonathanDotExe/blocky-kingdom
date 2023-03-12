@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Trader;
+import at.jojokobi.blockykingdom.items.Dagger;
 import at.jojokobi.blockykingdom.items.DoubleBow;
 import at.jojokobi.blockykingdom.items.FireWand;
 import at.jojokobi.blockykingdom.items.GrapplingHook;
@@ -56,7 +57,7 @@ public class TraderHouse extends Structure {
 		loot.addItem(new LootItem(1, new ItemStack(Material.COAL), 1, 16));
 		loot.addItem(new LootItem(0.05, new ItemStack(Material.DIAMOND), 1, 3));
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.GOLD_INGOT), 1, 4));
-		loot.addItem(new LootItem(0.8, new ItemStack(Material.IRON_INGOT), 1, 8));
+		loot.addItem(new LootItem(0.8, new ItemStack(Material.IRON_INGOT), 1, 12));
 		loot.addItem(new LootItem(1, new ItemStack(Material.BREAD), 1, 5));
 		loot.addItem(new LootItem(1, new ItemStack(Material.APPLE), 1, 3));
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.BOW), 1, 1));
@@ -69,6 +70,15 @@ public class TraderHouse extends Structure {
 		loot.addItem(new LootItem(0.4, new ItemStack(Material.STRING), 1, 7));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.COBWEB), 1, 2));
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.ROTTEN_FLESH), 1, 8));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.LEATHER_BOOTS), 1, 1).setDamage(true));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.LEATHER_HELMET), 1, 1).setDamage(true));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.LEATHER_CHESTPLATE), 1, 1).setDamage(true));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.LEATHER_LEGGINGS), 1, 1).setDamage(true));
+		loot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, DoubleBow.IDENTIFIER), 1, 1));
+		loot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Dagger.IDENTIFIER), 1, 1));
+		loot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Smasher.IDENTIFIER), 1, 1));
+		loot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, DoubleBow.IDENTIFIER), 1, 1));
+		loot.addItem(new LootItem(0.05, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Hammer.IDENTIFIER), 1, 1));
 		
 		loot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 5));
 		
@@ -129,9 +139,7 @@ public class TraderHouse extends Structure {
 				if (kingdom != null && kingdom.getState() == KingdomState.EVIL) {
 					evilLoot.fillInventory(chest.getBlockInventory(), random, null);
 				}
-				else {
-					loot.fillInventory(chest.getBlockInventory(), random, null);
-				}
+				loot.fillInventory(chest.getBlockInventory(), random, null);
 			}
 			break;
 			}

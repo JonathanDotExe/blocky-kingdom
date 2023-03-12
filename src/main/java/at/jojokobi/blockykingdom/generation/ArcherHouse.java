@@ -59,7 +59,7 @@ public class ArcherHouse extends Structure {
 		loot.addItem(new LootItem(0.8, new ItemStack(Material.FLINT), 1, 8));
 		loot.addItem(new LootItem(1, new ItemStack(Material.BREAD), 1, 5));
 		loot.addItem(new LootItem(1, new ItemStack(Material.APPLE), 1, 3));
-		loot.addItem(new LootItem(0.3, new ItemStack(Material.BOW), 1, 1).setDamage(true));
+		loot.addItem(new LootItem(0.5, new ItemStack(Material.BOW), 1, 1).setDamage(true));
 		loot.addItem(new LootItem(0.05, new ItemStack(Material.BOW), 1, 1).setDamage(true).setEnchant(true));
 
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.STONE_SWORD), 1, 1));
@@ -72,11 +72,11 @@ public class ArcherHouse extends Structure {
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.COBWEB), 1, 2));
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.ROTTEN_FLESH), 1, 8));
 		
-		loot.addItem(new LootItem(0.1, new ItemStack(Material.CHAINMAIL_BOOTS), 1, 1).setDamage(true));
-		loot.addItem(new LootItem(0.1, new ItemStack(Material.CHAINMAIL_HELMET), 1, 1).setDamage(true));
-		loot.addItem(new LootItem(0.1, new ItemStack(Material.CHAINMAIL_CHESTPLATE), 1, 1).setDamage(true));
-		loot.addItem(new LootItem(0.1, new ItemStack(Material.CHAINMAIL_LEGGINGS), 1, 1).setDamage(true));
-		loot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, DoubleBow.IDENTIFIER), 1, 1).setEnchant(true));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.CHAINMAIL_BOOTS), 1, 1).setDamage(true));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.CHAINMAIL_HELMET), 1, 1).setDamage(true));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.CHAINMAIL_CHESTPLATE), 1, 1).setDamage(true));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.CHAINMAIL_LEGGINGS), 1, 1).setDamage(true));
+		loot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, DoubleBow.IDENTIFIER), 1, 1));
 		loot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 5));
 		
 		evilLoot.addItem(new LootItem(0.1, new ItemStack(Material.DIAMOND), 1, 3));
@@ -108,20 +108,20 @@ public class ArcherHouse extends Structure {
 		evilLoot.addItem(new LootItem(0.1, new ItemStack(Material.COBWEB), 1, 2));
 		evilLoot.addItem(new LootItem(0.5, new ItemStack(Material.ROTTEN_FLESH), 1, 8));
 		
-		evilLoot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_BOOTS), 1, 1).setDamage(true));
-		evilLoot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_HELMET), 1, 1).setDamage(true));
-		evilLoot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_CHESTPLATE), 1, 1).setDamage(true));
-		evilLoot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_LEGGINGS), 1, 1).setDamage(true));
+		evilLoot.addItem(new LootItem(0.3, new ItemStack(Material.IRON_BOOTS), 1, 1).setDamage(true));
+		evilLoot.addItem(new LootItem(0.3, new ItemStack(Material.IRON_HELMET), 1, 1).setDamage(true));
+		evilLoot.addItem(new LootItem(0.3, new ItemStack(Material.IRON_CHESTPLATE), 1, 1).setDamage(true));
+		evilLoot.addItem(new LootItem(0.3, new ItemStack(Material.IRON_LEGGINGS), 1, 1).setDamage(true));
 		
 		evilLoot.addItem(new LootItem(0.3, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Smasher.IDENTIFIER), 1, 1).setEnchant(true));
-		evilLoot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, DoubleBow.IDENTIFIER), 1, 1).setEnchant(true));
+		evilLoot.addItem(new LootItem(0.4, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, DoubleBow.IDENTIFIER), 1, 1).setEnchant(true));
 		evilLoot.addItem(new LootItem(0.05, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Hammer.IDENTIFIER), 1, 1).setEnchant(true));
 		evilLoot.addItem(new LootItem(0.05, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, FireWand.IDENTIFIER), 1, 1).setEnchant(true));
 		evilLoot.addItem(new LootItem(0.05, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, ProtectingFigure.IDENTIFIER), 1, 1));
 		evilLoot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, GrapplingHook.IDENTIFIER), 1, 1));
 		
 		evilLoot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 2, 10));
-		loot.addItem(new LootItem(0.1, new ItemStack(Material.ENCHANTED_BOOK), 1, 1).setEnchant(true));
+		evilLoot.addItem(new LootItem(0.1, new ItemStack(Material.ENCHANTED_BOOK), 1, 1).setEnchant(true));
 		
 		setxModifier(9284);
 		setzModifier(645);

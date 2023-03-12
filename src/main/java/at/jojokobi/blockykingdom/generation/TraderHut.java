@@ -173,9 +173,7 @@ public class TraderHut extends Structure{
 		if (kingdom != null && kingdom.getState() == KingdomState.EVIL) {
 			evilLoot.fillInventory(chest.getBlockInventory(), random, null);
 		}
-		else {
-			loot.fillInventory(chest.getBlockInventory(), random, null);
-		}
+		loot.fillInventory(chest.getBlockInventory(), random, null);
 		
 		//Door
 		place.setX(loc.getX() + getWidth() - 1);

@@ -12,8 +12,10 @@ import org.bukkit.inventory.ItemStack;
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Recruiter;
 import at.jojokobi.blockykingdom.items.Money;
-import at.jojokobi.blockykingdom.kingdoms.KingdomChestLockHandler;
+import at.jojokobi.blockykingdom.kingdoms.Kingdom;
+import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
+import at.jojokobi.blockykingdom.kingdoms.KingdomState;
 import at.jojokobi.mcutil.building.Building;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.generation.BasicGenUtil;
@@ -30,7 +32,6 @@ public class RecruiterHouse extends Structure{
 	
 	private LootInventory loot;
 	private Building building;
-	private KingdomChestLockHandler lockHandler;
 	
 	public RecruiterHouse(EntityHandler entityHandler) {
 		super(10, 10, 6, 0);
@@ -51,6 +52,14 @@ public class RecruiterHouse extends Structure{
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.CARROT), 1, 2));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_SWORD), 1, 1));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.BOW), 1, 1));
+		loot.addItem(new LootItem(0.1, new ItemStack(Material.NAME_TAG), 1, 1));
+		loot.addItem(new LootItem(0.3, new ItemStack(Material.ARROW), 1, 8));
+		loot.addItem(new LootItem(0.05, new ItemStack(Material.DAMAGED_ANVIL), 1, 1));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.OBSIDIAN), 1, 8));
+		loot.addItem(new LootItem(0.3, new ItemStack(Material.WATER_BUCKET), 1, 1));
+		loot.addItem(new LootItem(0.3, new ItemStack(Material.LAVA_BUCKET), 1, 1));
+		loot.addItem(new LootItem(0.3, new ItemStack(Material.SLIME_BALL), 1, 4));
+
 		
 		loot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 5));
 		
@@ -85,6 +94,10 @@ public class RecruiterHouse extends Structure{
 				place.getBlock().setType(Material.CHEST);
 				Chest chest = (Chest) place.getBlock().getState();
 				loot.fillInventory(chest.getBlockInventory(), random, null);
+				Kingdom kingdom = KingdomHandler.getInstance().generateKingdom(new KingdomPoint(loc));
+				if (kingdom != null && kingdom.getState() == KingdomState.EVIL) {
+					loot.fillInventory(chest.getBlockInventory(), random, null);
+				}
 			}
 			break;
 			}

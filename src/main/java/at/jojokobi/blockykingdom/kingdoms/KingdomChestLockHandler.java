@@ -42,16 +42,18 @@ public class KingdomChestLockHandler implements Listener {
 			Kingdom kingdom = KingdomHandler.getInstance().getKingdom(event.getClickedBlock().getLocation());
 			if (kingdom.isOwner(event.getPlayer().getUniqueId())) {
 				unlockKingdomChest(chest);
+				event.getPlayer().sendMessage("Unlocked kingdom chest for all players!");
 			}
 			//Cancel event if locked
 			if (isKingdomChestLocked(chest)) {
 				event.setCancelled(true);
+				event.getPlayer().sendMessage("You need to own this kingdom to break this block!");
 			}
 		}
 	}
 	
 	@EventHandler
-	public void onPlayerInteract(BlockBreakEvent event) {
+	public void onBlockBreak(BlockBreakEvent event) {
 		//Check if chest
 		if (event.getBlock().getState() instanceof Chest) {
 			Chest chest = ((Chest) event.getBlock().getState());
@@ -63,6 +65,7 @@ public class KingdomChestLockHandler implements Listener {
 			//Cancel event if locked
 			if (isKingdomChestLocked(chest)) {
 				event.setCancelled(true);
+				event.getPlayer().sendMessage("You need to own this kingdom to break this block!");
 			}
 			//TODO cancel when block is broken naturally (with explosions, etc.)
 		}
