@@ -42,6 +42,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	public static final String HAPPINESS_TAG = "happiness";
 	public static final String LEVEL_TAG = "level";
 	public static final String XP_TAG = "xp";
+	public static final String RELOAD_TIME_TAG = "reloadTime";
 	
 	public static final int MAX_LEVEL = 10;
 
@@ -99,7 +100,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		if (kingdomPoint != null) {
 			if (KingdomHandler.getInstance().getKingdom(kingdomPoint).getState() == KingdomState.EVIL) {
 				//Extra respawn time in evil kingdom
-				reloadTime = 4 * 60 * 5;
+				reloadTime += 4 * 60 * 5;
 			}
 			getEntity().teleport(getSpawnPoint());
 		}
@@ -216,6 +217,12 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		} catch (NumberFormatException e) {
 //			e.printStackTrace();
 		}
+		//Reload time
+		try {
+			reloadTime = Integer.parseInt(data.get(RELOAD_TIME_TAG) + "");
+		} catch (NumberFormatException e) {
+//			e.printStackTrace();
+		}
 
 	}
 
@@ -253,6 +260,8 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		map.put(LEVEL_TAG, level);
 		//XP
 		map.put(XP_TAG, xp);
+		//Reload Time
+		map.put(RELOAD_TIME_TAG, reloadTime);
 		return new EntityMapData(map);
 	}
 
