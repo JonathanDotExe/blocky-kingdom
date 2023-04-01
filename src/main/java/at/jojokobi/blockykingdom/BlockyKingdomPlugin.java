@@ -18,6 +18,7 @@ import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import at.jojokobi.blockykingdom.commands.GlowVillagersCommand;
 import at.jojokobi.blockykingdom.commands.ResetStatsCommand;
 import at.jojokobi.blockykingdom.dimensions.CloudJumpHandler;
 import at.jojokobi.blockykingdom.dimensions.HeavenDimension;
@@ -466,6 +467,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		
 		//Commands
 		getCommand(ResetStatsCommand.COMMAND_NAME).setExecutor(new ResetStatsCommand(util.getGuiHandler()));
+		getCommand(GlowVillagersCommand.COMMAND_NAME).setExecutor(new GlowVillagersCommand(util.getEntityHandler()));
 		
 		//Config
 		saveDefaultConfig();

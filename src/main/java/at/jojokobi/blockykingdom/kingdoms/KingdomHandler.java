@@ -152,14 +152,9 @@ public class KingdomHandler implements Listener{
 		}
 		Random random = new Random(seed);
 		Kingdom kingdom = new Kingdom(new RandomWordGenerator().generateWord(random, 4, 8));
-		kingdom.setCenterX(random.nextInt(Kingdom.KINGDOM_WIDTH));
-		kingdom.setCenterZ(random.nextInt(Kingdom.KINGDOM_LENGTH));
-		if (Math.abs(point.getX()) > 1 && Math.abs(point.getZ()) > 1) {
-			kingdom.setState(KingdomState.values()[random.nextInt(KingdomState.values().length)]);
-		}
-		else if (point.getX() == 0 && point.getZ() == 0) {
-			kingdom.setState(KingdomState.GOOD);
-		}
+		kingdom.setCenterX(20 + random.nextInt(Kingdom.KINGDOM_WIDTH - 40));
+		kingdom.setCenterZ(20 + random.nextInt(Kingdom.KINGDOM_LENGTH - 40));
+		kingdom.setState(KingdomState.values()[random.nextInt(KingdomState.values().length)]);
 		return kingdom;
 	}
 	
