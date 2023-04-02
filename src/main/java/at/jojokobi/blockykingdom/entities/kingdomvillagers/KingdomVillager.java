@@ -65,6 +65,19 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		setDespawnTicks(5000);
 		setTeleportToGoal(true);
 	}
+	
+	@Override
+	protected void spawn() {
+		super.spawn();
+		//Check if spawnpoint is in kingdom
+		if (kingdomPoint != null && !new KingdomPoint(getSpawnPoint()).equals(kingdomPoint)) {
+			//Set spawn to kingdom center
+			Kingdom kingdom = KingdomHandler.getInstance().getKingdom(getSpawnPoint());
+			Location loc = kingdomPoint.toLocation().add(kingdom.getCenterX(), 0, kingdom.getCenterZ());
+			loc.setY(loc.getWorld().getHighestBlockYAt(loc));
+			setSpawnPoint(loc);
+		}
+	}
 
 	@Override
 	public void loop() {
