@@ -26,7 +26,7 @@ public class GoblinCave extends Structure{
 	
 	@SafeVarargs
 	public GoblinCave(DimensionHandler dimHandler, Structure center, Structure kingRoom, Structure[]... layers) {
-		super(128, 128, 64, 1300);
+		super(128, 128, 64, 1500);
 		this.dimHandler = dimHandler;
 		this.center = center;
 		this.kingRoom = kingRoom;
@@ -46,7 +46,7 @@ public class GoblinCave extends Structure{
 	
 	@Override
 	public boolean canGenerate(Chunk chunk, long seed) {
-		return chunk.getWorld().getEnvironment() == Environment.NORMAL && dimHandler.getDimension(chunk.getWorld()) == null && super.canGenerate(chunk, seed);
+		return chunk.getWorld().getEnvironment() == Environment.NORMAL && dimHandler.getDimension(chunk.getWorld()) == null && super.canGenerate(chunk, seed) && Math.abs(chunk.getX()) > 48 && Math.abs(chunk.getZ()) > 48;
 	}
 	
 	@Override
