@@ -40,7 +40,7 @@ public class KingdomChestLockHandler implements Listener {
 			Chest chest = ((Chest) event.getClickedBlock().getState());
 			//Unlock chest for all players if it's a kingdom owner
 			Kingdom kingdom = KingdomHandler.getInstance().getKingdom(event.getClickedBlock().getLocation());
-			if (kingdom.isOwner(event.getPlayer().getUniqueId())) {
+			if (kingdom.isOwner(event.getPlayer().getUniqueId()) && isKingdomChestLocked(chest)) {
 				unlockKingdomChest(chest);
 				event.getPlayer().sendMessage("Unlocked kingdom chest for all players!");
 			}
@@ -59,7 +59,7 @@ public class KingdomChestLockHandler implements Listener {
 			Chest chest = ((Chest) event.getBlock().getState());
 			//Unlock chest for all players if it's a kingdom owner
 			Kingdom kingdom = KingdomHandler.getInstance().getKingdom(event.getBlock().getLocation());
-			if (kingdom.isOwner(event.getPlayer().getUniqueId())) {
+			if (kingdom.isOwner(event.getPlayer().getUniqueId()) && isKingdomChestLocked(chest)) {
 				unlockKingdomChest(chest);
 			}
 			//Cancel event if locked
