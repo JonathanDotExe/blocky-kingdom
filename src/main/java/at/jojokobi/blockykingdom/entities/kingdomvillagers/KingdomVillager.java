@@ -72,7 +72,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		//Check if spawnpoint is in kingdom
 		if (kingdomPoint != null && !new KingdomPoint(getSpawnPoint()).equals(kingdomPoint)) {
 			//Set spawn to kingdom center
-			Kingdom kingdom = KingdomHandler.getInstance().getKingdom(getSpawnPoint());
+			Kingdom kingdom = KingdomHandler.getInstance().getKingdom(kingdomPoint);
 			Location loc = kingdomPoint.toLocation().add(kingdom.getCenterX(), 0, kingdom.getCenterZ());
 			loc.setY(loc.getWorld().getHighestBlockYAt(loc));
 			setSpawnPoint(loc);
