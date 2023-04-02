@@ -24,6 +24,7 @@ public class SelectSpeciesGUI extends InventoryGUI {
 			CharacterSpecies s = species[i];
 			addButton(species[i].getIcon(), i, (button, index, click) -> {
 				statable.getCharacterStats().setSpecies(s);
+				setNext(new SelectProfessionGUI(getOwner(), statable));
 				close();
 			});
 		}
