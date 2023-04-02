@@ -23,10 +23,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import at.jojokobi.blockykingdom.kingdoms.Kingdom;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.blockykingdom.kingdoms.KingdomState;
 import at.jojokobi.blockykingdom.kingdoms.RandomWordGenerator;
+import at.jojokobi.blockykingdom.players.CharacterStats;
+import at.jojokobi.blockykingdom.players.StatHandler;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.CustomEntityType;
 import at.jojokobi.mcutil.entity.EntityHandler;
@@ -120,16 +123,34 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	@Override
 	protected void onInteract(PlayerInteractEntityEvent event) {
 		super.onInteract(event);
-		//Feed bread (only players who own the kingdom)
-		if (event.getPlayer().isSneaking() && getKingdomPoint() != null && KingdomHandler.getInstance().getKingdom(getKingdomPoint()).getOwners().contains(event.getPlayer().getUniqueId())) {
-			if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BREAD) {
-				event.getPlayer().getInventory().getItemInMainHand().setAmount(event.getPlayer().getInventory().getItemInMainHand().getAmount() - 1);
-				getEntity().setHealth(Math.min(getEntity().getHealth() + 4.0, getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()));
-				addHappiness(0.3);
-				event.getPlayer().sendMessage("[" + getName() + "] Thank you the bread was delicous!");
-				getEntity().getEyeLocation().getWorld().spawnParticle(Particle.HEART, getEntity().getEyeLocation(), 5);
+		//Non sneaking => Toggle follow
+		//Sneaking => Feed bread (only players who own the kingdom)
+		if (getKingdomPoint() != null) {
+			if (event.getPlayer().isSneaking() && KingdomHandler.getInstance().getKingdom(getKingdomPoint()).getOwners().contains(event.getPlayer().getUniqueId())) {
+				if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BREAD) {
+					event.getPlayer().getInventory().getItemInMainHand().setAmount(event.getPlayer().getInventory().getItemInMainHand().getAmount() - 1);
+					getEntity().setHealth(Math.min(getEntity().getHealth() + 4.0, getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()));
+					addHappiness(0.3);
+					event.getPlayer().sendMessage("[" + getName() + "] Thank you the bread was delicous!");
+					getEntity().getEyeLocation().getWorld().spawnParticle(Particle.HEART, getEntity().getEyeLocation(), 5);
+				}
+				event.getPlayer().sendMessage("[" + getName() + "] my happiness value is currently " + getHappiness() + "!");
 			}
-			event.getPlayer().sendMessage("[" + getName() + "] my happiness value is currently " + getHappiness() + "!");
+		}
+		//Buy
+		else {
+			KingdomPoint point = new KingdomPoint(getEntity().getLocation());
+			Kingdom kingdom = KingdomHandler.getInstance().getKingdom(getKingdomPoint());
+			CharacterStats stats = StatHandler.getInstance().getStats(event.getPlayer()).getCharacterStats();
+			//Check if player has enough money and owns the kingdom
+			if (stats.getMoney() >= getPrice() && kingdom.getOwners().contains(event.getPlayer().getUniqueId())) {
+				point.addVillager(this);
+				stats.setMoney(stats.getMoney() - getPrice());
+				event.getPlayer().sendMessage("[" + getName() + "] Thanks for buying me for " + kingdom.getName() + "!");
+			}
+			else {
+				event.getPlayer().sendMessage("[" + getName() + "] You need to have " + getPrice() + "$ and own " + kingdom.getName() + " to buy me!");
+			}
 		}
 		
 		Inventory inv = Bukkit.createInventory(event.getPlayer(), 9);

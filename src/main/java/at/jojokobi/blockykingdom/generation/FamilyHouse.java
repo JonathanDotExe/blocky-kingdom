@@ -109,7 +109,7 @@ public class FamilyHouse extends Structure {
 	@Override
 	public List<StructureInstance<? extends Structure>> generate(Location loc, long seed) {
 		Random random = new Random(generateValueBeasedSeed(loc, seed));
-		BasicGenUtil.generateCube(loc, Material.AIR, getWidth(), getHeight(), getLength());
+		BasicGenUtil.generateCube(loc.clone().add(0, 1, 0), Material.AIR, getWidth(), getHeight() - 1, getLength());
 		
 		//Walls
 		building.build(loc, (place, mark) -> {
