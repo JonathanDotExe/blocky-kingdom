@@ -28,8 +28,8 @@ import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.blockykingdom.kingdoms.KingdomState;
 import at.jojokobi.blockykingdom.kingdoms.RandomWordGenerator;
-import at.jojokobi.blockykingdom.players.CharacterStats;
 import at.jojokobi.blockykingdom.players.StatHandler;
+import at.jojokobi.blockykingdom.players.Statable;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.CustomEntityType;
 import at.jojokobi.mcutil.entity.EntityHandler;
@@ -137,19 +137,26 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 				event.getPlayer().sendMessage("[" + getName() + "] my happiness value is currently " + getHappiness() + "!");
 			}
 		}
-		//Buy
-		else {
+		//Check if player owns kingdom
+		else if (getReloadTime() > 0) {
+			//TODO make some movement logic to bring villager to other kingdom
+			Statable s = StatHandler.getInstance().getStats(event.getPlayer());
 			KingdomPoint point = new KingdomPoint(getEntity().getLocation());
-			Kingdom kingdom = KingdomHandler.getInstance().getKingdom(getKingdomPoint());
-			CharacterStats stats = StatHandler.getInstance().getStats(event.getPlayer()).getCharacterStats();
-			//Check if player has enough money and owns the kingdom
-			if (stats.getMoney() >= getPrice() && kingdom.getOwners().contains(event.getPlayer().getUniqueId())) {
-				point.addVillager(this);
-				stats.setMoney(stats.getMoney() - getPrice());
-				event.getPlayer().sendMessage("[" + getName() + "] Thanks for buying me for " + kingdom.getName() + "!");
+			Kingdom kingdom = KingdomHandler.getInstance().getKingdom(point);
+			if (event.getPlayer().isSneaking() && kingdom.getOwners().contains(event.getPlayer().getUniqueId())) {
+				if (s != null && s.getCharacterStats().getMoney() >= getPrice()) {
+					//Buy it
+					s.getCharacterStats().setMoney(s.getCharacterStats().getMoney() - getPrice());
+					point.addVillager(this);
+					setSave(true);
+					setReloadTime(0);
+				}
+				else {
+					event.getPlayer().sendMessage("You don't have enough money!");
+				}
 			}
 			else {
-				event.getPlayer().sendMessage("[" + getName() + "] You need to have " + getPrice() + "$ and own " + kingdom.getName() + " to buy me!");
+				event.getPlayer().sendMessage("You can buy me for " + getPrice() + "$ if you sneak-click me!");
 			}
 		}
 		
