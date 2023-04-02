@@ -84,7 +84,7 @@ public class KingdomSiege {
 					
 					if (place != null) {
 						place.add(random.nextDouble() * 10 - 5, 0, random.nextDouble() * 10 - 5);
-						place.setY(place.getWorld().getHighestBlockYAt(place));
+						place.setY(place.getWorld().getHighestBlockYAt(place) + 1);
 						spawner.spawn(place, handler);
 					}
 				}
