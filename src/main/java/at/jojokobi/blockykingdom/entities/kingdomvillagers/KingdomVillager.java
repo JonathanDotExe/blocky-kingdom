@@ -23,9 +23,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import at.jojokobi.blockykingdom.kingdoms.Kingdom;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
+import at.jojokobi.blockykingdom.kingdoms.KingdomState;
 import at.jojokobi.blockykingdom.kingdoms.RandomWordGenerator;
+import at.jojokobi.blockykingdom.players.CharacterStats;
+import at.jojokobi.blockykingdom.players.StatHandler;
 import at.jojokobi.mcutil.entity.CustomEntity;
 import at.jojokobi.mcutil.entity.CustomEntityType;
 import at.jojokobi.mcutil.entity.EntityHandler;
@@ -41,6 +45,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	public static final String HAPPINESS_TAG = "happiness";
 	public static final String LEVEL_TAG = "level";
 	public static final String XP_TAG = "xp";
+	public static final String RELOAD_TIME_TAG = "reloadTime";
 	
 	public static final int MAX_LEVEL = 10;
 
@@ -73,12 +78,8 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 			getEntity().setCustomName(name + " [Lvl. " + level + " " + xp + "/" + getLevelXP() + "]");
 		}
 		if (getEntity().getLocation().getY() < 0) {
-			getEntity().setHealth(getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
-			reloadTime = 4 * 60 * 10;
-			if (kingdomPoint != null) {
-				getEntity().teleport(getSpawnPoint());
-			}
-			addHappiness(-1);
+			kill();
+			getEntity().teleport(getSpawnPoint());
 		}
 	}
 
@@ -91,14 +92,22 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		} else if (Math.round(getEntity().getHealth() - event.getFinalDamage()) < 1) {
 			event.setDamage(0);
 			event.setCancelled(true);
-			getEntity().setHealth(getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
-			reloadTime = 4 * 60 * 10;
-			//Teleport to spawn if the kingdom is set
-			if (kingdomPoint != null) {
-				getEntity().teleport(getSpawnPoint());
-			}
-			addHappiness(-1);
+			kill();
 		}
+	}
+	
+	void kill() {
+		getEntity().setHealth(getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+		reloadTime = 4 * 60 * 10;
+		//Teleport to spawn if the kingdom is set
+		if (kingdomPoint != null) {
+			if (KingdomHandler.getInstance().getKingdom(kingdomPoint).getState() == KingdomState.EVIL) {
+				//Extra respawn time in evil kingdom
+				reloadTime += 4 * 60 * 5;
+			}
+			getEntity().teleport(getSpawnPoint());
+		}
+		addHappiness(-1);
 	}
 
 	@Override
@@ -114,16 +123,34 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	@Override
 	protected void onInteract(PlayerInteractEntityEvent event) {
 		super.onInteract(event);
-		//Feed bread (only players who own the kingdom)
-		if (event.getPlayer().isSneaking() && getKingdomPoint() != null && KingdomHandler.getInstance().getKingdom(getKingdomPoint()).getOwners().contains(event.getPlayer().getUniqueId())) {
-			if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BREAD) {
-				event.getPlayer().getInventory().getItemInMainHand().setAmount(event.getPlayer().getInventory().getItemInMainHand().getAmount() - 1);
-				getEntity().setHealth(Math.min(getEntity().getHealth() + 4.0, getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()));
-				addHappiness(0.3);
-				event.getPlayer().sendMessage("[" + getName() + "] Thank you the bread was delicous!");
-				getEntity().getEyeLocation().getWorld().spawnParticle(Particle.HEART, getEntity().getEyeLocation(), 5);
+		//Non sneaking => Toggle follow
+		//Sneaking => Feed bread (only players who own the kingdom)
+		if (getKingdomPoint() != null) {
+			if (event.getPlayer().isSneaking() && KingdomHandler.getInstance().getKingdom(getKingdomPoint()).getOwners().contains(event.getPlayer().getUniqueId())) {
+				if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BREAD) {
+					event.getPlayer().getInventory().getItemInMainHand().setAmount(event.getPlayer().getInventory().getItemInMainHand().getAmount() - 1);
+					getEntity().setHealth(Math.min(getEntity().getHealth() + 4.0, getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()));
+					addHappiness(0.3);
+					event.getPlayer().sendMessage("[" + getName() + "] Thank you the bread was delicous!");
+					getEntity().getEyeLocation().getWorld().spawnParticle(Particle.HEART, getEntity().getEyeLocation(), 5);
+				}
+				event.getPlayer().sendMessage("[" + getName() + "] my happiness value is currently " + getHappiness() + "!");
 			}
-			event.getPlayer().sendMessage("[" + getName() + "] my happiness value is currently " + getHappiness() + "!");
+		}
+		//Buy
+		else {
+			KingdomPoint point = new KingdomPoint(getEntity().getLocation());
+			Kingdom kingdom = KingdomHandler.getInstance().getKingdom(getKingdomPoint());
+			CharacterStats stats = StatHandler.getInstance().getStats(event.getPlayer()).getCharacterStats();
+			//Check if player has enough money and owns the kingdom
+			if (stats.getMoney() >= getPrice() && kingdom.getOwners().contains(event.getPlayer().getUniqueId())) {
+				point.addVillager(this);
+				stats.setMoney(stats.getMoney() - getPrice());
+				event.getPlayer().sendMessage("[" + getName() + "] Thanks for buying me for " + kingdom.getName() + "!");
+			}
+			else {
+				event.getPlayer().sendMessage("[" + getName() + "] You need to have " + getPrice() + "$ and own " + kingdom.getName() + " to buy me!");
+			}
 		}
 		
 		Inventory inv = Bukkit.createInventory(event.getPlayer(), 9);
@@ -211,6 +238,12 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		} catch (NumberFormatException e) {
 //			e.printStackTrace();
 		}
+		//Reload time
+		try {
+			reloadTime = Integer.parseInt(data.get(RELOAD_TIME_TAG) + "");
+		} catch (NumberFormatException e) {
+//			e.printStackTrace();
+		}
 
 	}
 
@@ -248,6 +281,8 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		map.put(LEVEL_TAG, level);
 		//XP
 		map.put(XP_TAG, xp);
+		//Reload Time
+		map.put(RELOAD_TIME_TAG, reloadTime);
 		return new EntityMapData(map);
 	}
 

@@ -97,6 +97,17 @@ public class KingdomPoint implements ConfigurationSerializable {
 		return villagers;
 	}
 	
+	public double getDefeatedPercentage(EntityHandler handler) {
+		List<KingdomVillager<?>> villagers = getVillagers(handler);
+		double defeated = 0;
+		for (KingdomVillager<?> villager : villagers) {
+			if (villager.getReloadTime() > 0) {
+				defeated++;
+			}
+		}
+		return villagers.size() > 0 ? (double) defeated/villagers.size() : 1;
+	}
+	
 	public boolean canAddVillager (VillagerCategory category, int count) {
 		Kingdom kingdom = toKingdom();
 		return count < category.getMaxAmount(kingdom.getLevel());

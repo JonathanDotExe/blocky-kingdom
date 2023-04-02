@@ -9,3 +9,6 @@ commands:
   resetstats:
     description: Resets a players skills
     usage: /resetstats
+  glowvillagers:
+    description: Makes all villagers of the current kingdom glow for 15 minutes
+    usage: /glowvillagers

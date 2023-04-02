@@ -1,0 +1,632 @@
+building:
+  ==: at.jojokobi.mcutil.building.Building
+  blocks:
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 1
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 2
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 3
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 1
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 1
+    z: 1
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 1
+    z: 2
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 1
+    z: 3
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 1
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 2
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 2
+    z: 1
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 2
+    z: 2
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 2
+    z: 3
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 2
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 3
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 3
+    z: 1
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 3
+    z: 2
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 3
+    z: 3
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 3
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 0
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 1
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 2
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 3
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 4
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 1
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 2
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 3
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 1
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 2
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 3
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 1
+    block: minecraft:orange_bed[facing=south,occupied=false,part=foot]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 2
+    block: minecraft:orange_bed[facing=south,occupied=false,part=head]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 3
+    block: minecraft:crafting_table
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 3
+    block: minecraft:lantern[hanging=true,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 0
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 1
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 2
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 3
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 4
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 0
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 1
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 2
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 3
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 4
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 1
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 2
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 3
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 1
+    z: 0
+    block: minecraft:oak_door[facing=south,half=lower,hinge=right,open=true,powered=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 1
+    z: 3
+    block: minecraft:cartography_table
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 1
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 2
+    z: 0
+    block: minecraft:oak_door[facing=south,half=upper,hinge=right,open=true,powered=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 2
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 3
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 3
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 0
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 1
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 2
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 3
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 4
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 0
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 1
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 2
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 3
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 4
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 1
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 2
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 3
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 1
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 1
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 2
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 2
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 3
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 3
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 0
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 1
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 2
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 3
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 4
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 0
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 1
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 2
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 3
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 4
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 1
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 2
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 3
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 1
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 1
+    z: 1
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 1
+    z: 2
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 1
+    z: 3
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 1
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 2
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 2
+    z: 1
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 2
+    z: 2
+    block: minecraft:glass_pane[east=false,north=true,south=true,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 2
+    z: 3
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 2
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 3
+    z: 0
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 3
+    z: 1
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 3
+    z: 2
+    block: minecraft:glass_pane[east=false,north=true,south=true,waterlogged=false,west=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 3
+    z: 3
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 3
+    z: 4
+    block: minecraft:white_terracotta
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 0
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 1
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 2
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 3
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 4
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 1
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 2
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 3
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  width: 5
+  length: 5
+  marks:
+  - ==: at.jojokobi.mcutil.building.BuildingMark
+    x: 3
+    y: 1
+    z: 3
+    mark: quest_villager
+  height: 6

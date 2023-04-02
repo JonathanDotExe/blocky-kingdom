@@ -1,0 +1,2347 @@
+building:
+  ==: at.jojokobi.mcutil.building.Building
+  blocks:
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 0
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 1
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 2
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 3
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 4
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 5
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 6
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 7
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 8
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 9
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 10
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 11
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 12
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 13
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 0
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 1
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 2
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 3
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 4
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 5
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 6
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 7
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 8
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 9
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 10
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 11
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 12
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 4
+    z: 13
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 2
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 3
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 4
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 5
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 6
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 7
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 8
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 9
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 10
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 5
+    z: 11
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 6
+    z: 4
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 6
+    z: 5
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 6
+    z: 6
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 6
+    z: 7
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 6
+    z: 8
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 6
+    z: 9
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 7
+    z: 6
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 7
+    z: 7
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 0
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 1
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 2
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 3
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 4
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 5
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 6
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 7
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 8
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 9
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 10
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 11
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 12
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 13
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 6
+    block: minecraft:spruce_door[facing=east,half=lower,hinge=left,open=false,powered=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 7
+    block: minecraft:spruce_door[facing=east,half=lower,hinge=right,open=false,powered=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 8
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 9
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 10
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 11
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 1
+    z: 12
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 3
+    block: minecraft:glass
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 4
+    block: minecraft:glass
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 6
+    block: minecraft:spruce_door[facing=east,half=upper,hinge=left,open=false,powered=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 7
+    block: minecraft:spruce_door[facing=east,half=upper,hinge=right,open=false,powered=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 8
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 9
+    block: minecraft:glass
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 10
+    block: minecraft:glass
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 11
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 2
+    z: 12
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 3
+    block: minecraft:glass
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 4
+    block: minecraft:glass
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 6
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 7
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 8
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 9
+    block: minecraft:glass
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 10
+    block: minecraft:glass
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 11
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 3
+    z: 12
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 0
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 1
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 6
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 7
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 8
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 9
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 10
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 11
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 12
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 4
+    z: 13
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 2
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 3
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 4
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 5
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 6
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 7
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 8
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 9
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 10
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 5
+    z: 11
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 6
+    z: 4
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 6
+    z: 5
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 6
+    z: 6
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 6
+    z: 7
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 6
+    z: 8
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 6
+    z: 9
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 7
+    z: 6
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 7
+    z: 7
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 0
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 1
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 2
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 3
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 4
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 5
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 6
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 7
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 8
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 9
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 10
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 11
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 12
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 13
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 1
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 1
+    z: 2
+    block: minecraft:crafting_table
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 1
+    z: 4
+    block: minecraft:smooth_stone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 1
+    z: 9
+    block: minecraft:smooth_stone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 1
+    z: 11
+    block: minecraft:furnace[facing=north,lit=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 1
+    z: 12
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 2
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 2
+    z: 12
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 3
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 3
+    z: 2
+    block: minecraft:lantern[hanging=true,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 3
+    z: 11
+    block: minecraft:lantern[hanging=true,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 3
+    z: 12
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 0
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 1
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 6
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 7
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 8
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 9
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 10
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 11
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 12
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 4
+    z: 13
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 2
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 3
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 4
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 5
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 6
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 7
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 8
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 9
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 10
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 5
+    z: 11
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 6
+    z: 4
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 6
+    z: 5
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 6
+    z: 6
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 6
+    z: 7
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 6
+    z: 8
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 6
+    z: 9
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 7
+    z: 6
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 7
+    z: 7
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 0
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 1
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 2
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 3
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 4
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 5
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 6
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 7
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 8
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 9
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 10
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 11
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 12
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 13
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 1
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 1
+    z: 4
+    block: minecraft:smooth_stone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 1
+    z: 9
+    block: minecraft:smooth_stone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 1
+    z: 12
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 2
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 2
+    z: 12
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 3
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 3
+    z: 12
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 0
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 1
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 6
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 7
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 8
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 9
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 10
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 11
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 12
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 4
+    z: 13
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 2
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 3
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 4
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 5
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 6
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 7
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 8
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 9
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 10
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 5
+    z: 11
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 6
+    z: 4
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 6
+    z: 5
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 6
+    z: 6
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 6
+    z: 7
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 6
+    z: 8
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 6
+    z: 9
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 7
+    z: 6
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 7
+    z: 7
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 0
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 1
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 2
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 3
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 4
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 5
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 6
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 7
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 8
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 9
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 10
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 11
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 12
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 13
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 1
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 1
+    z: 4
+    block: minecraft:smooth_stone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 1
+    z: 9
+    block: minecraft:smooth_stone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 1
+    z: 12
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 2
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 2
+    z: 12
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 3
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 3
+    z: 12
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 0
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 1
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 6
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 7
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 8
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 9
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 10
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 11
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 12
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 4
+    z: 13
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 2
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 3
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 4
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 5
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 6
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 7
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 8
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 9
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 10
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 5
+    z: 11
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 6
+    z: 4
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 6
+    z: 5
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 6
+    z: 6
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 6
+    z: 7
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 6
+    z: 8
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 6
+    z: 9
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 7
+    z: 6
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 7
+    z: 7
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 0
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 1
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 2
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 3
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 4
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 5
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 6
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 7
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 8
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 9
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 10
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 11
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 12
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 0
+    z: 13
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 1
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 1
+    z: 4
+    block: minecraft:oak_trapdoor[facing=west,half=top,open=false,powered=false,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 1
+    z: 7
+    block: minecraft:composter[level=0]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 1
+    z: 9
+    block: minecraft:oak_trapdoor[facing=west,half=top,open=false,powered=false,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 1
+    z: 12
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 2
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 2
+    z: 6
+    block: minecraft:oak_wall_sign[facing=west,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 2
+    z: 7
+    block: minecraft:oak_wall_sign[facing=west,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 2
+    z: 12
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 3
+    z: 1
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 3
+    z: 2
+    block: minecraft:lantern[hanging=true,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 3
+    z: 11
+    block: minecraft:lantern[hanging=true,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 3
+    z: 12
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 0
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 1
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 2
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 3
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 4
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 5
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 6
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 7
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 8
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 9
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 10
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 11
+    block: minecraft:oak_planks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 12
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 4
+    z: 13
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 2
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 3
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 4
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 5
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 6
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 7
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 8
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 9
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 10
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 5
+    z: 11
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 6
+    z: 4
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 6
+    z: 5
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 6
+    z: 6
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 6
+    z: 7
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 6
+    z: 8
+    block: minecraft:bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 6
+    z: 9
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 7
+    z: 6
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 5
+    y: 7
+    z: 7
+    block: minecraft:brick_slab[type=bottom,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 0
+    z: 0
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 0
+    z: 1
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 0
+    z: 2
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 0
+    z: 3
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 0
+    z: 4
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 0
+    z: 5
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 0
+    z: 6
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 0
+    z: 7
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 0
+    z: 8
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 0
+    z: 9
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 0
+    z: 10
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 0
+    z: 11
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 0
+    z: 12
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 0
+    z: 13
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 1
+    z: 0
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 1
+    z: 1
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 1
+    z: 2
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 1
+    z: 3
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 1
+    z: 4
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 1
+    z: 5
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 1
+    z: 6
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 1
+    z: 7
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 1
+    z: 8
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 1
+    z: 9
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 1
+    z: 10
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 1
+    z: 11
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 1
+    z: 12
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 1
+    z: 13
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 2
+    z: 0
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 2
+    z: 1
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 2
+    z: 2
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 2
+    z: 3
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 2
+    z: 4
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 2
+    z: 5
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 2
+    z: 6
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 2
+    z: 7
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 2
+    z: 8
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 2
+    z: 9
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 2
+    z: 10
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 2
+    z: 11
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 2
+    z: 12
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 2
+    z: 13
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 3
+    z: 0
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 3
+    z: 1
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 3
+    z: 2
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 3
+    z: 3
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 3
+    z: 4
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 3
+    z: 5
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 3
+    z: 6
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 3
+    z: 7
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 3
+    z: 8
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 3
+    z: 9
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 3
+    z: 10
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 3
+    z: 11
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 3
+    z: 12
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 3
+    z: 13
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 4
+    z: 0
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 4
+    z: 1
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 4
+    z: 2
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 4
+    z: 3
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 4
+    z: 4
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 4
+    z: 5
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 4
+    z: 6
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 4
+    z: 7
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 4
+    z: 8
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 4
+    z: 9
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 4
+    z: 10
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 4
+    z: 11
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 4
+    z: 12
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 4
+    z: 13
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 5
+    z: 0
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 5
+    z: 1
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 5
+    z: 2
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 5
+    z: 3
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 5
+    z: 4
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 5
+    z: 5
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 5
+    z: 6
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 5
+    z: 7
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 5
+    z: 8
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 5
+    z: 9
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 5
+    z: 10
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 5
+    z: 11
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 5
+    z: 12
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 5
+    z: 13
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 6
+    z: 0
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 6
+    z: 1
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 6
+    z: 2
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 6
+    z: 3
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 6
+    z: 4
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 6
+    z: 5
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 6
+    z: 6
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 6
+    z: 7
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 6
+    z: 8
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 6
+    z: 9
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 6
+    z: 10
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 6
+    z: 11
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 6
+    z: 12
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 6
+    z: 13
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 7
+    z: 0
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 7
+    z: 1
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 7
+    z: 2
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 7
+    z: 3
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 7
+    z: 4
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 7
+    z: 5
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 7
+    z: 6
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 7
+    z: 7
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 7
+    z: 8
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 7
+    z: 9
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 7
+    z: 10
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 7
+    z: 11
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 7
+    z: 12
+    block: minecraft:stone_bricks
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 6
+    y: 7
+    z: 13
+    block: minecraft:stone_bricks
+  width: 7
+  length: 14
+  marks:
+  - ==: at.jojokobi.mcutil.building.BuildingMark
+    x: 3
+    y: 2
+    z: 2
+    mark: trader_villager
+  - ==: at.jojokobi.mcutil.building.BuildingMark
+    x: 3
+    y: 2
+    z: 11
+    mark: trader_villager
+  - ==: at.jojokobi.mcutil.building.BuildingMark
+    x: 5
+    y: 1
+    z: 6
+    mark: shop_chest
+  height: 8

@@ -65,6 +65,7 @@ public class GoblinHut extends Structure {
 	public List<StructureInstance<? extends Structure>> generate(Location loc, long seed) {
 		Location place = loc.clone();
 		Random random = new Random(generateValueBeasedSeed(loc, seed));
+		
 		// Walls
 		for (int x = 0; x < getWidth(); x++) {
 			for (int z = 0; z < getLength(); z++) {

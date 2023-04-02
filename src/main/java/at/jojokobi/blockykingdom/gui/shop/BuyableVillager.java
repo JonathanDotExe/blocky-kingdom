@@ -1,7 +1,9 @@
 package at.jojokobi.blockykingdom.gui.shop;
 
 import java.util.Map;
+import java.util.function.Function;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -9,18 +11,17 @@ import at.jojokobi.blockykingdom.entities.kingdomvillagers.KingdomVillager;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.blockykingdom.kingdoms.KingdomState;
 import at.jojokobi.blockykingdom.players.CharacterStats;
-import at.jojokobi.mcutil.entity.CustomEntityType;
 import at.jojokobi.mcutil.entity.EntityHandler;
 
 public class BuyableVillager implements Buyable{
 
-	private CustomEntityType<? extends KingdomVillager<?>> entity;
+	private Function<Location, KingdomVillager<?>> entity;
 	private EntityHandler handler;
 	private ItemStack icon;
 	private int price;
 	private int minLevel;
 	
-	public BuyableVillager(CustomEntityType<? extends KingdomVillager<?>> entity, EntityHandler handler,
+	public BuyableVillager(Function<Location, KingdomVillager<?>> entity, EntityHandler handler,
 			ItemStack icon, int price, int minLevel) {
 		super();
 		this.entity = entity;
@@ -43,7 +44,7 @@ public class BuyableVillager implements Buyable{
 	@Override
 	public boolean onBuy(Player player, CharacterStats stats) {
 		KingdomPoint point = new KingdomPoint(player.getLocation());
-		KingdomVillager<?> villager = entity.createInstance(player.getLocation(), handler);
+		KingdomVillager<?> villager = entity.apply(player.getLocation());
 		if (point.canAddVillager(villager.getVillagerCategory(), handler)) {
 			handler.addSavedEntity(villager);
 			if (point.toKingdom () != null && point.toKingdom().getState() != KingdomState.UNCLAIMED) {

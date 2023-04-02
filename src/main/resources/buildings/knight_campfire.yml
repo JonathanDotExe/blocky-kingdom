@@ -1,0 +1,162 @@
+building:
+  ==: at.jojokobi.mcutil.building.Building
+  blocks:
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 0
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 1
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 2
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 3
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 0
+    z: 4
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 0
+    y: 1
+    z: 2
+    block: minecraft:crafting_table
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 0
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 1
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 2
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 3
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 1
+    y: 0
+    z: 4
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 0
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 1
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 2
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 3
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 0
+    z: 4
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 1
+    z: 0
+    block: minecraft:oak_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 2
+    y: 1
+    z: 2
+    block: minecraft:campfire[facing=north,lit=true,signal_fire=false,waterlogged=false]
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 0
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 1
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 2
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 3
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 3
+    y: 0
+    z: 4
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 0
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 1
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 2
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 3
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 0
+    z: 4
+    block: minecraft:cobblestone
+  - ==: at.jojokobi.mcutil.building.BuildingBlock
+    x: 4
+    y: 1
+    z: 2
+    block: minecraft:oak_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]
+  width: 5
+  length: 5
+  marks:
+  - ==: at.jojokobi.mcutil.building.BuildingMark
+    x: 1
+    y: 1
+    z: 1
+    mark: knight_villager
+  - ==: at.jojokobi.mcutil.building.BuildingMark
+    x: 2
+    y: 1
+    z: 4
+    mark: chest
+  height: 4

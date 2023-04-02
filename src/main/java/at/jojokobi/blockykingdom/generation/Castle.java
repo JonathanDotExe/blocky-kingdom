@@ -1,43 +1,185 @@
 package at.jojokobi.blockykingdom.generation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.function.BiConsumer;
 
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World.Environment;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.Chest;
+import org.bukkit.entity.Horse;
+import org.bukkit.inventory.ItemStack;
 
+import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
+import at.jojokobi.blockykingdom.entities.kingdomvillagers.Archer;
+import at.jojokobi.blockykingdom.entities.kingdomvillagers.Farmer;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Knight;
+import at.jojokobi.blockykingdom.entities.kingdomvillagers.Trader;
+import at.jojokobi.blockykingdom.items.Dagger;
+import at.jojokobi.blockykingdom.items.DoubleBow;
+import at.jojokobi.blockykingdom.items.Hammer;
+import at.jojokobi.blockykingdom.items.Katana;
+import at.jojokobi.blockykingdom.items.Money;
+import at.jojokobi.blockykingdom.items.Smasher;
 import at.jojokobi.blockykingdom.kingdoms.Kingdom;
+import at.jojokobi.blockykingdom.kingdoms.KingdomChestLockHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.blockykingdom.kingdoms.KingdomState;
+import at.jojokobi.mcutil.building.Building;
 import at.jojokobi.mcutil.dimensions.DimensionHandler;
 import at.jojokobi.mcutil.entity.EntityHandler;
-import at.jojokobi.mcutil.generation.FurnitureGenUtil;
+import at.jojokobi.mcutil.generation.BasicGenUtil;
 import at.jojokobi.mcutil.generation.TerrainGenUtil;
 import at.jojokobi.mcutil.generation.population.Structure;
 import at.jojokobi.mcutil.generation.population.StructureInstance;
+import at.jojokobi.mcutil.item.ItemHandler;
+import at.jojokobi.mcutil.loot.LootInventory;
+import at.jojokobi.mcutil.loot.LootItem;
 
 public class Castle extends Structure{
 	
-	private int wallHeight = 10;
-	private ArcherTower archerTower;
-	private TraderHut traderHut;
+	private Building castleBuilding;
+	private List<Building> leftBuildings;
+	private List<Building> rightBuildings;
 	private EntityHandler entityHandler;
 	private DimensionHandler dimHandler;
+	KingdomChestLockHandler lockHandler;
 	
-	public Castle(EntityHandler entityHandler, DimensionHandler dimHandler, ArcherTower archerTower, TraderHut traderHut) {
+	private LootInventory loot;
+	private LootInventory barnLoot;
+	private LootInventory shopLoot;
+	private LootInventory evilLoot;
+	private LootInventory archerLoot;
+	private LootInventory weaponLoot;
+	
+	public Castle(EntityHandler entityHandler, DimensionHandler dimHandler, KingdomChestLockHandler lockHandler) {
 		super(32, 32, 32, 0);
 		this.entityHandler = entityHandler;
 		this.dimHandler = dimHandler;
-		this.archerTower = archerTower;
-		this.traderHut = traderHut;
+		this.lockHandler = lockHandler;
+		this.castleBuilding = Building.loadBuilding(getClass().getResourceAsStream("/buildings/castle.yml"));
+		this.leftBuildings = Arrays.asList(Building.loadBuilding(getClass().getResourceAsStream("/buildings/castle_food_shop.yml")));
+		this.rightBuildings = Arrays.asList(Building.loadBuilding(getClass().getResourceAsStream("/buildings/castle_weapon_chamber.yml")), Building.loadBuilding(getClass().getResourceAsStream("/buildings/castle_horse_barn.yml")));
+
 		setxModifier(-651);
 		setzModifier(81132);
+		
+		loot = new LootInventory();
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.FEATHER), 1, 4));
+		loot.addItem(new LootItem(0.1, new ItemStack(Material.FLINT), 1, 4));
+		loot.addItem(new LootItem(0.5, new ItemStack(Material.OAK_PLANKS), 1, 16));
+		loot.addItem(new LootItem(0.4, new ItemStack(Material.BREAD), 1, 5));
+		loot.addItem(new LootItem(0.3, new ItemStack(Material.APPLE), 1, 5));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.STRING), 1, 7));
+		loot.addItem(new LootItem(0.7, new ItemStack(Material.COBBLESTONE), 1, 20));
+		loot.addItem(new LootItem(0.4, new ItemStack(Material.IRON_INGOT), 1, 8));
+		loot.addItem(new LootItem(0.3, new ItemStack(Material.GOLD_INGOT), 1, 6));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.IRON_SWORD), 1, 1));
+		loot.addItem(new LootItem(0.4, new ItemStack(Material.STONE_SWORD), 1, 1));
+		loot.addItem(new LootItem(0.05, new ItemStack(Material.DIAMOND), 1, 1));
+		loot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 7));
+		
+		barnLoot = new LootInventory();
+		barnLoot.addItem(new LootItem(0.2, new ItemStack(Material.COAL), 1, 8));
+		barnLoot.addItem(new LootItem(0.05, new ItemStack(Material.DIAMOND), 1, 3));
+		barnLoot.addItem(new LootItem(0.1, new ItemStack(Material.GOLD_INGOT), 1, 3));
+		barnLoot.addItem(new LootItem(0.2, new ItemStack(Material.IRON_INGOT), 1, 5));
+		barnLoot.addItem(new LootItem(1, new ItemStack(Material.BREAD), 1, 7));
+		barnLoot.addItem(new LootItem(1, new ItemStack(Material.APPLE), 1, 3));
+		barnLoot.addItem(new LootItem(0.2, new ItemStack(Material.STONE_SWORD), 1, 1));
+		barnLoot.addItem(new LootItem(0.4, new ItemStack(Material.STONE_HOE), 1, 1));
+		barnLoot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_HOE), 1, 1));
+		barnLoot.addItem(new LootItem(0.1, new ItemStack(Material.NAME_TAG), 1, 1));
+		barnLoot.addItem(new LootItem(1, new ItemStack(Material.WHEAT_SEEDS), 1, 16));
+		barnLoot.addItem(new LootItem(0.4, new ItemStack(Material.CARROT), 1, 4));
+		barnLoot.addItem(new LootItem(0.4, new ItemStack(Material.HAY_BLOCK), 1, 4));	
+		barnLoot.addItem(new LootItem(0.1, new ItemStack(Material.PUMPKIN), 1, 2));
+		barnLoot.addItem(new LootItem(0.05, new ItemStack(Material.MELON), 1, 2));
+		barnLoot.addItem(new LootItem(0.1, new ItemStack(Material.POTATO), 1, 2));
+		barnLoot.addItem(new LootItem(0.05, new ItemStack(Material.BEETROOT_SEEDS), 1, 4));	
+		barnLoot.addItem(new LootItem(0.5, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 7));
+		
+		shopLoot = new LootInventory();
+		shopLoot.addItem(new LootItem(1, new ItemStack(Material.COAL), 1, 16));
+		shopLoot.addItem(new LootItem(0.05, new ItemStack(Material.DIAMOND), 1, 3));
+		shopLoot.addItem(new LootItem(0.5, new ItemStack(Material.GOLD_INGOT), 1, 4));
+		shopLoot.addItem(new LootItem(0.8, new ItemStack(Material.IRON_INGOT), 1, 8));
+		shopLoot.addItem(new LootItem(1, new ItemStack(Material.BREAD), 1, 5));
+		shopLoot.addItem(new LootItem(1, new ItemStack(Material.APPLE), 1, 3));
+		shopLoot.addItem(new LootItem(0.1, new ItemStack(Material.BOW), 1, 1));
+		shopLoot.addItem(new LootItem(0.5, new ItemStack(Material.STONE_SWORD), 1, 1));
+		shopLoot.addItem(new LootItem(0.7, new ItemStack(Material.ARROW), 1, 10));	
+		shopLoot.addItem(new LootItem(0.1, new ItemStack(Material.NAME_TAG), 1, 1));
+		shopLoot.addItem(new LootItem(1, new ItemStack(Material.WHEAT_SEEDS), 1, 16));
+		shopLoot.addItem(new LootItem(0.2, new ItemStack(Material.CARROT), 1, 2));
+		shopLoot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Dagger.IDENTIFIER), 1, 1));
+		shopLoot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Smasher.IDENTIFIER), 1, 1));
+		shopLoot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, DoubleBow.IDENTIFIER), 1, 1));
+		shopLoot.addItem(new LootItem(0.05, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Hammer.IDENTIFIER), 1, 1));
+		shopLoot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 7));
+		
+		weaponLoot = new LootInventory();
+		weaponLoot.addItem(new LootItem(0.1, new ItemStack(Material.DIAMOND), 1, 3));
+		weaponLoot.addItem(new LootItem(0.1, new ItemStack(Material.EMERALD), 1, 2));
+		weaponLoot.addItem(new LootItem(0.5, new ItemStack(Material.GOLD_INGOT), 1, 10));
+		weaponLoot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_BLOCK), 1, 3));
+		weaponLoot.addItem(new LootItem(0.4, new ItemStack(Material.IRON_BARS), 1, 16));
+		weaponLoot.addItem(new LootItem(0.05, new ItemStack(Material.DAMAGED_ANVIL), 1, 1));
+		weaponLoot.addItem(new LootItem(0.8, new ItemStack(Material.IRON_INGOT), 1, 16));
+		weaponLoot.addItem(new LootItem(0.05, new ItemStack(Material.BOW), 1, 1).setEnchant(true));
+		weaponLoot.addItem(new LootItem(0.5, new ItemStack(Material.STONE_SWORD), 1, 1).setEnchant(true));
+		weaponLoot.addItem(new LootItem(0.1, new ItemStack(Material.IRON_SWORD), 1, 1).setEnchant(true));
+		weaponLoot.addItem(new LootItem(0.7, new ItemStack(Material.ARROW), 1, 20));
+		weaponLoot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Katana.IDENTIFIER), 1, 1));
+		weaponLoot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Dagger.IDENTIFIER), 1, 1));
+		weaponLoot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Smasher.IDENTIFIER), 1, 1));
+		weaponLoot.addItem(new LootItem(0.05, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, DoubleBow.IDENTIFIER), 1, 1));
+		weaponLoot.addItem(new LootItem(0.05, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Hammer.IDENTIFIER), 1, 1));
+		weaponLoot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 5));
+		
+		evilLoot = new LootInventory();
+		evilLoot.addItem(new LootItem(0.2, new ItemStack(Material.FEATHER), 1, 4));
+		evilLoot.addItem(new LootItem(0.1, new ItemStack(Material.FLINT), 1, 4));
+		evilLoot.addItem(new LootItem(0.5, new ItemStack(Material.OAK_PLANKS), 1, 16));
+		evilLoot.addItem(new LootItem(0.4, new ItemStack(Material.BREAD), 1, 5));
+		evilLoot.addItem(new LootItem(0.3, new ItemStack(Material.APPLE), 1, 5));
+		evilLoot.addItem(new LootItem(0.2, new ItemStack(Material.STRING), 1, 7));
+		evilLoot.addItem(new LootItem(0.7, new ItemStack(Material.COBBLESTONE), 1, 20));
+		evilLoot.addItem(new LootItem(0.6, new ItemStack(Material.IRON_INGOT), 1, 12));
+		evilLoot.addItem(new LootItem(0.4, new ItemStack(Material.GOLD_INGOT), 1, 10));
+		evilLoot.addItem(new LootItem(0.2, new ItemStack(Material.IRON_SWORD), 1, 1));
+		evilLoot.addItem(new LootItem(0.4, new ItemStack(Material.STONE_SWORD), 1, 1));
+		evilLoot.addItem(new LootItem(0.1, new ItemStack(Material.DIAMOND), 1, 2));
+		evilLoot.addItem(new LootItem(0.5, new ItemStack(Material.OBSIDIAN), 1, 12));
+		evilLoot.addItem(new LootItem(0.1, new ItemStack(Material.DIAMOND), 1, 2));
+		evilLoot.addItem(new LootItem(0.2, new ItemStack(Material.STONE_SWORD), 1, 1).setDamage(true).setEnchant(true));
+		evilLoot.addItem(new LootItem(0.2, new ItemStack(Material.IRON_SWORD), 1, 1).setDamage(true).setEnchant(true));
+		evilLoot.addItem(new LootItem(0.05, new ItemStack(Material.ENCHANTED_BOOK), 1, 1).setEnchant(true));
+		evilLoot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Katana.IDENTIFIER), 1, 1).setEnchant(true));		
+		evilLoot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 5));
+		
+		archerLoot = new LootInventory();
+		archerLoot.addItem(new LootItem(1, new ItemStack(Material.ARROW), 1, 16));
+		archerLoot.addItem(new LootItem(0.6, new ItemStack(Material.FEATHER), 1, 4));
+		archerLoot.addItem(new LootItem(0.2, new ItemStack(Material.FLINT), 1, 4));
+		archerLoot.addItem(new LootItem(0.5, new ItemStack(Material.OAK_PLANKS), 1, 16));
+		archerLoot.addItem(new LootItem(0.4, new ItemStack(Material.BREAD), 1, 3));
+		archerLoot.addItem(new LootItem(0.6, new ItemStack(Material.APPLE), 1, 5));
+		archerLoot.addItem(new LootItem(0.6, new ItemStack(Material.STRING), 1, 7));
+		archerLoot.addItem(new LootItem(0.1, new ItemStack(Material.BOW), 1, 1));
+		archerLoot.addItem(new LootItem(0.1, new ItemStack(Material.COBWEB), 1, 7));
+		archerLoot.addItem(new LootItem(0.05, new ItemStack(Material.EMERALD), 1, 2));
+		archerLoot.addItem(new LootItem(0.3, new ItemStack(Material.GOLD_INGOT), 1, 7));
+		archerLoot.addItem(new LootItem(0.2, new ItemStack(Material.CHAINMAIL_BOOTS), 1, 1).setDamage(true));
+		archerLoot.addItem(new LootItem(0.2, new ItemStack(Material.CHAINMAIL_HELMET), 1, 1).setDamage(true));
+		archerLoot.addItem(new LootItem(0.2, new ItemStack(Material.CHAINMAIL_CHESTPLATE), 1, 1).setDamage(true));
+		archerLoot.addItem(new LootItem(0.2, new ItemStack(Material.CHAINMAIL_LEGGINGS), 1, 1).setDamage(true));
+		archerLoot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, DoubleBow.IDENTIFIER), 1, 1));
 	}
 	
 	@Override
@@ -53,107 +195,114 @@ public class Castle extends Structure{
 
 	@Override
 	public List<StructureInstance<? extends Structure>> generate(Location loc, long seed) {
-		List<StructureInstance<? extends Structure>> structures = new ArrayList<>();
-		structures.add(new StructureInstance<Castle>(this, loc.clone(), getWidth(), getHeight(), getLength()));
-		
-		Location place = loc.clone();
-		
+		List<StructureInstance<? extends Structure>> structures = new ArrayList<>();		
 		Random random = new Random(generateValueBeasedSeed(loc, seed));
+		BasicGenUtil.generateCube(loc, Material.AIR, getWidth(), getHeight(), getLength());
 		
-		//Walls
-		for (int x = 0; x < getWidth(); x++) {
-			for (int z = 0; z < getLength(); z++) {
-				for (int y = 0; y < getHeight(); y++) {
-					Material block = Material.AIR;
-					if ((y < wallHeight && (x == 1 || x == getWidth() - 2 ||z == 1 || z == getLength() - 2)) ||
-						(y == 0) ||
-						(y == wallHeight && (x <= 3 || x >= getWidth() - 4 ||z <= 3 || z >= getLength() - 4)) || 
-						(y == wallHeight + 1 && (x == 0 || x == getWidth() - 1 ||z == 0 || z == getLength() - 1)) ||
-						(y == wallHeight + 2 && (x == 0 || x == getWidth() - 1 ||z == 0 || z == getLength() - 1) && ((x + z % 2) % 2 == 0))) {
-						block = Material.STONE_BRICKS;
-					}
-					place.setX(loc.getX() + x);
-					place.setY(loc.getY() + y);
-					place.setZ(loc.getZ() + z);
-					place.getBlock().setType(block);
+		BiConsumer<Location, String> markInterpreter = (place, mark) -> {
+			switch (mark) {
+			case "bridge_chest":
+			{
+				place.getBlock().setType(Material.CHEST);
+				Chest chest = (Chest) place.getBlock().getState();
+				lockHandler.lockKingdomChest(chest);
+				if (KingdomHandler.getInstance().generateKingdom(new KingdomPoint(loc)).getState() == KingdomState.EVIL) {
+					evilLoot.fillInventory(chest.getBlockInventory(), random, null);
+				}
+				loot.fillInventory(chest.getBlockInventory(), random, null);
+			}
+				break;
+			case "archer_chest":
+			{
+				place.getBlock().setType(Material.CHEST);
+				Chest chest = (Chest) place.getBlock().getState();
+				lockHandler.lockKingdomChest(chest);
+				archerLoot.fillInventory(chest.getBlockInventory(), random, null);
+			}
+				break;
+			case "knight_villager":
+			{
+				Knight knight = new Knight(place, entityHandler, random);
+				entityHandler.addSavedEntity(knight);
+				knight.gainXP(random.nextInt(20));
+				new KingdomPoint(loc).addVillager(knight);
+			}
+				break;
+			case "archer_villager":
+			{
+				Archer knight = new Archer(place, entityHandler, random);
+				entityHandler.addSavedEntity(knight);
+				knight.gainXP(random.nextInt(20));
+				new KingdomPoint(loc).addVillager(knight);
+			}
+				break;
+			case "farmer_villager":
+			{
+				Farmer knight = new Farmer(place, entityHandler, random);
+				entityHandler.addSavedEntity(knight);
+				knight.gainXP(random.nextInt(20));
+				new KingdomPoint(loc).addVillager(knight);
+			}
+				break;
+			case "barn_chest":
+			{
+				place.getBlock().setType(Material.CHEST);
+				Chest chest = (Chest) place.getBlock().getState();
+				lockHandler.lockKingdomChest(chest);
+				barnLoot.fillInventory(chest.getBlockInventory(), random, null);
+				if (KingdomHandler.getInstance().generateKingdom(new KingdomPoint(loc)).getState() == KingdomState.EVIL) {
+					barnLoot.fillInventory(chest.getBlockInventory(), random, null);
 				}
 			}
-		}
+				break;
+			case "horse":
+			{
+				Horse horse = place.getWorld().spawn(place, Horse.class);
+				horse.setAdult();
+				horse.setTamed(true);
+				horse.setStyle(Horse.Style.values()[random.nextInt(Horse.Style.values().length)]);
+				horse.setColor(Horse.Color.values()[random.nextInt(Horse.Color.values().length)]);
+			}
+				break;
+			case "shop_chest":
+			{
+				place.getBlock().setType(Material.CHEST);
+				Chest chest = (Chest) place.getBlock().getState();
+				lockHandler.lockKingdomChest(chest);
+				shopLoot.fillInventory(chest.getBlockInventory(), random, null);
+				if (KingdomHandler.getInstance().generateKingdom(new KingdomPoint(loc)).getState() == KingdomState.EVIL) {
+					shopLoot.fillInventory(chest.getBlockInventory(), random, null);
+				}
+			}
+				break;
+			case "trader_villager":
+			{
+				Trader knight = new Trader(place, entityHandler, random);
+				entityHandler.addSavedEntity(knight);
+				knight.gainXP(random.nextInt(20));
+				new KingdomPoint(loc).addVillager(knight);
+			}
+				break;
+			case "weapon_chest":
+			{
+				place.getBlock().setType(Material.CHEST);
+				Chest chest = (Chest) place.getBlock().getState();
+				lockHandler.lockKingdomChest(chest);
+				weaponLoot.fillInventory(chest.getBlockInventory(), random, null);
+				if (KingdomHandler.getInstance().generateKingdom(new KingdomPoint(loc)).getState() == KingdomState.EVIL) {
+					weaponLoot.fillInventory(chest.getBlockInventory(), random, null);
+				}
+			}
+				break;
+			}
+		};
+		castleBuilding.build(loc, markInterpreter, 0, false);
 		
-		//Towers
-		place.setX(loc.getX());
-		place.setY(loc.getY());
-		place.setZ(loc.getZ());
-		structures.addAll(archerTower.generate(place, seed));
+		//Add side structures
+		rightBuildings.get(random.nextInt(rightBuildings.size())).build(loc.clone().add(1, 0, 9), markInterpreter, 0, false);
+		leftBuildings.get(random.nextInt(leftBuildings.size())).build(loc.clone().add(24, 0, 9), markInterpreter, 0, false);
 		
-		place.setX(loc.getX() + getWidth() - archerTower.getWidth());
-		place.setY(loc.getY());
-		place.setZ(loc.getZ());
-		structures.addAll(archerTower.generate(place, seed));
-		
-		place.setX(loc.getX() + getWidth() - archerTower.getWidth());
-		place.setY(loc.getY());
-		place.setZ(loc.getZ() + getLength() - archerTower.getLength());
-		structures.addAll(archerTower.generate(place, seed));
-		
-		place.setX(loc.getX());
-		place.setY(loc.getY());
-		place.setZ(loc.getZ() + getLength() - archerTower.getLength());
-		structures.addAll(archerTower.generate(place, seed));
-		
-		//Trader Hut
-		place.setX(loc.getX() + 2);
-		place.setY(loc.getY());
-		place.setZ(loc.getZ() + archerTower.getLength() - 1);
-		structures.addAll(traderHut.generate(place, seed));
-		
-		//Door
-		place.setX(loc.getX() + getWidth()/2 - 1);
-		place.setY(loc.getY() + 1);
-		place.setZ(loc.getZ() + 1);
-		FurnitureGenUtil.generateDoor(place, Material.OAK_DOOR, BlockFace.SOUTH, false, false);
-		place.add(-1, 0, -1);
-		
-		KingdomPoint point = new KingdomPoint(loc);
-		Knight knight = new Knight(place, entityHandler, random);
-		entityHandler.addSavedEntity(knight);
-		point.addVillager(knight);
-		
-		place.add(2, 0, 1);
-		FurnitureGenUtil.generateDoor(place, Material.OAK_DOOR, BlockFace.SOUTH, false, true);
-		place.add(1, 0, -1);
-		knight = new Knight(place, entityHandler, random);
-		entityHandler.addSavedEntity(knight);
-		point.addVillager(knight);
-		
-		//Guards
-		place.setX(loc.getX() + getWidth()/2);
-		place.setY(loc.getY() + wallHeight + 1);
-		place.setZ(loc.getZ() + 1);
-		knight = new Knight(place, entityHandler, random);
-		entityHandler.addSavedEntity(knight);
-		point.addVillager(knight);
-		
-		place.setX(loc.getX() + getWidth()/2);
-		place.setY(loc.getY() + wallHeight + 1);
-		place.setZ(loc.getZ() + getLength() - 2);
-		knight = new Knight(place, entityHandler, random);
-		entityHandler.addSavedEntity(knight);
-		point.addVillager(knight);
-		
-		place.setX(loc.getX() + 1);
-		place.setY(loc.getY() + wallHeight + 1);
-		place.setZ(loc.getZ() + getLength()/2);
-		knight = new Knight(place, entityHandler, random);
-		entityHandler.addSavedEntity(knight);
-		point.addVillager(knight);
-		
-		place.setX(loc.getX() + getWidth() - 2);
-		place.setY(loc.getY() + wallHeight + 1);
-		place.setZ(loc.getZ() + getLength()/2);
-		knight = new Knight(place, entityHandler, random);
-		entityHandler.addSavedEntity(knight);
-		point.addVillager(knight);
+		structures.add(new StructureInstance<Castle>(this, loc.clone(), getWidth(), getHeight(), getLength()));
 				
 		return structures;
 	}

@@ -12,10 +12,16 @@ import org.bukkit.inventory.ItemStack;
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Knight;
 import at.jojokobi.blockykingdom.items.Dagger;
+import at.jojokobi.blockykingdom.items.DoubleBow;
 import at.jojokobi.blockykingdom.items.Katana;
 import at.jojokobi.blockykingdom.items.Money;
 import at.jojokobi.blockykingdom.items.Smasher;
+import at.jojokobi.blockykingdom.kingdoms.Kingdom;
+import at.jojokobi.blockykingdom.kingdoms.KingdomChestLockHandler;
+import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
+import at.jojokobi.blockykingdom.kingdoms.KingdomState;
+import at.jojokobi.mcutil.building.Building;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.generation.TerrainGenUtil;
 import at.jojokobi.mcutil.generation.population.Structure;
@@ -28,32 +34,43 @@ public class KnightCampfire extends Structure{
 
 	private EntityHandler entityHandler;
 	
+	private Building building;
 	private LootInventory loot;
+	private KingdomChestLockHandler lockHandler;
 	
-	public KnightCampfire(EntityHandler entityHandler) {
+	public KnightCampfire(EntityHandler entityHandler, KingdomChestLockHandler lockHandler) {
 		super(5, 5, 2, 0);
 		this.entityHandler = entityHandler;
+		this.lockHandler = lockHandler;
+		building = Building.loadBuilding(getClass().getResourceAsStream("/buildings/knight_campfire.yml"));
 		
 		loot = new LootInventory();
 		
 		loot.addItem(new LootItem(1, new ItemStack(Material.COAL), 1, 8));
 		loot.addItem(new LootItem(0.05, new ItemStack(Material.DIAMOND), 1, 3));
-		loot.addItem(new LootItem(0.5, new ItemStack(Material.GOLD_INGOT), 1, 4));
-		loot.addItem(new LootItem(0.8, new ItemStack(Material.IRON_INGOT), 1, 8));
+		loot.addItem(new LootItem(0.5, new ItemStack(Material.GOLD_INGOT), 1, 8));
+		loot.addItem(new LootItem(0.8, new ItemStack(Material.IRON_INGOT), 1, 12));
 		loot.addItem(new LootItem(1, new ItemStack(Material.BREAD), 1, 10));
 		loot.addItem(new LootItem(1, new ItemStack(Material.APPLE), 1, 3));
 		loot.addItem(new LootItem(0.2, new ItemStack(Material.BOW), 1, 1));
 		loot.addItem(new LootItem(0.5, new ItemStack(Material.STONE_SWORD), 1, 1));
 		loot.addItem(new LootItem(0.3, new ItemStack(Material.IRON_SWORD), 1, 1));
-		loot.addItem(new LootItem(0.7, new ItemStack(Material.COOKED_BEEF), 1, 3));
+		loot.addItem(new LootItem(0.7, new ItemStack(Material.COOKED_BEEF), 1, 4));
 		loot.addItem(new LootItem(0.1, new ItemStack(Material.NAME_TAG), 1, 1));
-		loot.addItem(new LootItem(0.3, new ItemStack(Material.TRIDENT), 1, 1));
+		loot.addItem(new LootItem(0.1, new ItemStack(Material.TRIDENT), 1, 1));
 		
 		loot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Dagger.IDENTIFIER), 1, 1));
-		loot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Smasher.IDENTIFIER), 1, 1));
-		loot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Katana.IDENTIFIER), 1, 1));
+		loot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Smasher.IDENTIFIER), 1, 1));
+		loot.addItem(new LootItem(0.3, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Katana.IDENTIFIER), 1, 1));
+		loot.addItem(new LootItem(0.1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Katana.IDENTIFIER), 1, 1).setEnchant(true));
 		
-		loot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 2));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.CHAINMAIL_BOOTS), 1, 1).setDamage(true));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.CHAINMAIL_HELMET), 1, 1).setDamage(true));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.CHAINMAIL_CHESTPLATE), 1, 1).setDamage(true));
+		loot.addItem(new LootItem(0.2, new ItemStack(Material.CHAINMAIL_LEGGINGS), 1, 1).setDamage(true));
+		loot.addItem(new LootItem(0.2, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, DoubleBow.IDENTIFIER), 1, 1));
+		loot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 5));
+		loot.addItem(new LootItem(1, ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Money.IDENTIFIER), 1, 5));
 		
 		setxModifier(84984);
 		setzModifier(-9292);
@@ -72,54 +89,35 @@ public class KnightCampfire extends Structure{
 
 	@Override
 	public List<StructureInstance<? extends Structure>> generate(Location loc, long seed) {
-		Location place = loc.clone();
-		
 		Random random = new Random(generateValueBeasedSeed(loc, seed));
 		
-		for (int x = 0; x < getWidth(); x++) {
-			for (int z = 0; z < getLength(); z++) {
-				place.setX(loc.getX() + x);
-				place.setZ(loc.getZ() + z);
-				place.getBlock().setType(Material.COBBLESTONE);
+		building.build(loc, (place, mark) -> {
+			switch (mark) {
+			case "knight_villager":
+			{
+				place.setX(loc.getX() + getWidth()/2);
+				place.setY(loc.getY() + 2);
+				place.setZ(loc.getZ());
+				Knight knight = new Knight(place, entityHandler, random);
+				entityHandler.addSavedEntity(knight);
+				knight.gainXP(random.nextInt(25));
+				new KingdomPoint(loc).addVillager(knight);
 			}
-		}
-		
-		place.add(0, 1, 0);
-		
-		//Campfire
-		place.setX(loc.getX() + getWidth()/2);
-		place.setZ(loc.getZ() + getLength()/2);
-		place.getBlock().setType(Material.CAMPFIRE);
-		
-		//Crafting table
-		place.setX(loc.getX());
-		place.setZ(loc.getZ() + getLength()/2);
-		place.getBlock().setType(Material.CRAFTING_TABLE);
-
-		//Chest
-		place.setX(loc.getX() + getWidth()/2);
-		place.setZ(loc.getZ() + getLength() - 1);
-		place.getBlock().setType(Material.CHEST);
-		Chest chest = (Chest) place.getBlock().getState();
-		loot.fillInventory(chest.getBlockInventory(), random, null);
-		
-		//Seats
-		place.setX(loc.getX() + getWidth() - 1);
-		place.setZ(loc.getZ() + getLength()/2);
-		place.getBlock().setType(Material.OAK_SLAB);
-		
-		place.setX(loc.getX() + getWidth()/2);
-		place.setZ(loc.getZ());
-		place.getBlock().setType(Material.OAK_SLAB);
-
-		//Knight
-		place.setX(loc.getX() + getWidth()/2);
-		place.setY(loc.getY() + 2);
-		place.setZ(loc.getZ());
-		Knight knight = new Knight(place, entityHandler, random);
-		entityHandler.addSavedEntity(knight);
-		knight.gainXP(random.nextInt(25));
-		new KingdomPoint(loc).addVillager(knight);
+			break;
+			case "chest":
+			{
+				place.getBlock().setType(Material.CHEST);
+				Chest chest = (Chest) place.getBlock().getState();
+				lockHandler.lockKingdomChest(chest);
+				loot.fillInventory(chest.getBlockInventory(), random, null);
+				Kingdom kingdom = KingdomHandler.getInstance().generateKingdom(new KingdomPoint(loc));
+				if (kingdom != null && kingdom.getState() == KingdomState.EVIL) {
+					loot.fillInventory(chest.getBlockInventory(), random, null);
+				}
+			}
+			break;
+			}
+		}, random.nextInt(4), false);
 		
 		return Arrays.asList(new StructureInstance<KnightCampfire>(this, loc, getWidth(), getHeight(), getLength()));
 	}

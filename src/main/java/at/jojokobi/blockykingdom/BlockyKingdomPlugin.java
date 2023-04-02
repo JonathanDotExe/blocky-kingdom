@@ -18,6 +18,7 @@ import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import at.jojokobi.blockykingdom.commands.GlowVillagersCommand;
 import at.jojokobi.blockykingdom.commands.ResetStatsCommand;
 import at.jojokobi.blockykingdom.dimensions.CloudJumpHandler;
 import at.jojokobi.blockykingdom.dimensions.HeavenDimension;
@@ -47,10 +48,13 @@ import at.jojokobi.blockykingdom.entities.kingdomvillagers.Recruiter;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.RecruiterType;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Trader;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.TraderType;
+import at.jojokobi.blockykingdom.generation.ArcherHouse;
 import at.jojokobi.blockykingdom.generation.ArcherTower;
 import at.jojokobi.blockykingdom.generation.Castle;
+import at.jojokobi.blockykingdom.generation.CropFarm;
 import at.jojokobi.blockykingdom.generation.DungeonTower;
 import at.jojokobi.blockykingdom.generation.EliteGoblinSpawnerRoom;
+import at.jojokobi.blockykingdom.generation.FamilyHouse;
 import at.jojokobi.blockykingdom.generation.FlyingSheepFlock;
 import at.jojokobi.blockykingdom.generation.GoblinBossChamber;
 import at.jojokobi.blockykingdom.generation.GoblinCave;
@@ -65,6 +69,7 @@ import at.jojokobi.blockykingdom.generation.KnightCampfire;
 import at.jojokobi.blockykingdom.generation.QuestHut;
 import at.jojokobi.blockykingdom.generation.RecruiterHouse;
 import at.jojokobi.blockykingdom.generation.StoneBeetleRoom;
+import at.jojokobi.blockykingdom.generation.TraderHouse;
 import at.jojokobi.blockykingdom.generation.TraderHut;
 import at.jojokobi.blockykingdom.gui.shop.BuyableItemStack;
 import at.jojokobi.blockykingdom.gui.shop.BuyableSkillPoint;
@@ -100,6 +105,7 @@ import at.jojokobi.blockykingdom.items.Smasher;
 import at.jojokobi.blockykingdom.items.Sunglasses;
 import at.jojokobi.blockykingdom.items.ThunderWand;
 import at.jojokobi.blockykingdom.kingdoms.Kingdom;
+import at.jojokobi.blockykingdom.kingdoms.KingdomChestLockHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomHappinessHandler;
 import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
@@ -220,6 +226,8 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 //		kingdomHandler = new KingdomHandler();
 		Bukkit.getPluginManager().registerEvents(KingdomHandler.getInstance(), this);
 		KingdomHandler.getInstance().onEnable();
+		KingdomChestLockHandler lockHandler = new KingdomChestLockHandler(this);
+		Bukkit.getPluginManager().registerEvents(lockHandler, this);
 		//Stats
 		Bukkit.getPluginManager().registerEvents(StatHandler.getInstance(), this);
 		//Init Skills
@@ -403,17 +411,25 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		genHandler.addStructure(new HauntedGrave(cursedStatue));
 		ArcherTower tower = new ArcherTower(entityHandler);
 		genHandler.addStructure(tower);
-		TraderHut traderHut = new TraderHut(entityHandler, getDimensionHandler());
+		ArcherHouse archerHouse = new ArcherHouse(entityHandler, lockHandler);
+		genHandler.addStructure(archerHouse);
+		TraderHut traderHut = new TraderHut(entityHandler, getDimensionHandler(), lockHandler);
 		genHandler.addStructure(traderHut);
+		TraderHouse traderHouse = new TraderHouse(entityHandler, lockHandler);
+		genHandler.addStructure(traderHouse);
+		FamilyHouse familyHouse = new FamilyHouse(entityHandler, lockHandler);
+		genHandler.addStructure(familyHouse);
+		CropFarm cropFarm = new CropFarm();
+		genHandler.addStructure(cropFarm);
 		RecruiterHouse recruiterHouse = new RecruiterHouse(entityHandler);
 		genHandler.addStructure(recruiterHouse);
 		QuestHut questHut = new QuestHut(entityHandler);
 		genHandler.addStructure(questHut);
-		KnightCampfire campfire = new KnightCampfire(entityHandler);
+		KnightCampfire campfire = new KnightCampfire(entityHandler, lockHandler);
 		genHandler.addStructure(campfire);
-		genHandler.addStructure(new Castle(entityHandler, getDimensionHandler(), tower, traderHut));
+		genHandler.addStructure(new Castle(entityHandler, getDimensionHandler(), lockHandler));
 		genHandler.addStructure(new FlyingSheepFlock(entityHandler));
-		genHandler.addStructure(new KingdomVillage(getDimensionHandler(), traderHut, traderHut, traderHut, recruiterHouse, recruiterHouse, questHut, questHut, tower, campfire));
+		genHandler.addStructure(new KingdomVillage(getDimensionHandler(), traderHut, traderHut, traderHouse, traderHouse, familyHouse, recruiterHouse, questHut, questHut, archerHouse, campfire, cropFarm));
 		genHandler.addStructure(new GoblinHut(spawnerHandler));
 		GoblinSpawnerRoom goblinSpawner = new GoblinSpawnerRoom(spawnerHandler, getDimensionHandler());
 		genHandler.addStructure(goblinSpawner);
@@ -451,6 +467,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		
 		//Commands
 		getCommand(ResetStatsCommand.COMMAND_NAME).setExecutor(new ResetStatsCommand(util.getGuiHandler()));
+		getCommand(GlowVillagersCommand.COMMAND_NAME).setExecutor(new GlowVillagersCommand(util.getEntityHandler()));
 		
 		//Config
 		saveDefaultConfig();
