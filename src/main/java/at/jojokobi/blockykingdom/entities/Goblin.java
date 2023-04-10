@@ -122,7 +122,7 @@ public class Goblin extends CustomEntity<Zombie> implements Attacker{
 	
 	@Override
 	protected double getSprintSpeed() {
-		return 0.5;
+		return 0.3;
 	}
 	
 	@Override
