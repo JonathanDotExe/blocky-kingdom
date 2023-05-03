@@ -7,7 +7,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Skeleton;
-import org.bukkit.entity.WitherSkeleton;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
@@ -69,9 +68,6 @@ public class ExecutionersScythe extends CustomTool{
 				}
 				else if (event.getEntity() instanceof Creeper) {
 					skull = new ItemStack(Material.CREEPER_HEAD);
-				}
-				else if (event.getEntity() instanceof WitherSkeleton) {
-					skull = new ItemStack(Material.WITHER_SKELETON_SKULL);
 				}
 				else if (event.getEntity() instanceof Player) {
 					skull = new ItemStack(Material.PLAYER_HEAD);

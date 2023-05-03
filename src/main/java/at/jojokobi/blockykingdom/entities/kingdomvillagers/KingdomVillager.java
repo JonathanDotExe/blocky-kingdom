@@ -423,4 +423,9 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		return reloadTime <= 0;
 	}
 	
+	
+	@Override
+	protected boolean canDespawn() {
+		return kingdomPoint == null;
+	}
 }
