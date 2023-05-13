@@ -59,6 +59,7 @@ public class DynamicVillagerHousePattern implements SummoningPattern {
 	public boolean matches(BlockPlaceEvent event) {
 		Kingdom kingdom = KingdomHandler.getInstance().getKingdom(event.getBlock().getLocation());
 		if ((furnitures.isEmpty() || furnitures.get(0).matches(event.getBlock())) && kingdom.isOwner(event.getPlayer().getUniqueId())) {
+			System.out.println("DEtected furniture");
 			for (Vector offset : offsets) {
 				for (int width = minSize.getBlockX(); width <= maxSize.getBlockX(); width++) {
 					for (int height = minSize.getBlockY(); height <= maxSize.getBlockY(); height++) {
@@ -75,7 +76,9 @@ public class DynamicVillagerHousePattern implements SummoningPattern {
 	}
 	
 	public boolean matches (Location start, int width, int height, int length) {
+		System.out.println("Checking " + width + "/" + height + "/" + length);
 		boolean matches = genHandler.getInstanceInArea(start, width, height, length) == null;
+		System.out.println("Area: " + matches);
 		List<Furniture> furnitures = new ArrayList<Furniture>(this.furnitures);
 		int airCount = 0;
 		int totalRoomSpace = (width - 2) * (height - 2) * (length - 2);
@@ -84,7 +87,7 @@ public class DynamicVillagerHousePattern implements SummoningPattern {
 				for (int z = 0; z < length && matches; z++) {
 					Block block = start.getBlock().getRelative(x, y, z);
 					//Wall
-					if (x == 0 || x == width -1 || y == 0 || y == height - 1 || z == 0 | z == length - 1) {
+					if (x == 0 || x == width - 1 || y == 0 || y == height - 1 || z == 0 || z == length - 1) {
 						matches = wallPredicate.test(block);
 					}
 					//Air
@@ -104,6 +107,8 @@ public class DynamicVillagerHousePattern implements SummoningPattern {
 				}
 			}
 		}
+		System.out.println(furnitures);
+		System.out.println(matches + "/" + furnitures.isEmpty() + "/" + ((double) airCount/totalRoomSpace >= airInside));
 		return matches && furnitures.isEmpty() && (double) airCount/totalRoomSpace >= airInside;
 	}
 

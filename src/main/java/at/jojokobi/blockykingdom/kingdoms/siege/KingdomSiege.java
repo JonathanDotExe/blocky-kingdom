@@ -73,10 +73,8 @@ public class KingdomSiege {
 			if (wave >= spawner.minWave() && kingdom.getLevel() >= spawner.minKingdomLevel()) {
 				for (int i = 0; i < spawner.maxAmountPerWave(point.calcVillagerCount(handler)); i++) {
 					Location place = null;
-					if (spawner.spawnAtVillagers()) {
-						if (!all.isEmpty()) {
-							place = all.get(random.nextInt(all.size())).getLocation();
-						}
+					if (spawner.spawnAtVillagers() && !all.isEmpty()) {
+						place = all.get(random.nextInt(all.size())).getLocation();
 					}
 					else if (!players.isEmpty()){
 						place = players.get(random.nextInt(players.size())).getLocation();

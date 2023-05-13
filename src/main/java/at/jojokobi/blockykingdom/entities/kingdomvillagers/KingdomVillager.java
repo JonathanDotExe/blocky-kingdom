@@ -102,7 +102,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		//Respawning
 		if (event.getCause() == DamageCause.DROWNING || event.getCause() == DamageCause.FALL || event.getCause() == DamageCause.SUFFOCATION || reloadTime > 0) {
 			event.setCancelled(true);
-		} else if (Math.round(getEntity().getHealth() - event.getFinalDamage()) < 1) {
+		} else if (getEntity().getHealth() - Math.max(event.getFinalDamage(), event.getDamage()) < 1) {
 			event.setDamage(0);
 			event.setCancelled(true);
 			kill();
