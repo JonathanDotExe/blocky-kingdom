@@ -15,12 +15,12 @@ import at.jojokobi.mcutil.generation.population.StructureInstance;
 public class GoblinCaveCenter extends Structure {
 	
 	public GoblinCaveCenter() {
-		super(16, 16, 256, 0);
+		super(16, 16, 384, 0);
 	}
 
 	@Override
 	public int calculatePlacementY(int width, int length, Location place) {
-		return 0;
+		return -32;
 	}
 	
 	@Override
