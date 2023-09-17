@@ -126,6 +126,10 @@ public class EliteGoblin extends CustomEntity<Zombie> implements Attacker{
 		return 0.6;
 	}
 
+	protected double getSwimSpeed () {
+		return 0.1;
+	}
+	
 	@Override
 	protected void onTransform(EntityTransformEvent event) {
 		super.onTransform(event);
