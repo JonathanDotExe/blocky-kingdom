@@ -390,8 +390,8 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 						
 		//Spawns
 		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(DeathAngel.DEATH_ANGEL_KEY), 0.4, 3).setSpawnGroupSize(3).setCanSpawn((l, p) -> HeavenDimension.getInstance().isDimension(l.getWorld())).setMaxEntitiesAround(32));
-		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(Goblin.GOBLIN_SPAWN_KEY), 0.1, 3).setSpawnGroupSize(4).setCanSpawn((l, p) -> l.getBlock().getLightLevel() <= 7).setMaxEntitiesAround(16));
-		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(EliteGoblin.ELITE_GOBLIN_SPAWN_KEY), 0.05, 1).setCanSpawn((l, p) -> l.getBlock().getLightLevel() <= 7).setMaxEntitiesAround(16));
+		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(Goblin.GOBLIN_SPAWN_KEY), 0.1, 2).setSpawnGroupSize(4).setCanSpawn((l, p) -> l.getBlock().getLightLevel() <= 7).setMaxEntitiesAround(16));
+		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(EliteGoblin.ELITE_GOBLIN_SPAWN_KEY), 0.02, 1).setCanSpawn((l, p) -> l.getBlock().getLightLevel() <= 7).setMaxEntitiesAround(16));
 		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(Knight.KNIGHT_SPAWN_KEY), 0.01, 1).setMaxEntitiesAround(16));
 		spawner.addSpawn(new CustomEntitySpawnData(CustomSpawnsHandler.getInstance().getItem(Archer.ARCHER_SPAWN_KEY), 0.005, 1).setMaxEntitiesAround(16));
 		

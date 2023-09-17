@@ -53,7 +53,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	private String name;
 	private KingdomPoint kingdomPoint;
 
-	private int price = 1000;
+	private int price = 1000; //Price for buying villager directly
 	private double happiness = 0.0;
 
 	private int level = 1;
@@ -63,7 +63,11 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		super(place, handler, type);
 		name = new RandomWordGenerator().generateWord(random, 2, 10);
 		setDespawnTicks(5000);
-		setTeleportToGoal(true);
+	}
+	
+	@Override
+	public boolean canTeleportToGoal() {
+		return kingdomPoint != null && KingdomHandler.getInstance().getKingdom(kingdomPoint).getState() == KingdomState.GOOD;
 	}
 	
 	@Override
@@ -195,11 +199,6 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		super.onPortalTeleport(event);
 		//No teleport to the nether
 		event.setCancelled(true);
-	}
-	
-	@Override
-	protected double getSwimSpeed() {
-		return 0.2;
 	}
 
 	public String getName() {
