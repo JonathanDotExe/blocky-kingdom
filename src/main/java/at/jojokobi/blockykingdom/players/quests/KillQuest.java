@@ -15,8 +15,8 @@ public class KillQuest extends Quest {
 	
 	private EntityType entity;
 	
-	public KillQuest(int maxProgress, int reward, EntityType entity) {
-		super(maxProgress, reward);
+	public KillQuest(int maxProgress, int reward, int experience, int skillPoints, EntityType entity) {
+		super(maxProgress, reward, experience, skillPoints);
 		this.entity = entity;
 	}
 
@@ -48,7 +48,7 @@ public class KillQuest extends Quest {
 	}
 	
 	public static KillQuest deserialize (Map<String, Object> map) {
-		KillQuest quest = new KillQuest(0, 0, EntityType.ZOMBIE);
+		KillQuest quest = new KillQuest(0, 0, 0, 0, EntityType.ZOMBIE);
 		quest.load(map);
 		try {
 			quest.entity = EntityType.valueOf(map.get(ENTITY_KEY) + "");
@@ -60,7 +60,7 @@ public class KillQuest extends Quest {
 	}
 	
 	public static SimpleQuestGenerator newKillQuestGenerator (EntityType entity) {
-		return new SimpleQuestGenerator ((p, r, e) -> new KillQuest(p, r, entity).setExpirationTimeStamp(e));
+		return new SimpleQuestGenerator ((p, r, xp, s, e) -> new KillQuest(p, r, xp, s, entity).setExpirationTimeStamp(e));
 	}
 
 }

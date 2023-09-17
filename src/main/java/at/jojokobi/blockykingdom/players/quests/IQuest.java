@@ -12,6 +12,10 @@ public interface IQuest extends ConfigurationSerializable{
 	
 	public int getReward ();
 	
+	public int getExperience();
+	
+	public int getSkillPoints();
+	
 	public boolean isDone (Player player);
 	
 	public int getMaxProgress ();

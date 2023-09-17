@@ -83,9 +83,9 @@ public class StatHandler implements Listener{
 		}
 		
 		if (isNew) {
-			stats.addQuest(new KillQuest(15, 1000, EntityType.ZOMBIE).setExpirationTimeStamp(Long.MAX_VALUE), event.getPlayer());
-			stats.addQuest(new MineQuest(8, 100, Material.WHEAT).setExpirationTimeStamp(Long.MAX_VALUE), event.getPlayer());
-			stats.addQuest(new MineQuest(3, 2000, Material.DIAMOND_ORE).setExpirationTimeStamp(Long.MAX_VALUE), event.getPlayer());
+			stats.addQuest(new KillQuest(15, 1000, 100, 10, EntityType.ZOMBIE).setExpirationTimeStamp(Long.MAX_VALUE), event.getPlayer());
+			stats.addQuest(new MineQuest(8, 100, 50, 5, Material.WHEAT).setExpirationTimeStamp(Long.MAX_VALUE), event.getPlayer());
+			stats.addQuest(new MineQuest(3, 2000, 100, 10, Material.DIAMOND_ORE).setExpirationTimeStamp(Long.MAX_VALUE), event.getPlayer());
 		}
 		
 //		stats.addQuest(new MineQuest(64, 1000, Material.STONE).setExpirationTimeStamp(System.currentTimeMillis() + 1000 * 60 * 60 * 24), player);

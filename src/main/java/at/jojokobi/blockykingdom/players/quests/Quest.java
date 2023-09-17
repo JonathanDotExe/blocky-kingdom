@@ -13,18 +13,25 @@ public abstract class Quest implements IQuest {
 	
 	public static final String MAX_PROGRESS_KEY = "maxProgress";
 	public static final String REWARD_KEY = "reward";
+	public static final String EXPERIENCE_KEY = "experience";
+	public static final String SKILL_POINTS_KEY = "skillPoints";
 	public static final String INITIAL_PROGRESS_KEY = "initialProgress";
 	public static final String EXPIRATION_TIME_STAMP_KEY = "expirationTimeStamp";
 	
 	private int maxProgress;
 	private int reward;
+	private int experience;
+	private int skillPoints;
 	private int initialProgress;
 	private long expirationTimeStamp;
 	
-	public Quest(int maxProgress, int reward) {
+
+	public Quest(int maxProgress, int reward, int experience, int skillPoints) {
 		super();
 		this.maxProgress = maxProgress;
 		this.reward = reward;
+		this.experience = experience;
+		this.skillPoints = skillPoints;
 	}
 
 	@Override
@@ -35,6 +42,17 @@ public abstract class Quest implements IQuest {
 	@Override
 	public int getMaxProgress() {
 		return maxProgress;
+	}
+	
+	
+	@Override
+	public int getExperience() {
+		return experience;
+	}
+
+	@Override
+	public int getSkillPoints() {
+		return skillPoints;
 	}
 
 	public int getInitialProgress() {
@@ -87,6 +105,16 @@ public abstract class Quest implements IQuest {
 		}
 		try {
 			reward = Integer.parseInt(map.get(REWARD_KEY) + "");
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		try {
+			experience = Integer.parseInt(map.get(EXPERIENCE_KEY) + "");
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		try {
+			skillPoints = Integer.parseInt(map.get(SKILL_POINTS_KEY) + "");
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}

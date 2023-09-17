@@ -31,6 +31,8 @@ public class QuestGUI extends InventoryGUI{
 				else if (quest.isDone(getOwner())) {
 					stats.removeQuest(quest);
 					stats.setMoney(stats.getMoney() + quest.getReward());
+					stats.gainXp(quest.getExperience());
+					stats.setSkillPoints(stats.getSkillPoints() + quest.getSkillPoints());
 					close ();
 				}
 			});

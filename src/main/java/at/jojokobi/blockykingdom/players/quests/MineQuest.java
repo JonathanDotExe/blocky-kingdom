@@ -12,8 +12,8 @@ public class MineQuest extends Quest {
 	
 	private Material block;
 
-	public MineQuest(int maxProgress, int reward, Material entity) {
-		super(maxProgress, reward);
+	public MineQuest(int maxProgress, int reward, int experience, int skillPoints, Material entity) {
+		super(maxProgress, reward, experience, skillPoints);
 		this.block = entity;
 	}
 
@@ -59,7 +59,7 @@ public class MineQuest extends Quest {
 	}
 	
 	public static MineQuest deserialize (Map<String, Object> map) {
-		MineQuest quest = new MineQuest(0, 0, Material.STONE);
+		MineQuest quest = new MineQuest(0, 0, 0, 0, Material.STONE);
 		quest.load(map);
 		try {
 			quest.block = Material.valueOf(map.get(BLOCK_KEY) + "");
@@ -71,7 +71,7 @@ public class MineQuest extends Quest {
 	}
 	
 	public static SimpleQuestGenerator newMineQuestGenerator (Material material) {
-		return new SimpleQuestGenerator ((p, r, e) -> new MineQuest(p, r, material).setExpirationTimeStamp(e));
+		return new SimpleQuestGenerator ((p, r, xp, s, e) -> new MineQuest(p, r, xp, s, material).setExpirationTimeStamp(e));
 	}
 
 }

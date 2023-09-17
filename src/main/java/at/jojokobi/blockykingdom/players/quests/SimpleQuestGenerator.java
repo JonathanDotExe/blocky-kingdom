@@ -9,6 +9,8 @@ public class SimpleQuestGenerator implements QuestGenetator {
 	private int maxAmount = 1;
 	private int amountMultiplier = 1;
 	private int basicReward = 100;
+	private int basicExperience = 50;
+	private int basicSkillPoints = 2;
 	private boolean mutable = true;
 
 	public SimpleQuestGenerator(QuestFunction function) {
@@ -20,7 +22,7 @@ public class SimpleQuestGenerator implements QuestGenetator {
 	public IQuest generate(Random random, long endTimestamp) {
 		int amount = random.nextInt(maxAmount - minAmount + 1) + minAmount;
 		
-		return function.create(amount * amountMultiplier, basicReward * amount, endTimestamp);
+		return function.create(amount * amountMultiplier, basicReward * amount, basicExperience * amount, basicSkillPoints * amount, endTimestamp);
 	}
 
 	public int getMinAmount() {
@@ -69,6 +71,30 @@ public class SimpleQuestGenerator implements QuestGenetator {
 		}
 		this.basicReward = basicReward;
 		return this;
+	}
+	
+	public SimpleQuestGenerator setBasicExperience(int basicExperience) {
+		if (!mutable) {
+			throw new IllegalArgumentException("This instance is not mutable!");
+		}
+		this.basicExperience = basicExperience;
+		return this;
+	}
+
+	public SimpleQuestGenerator setBasicSkillPoints(int basicSkillPoints) {
+		if (!mutable) {
+			throw new IllegalArgumentException("This instance is not mutable!");
+		}
+		this.basicSkillPoints = basicSkillPoints;
+		return this;
+	}
+
+	public int getBasicExperience() {
+		return basicExperience;
+	}
+
+	public int getBasicSkillPoints() {
+		return basicSkillPoints;
 	}
 
 	public boolean isMutable() {
