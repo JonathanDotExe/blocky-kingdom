@@ -181,13 +181,13 @@ public class StatHandler implements Listener{
 	
 	@EventHandler(priority=EventPriority.LOWEST)
 	public void onBlockBreak(BlockBreakEvent event) {
-		if (!event.isCancelled() && Math.random() > 0.25) {
+		if (!event.isCancelled() && Math.random() > 0.1) {
 			//Add 
 			Statable statable = statables.get(event.getPlayer());
 			if (statable != null) {
 				CharacterStats stats = statable.getCharacterStats();
-				stats.gainXp(3);
-				stats.setMoney(stats.getMoney() + 3);
+				stats.gainXp(1);
+				stats.setMoney(stats.getMoney() + 2);
 			}
 		}
 	}

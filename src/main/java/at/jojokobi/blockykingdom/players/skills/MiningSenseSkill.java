@@ -54,16 +54,28 @@ public class MiningSenseSkill extends Skill {
 //		case COAL_ORE:
 //			instrument = Instrument.PIANO;
 //			break;
-//		case IRON_ORE:
-//			instrument = Instrument.IRON_XYLOPHONE;
-//			break;
+		case IRON_ORE:
+			instrument = Instrument.IRON_XYLOPHONE;
+			break;
+		case DEEPSLATE_IRON_ORE:
+			instrument = Instrument.IRON_XYLOPHONE;
+			break;
 		case GOLD_ORE:
+			instrument = Instrument.BELL;
+			break;
+		case DEEPSLATE_GOLD_ORE:
 			instrument = Instrument.BELL;
 			break;
 		case DIAMOND_ORE:
 			instrument = Instrument.PLING;
 			break;
+		case DEEPSLATE_DIAMOND_ORE:
+			instrument = Instrument.PLING;
+			break;
 		case EMERALD_ORE:
+			instrument = Instrument.BIT;
+			break;
+		case DEEPSLATE_EMERALD_ORE:
 			instrument = Instrument.BIT;
 			break;
 //		case REDSTONE_ORE:
