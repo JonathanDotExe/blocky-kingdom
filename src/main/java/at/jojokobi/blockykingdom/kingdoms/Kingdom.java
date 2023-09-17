@@ -72,9 +72,7 @@ public class Kingdom implements ConfigurationSerializable{
 	}
 	
 	public void addOwner (UUID owner) {
-		if (state == KingdomState.UNCLAIMED) {
-			state = KingdomState.GOOD;
-		}
+		state = KingdomState.GOOD;
 		owners.add(owner);
 	}
 	
