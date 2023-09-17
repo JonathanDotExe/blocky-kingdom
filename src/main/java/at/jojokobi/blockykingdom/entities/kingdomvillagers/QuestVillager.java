@@ -51,41 +51,41 @@ public class QuestVillager extends KingdomVillager<Villager>{
 				MineQuest.newMineQuestGenerator(Material.STONE).setMaxAmount(1).setAmountMultiplier(64).setBasicReward(1000).makeImutable(),
 				MineQuest.newMineQuestGenerator(Material.OAK_LOG).setMaxAmount(4).setAmountMultiplier(16).setBasicReward(500).makeImutable())));
 		quests.put(2, Collections.unmodifiableList(Arrays.asList(
-				KillQuest.newKillQuestGenerator(EntityType.ZOMBIE).setMaxAmount(4).setAmountMultiplier(5).setBasicReward(500).makeImutable(),
-				KillQuest.newKillQuestGenerator(EntityType.SKELETON).setMaxAmount(4).setAmountMultiplier(5).setBasicReward(500).makeImutable(),
+				KillQuest.newKillQuestGenerator(EntityType.ZOMBIE).setMaxAmount(4).setAmountMultiplier(5).setBasicReward(300).setBasicSkillPoints(4).makeImutable(),
+				KillQuest.newKillQuestGenerator(EntityType.SKELETON).setMaxAmount(4).setAmountMultiplier(5).setBasicReward(300).setBasicSkillPoints(4).makeImutable(),
 				MineQuest.newMineQuestGenerator(Material.OAK_LEAVES).setMaxAmount(4).setAmountMultiplier(16).setBasicReward(750).makeImutable())));
 		quests.put(3, Collections.unmodifiableList(Arrays.asList(
-				KillQuest.newKillQuestGenerator(EntityType.PHANTOM).setMinAmount(1).setMaxAmount(3).setBasicReward(350).makeImutable(),
-				MineQuest.newMineQuestGenerator(Material.WHEAT).setMinAmount(1).setMaxAmount(4).setAmountMultiplier(16).setBasicReward(250).makeImutable(),
-				MineQuest.newMineQuestGenerator(Material.PUMPKIN).setMinAmount(1).setMaxAmount(4).setBasicReward(200).setAmountMultiplier(2))));
+				KillQuest.newKillQuestGenerator(EntityType.PHANTOM).setMinAmount(1).setMaxAmount(3).setBasicReward(350).setBasicSkillPoints(5).setBasicExperience(100).makeImutable(),
+				MineQuest.newMineQuestGenerator(Material.WHEAT).setMinAmount(1).setMaxAmount(4).setAmountMultiplier(16).setBasicReward(200).setBasicExperience(50).makeImutable(),
+				MineQuest.newMineQuestGenerator(Material.PUMPKIN).setMinAmount(1).setMaxAmount(4).setBasicReward(200).setBasicExperience(50).setAmountMultiplier(2))));
 		quests.put(4, Collections.unmodifiableList(Arrays.asList(
-				KillQuest.newKillQuestGenerator(EntityType.CREEPER).setMaxAmount(5).setBasicReward(750).makeImutable(),
+				KillQuest.newKillQuestGenerator(EntityType.CREEPER).setMaxAmount(5).setBasicReward(750).setBasicSkillPoints(5).makeImutable(),
 				KillQuest.newKillQuestGenerator(EntityType.SPIDER).setMaxAmount(4).setAmountMultiplier(5).setBasicReward(500).makeImutable(),
-				MineQuest.newMineQuestGenerator(Material.IRON_ORE).setMinAmount(4).setMaxAmount(8).setAmountMultiplier(4).setBasicReward(64).makeImutable(),
-				MineQuest.newMineQuestGenerator(Material.COAL_ORE).setMinAmount(4).setMaxAmount(8).setAmountMultiplier(8).setBasicReward(64).makeImutable())));
+				MineQuest.newMineQuestGenerator(Material.IRON_ORE).setMinAmount(4).setMaxAmount(8).setAmountMultiplier(4).setBasicReward(100).setBasicExperience(75).makeImutable(),
+				MineQuest.newMineQuestGenerator(Material.COAL_ORE).setMinAmount(4).setMaxAmount(8).setAmountMultiplier(8).setBasicReward(64).setBasicExperience(50).makeImutable())));
 		quests.put(5, Collections.unmodifiableList(Arrays.asList(
-				KillQuest.newKillQuestGenerator(EntityType.SLIME).setMaxAmount(3).setBasicReward(750).makeImutable(),
-				MineQuest.newMineQuestGenerator(Material.GOLD_ORE).setMaxAmount(4).setAmountMultiplier(4).setBasicReward(500).makeImutable(),
-				MineQuest.newMineQuestGenerator(Material.DIAMOND_ORE).setMaxAmount(4).setBasicReward(750).makeImutable())));
+				KillQuest.newKillQuestGenerator(EntityType.SLIME).setMaxAmount(3).setBasicReward(500).setBasicSkillPoints(2).makeImutable(),
+				MineQuest.newMineQuestGenerator(Material.GOLD_ORE).setMaxAmount(4).setAmountMultiplier(4).setBasicReward(250).setBasicExperience(100).makeImutable(),
+				MineQuest.newMineQuestGenerator(Material.DIAMOND_ORE).setMaxAmount(4).setBasicReward(750).setBasicExperience(200).makeImutable())));
 		quests.put(6, Collections.unmodifiableList(Arrays.asList(
-				KillQuest.newKillQuestGenerator(EntityType.BLAZE).setMaxAmount(5).setAmountMultiplier(2).setBasicReward(500).makeImutable(),
-				KillQuest.newKillQuestGenerator(EntityType.PILLAGER).setMaxAmount(5).setAmountMultiplier(1).setBasicReward(300).makeImutable(),
-				MineQuest.newMineQuestGenerator(Material.EMERALD_ORE).setMaxAmount(1).setBasicReward(5000).makeImutable())));
+				KillQuest.newKillQuestGenerator(EntityType.BLAZE).setMaxAmount(5).setAmountMultiplier(2).setBasicReward(400).setBasicSkillPoints(7).makeImutable(),
+				KillQuest.newKillQuestGenerator(EntityType.PILLAGER).setMaxAmount(5).setAmountMultiplier(1).setBasicReward(300).setBasicSkillPoints(2).makeImutable(),
+				MineQuest.newMineQuestGenerator(Material.EMERALD_ORE).setMaxAmount(1).setBasicReward(5000).setBasicExperience(300).makeImutable())));
 		quests.put(7, Collections.unmodifiableList(Arrays.asList(
-				KillQuest.newKillQuestGenerator(EntityType.WITHER_SKELETON).setMaxAmount(3).setAmountMultiplier(1).setBasicReward(750).makeImutable(),
-				KillQuest.newKillQuestGenerator(EntityType.ILLUSIONER).setMaxAmount(2).setAmountMultiplier(1).setBasicReward(1000).makeImutable(),
+				KillQuest.newKillQuestGenerator(EntityType.WITHER_SKELETON).setMaxAmount(3).setAmountMultiplier(1).setBasicReward(700).setBasicSkillPoints(3).makeImutable(),
+				KillQuest.newKillQuestGenerator(EntityType.ILLUSIONER).setMaxAmount(2).setAmountMultiplier(1).setBasicReward(1000).setBasicSkillPoints(5).makeImutable(),
 				MineQuest.newMineQuestGenerator(Material.GLOWSTONE).setMaxAmount(4).setAmountMultiplier(8).setBasicReward(300).makeImutable())));
 		quests.put(8, Collections.unmodifiableList(Arrays.asList(
-				KillQuest.newKillQuestGenerator(EntityType.GHAST).setMaxAmount(2).setAmountMultiplier(1).setBasicReward(1000).makeImutable(),
-				KillQuest.newKillQuestGenerator(EntityType.RAVAGER).setMaxAmount(1).setAmountMultiplier(1).setBasicReward(2000).makeImutable(),
-				MineQuest.newMineQuestGenerator(Material.REDSTONE_ORE).setMaxAmount(8).setAmountMultiplier(8).setBasicReward(150).makeImutable())));
+				KillQuest.newKillQuestGenerator(EntityType.GHAST).setMaxAmount(2).setAmountMultiplier(1).setBasicReward(1000).setBasicSkillPoints(5).makeImutable(),
+				KillQuest.newKillQuestGenerator(EntityType.RAVAGER).setMaxAmount(1).setAmountMultiplier(1).setBasicReward(2000).setBasicSkillPoints(10).makeImutable(),
+				MineQuest.newMineQuestGenerator(Material.REDSTONE_ORE).setMaxAmount(8).setAmountMultiplier(8).setBasicReward(150).setBasicExperience(50).makeImutable())));
 		quests.put(9, Collections.unmodifiableList(Arrays.asList(
-				KillQuest.newKillQuestGenerator(EntityType.PHANTOM).setMaxAmount(3).setAmountMultiplier(1).setBasicReward(750).makeImutable(),
-				MineQuest.newMineQuestGenerator(Material.LAPIS_ORE).setMaxAmount(8).setAmountMultiplier(2).setBasicReward(250).makeImutable())));
+				KillQuest.newKillQuestGenerator(EntityType.PHANTOM).setMaxAmount(3).setAmountMultiplier(1).setBasicReward(750).setBasicSkillPoints(5).setBasicExperience(100).makeImutable(),
+				MineQuest.newMineQuestGenerator(Material.LAPIS_ORE).setMaxAmount(8).setAmountMultiplier(2).setBasicReward(250).setBasicExperience(50).makeImutable())));
 		quests.put(10, Collections.unmodifiableList(Arrays.asList(
-				KillQuest.newKillQuestGenerator(EntityType.ENDER_DRAGON).setMaxAmount(1).setAmountMultiplier(1).setBasicReward(20000).makeImutable(),
-				KillQuest.newKillQuestGenerator(EntityType.WITHER).setMaxAmount(1).setAmountMultiplier(1).setBasicReward(20000).makeImutable(),
-				MineQuest.newMineQuestGenerator(Material.BEDROCK).setMaxAmount(1).setBasicReward(Integer.MAX_VALUE).makeImutable(),
+				KillQuest.newKillQuestGenerator(EntityType.ENDER_DRAGON).setMaxAmount(1).setAmountMultiplier(1).setBasicReward(20000).setBasicExperience(5000).setBasicSkillPoints(100).makeImutable(),
+				KillQuest.newKillQuestGenerator(EntityType.WITHER).setMaxAmount(1).setAmountMultiplier(1).setBasicReward(20000).setBasicExperience(5000).setBasicSkillPoints(100).makeImutable(),
+				MineQuest.newMineQuestGenerator(Material.BEDROCK).setMaxAmount(1).setBasicReward(10000).makeImutable(),
 				MineQuest.newMineQuestGenerator(Material.DRAGON_EGG).setMaxAmount(1).setBasicReward(10000).makeImutable())));
 		generators = Collections.unmodifiableMap(quests);				
 	}

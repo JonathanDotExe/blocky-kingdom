@@ -137,7 +137,14 @@ public abstract class Quest implements IQuest {
 		meta.setDisplayName(getName());
 		long timeLeft = getExpirationTimeStamp() - System.currentTimeMillis();
 		timeLeft /= 1000;
-		meta.setLore(Arrays.asList(getDescritpion(), getProgress(player) + "/" + getMaxProgress(), expired() ? "Expired" : "Time left " + (timeLeft/3600) + "h " + (timeLeft%3600/60) + " min " + (timeLeft%60) + " secs"));
+		meta.setLore(Arrays.asList(
+				getDescritpion(),
+				getProgress(player) + "/" + getMaxProgress(),
+				expired() ? "Expired" : "Time left " + (timeLeft/3600) + "h " + (timeLeft%3600/60) + " min " + (timeLeft%60) + " secs",
+				"Reward: ",
+				getReward() + " $",
+				getExperience() + " xp", 
+				getSkillPoints() + " Skill Points"));
 		stack.setItemMeta(meta);
 		return stack;
 	}
