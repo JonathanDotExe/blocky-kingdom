@@ -231,6 +231,11 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	}
 	
 	@Override
+	protected double getSprintSpeed() {
+		return 1;
+	}
+	
+	@Override
 	protected void loadData(EntityMapData data) {
 		//Name
 		name = data.get(NAME_TAG) + "";

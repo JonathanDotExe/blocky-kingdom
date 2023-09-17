@@ -20,6 +20,7 @@ import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerAdvancementDoneEvent;
@@ -174,6 +175,19 @@ public class StatHandler implements Listener{
 					CharacterStats stats = statable.getCharacterStats();
 					stats.setMoney(stats.getMoney() + 50);
 				}
+			}
+		}
+	}
+	
+	@EventHandler(priority=EventPriority.LOWEST)
+	public void onBlockBreak(BlockBreakEvent event) {
+		if (!event.isCancelled() && Math.random() > 0.25) {
+			//Add 
+			Statable statable = statables.get(event.getPlayer());
+			if (statable != null) {
+				CharacterStats stats = statable.getCharacterStats();
+				stats.gainXp(3);
+				stats.setMoney(stats.getMoney() + 3);
 			}
 		}
 	}
