@@ -8,6 +8,7 @@ import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.AbstractArrow.PickupStatus;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -61,6 +62,7 @@ public class DoubleBow extends CustomTool{
 		if (isItem(held)) {
 			setDurability(held, getDurability(held) - 1);
 			boolean shoot = true;
+			boolean pickup = true;
 			if (shooter instanceof InventoryHolder) {
 				Inventory inventory = ((InventoryHolder) shooter).getInventory();
 				int index = inventory.first(Material.ARROW);
@@ -71,9 +73,13 @@ public class DoubleBow extends CustomTool{
 					ItemStack arrow = inventory.getItem(index);
 					arrow.setAmount(arrow.getAmount() - 1);
 				}
+				else {
+					pickup = false;
+				}
 			}
 			if (shoot) {
 				Arrow arrow = shooter.launchProjectile(Arrow.class);
+				arrow.setPickupStatus(pickup ? PickupStatus.ALLOWED : PickupStatus.CREATIVE_ONLY);
 				arrow.teleport(event.getProjectile().getLocation().add(0, -0.3, 0));
 				arrow.setVelocity(event.getProjectile().getVelocity());
 			}
