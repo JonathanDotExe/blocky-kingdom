@@ -32,6 +32,10 @@ import at.jojokobi.blockykingdom.players.quests.MineQuest;
 import at.jojokobi.blockykingdom.players.quests.QuestGenetator;
 import at.jojokobi.mcutil.entity.EntityHandler;
 import at.jojokobi.mcutil.entity.NMSEntityUtil;
+import at.jojokobi.mcutil.entity.ai.InteractEntityTask;
+import at.jojokobi.mcutil.entity.ai.RandomAroundPlaceTask;
+import at.jojokobi.mcutil.entity.ai.RandomTimeCondition;
+import at.jojokobi.mcutil.entity.ai.ReturnToSpawnAtNightTask;
 import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
 public class QuestVillager extends KingdomVillager<Villager>{
@@ -45,6 +49,9 @@ public class QuestVillager extends KingdomVillager<Villager>{
 		questSeed = random.nextLong();
 		//Peaceful AI
 		addEntityTask(new VillagerFollowTask());
+		addEntityTask(new ReturnToSpawnAtNightTask());
+		addEntityTask(new InteractEntityTask(new RandomTimeCondition(2 * 4, 15 * 4, 5 * 4, 15 * 4), 20));
+		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 30, 50, 8, false, false, 16));
 		addEntityTask(new ReturnToSpawnTask());
 		Map<Integer, List<QuestGenetator>> quests = new HashMap<>();
 		quests.put(1, Collections.unmodifiableList(Arrays.asList(

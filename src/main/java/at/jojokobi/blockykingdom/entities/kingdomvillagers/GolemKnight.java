@@ -20,6 +20,7 @@ import at.jojokobi.mcutil.entity.ai.AttackTask;
 import at.jojokobi.mcutil.entity.ai.InteractEntityTask;
 import at.jojokobi.mcutil.entity.ai.RandomAroundPlaceTask;
 import at.jojokobi.mcutil.entity.ai.RandomTimeCondition;
+import at.jojokobi.mcutil.entity.ai.ReturnToSpawnAtNightTask;
 import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
 public class GolemKnight extends WarriorVillager<IronGolem> {
@@ -32,6 +33,7 @@ public class GolemKnight extends WarriorVillager<IronGolem> {
 		//Attack
 		addEntityTask(new VillagerFollowTask());
 		addEntityTask(new AttackTask(this::isTarget, 25));
+		addEntityTask(new ReturnToSpawnAtNightTask());
 		addEntityTask(new InteractEntityTask(new RandomTimeCondition(2 * 4, 15 * 4, 5 * 4, 15 * 4), 20));
 		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 30, 70, 8, false, false, 16));
 		addEntityTask(new ReturnToSpawnTask());

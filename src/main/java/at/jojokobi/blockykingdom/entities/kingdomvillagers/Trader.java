@@ -51,15 +51,15 @@ public class Trader extends ShopVillager<Villager>{
 				new BuyableItemStack(new ItemStack(Material.STONE_PICKAXE, 1), 250, 0),
 				new BuyableItemStack(new ItemStack(Material.STONE_SWORD, 1), 250, 0))));
 		offers.put(2, Collections.unmodifiableList(Arrays.asList(
-				new BuyableItemStack(new ItemStack(Material.CHAINMAIL_BOOTS, 5), 1000, 5),
-				new BuyableItemStack(new ItemStack(Material.CHAINMAIL_HELMET, 5), 1000, 5),
+				new BuyableItemStack(new ItemStack(Material.CHAINMAIL_BOOTS, 1), 1000, 5),
+				new BuyableItemStack(new ItemStack(Material.CHAINMAIL_HELMET, 1), 1000, 5),
 				new BuyableItemStack(new ItemStack(Material.IRON_PICKAXE, 1), 1000, 8),
 				new BuyableItemStack(new ItemStack(Material.IRON_SWORD, 1), 1000, 8),
 				new BuyableItemStack(ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Katana.IDENTIFIER), 1500, 8),
 				new BuyableItemStack(ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Dagger.IDENTIFIER), 1000, 8))));
 		offers.put(3, Collections.unmodifiableList(Arrays.asList(
-				new BuyableItemStack(new ItemStack(Material.CHAINMAIL_CHESTPLATE, 5), 1500, 8),
-				new BuyableItemStack(new ItemStack(Material.CHAINMAIL_LEGGINGS, 5), 1500, 8),
+				new BuyableItemStack(new ItemStack(Material.CHAINMAIL_CHESTPLATE, 1), 1500, 8),
+				new BuyableItemStack(new ItemStack(Material.CHAINMAIL_LEGGINGS, 1), 1500, 8),
 				new BuyableItemStack(new ItemStack(Material.CARROT, 10), 2000, 10),
 				new BuyableItemStack(new ItemStack(Material.POTATO, 10), 2000, 10),
 				new BuyableItemStack(ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, Hammer.IDENTIFIER), 2000, 10),

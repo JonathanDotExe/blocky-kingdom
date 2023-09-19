@@ -24,6 +24,7 @@ import at.jojokobi.mcutil.entity.ai.AttackTask;
 import at.jojokobi.mcutil.entity.ai.InteractEntityTask;
 import at.jojokobi.mcutil.entity.ai.RandomAroundPlaceTask;
 import at.jojokobi.mcutil.entity.ai.RandomTimeCondition;
+import at.jojokobi.mcutil.entity.ai.ReturnToSpawnAtNightTask;
 import at.jojokobi.mcutil.entity.ai.ReturnToSpawnTask;
 
 public class Knight extends WarriorVillager<Villager>{
@@ -38,6 +39,7 @@ public class Knight extends WarriorVillager<Villager>{
 		//Attack
 		addEntityTask(new VillagerFollowTask());
 		addEntityTask(new AttackTask(this::isTarget, 15));
+		addEntityTask(new ReturnToSpawnAtNightTask());
 		addEntityTask(new InteractEntityTask(new RandomTimeCondition(2 * 4, 15 * 4, 5 * 4, 15 * 4), 20));
 		addEntityTask(new RandomAroundPlaceTask(e -> e.getSpawnPoint(), 20, 40, 8, false, false, 16));
 		addEntityTask(new ReturnToSpawnTask());
