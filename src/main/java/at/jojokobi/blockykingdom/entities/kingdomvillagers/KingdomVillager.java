@@ -236,6 +236,12 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	}
 	
 	@Override
+	public void onBelowWorld() {
+		super.onBelowWorld();
+		getEntity().teleport(getSpawnPoint());
+	}
+	
+	@Override
 	protected void loadData(EntityMapData data) {
 		//Name
 		name = data.get(NAME_TAG) + "";
