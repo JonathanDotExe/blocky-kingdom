@@ -87,7 +87,7 @@ public class CrawlingSkill extends Skill {
 
 	@Override
 	public Material getMaterial() {
-		return Material.GRASS;
+		return Material.GRASS_BLOCK;
 	}
 	
 	@Override
