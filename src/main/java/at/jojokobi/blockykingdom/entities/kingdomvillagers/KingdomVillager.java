@@ -166,6 +166,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 					s.getCharacterStats().setMoney(s.getCharacterStats().getMoney() - getPrice());
 					point.addVillager(this);
 					setSave(true);
+					setDespawnTicks(-1);
 					setReloadTime(0);
 				}
 				else {

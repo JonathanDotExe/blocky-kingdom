@@ -1,6 +1,5 @@
 package at.jojokobi.blockykingdom.summoning;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
@@ -8,7 +7,9 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
+import at.jojokobi.blockykingdom.entities.kingdomvillagers.KingdomVillager;
 import at.jojokobi.blockykingdom.entities.kingdomvillagers.Knight;
+import at.jojokobi.blockykingdom.kingdoms.KingdomPoint;
 import at.jojokobi.mcutil.entity.EntityHandler;
 
 public class KnightPattern implements SummoningPattern{
@@ -32,12 +33,16 @@ public class KnightPattern implements SummoningPattern{
 
 	@Override
 	public void summon(BlockPlaceEvent event) {
-		handler.addEntity(new Knight(event.getBlock().getLocation().add(1, 0, 0), handler));
-		Bukkit.getScheduler().runTask(plugin, () -> {
-			event.getBlock().setType(Material.CAMPFIRE);
-			Block rel = event.getBlock().getRelative(-1, 0, 0);
-			((Chest) rel.getState()).getInventory().clear();
-		});
+		KingdomPoint point = new KingdomPoint(event.getBlock().getLocation());
+		KingdomVillager<?> villager = new Knight(event.getBlock().getLocation().add(1, 0, 0), handler);
+		if (!point.canAddVillager(villager.getVillagerCategory(), handler)) {
+			event.getPlayer().sendMessage("Cool building but nobody wants to move here because of the low level. Increase your kingdom level to be able to increase your population.");
+		}
+		else {
+			handler.addSavedEntity(villager);
+			point.addVillager(villager);
+			event.getPlayer().sendMessage("The knight " + villager.getName() + " just moved in!");
+		}
 	}
 
 }

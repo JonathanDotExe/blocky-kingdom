@@ -59,7 +59,7 @@ public class DynamicVillagerHousePattern implements SummoningPattern {
 	public boolean matches(BlockPlaceEvent event) {
 		Kingdom kingdom = KingdomHandler.getInstance().getKingdom(event.getBlock().getLocation());
 		if ((furnitures.isEmpty() || furnitures.get(0).matches(event.getBlock())) && kingdom.isOwner(event.getPlayer().getUniqueId())) {
-			System.out.println("DEtected furniture");
+			System.out.println("Detected furniture");
 			for (Vector offset : offsets) {
 				for (int width = minSize.getBlockX(); width <= maxSize.getBlockX(); width++) {
 					for (int height = minSize.getBlockY(); height <= maxSize.getBlockY(); height++) {
