@@ -88,6 +88,7 @@ public class ZombieBoss extends CustomEntity<Zombie> implements Attacker, Target
 		zombie.setHealth(zombie.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
 		zombie.setRemoveWhenFarAway(false);
 		zombie.setCustomName("Zombie Boss");
+		zombie.setAdult();
 		
 		NMSEntityUtil.clearGoals(zombie);
 		return zombie;
