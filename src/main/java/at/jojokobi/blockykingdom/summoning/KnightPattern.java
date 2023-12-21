@@ -1,5 +1,6 @@
 package at.jojokobi.blockykingdom.summoning;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
@@ -42,6 +43,11 @@ public class KnightPattern implements SummoningPattern{
 			handler.addSavedEntity(villager);
 			point.addVillager(villager);
 			event.getPlayer().sendMessage("The knight " + villager.getName() + " just moved in!");
+			Bukkit.getScheduler().runTask(plugin, () -> {
+				event.getBlock().setType(Material.CAMPFIRE);
+				Block rel = event.getBlock().getRelative(-1, 0, 0);
+				((Chest) rel.getState()).getInventory().clear();
+			});
 		}
 	}
 
