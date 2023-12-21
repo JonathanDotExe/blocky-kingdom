@@ -135,6 +135,15 @@ public class Goblin extends CustomEntity<Zombie> implements Attacker{
 		super.onTransform(event);
 		event.setCancelled(true);
 	}
+	
+	@Override
+	public void loop() {	
+		//Present drowning
+		if (getEntity().isConverting()) {
+			getEntity().setConversionTime(100);
+		}
+		super.loop();
+	}
 
 	@Override
 	public double getAttackRange() {
