@@ -168,6 +168,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 					setSave(true);
 					setDespawnTicks(-1);
 					setReloadTime(0);
+					resetAI();
 				}
 				else {
 					event.getPlayer().sendMessage("You don't have enough money!");

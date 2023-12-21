@@ -83,7 +83,6 @@ public class Healer extends KingdomVillager<Villager> implements Attacker, Targe
 		villager.getEquipment().setBootsDropChance(0);
 		villager.getEquipment().setItemInMainHandDropChance(0);
 
-		
 		NMSEntityUtil.clearGoals(villager);
 		
 		return villager;
