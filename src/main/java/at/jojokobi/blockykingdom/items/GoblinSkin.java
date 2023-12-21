@@ -52,7 +52,7 @@ public class GoblinSkin extends CustomItem{
 	@EventHandler
 	public void onPrepareItemCraft (PrepareItemCraftEvent event) {
 		CraftingInventory inv = event.getInventory();
-		if (event.getRecipe() instanceof Keyed && ((Keyed) event.getRecipe()).getKey().equals(leatherRecipeKey) && Arrays.stream(inv.getContents()).allMatch(i -> i.getType() != ITEM || isItem(i))) {
+		if (!(event.getRecipe() instanceof Keyed && ((Keyed) event.getRecipe()).getKey().equals(leatherRecipeKey) && Arrays.stream(inv.getContents()).allMatch(i -> i.getType() != ITEM || isItem(i)))) {
 			inv.setResult(null);
 		}
 	}
