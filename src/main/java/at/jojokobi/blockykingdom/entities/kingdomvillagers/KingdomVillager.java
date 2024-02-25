@@ -86,6 +86,9 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	@Override
 	public void loop() {
 		super.loop();
+		if (getEntity().isDead()) {
+			System.out.println("Villager was killed: " + name + ": " + getEntity().getLocation());
+		}
 		//Reload logic
 		if (reloadTime > 0) {
 			int time = reloadTime / 4;
@@ -94,9 +97,8 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 		} else {
 			getEntity().setCustomName(name + " [Lvl. " + level + " " + xp + "/" + getLevelXP() + "]");
 		}
-		if (getEntity().getLocation().getY() < 0) {
+		if (getEntity().getLocation().getY() <= getEntity().getWorld().getMinHeight()) {
 			kill();
-			getEntity().teleport(getSpawnPoint());
 		}
 	}
 
@@ -240,7 +242,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	@Override
 	public void onBelowWorld() {
 		super.onBelowWorld();
-		getEntity().teleport(getSpawnPoint());
+		kill();
 	}
 	
 	@Override
