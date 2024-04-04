@@ -20,6 +20,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import at.jojokobi.blockykingdom.commands.GlowVillagersCommand;
 import at.jojokobi.blockykingdom.commands.ResetStatsCommand;
+import at.jojokobi.blockykingdom.commands.StartSiegeCommand;
 import at.jojokobi.blockykingdom.dimensions.CloudJumpHandler;
 import at.jojokobi.blockykingdom.dimensions.HeavenDimension;
 import at.jojokobi.blockykingdom.entities.Airhead;
@@ -468,6 +469,7 @@ public class BlockyKingdomPlugin extends JavaPlugin implements Listener{
 		//Commands
 		getCommand(ResetStatsCommand.COMMAND_NAME).setExecutor(new ResetStatsCommand(util.getGuiHandler()));
 		getCommand(GlowVillagersCommand.COMMAND_NAME).setExecutor(new GlowVillagersCommand(util.getEntityHandler()));
+		getCommand(StartSiegeCommand.COMMAND_NAME).setExecutor(new StartSiegeCommand(siegeHandler));
 		
 		//Config
 		saveDefaultConfig();
