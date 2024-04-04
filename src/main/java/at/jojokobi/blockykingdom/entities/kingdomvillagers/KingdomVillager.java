@@ -74,13 +74,13 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	protected void spawn() {
 		super.spawn();
 		//Check if spawnpoint is in kingdom
-		if (kingdomPoint != null && !new KingdomPoint(getSpawnPoint()).equals(kingdomPoint)) {
+		/*if (kingdomPoint != null && !new KingdomPoint(getSpawnPoint()).equals(kingdomPoint)) {
 			//Set spawn to kingdom center
 			Kingdom kingdom = KingdomHandler.getInstance().getKingdom(kingdomPoint);
 			Location loc = kingdomPoint.toLocation().add(kingdom.getCenterX(), 0, kingdom.getCenterZ());
 			loc.setY(loc.getWorld().getHighestBlockYAt(loc));
 			setSpawnPoint(loc);
-		}
+		}*/
 	}
 
 	@Override
