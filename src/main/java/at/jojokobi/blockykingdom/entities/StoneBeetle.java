@@ -1,6 +1,7 @@
 package at.jojokobi.blockykingdom.entities;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -9,6 +10,7 @@ import org.bukkit.entity.ArmorStand;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.components.CustomModelDataComponent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
@@ -100,7 +102,9 @@ public class StoneBeetle extends CustomEntity<ArmorStand>{
 		entity.setCanPickupItems(false);
 		ItemStack item = new ItemStack(Material.IRON_HOE);
 		ItemMeta meta = item.getItemMeta();
-		meta.setCustomModelData(7);
+		CustomModelDataComponent customModel = meta.getCustomModelDataComponent();
+		customModel.setFloats(List.of(7.0f));
+		meta.setCustomModelDataComponent(customModel);
 		item.setItemMeta(meta);
 		entity.getEquipment().setHelmet(item);
 		

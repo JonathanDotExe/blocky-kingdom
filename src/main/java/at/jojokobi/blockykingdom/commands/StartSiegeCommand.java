@@ -23,6 +23,7 @@ public class StartSiegeCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String text, String[] args) {
 		if (text.equalsIgnoreCase(COMMAND_NAME) && sender instanceof Entity && sender.isOp()) {
+			sender.sendMessage("Starting siege ...");
 			handler.startSiege(new KingdomPoint(((Entity) sender).getLocation()));
 			return true;
 		}

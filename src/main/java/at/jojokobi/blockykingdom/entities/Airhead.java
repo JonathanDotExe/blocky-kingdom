@@ -1,6 +1,7 @@
 package at.jojokobi.blockykingdom.entities;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -18,6 +19,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.components.CustomModelDataComponent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -90,7 +92,7 @@ public class Airhead extends CustomEntity<Skeleton> implements Attacker, Targete
 	@Override
 	protected Skeleton createEntity(Location place) {
 		Skeleton skeleton = place.getWorld().spawn(place, Skeleton.class);
-		skeleton.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(400);
+		skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(400);
 		skeleton.setHealth(400);
 		skeleton.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 100000000, 1, true, false));
 		skeleton.setLootTable(null);
@@ -101,7 +103,9 @@ public class Airhead extends CustomEntity<Skeleton> implements Attacker, Targete
 		ItemStack helmet = new ItemStack(Material.IRON_HOE);
 		ItemMeta meta = helmet.getItemMeta();
 		meta.setUnbreakable(true);
-		meta.setCustomModelData(2);
+		CustomModelDataComponent customModel = meta.getCustomModelDataComponent();
+		customModel.setFloats(List.of(2.0f));
+		meta.setCustomModelDataComponent(customModel);
 		helmet.setItemMeta(meta);
 		
 		skeleton.getEquipment().setHelmet(helmet);

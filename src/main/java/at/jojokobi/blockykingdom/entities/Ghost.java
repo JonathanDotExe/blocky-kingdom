@@ -16,7 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
-import org.spigotmc.event.entity.EntityDismountEvent;
+import org.bukkit.event.entity.EntityDismountEvent;
 
 import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
 import at.jojokobi.mcutil.entity.Attacker;
@@ -57,8 +57,8 @@ public class Ghost extends CustomEntity<Skeleton> implements Attacker{
 	protected Skeleton createEntity(Location place) {
 		Skeleton entity = place.getWorld().spawn(place, Skeleton.class);
 		NMSEntityUtil.clearGoals(entity);
-		entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20.0);
-		entity.setHealth(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+		entity.getAttribute(Attribute.MAX_HEALTH).setBaseValue(20.0);
+		entity.setHealth(entity.getAttribute(Attribute.MAX_HEALTH).getValue());
 		entity.setRemoveWhenFarAway(true);
 
 		entity.getEquipment().setHelmet(new ItemStack(Material.CHAINMAIL_HELMET));

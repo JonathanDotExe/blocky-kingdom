@@ -42,7 +42,7 @@ public class CloudJumpHandler implements Listener {
 		Player player = event.getPlayer();
 		// Jump Particles
 		if (jumping.contains(player.getUniqueId())) {
-			player.getWorld().spawnParticle(Particle.SPELL_MOB, player.getEyeLocation(), 10);
+			player.getWorld().spawnParticle(Particle.EFFECT, player.getEyeLocation(), 10);
 //			
 //			Vector velocity = player.getVelocity();
 //			double y = velocity.getY();

@@ -1,6 +1,7 @@
 package at.jojokobi.blockykingdom.entities;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.bukkit.Location;
@@ -15,6 +16,7 @@ import org.bukkit.entity.Zombie;
 import org.bukkit.event.entity.EntityTransformEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.components.CustomModelDataComponent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -67,13 +69,15 @@ public class GoblinBoss extends CustomEntity<Zombie> implements Attacker {
 
 		NMSEntityUtil.clearGoals(entity);
 
-		entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(150.0);
-		entity.setHealth(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+		entity.getAttribute(Attribute.MAX_HEALTH).setBaseValue(150.0);
+		entity.setHealth(entity.getAttribute(Attribute.MAX_HEALTH).getValue());
 		entity.setRemoveWhenFarAway(false);
 
 		ItemStack helmet = new ItemStack(Material.IRON_HOE);
 		ItemMeta meta = helmet.getItemMeta();
-		meta.setCustomModelData(6);
+		CustomModelDataComponent customModel = meta.getCustomModelDataComponent();
+		customModel.setFloats(List.of(6.0f));
+		meta.setCustomModelDataComponent(customModel);
 		meta.setUnbreakable(true);
 		helmet.setItemMeta(meta);
 		entity.getEquipment().setHelmet(helmet);

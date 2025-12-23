@@ -1,6 +1,7 @@
 package at.jojokobi.blockykingdom.entities;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.bukkit.Location;
@@ -21,8 +22,8 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.inventory.meta.components.CustomModelDataComponent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionType;
 import org.bukkit.util.Vector;
 
@@ -95,8 +96,8 @@ public class Slimerer extends CustomEntity<ArmorStand> implements Attacker, Targ
 			//Effect
 			place.getWorld().strikeLightningEffect(place);
 			place.getWorld().playSound(place, Sound.ENTITY_LIGHTNING_BOLT_THUNDER, SoundCategory.HOSTILE, 1, 1);
-			place.getWorld().spawnParticle(Particle.SLIME, place.add(0, 1, 0), 50);
-			place.getWorld().spawnParticle(Particle.EXPLOSION_HUGE, place, 10);
+			place.getWorld().spawnParticle(Particle.ITEM_SLIME, place.add(0, 1, 0), 50);
+			place.getWorld().spawnParticle(Particle.EXPLOSION, place, 10);
 		}
 	}
 
@@ -130,7 +131,9 @@ public class Slimerer extends CustomEntity<ArmorStand> implements Attacker, Targ
 		// Item
 		ItemStack helmet = new ItemStack(Material.IRON_HOE);
 		ItemMeta meta = helmet.getItemMeta();
-		meta.setCustomModelData(1);
+		CustomModelDataComponent customModel = meta.getCustomModelDataComponent();
+		customModel.setFloats(List.of(1.0f));
+		meta.setCustomModelDataComponent(customModel);
 		helmet.setItemMeta(meta);
 		stand.getEquipment().setHelmet(helmet);
 		return stand;
@@ -177,7 +180,7 @@ public class Slimerer extends CustomEntity<ArmorStand> implements Attacker, Targ
 					ItemStack item = new ItemStack(Material.SPLASH_POTION);
 					if (item.getItemMeta() instanceof PotionMeta) {
 						PotionMeta meta = (PotionMeta) item.getItemMeta();
-						meta.setBasePotionData(new PotionData(PotionType.INSTANT_DAMAGE, false, false));
+						meta.setBasePotionType(PotionType.HARMING);
 						item.setItemMeta(meta);
 					}
 					potion.setItem(item);

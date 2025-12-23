@@ -84,8 +84,8 @@ public class ZombieBoss extends CustomEntity<Zombie> implements Attacker, Target
 		zombie.getEquipment().setBoots(new ItemStack(Material.IRON_BOOTS));
 		zombie.getEquipment().setItemInMainHand(ItemHandler.getItemStack(BlockyKingdomPlugin.BLOCKY_KINGDOM_NAMESPACE, ExecutionersScythe.IDENTIFIER));
 		
-		zombie.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(150.0);
-		zombie.setHealth(zombie.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+		zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(150.0);
+		zombie.setHealth(zombie.getAttribute(Attribute.MAX_HEALTH).getValue());
 		zombie.setRemoveWhenFarAway(false);
 		zombie.setCustomName("Zombie Boss");
 		zombie.setAdult();
@@ -131,7 +131,7 @@ public class ZombieBoss extends CustomEntity<Zombie> implements Attacker, Target
 
 	@Override
 	public void attack(Damageable entity) {
-		double healthPercent = getEntity().getHealth()/getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+		double healthPercent = getEntity().getHealth()/getEntity().getAttribute(Attribute.MAX_HEALTH).getValue();
 		if (attackState == 0) {
 			//Spawn Minions
 			Location place = getEntity().getLocation();
