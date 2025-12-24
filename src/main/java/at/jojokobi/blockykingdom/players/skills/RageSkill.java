@@ -48,9 +48,9 @@ public class RageSkill extends Skill {
 			int level = stats.getCharacterStats().getSkillLevel(this);
 			
 			event.setDamage(event.getFinalDamage() + 1.0 + level * 0.5);
-			event.getEntity().getWorld().spawnParticle(Particle.VILLAGER_ANGRY, event.getEntity().getLocation().add(Math.random() - 0.5, 1, Math.random() - 0.5), 1);
-			event.getEntity().getWorld().spawnParticle(Particle.VILLAGER_ANGRY, event.getEntity().getLocation().add(Math.random() - 0.5, 1, Math.random() - 0.5), 1);
-			event.getEntity().getWorld().spawnParticle(Particle.VILLAGER_ANGRY, event.getEntity().getLocation().add(Math.random() - 0.5, 1, Math.random() - 0.5), 1);
+			event.getEntity().getWorld().spawnParticle(Particle.ANGRY_VILLAGER, event.getEntity().getLocation().add(Math.random() - 0.5, 1, Math.random() - 0.5), 1);
+			event.getEntity().getWorld().spawnParticle(Particle.ANGRY_VILLAGER, event.getEntity().getLocation().add(Math.random() - 0.5, 1, Math.random() - 0.5), 1);
+			event.getEntity().getWorld().spawnParticle(Particle.ANGRY_VILLAGER, event.getEntity().getLocation().add(Math.random() - 0.5, 1, Math.random() - 0.5), 1);
 		}
 	}
 

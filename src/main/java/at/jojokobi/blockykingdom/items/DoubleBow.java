@@ -69,7 +69,7 @@ public class DoubleBow extends CustomTool{
 				if (index < 0) {
 					shoot = false;
 				}
-				else if (held.getEnchantmentLevel(Enchantment.ARROW_INFINITE) == 0) {
+				else if (held.getEnchantmentLevel(Enchantment.INFINITY) == 0) {
 					ItemStack arrow = inventory.getItem(index);
 					arrow.setAmount(arrow.getAmount() - 1);
 				}

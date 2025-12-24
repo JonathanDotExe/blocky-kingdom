@@ -25,7 +25,6 @@ import at.jojokobi.blockykingdom.BlockyKingdomPlugin;
 import at.jojokobi.blockykingdom.gui.FigureShopGUI;
 import at.jojokobi.blockykingdom.players.StatHandler;
 import at.jojokobi.mcutil.item.ItemHandler;
-import at.jojokobi.mcutil.item.ItemUtil;
 import at.jojokobi.mcutil.item.PersistentUUIDDataType;
 import at.jojokobi.mcutil.item.PlaceableItem;
 import at.jojokobi.mcutil.item.Rotation;
@@ -110,7 +109,8 @@ public class EconomicFigure extends PlaceableItem{
 	@Override
 	protected void fixItem(ItemStack item) {
 		super.fixItem(item);
-		//Money
+		//TODO reimplement
+		/* //Money
 		int money = ItemUtil.getNBTInt(item, MONEY_TAG);
 		ItemUtil.removeNBTTag(item, MONEY_TAG);
 		setMoney(item, money);
@@ -121,7 +121,7 @@ public class EconomicFigure extends PlaceableItem{
 		//Price
 		int price = ItemUtil.getNBTInt(item, PRICE_TAG);
 		ItemUtil.removeNBTTag(item, PRICE_TAG);
-		setPrice(item, price);
+		setPrice(item, price);*/
 	}
 	
 	@Override
@@ -137,7 +137,6 @@ public class EconomicFigure extends PlaceableItem{
 				if (loc.getBlockX() == entityLoc.getBlockX() && loc.getBlockY() == entityLoc.getBlockY() && loc.getBlockZ() == entityLoc.getBlockZ()) {
 					if (isItemEntity(entities[i])) {
 						found = true;
-						ItemUtil.printTagCompount(((ArmorStand) entities[i]).getEquipment().getHelmet());
 						if (!event.getPlayer().getUniqueId().equals(getOwner(((ArmorStand) entities[i]).getEquipment().getHelmet()))) {
 							event.setCancelled(true);
 						}

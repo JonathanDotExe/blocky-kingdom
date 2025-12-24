@@ -209,7 +209,7 @@ public class StatHandler implements Listener{
 		Player player = event.getPlayer();
 		Statable stats = statables.get(player);
 		//Health
-		player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20.0 + stats.getCharacterStats().getTotalHealth() * 2);
+		player.getAttribute(Attribute.MAX_HEALTH).setBaseValue(20.0 + stats.getCharacterStats().getTotalHealth() * 2);
 	}
 	
 	@EventHandler

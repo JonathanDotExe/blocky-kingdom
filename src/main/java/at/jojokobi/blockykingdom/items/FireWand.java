@@ -56,7 +56,7 @@ public class FireWand extends CustomTool{
 	public boolean useItem(ItemStack item, Player player) {
 		Fireball ball = (Fireball) player.launchProjectile(Fireball.class);
 		ball.setYield(1 + StatHandler.getInstance().getStats(player).getCharacterStats().getMagic() * 0.15f);
-		ball.setDirection(ball.getDirection().normalize().multiply(StatHandler.getInstance().getStats(player).getCharacterStats().getMagic()));
+		ball.setDirection(ball.getAcceleration().normalize().multiply(StatHandler.getInstance().getStats(player).getCharacterStats().getMagic()));
 		ball.setMetadata(NO_EXPLODE, new FixedMetadataValue(plugin, true));
 		return true;
 	}

@@ -30,7 +30,7 @@ public class PoisonSkill extends Skill implements Listener {
 			int level = stats.getCharacterStats().getSkillLevel(this);
 			if (level > 0 && event.getEntity() instanceof LivingEntity && Math.random() < 0.25 + 0.05 * level) {
 				((LivingEntity) event.getEntity()).addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 20 * level/2, 1));
-				event.getEntity().getWorld().spawnParticle(Particle.SLIME, event.getEntity().getLocation().add(0, 1, 0), 10);
+				event.getEntity().getWorld().spawnParticle(Particle.ITEM_SLIME, event.getEntity().getLocation().add(0, 1, 0), 10);
 			}
 		}
 	}

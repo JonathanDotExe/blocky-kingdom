@@ -67,7 +67,7 @@ public class HealingWand extends CustomTool{
 		if (player.getCooldown(item.getType()) <= 0) {
 			CharacterStats stats = StatHandler.getInstance().getStats(player).getCharacterStats();
 			double heal = 2.0 + stats.getMagic()/10.0 * 8.0;
-			player.setHealth(Math.min(player.getHealth() + heal, player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()));
+			player.setHealth(Math.min(player.getHealth() + heal, player.getAttribute(Attribute.MAX_HEALTH).getValue()));
 			player.getWorld().spawnParticle(Particle.HEART, player.getLocation(), 5);
 			player.getWorld().playSound(player.getLocation(), Sound.ITEM_TOTEM_USE, 1, 1);
 			player.setCooldown(item.getType(), 100);
@@ -75,7 +75,7 @@ public class HealingWand extends CustomTool{
 			for (Entity e : player.getNearbyEntities(1 + stats.getMagic() * 0.5, 1 + stats.getMagic() * 0.5, 1 + stats.getMagic() * 0.5)) {
 				if (e instanceof LivingEntity && ! (e instanceof Monster)) {
 					LivingEntity entity = (LivingEntity) e;
-					entity.setHealth(Math.min(entity.getHealth() + heal * 0.7, entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()));
+					entity.setHealth(Math.min(entity.getHealth() + heal * 0.7, entity.getAttribute(Attribute.MAX_HEALTH).getValue()));
 					entity.getWorld().spawnParticle(Particle.HEART, entity.getLocation(), 5);
 				}
 			}

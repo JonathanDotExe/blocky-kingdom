@@ -25,7 +25,7 @@ public class HeavinessSkill extends Skill {
 		CharacterStats stats = StatHandler.getInstance().getStats(player).getCharacterStats();
 		int level = stats.getSkillLevel(this);
 		if (level > 0) {
-			event.getPlayer().getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(level/10.0);
+			event.getPlayer().getAttribute(Attribute.KNOCKBACK_RESISTANCE).setBaseValue(level/10.0);
 		}
 	}
 

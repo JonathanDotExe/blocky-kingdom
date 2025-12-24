@@ -27,8 +27,8 @@ public class GillsSkill extends Skill {
 		int level = stats.getSkillLevel(this);
 		if (level > 0 && player.getLocation().getBlock().getType() == Material.WATER) {
 			player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, 60, level));
-			player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 60, level));
-			player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 60, level));
+			player.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 60, level));
+			player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE, 60, level));
 			player.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 60, level));
 		}
 	}

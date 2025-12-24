@@ -25,7 +25,7 @@ public class VitalitySkill extends Skill implements Listener{
 			for (Entry<Player,Statable> entry : StatHandler.getInstance().getEntrySet()) {
 				int level = entry.getValue().getCharacterStats().getSkillLevel(this);
 				if (level > 0 && time %  (20 - level) == 0) {
-					entry.getKey().setHealth(Math.min(entry.getKey().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue(), entry.getKey().getHealth() + 1.0));
+					entry.getKey().setHealth(Math.min(entry.getKey().getAttribute(Attribute.MAX_HEALTH).getValue(), entry.getKey().getHealth() + 1.0));
 				}
 			}
 			time++;

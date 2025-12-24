@@ -6,7 +6,7 @@ public enum CharacterSpecies implements Iconable{
 	HUMAN (0, 0, 0, 0, 0, Material.PLAYER_HEAD),
 	GOBLIN (1, -2, 1, 0, 0, Material.ZOMBIE_HEAD),
 	DWARF(0, 2, -1, -1, 0, Material.IRON_AXE),
-	LIZARDMAN(0, 0, 2, 0, -2, Material.SCUTE),
+	LIZARDMAN(0, 0, 2, 0, -2, Material.TURTLE_SCUTE),
 	ELF(-1, -1, 0, 2, 0, Material.END_ROD),
 	GIANT(2, 0, -3, -1, 2, Material.PORKCHOP),
 	BARBARIAN(2, 0, -1, -1, 0, Material.IRON_SWORD),

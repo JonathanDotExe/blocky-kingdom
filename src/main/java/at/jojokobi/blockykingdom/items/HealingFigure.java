@@ -52,7 +52,7 @@ public class HealingFigure extends PlaceableItem{
 						for (Entity entity : e.getNearbyEntities(20, 20, 20)) {
 							if (entity instanceof LivingEntity && !(entity instanceof Monster)) {
 								LivingEntity living = (LivingEntity) entity;
-								living.setHealth(Math.min(living.getHealth() + 6.0, living.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()));
+								living.setHealth(Math.min(living.getHealth() + 6.0, living.getAttribute(Attribute.MAX_HEALTH).getValue()));
 							}
 						}
 					}

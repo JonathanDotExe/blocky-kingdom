@@ -51,7 +51,7 @@ public class GoblinKnife extends CustomTool{
 	@Override
 	public boolean hit(ItemStack item, Entity damager, Entity defender) {
 		if (defender instanceof LivingEntity) {
-			((LivingEntity) defender).addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 80, 1));
+			((LivingEntity) defender).addPotionEffect(new PotionEffect(PotionEffectType.NAUSEA, 80, 1));
 			((LivingEntity) defender).addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 40, 1));
 		}
 		return true;

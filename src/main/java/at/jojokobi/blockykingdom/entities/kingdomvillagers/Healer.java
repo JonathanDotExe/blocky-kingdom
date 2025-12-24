@@ -19,7 +19,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantRecipe;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionType;
 import org.bukkit.util.Vector;
 
@@ -92,12 +91,12 @@ public class Healer extends KingdomVillager<Villager> implements Attacker, Targe
 	public boolean isTarget(Entity entity) {
 		//Target villagers to heal
 		CustomEntity<?> custom = getHandler().getCustomEntityForEntity(entity);
-		return custom instanceof KingdomVillager<?> && ((KingdomVillager<?>) custom).getEntity().getHealth() < ((KingdomVillager<?>) custom).getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() && getKingdomPoint() != null && getKingdomPoint().equals(((KingdomVillager<?>) custom).getKingdomPoint());
+		return custom instanceof KingdomVillager<?> && ((KingdomVillager<?>) custom).getEntity().getHealth() < ((KingdomVillager<?>) custom).getEntity().getAttribute(Attribute.MAX_HEALTH).getValue() && getKingdomPoint() != null && getKingdomPoint().equals(((KingdomVillager<?>) custom).getKingdomPoint());
 	}
 	
 	@Override
 	public boolean defeatedEnemy(Damageable enemy) {
-		return !(enemy instanceof LivingEntity) || ((LivingEntity) enemy).getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() <= enemy.getHealth();
+		return !(enemy instanceof LivingEntity) || ((LivingEntity) enemy).getAttribute(Attribute.MAX_HEALTH).getValue() <= enemy.getHealth();
 	}
 
 	@Override
@@ -112,7 +111,7 @@ public class Healer extends KingdomVillager<Villager> implements Attacker, Targe
 			ItemStack item = new ItemStack(Material.SPLASH_POTION);
 			if (item.getItemMeta() instanceof PotionMeta) {
 				PotionMeta meta = (PotionMeta) item.getItemMeta();
-				meta.setBasePotionData(new PotionData(PotionType.INSTANT_HEAL,  false, getLevel() > 7));
+				meta.setBasePotionType(getLevel() > 7 ? PotionType.STRONG_HEALING : PotionType.HEALING);
 				item.setItemMeta(meta);
 			}
 			potion.setItem(item);

@@ -43,12 +43,12 @@ public class AdrenalineSkill extends Skill{
 		case KNIGHT:
 		case MAGE:
 		case NINJA:
-			type = PotionEffectType.INCREASE_DAMAGE;
+			type = PotionEffectType.STRENGTH;
 			break;
 		case SMITH:
 		case SUMO:
 		case VILLAGER:
-			type = PotionEffectType.DAMAGE_RESISTANCE;
+			type = PotionEffectType.RESISTANCE;
 			break;
 		}
 		return type;

@@ -116,7 +116,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 	}
 	
 	void kill() {
-		getEntity().setHealth(getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+		getEntity().setHealth(getEntity().getAttribute(Attribute.MAX_HEALTH).getValue());
 		reloadTime = 4 * 60 * 10;
 		//Teleport to spawn if the kingdom is set
 		if (kingdomPoint != null) {
@@ -148,7 +148,7 @@ public abstract class KingdomVillager<T extends LivingEntity> extends CustomEnti
 			if (event.getPlayer().isSneaking() && KingdomHandler.getInstance().getKingdom(getKingdomPoint()).getOwners().contains(event.getPlayer().getUniqueId())) {
 				if (event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BREAD) {
 					event.getPlayer().getInventory().getItemInMainHand().setAmount(event.getPlayer().getInventory().getItemInMainHand().getAmount() - 1);
-					getEntity().setHealth(Math.min(getEntity().getHealth() + 4.0, getEntity().getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()));
+					getEntity().setHealth(Math.min(getEntity().getHealth() + 4.0, getEntity().getAttribute(Attribute.MAX_HEALTH).getValue()));
 					addHappiness(0.3);
 					event.getPlayer().sendMessage("[" + getName() + "] Thank you the bread was delicous!");
 					getEntity().getEyeLocation().getWorld().spawnParticle(Particle.HEART, getEntity().getEyeLocation(), 5);

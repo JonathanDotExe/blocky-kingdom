@@ -31,7 +31,7 @@ public class LeechingSkill extends Skill {
 				LivingEntity damager = (LivingEntity) event.getDamager();
 				int level = stats.getSkillLevel(this);
 				if (level > 0 && Math.random() < 0.1 * level) {
-					damager.setHealth(Math.min(damager.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue(), damager.getHealth() + 2.0));
+					damager.setHealth(Math.min(damager.getAttribute(Attribute.MAX_HEALTH).getValue(), damager.getHealth() + 2.0));
 					event.getEntity().getWorld().spawnParticle(Particle.HEART, event.getEntity().getLocation().add(0, 1, 0), 3);
 				}
 			}

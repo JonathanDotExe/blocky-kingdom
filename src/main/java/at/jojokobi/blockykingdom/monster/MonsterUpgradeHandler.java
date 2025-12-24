@@ -70,12 +70,12 @@ public class MonsterUpgradeHandler implements Listener {
 		
 		upgrades.add(new MonsterPotionUpgrade(PotionEffectType.FIRE_RESISTANCE, 1, 3, Arrays.asList(Zombie.class, Husk.class, ZombieVillager.class, Drowned.class, Skeleton.class, Stray.class, Spider.class, CaveSpider.class)));
 		upgrades.add(new MonsterPotionUpgrade(PotionEffectType.SPEED, 1, 5, Arrays.asList(Zombie.class, Husk.class, ZombieVillager.class, Drowned.class, Skeleton.class, Stray.class, Spider.class, CaveSpider.class)));
-		upgrades.add(new MonsterPotionUpgrade(PotionEffectType.DAMAGE_RESISTANCE, 1, 7, Arrays.asList(Zombie.class, Husk.class, ZombieVillager.class, Drowned.class, Skeleton.class, Stray.class, Spider.class, CaveSpider.class)));
+		upgrades.add(new MonsterPotionUpgrade(PotionEffectType.RESISTANCE, 1, 7, Arrays.asList(Zombie.class, Husk.class, ZombieVillager.class, Drowned.class, Skeleton.class, Stray.class, Spider.class, CaveSpider.class)));
 		upgrades.add(new MonsterPotionUpgrade(PotionEffectType.SPEED, 2, 7, Arrays.asList(Zombie.class, Husk.class, ZombieVillager.class, Drowned.class, Skeleton.class, Stray.class, Spider.class, CaveSpider.class)));
-		upgrades.add(new MonsterPotionUpgrade(PotionEffectType.INCREASE_DAMAGE, 1, 7, Arrays.asList(Zombie.class, Husk.class, ZombieVillager.class, Drowned.class, Skeleton.class, Stray.class, Spider.class, CaveSpider.class)));
-		upgrades.add(new MonsterPotionUpgrade(PotionEffectType.DAMAGE_RESISTANCE, 2, 9, Arrays.asList(Zombie.class, Husk.class, ZombieVillager.class, Drowned.class, Skeleton.class, Stray.class, Spider.class, CaveSpider.class)));
-		upgrades.add(new MonsterPotionUpgrade(PotionEffectType.INCREASE_DAMAGE, 2, 9, Arrays.asList(Zombie.class, Husk.class, ZombieVillager.class, Drowned.class, Skeleton.class, Stray.class, Spider.class, CaveSpider.class)));
-		upgrades.add(new MonsterPotionUpgrade(PotionEffectType.INCREASE_DAMAGE, 3, 10, Arrays.asList(Zombie.class, Husk.class, ZombieVillager.class, Drowned.class, Skeleton.class, Stray.class, Spider.class, CaveSpider.class)));
+		upgrades.add(new MonsterPotionUpgrade(PotionEffectType.STRENGTH, 1, 7, Arrays.asList(Zombie.class, Husk.class, ZombieVillager.class, Drowned.class, Skeleton.class, Stray.class, Spider.class, CaveSpider.class)));
+		upgrades.add(new MonsterPotionUpgrade(PotionEffectType.RESISTANCE, 2, 9, Arrays.asList(Zombie.class, Husk.class, ZombieVillager.class, Drowned.class, Skeleton.class, Stray.class, Spider.class, CaveSpider.class)));
+		upgrades.add(new MonsterPotionUpgrade(PotionEffectType.STRENGTH, 2, 9, Arrays.asList(Zombie.class, Husk.class, ZombieVillager.class, Drowned.class, Skeleton.class, Stray.class, Spider.class, CaveSpider.class)));
+		upgrades.add(new MonsterPotionUpgrade(PotionEffectType.STRENGTH, 3, 10, Arrays.asList(Zombie.class, Husk.class, ZombieVillager.class, Drowned.class, Skeleton.class, Stray.class, Spider.class, CaveSpider.class)));
 	}
 
 	@EventHandler
